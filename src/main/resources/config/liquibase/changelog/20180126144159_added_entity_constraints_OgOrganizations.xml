@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity OgOrganizations.
+    -->
+    <changeSet id="20180126144159-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_organization_type_id"
+                                 baseTableName="og_org"
+                                 constraintName="og_organizatio_id_organizati_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="og_org_types"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_parent_id"
+                                 baseTableName="og_org"
+                                 constraintName="og_organizatio_id_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="og_organizations"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_legal_entity_id"
+                                 baseTableName="og_org"
+                                 constraintName="og_organizatio_id_legal_enti_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="le_legal_entities"/>
+
+    </changeSet>
+</databaseChangeLog>

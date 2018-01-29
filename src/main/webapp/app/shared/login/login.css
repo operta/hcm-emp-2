@@ -1,0 +1,33 @@
+.modal-header .close {
+    margin: -35px -5px -15px auto !important;
+}
+input[type="checkbox"] {
+    margin: 4px -15px 0;
+}
+
+.login-shadow{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.add-transparency{
+    opacity:0.9;
+}
+@media (max-width: 767px){
+    .login-register {
+        position: fixed;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+/*input:-webkit-autofill:hover{*/
+/*-webkit-box-shadow: 0 0 0px 1000px white inset;*/
+
+/*}*/
+/*input:-webkit-autofill:focus{*/
+
+/*}*/
+a.text-primary:focus, a.text-primary:hover {
+    color: #2b2b2b!important;
+}

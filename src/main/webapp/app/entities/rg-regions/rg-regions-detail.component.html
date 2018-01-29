@@ -1,0 +1,62 @@
+
+<div *ngIf="rgRegions">
+    <h2><span jhiTranslate="hcmEmpApp.rgRegions.detail.title">Rg Regions</span> {{rgRegions.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.code">Code</span></dt>
+        <dd>
+            <span>{{rgRegions.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.name">Name</span></dt>
+        <dd>
+            <span>{{rgRegions.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.description">Description</span></dt>
+        <dd>
+            <span>{{rgRegions.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{rgRegions.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{rgRegions.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{rgRegions.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{rgRegions.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.idType">Id Type</span></dt>
+        <dd>
+            <div *ngIf="rgRegions.idType">
+                <a [routerLink]="['/rg-region-types', rgRegions.idType?.id]">{{rgRegions.idType?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgRegions.idParent">Id Parent</span></dt>
+        <dd>
+            <div *ngIf="rgRegions.idParent">
+                <a [routerLink]="['/rg-regions', rgRegions.idParent?.id]">{{rgRegions.idParent?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'rg-regions/'+ rgRegions.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

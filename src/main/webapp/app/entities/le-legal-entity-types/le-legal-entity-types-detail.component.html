@@ -1,0 +1,50 @@
+
+<div *ngIf="leLegalEntityTypes">
+    <h2><span jhiTranslate="hcmEmpApp.leLegalEntityTypes.detail.title">Le Legal Entity Types</span> {{leLegalEntityTypes.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntityTypes.code">Code</span></dt>
+        <dd>
+            <span>{{leLegalEntityTypes.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntityTypes.name">Name</span></dt>
+        <dd>
+            <span>{{leLegalEntityTypes.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntityTypes.description">Description</span></dt>
+        <dd>
+            <span>{{leLegalEntityTypes.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntityTypes.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{leLegalEntityTypes.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntityTypes.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{leLegalEntityTypes.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntityTypes.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{leLegalEntityTypes.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntityTypes.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{leLegalEntityTypes.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'le-legal-entity-types/'+ leLegalEntityTypes.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "ogOrgTypes" : {
+            "home": {
+                "title": "Og Org Types",
+                "createLabel": "Create a new Og Org Types",
+                "createOrEditLabel": "Create or edit a Og Org Types"
+            },
+            "created": "A new Og Org Types is created with identifier {{ param }}",
+            "updated": "A Og Org Types is updated with identifier {{ param }}",
+            "deleted": "A Og Org Types is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Og Org Types {{ id }}?"
+            },
+            "detail": {
+                "title": "Og Org Types"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

@@ -1,0 +1,85 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOgOrganizationsLabel" jhiTranslate="hcmEmpApp.ogOrganizations.home.createOrEditLabel">Create or edit a Og Organizations</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ogOrganizations.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ogOrganizations.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="ogOrganizations.code" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="ogOrganizations.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="ogOrganizations.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="ogOrganizations.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.createdAt" for="field_createdAt">Created At</label>
+            <div class="d-flex">
+                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="ogOrganizations.createdAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.updatedBy" for="field_updatedBy">Updated By</label>
+            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                [(ngModel)]="ogOrganizations.updatedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.updatedAt" for="field_updatedAt">Updated At</label>
+            <div class="d-flex">
+                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="ogOrganizations.updatedAt"
+                />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.idOrganizationType" for="field_idOrganizationType">Id Organization Type</label>
+            <select class="form-control" id="field_idOrganizationType" name="idOrganizationType" [(ngModel)]="ogOrganizations.idOrganizationType">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ogOrgTypesOption.id === ogOrganizations.idOrganizationType?.id ? ogOrganizations.idOrganizationType : ogOrgTypesOption" *ngFor="let ogOrgTypesOption of idorganizationtypes; trackBy: trackOgOrgTypesById">{{ogOrgTypesOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.idParent" for="field_idParent">Id Parent</label>
+            <select class="form-control" id="field_idParent" name="idParent" [(ngModel)]="ogOrganizations.idParent">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ogOrganizationsOption.id === ogOrganizations.idParent?.id ? ogOrganizations.idParent : ogOrganizationsOption" *ngFor="let ogOrganizationsOption of idparents; trackBy: trackOgOrganizationsById">{{ogOrganizationsOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.idLegalEntity" for="field_idLegalEntity">Id Legal Entity</label>
+            <select class="form-control" id="field_idLegalEntity" name="idLegalEntity" [(ngModel)]="ogOrganizations.idLegalEntity">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="leLegalEntitiesOption.id === ogOrganizations.idLegalEntity?.id ? ogOrganizations.idLegalEntity : leLegalEntitiesOption" *ngFor="let leLegalEntitiesOption of idlegalentities; trackBy: trackLeLegalEntitiesById">{{leLegalEntitiesOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

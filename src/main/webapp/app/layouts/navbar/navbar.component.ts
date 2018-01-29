@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
@@ -7,7 +7,7 @@ import { ProfileService } from '../profiles/profile.service';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
 
 import { VERSION } from '../../app.constants';
-
+declare let $:any;
 @Component({
     selector: 'jhi-navbar',
     templateUrl: './navbar.component.html',
@@ -15,13 +15,15 @@ import { VERSION } from '../../app.constants';
         'navbar.css'
     ]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
+    @ViewChild('sideMenu') sideMenu: ElementRef;
     inProduction: boolean;
     isNavbarCollapsed: boolean;
     languages: any[];
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    name: string;
 
     constructor(
         private loginService: LoginService,
@@ -45,6 +47,24 @@ export class NavbarComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
+
+        if (this.isAuthenticated()) {
+            this.principal.identity().then((account) => {
+                console.log(account);
+                this.name = account.firstName;
+            });
+        }
+    }
+
+    ngAfterViewInit(){
+        $(".preloader").fadeOut();
+        ($(this.sideMenu.nativeElement)).metisMenu();
+        $('.slimscrollsidebar').slimScroll({
+            height: '100%'
+            , position: 'right'
+            , size: "0px"
+            , color: '#dcdcdc'
+            , });
     }
 
     changeLanguage(languageKey: string) {
@@ -76,4 +96,6 @@ export class NavbarComponent implements OnInit {
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;
     }
+
+
 }

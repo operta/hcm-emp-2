@@ -7,6 +7,12 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "الكيانات",
+                "ogOrganizations": "Og Organizations",
+                "ogOrgTypes": "Og Org Types",
+                "leLegalEntities": "Le Legal Entities",
+                "leLegalEntityTypes": "Le Legal Entity Types",
+                "rgRegions": "Rg Regions",
+                "rgRegionTypes": "Rg Region Types",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

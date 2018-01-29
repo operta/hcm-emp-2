@@ -17,12 +17,24 @@
         "test": "src/test/javascript/spec/entry.ts",
         "tsconfig": "../../../tsconfig.json",
         "prefix": "jhi",
-        "mobile": false,
         "styles": [
+            "../../../node_modules/bootstrap/dist/css/bootstrap.css",
+            "../../../node_modules/metismenu/dist/metisMenu.min.css",
+            "content/css/css-chart.css",
+            "content/css/ng2-toastr.css",
             "content/css/vendor.css",
             "content/css/global.css"
         ],
-        "scripts": []
+        "scripts": [
+            "../../../node_modules/jquery/dist/jquery.min.js",
+            "../../../node_modules/jquery-slimscroll/jquery.slimscroll.min.js",
+            "../../../node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "content/plugins/bootstrap-extension/js/bootstrap-extension.min.js",
+            "../../../node_modules/metismenu/dist/metisMenu.min.js",
+            "../../../node_modules/tether/dist/js/tether.min.js",
+            "content/js/waves.js",
+            "content/js/custom.min.js"
+        ]
     }],
     "lint": [{
             "project": "../../../tsconfig.json"

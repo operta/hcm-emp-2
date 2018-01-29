@@ -1,5 +1,13 @@
 /* after changing this file run 'yarn run webpack:build' */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "../plugins/bootstrap-extension/css/bootstrap-extension.css";
+@import "animate.css";
+@import "style.css";
+@import "gray-dark.css";
 @import 'rtl.css';
-@import '~font-awesome/css/font-awesome.css';
-
+@import "mobile-responsive.css";
+@import "custom.css";
+@import "scrollStyle.css";
+@import "css-chart.css";
+@import "spinners.css";
+@import "magnific-popup-extensions.css";

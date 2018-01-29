@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.rgRegions.home.title">Rg Regions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-rg-regions" [routerLink]="['/', { outlets: { popup: ['rg-regions-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.rgRegions.home.createLabel">
+            Create new Rg Regions
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rgRegions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="hcmEmpApp.rgRegions.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="hcmEmpApp.rgRegions.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="hcmEmpApp.rgRegions.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.rgRegions.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.rgRegions.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.rgRegions.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.rgRegions.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idType.id"><span jhiTranslate="hcmEmpApp.rgRegions.idType">Id Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idParent.id"><span jhiTranslate="hcmEmpApp.rgRegions.idParent">Id Parent</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rgRegions of rgRegions ;trackBy: trackId">
+                <td><a [routerLink]="['../rg-regions', rgRegions.id ]">{{rgRegions.id}}</a></td>
+                <td>{{rgRegions.code}}</td>
+                <td>{{rgRegions.name}}</td>
+                <td>{{rgRegions.description}}</td>
+                <td>{{rgRegions.createdBy}}</td>
+                <td>{{rgRegions.createdAt | date:'medium'}}</td>
+                <td>{{rgRegions.updatedBy}}</td>
+                <td>{{rgRegions.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="rgRegions.idType">
+                        <a [routerLink]="['../rg-region-types', rgRegions.idType?.id ]" >{{rgRegions.idType?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rgRegions.idParent">
+                        <a [routerLink]="['../rg-regions', rgRegions.idParent?.id ]" >{{rgRegions.idParent?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../rg-regions', rgRegions.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rg-regions/'+ rgRegions.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rg-regions/'+ rgRegions.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="rgRegions && rgRegions.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

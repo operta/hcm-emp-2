@@ -1,0 +1,68 @@
+
+<div *ngIf="ogOrganizations">
+    <h2><span jhiTranslate="hcmEmpApp.ogOrganizations.detail.title">Og Organizations</span> {{ogOrganizations.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.code">Code</span></dt>
+        <dd>
+            <span>{{ogOrganizations.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.name">Name</span></dt>
+        <dd>
+            <span>{{ogOrganizations.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.description">Description</span></dt>
+        <dd>
+            <span>{{ogOrganizations.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{ogOrganizations.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{ogOrganizations.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{ogOrganizations.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{ogOrganizations.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.idOrganizationType">Id Organization Type</span></dt>
+        <dd>
+            <div *ngIf="ogOrganizations.idOrganizationType">
+                <a [routerLink]="['/og-org-types', ogOrganizations.idOrganizationType?.id]">{{ogOrganizations.idOrganizationType?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.idParent">Id Parent</span></dt>
+        <dd>
+            <div *ngIf="ogOrganizations.idParent">
+                <a [routerLink]="['/og-organizations', ogOrganizations.idParent?.id]">{{ogOrganizations.idParent?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.idLegalEntity">Id Legal Entity</span></dt>
+        <dd>
+            <div *ngIf="ogOrganizations.idLegalEntity">
+                <a [routerLink]="['/le-legal-entities', ogOrganizations.idLegalEntity?.id]">{{ogOrganizations.idLegalEntity?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'og-organizations/'+ ogOrganizations.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

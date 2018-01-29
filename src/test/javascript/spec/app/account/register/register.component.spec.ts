@@ -5,8 +5,8 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { MockLanguageService } from '../../../helpers/mock-language.service';
 import { HcmEmpTestModule } from '../../../test.module';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '../../../../../../main/webapp/app/shared';
-import { Register } from '../../../../../../main/webapp/app/account/register/register.service';
-import { RegisterComponent } from '../../../../../../main/webapp/app/account/register/register.component';
+import { Register } from '../../../../../../main/webapp/app/shared/auth/register/register.service';
+import { RegisterComponent } from '../../../../../../main/webapp/app/shared/auth/register/register.component';
 
 describe('Component Tests', () => {
 

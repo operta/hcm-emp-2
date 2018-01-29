@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLeLegalEntitiesLabel" jhiTranslate="hcmEmpApp.leLegalEntities.home.createOrEditLabel">Create or edit a Le Legal Entities</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!leLegalEntities.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="leLegalEntities.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="leLegalEntities.code" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="leLegalEntities.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="leLegalEntities.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.createdAt" for="field_createdAt">Created At</label>
+            <div class="d-flex">
+                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="leLegalEntities.createdAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.updatedBy" for="field_updatedBy">Updated By</label>
+            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                [(ngModel)]="leLegalEntities.updatedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.updatedAt" for="field_updatedAt">Updated At</label>
+            <div class="d-flex">
+                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="leLegalEntities.updatedAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.idNumber" for="field_idNumber">Id Number</label>
+            <input type="text" class="form-control" name="idNumber" id="field_idNumber"
+                [(ngModel)]="leLegalEntities.idNumber" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.dutyNumber" for="field_dutyNumber">Duty Number</label>
+            <input type="text" class="form-control" name="dutyNumber" id="field_dutyNumber"
+                [(ngModel)]="leLegalEntities.dutyNumber" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="leLegalEntities.address" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.postalNumber" for="field_postalNumber">Postal Number</label>
+            <input type="text" class="form-control" name="postalNumber" id="field_postalNumber"
+                [(ngModel)]="leLegalEntities.postalNumber" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.idEntityType" for="field_idEntityType">Id Entity Type</label>
+            <select class="form-control" id="field_idEntityType" name="idEntityType" [(ngModel)]="leLegalEntities.idEntityType">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="leLegalEntityTypesOption.id === leLegalEntities.idEntityType?.id ? leLegalEntities.idEntityType : leLegalEntityTypesOption" *ngFor="let leLegalEntityTypesOption of identitytypes; trackBy: trackLeLegalEntityTypesById">{{leLegalEntityTypesOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.region" for="field_region">Region</label>
+            <select class="form-control" id="field_region" name="region" [(ngModel)]="leLegalEntities.region">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="rgRegionsOption.id === leLegalEntities.region?.id ? leLegalEntities.region : rgRegionsOption" *ngFor="let rgRegionsOption of regions; trackBy: trackRgRegionsById">{{rgRegionsOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

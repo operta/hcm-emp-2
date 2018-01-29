@@ -1,0 +1,25 @@
+@media (max-width:768px) {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .btn-margin-mobile {
+    margin-top: 10px
+  }
+
+  .comment-center .comment-body {
+    padding: 10px 5px;
+  }
+
+  .comment-center {
+    margin: 0px;
+  }
+
+  .bg-title {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+
+}

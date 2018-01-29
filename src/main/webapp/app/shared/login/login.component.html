@@ -28,15 +28,22 @@
                         <span jhiTranslate="login.form.rememberme">Remember me</span>
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary" jhiTranslate="login.form.button">Sign in</button>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <a (click)="requestResetPassword()" type="button" id="to-recover" class="text-dark pull-right" disabled=""><i class="fa fa-lock m-r-5"></i> Forgot password?</a> </div>
+                </div>
+                <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light m-b-10 m-t-10" type="submit" jhiTranslate="login.form.button">Sign in</button>
             </form>
             <p></p>
-            <div class="alert alert-warning">
-                <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>
-            </div>
-            <div class="alert alert-warning">
-                <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
-                <a class="alert-link" (click)="register()" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet? </span>
+                    <a (click)="register()"  class="text-primary m-l-5">
+                        <b>Register a new account</b>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

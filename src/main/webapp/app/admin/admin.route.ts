@@ -12,6 +12,7 @@ import {
 } from './';
 
 import { UserRouteAccessService } from '../shared';
+import {DashboardComponent} from "../layouts/dashboard/dashboard.component";
 
 const ADMIN_ROUTES = [
     auditsRoute,
@@ -24,7 +25,8 @@ const ADMIN_ROUTES = [
 ];
 
 export const adminState: Routes = [{
-    path: '',
+    path: 'dashboard',
+    component: DashboardComponent,
     data: {
         authorities: ['ROLE_ADMIN']
     },

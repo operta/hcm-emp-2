@@ -203,6 +203,7 @@
         <dependency>
             <groupId>com.oracle.jdbc</groupId>
             <artifactId>ojdbc8</artifactId>
+            <version>12.2.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -481,10 +482,10 @@
                     <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
                     <diffChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                     <driver>oracle.jdbc.OracleDriver</driver>
-                    <url>jdbc:oracle:thin:@localhost:1521:hcmEmp</url>
-                    <defaultSchemaName></defaultSchemaName>
-                    <username></username>
-                    <password></password>
+                    <url>jdbc:oracle:thin:@192.168.1.218:1521/pdb_generic.infostudio.ba</url>
+                    <defaultSchemaName>hcm</defaultSchemaName>
+                    <username>hcm</username>
+                    <password>hcm</password>
                     <referenceUrl>hibernate:spring:com.infostudio.ba.domain?dialect=org.hibernate.dialect.Oracle12cDialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>

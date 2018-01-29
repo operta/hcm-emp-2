@@ -76,6 +76,11 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
         }, {
             reload: false
         }),
+        new webpack.ProvidePlugin({
+            '$': "jquery",
+            'jQuery': "jquery",
+            'Popper': 'popper.js'
+        }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.NamedModulesPlugin(),
         new writeFilePlugin(),

@@ -24,6 +24,9 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import {DashboardModule} from "./layouts/dashboard/dashboard.module";
+import {RegisterComponent} from "./shared/auth/register/register.component";
+import {Register} from "./shared/auth/register/register.service";
 
 @NgModule({
     imports: [
@@ -35,11 +38,11 @@ import {
         HcmEmpAdminModule,
         HcmEmpAccountModule,
         HcmEmpEntityModule,
+        DashboardModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
         JhiMainComponent,
-        NavbarComponent,
         ErrorComponent,
         PageRibbonComponent,
         ActiveMenuDirective,

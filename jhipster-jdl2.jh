@@ -1,0 +1,96 @@
+
+// an ignored comment
+/** not an ignored comment */
+entity OgOrganizations {
+	id Integer,
+	code String,
+	name String,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+    idLegalEntity Integer,
+    idParent Integer,
+    idOrganizationType OgOrgTypes
+}
+
+entity OgOrgTypes {
+	id Integer,
+	code String,
+	name String,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity LeLegalEntities {
+ 	id Integer,
+    code String,
+    name String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant,
+    idNumber String,
+    dutyNumber String,
+    region Integer,
+    address String,
+    postalNumber String,
+    idEntityType Integer
+}
+
+entity LeLegalEntityTypes {
+	id Integer,
+    code String,
+    name String,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgRegions{
+	id Integer,
+    code String,
+    name String,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant,
+    idType Integer,
+    idParent Integer
+}
+
+entity RgRegionTypes {
+	id Integer,
+    code String,
+    name String,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+relationship OneToOne {
+  RgRegions{idType} to RgRegionTypes
+  LeLegalEntities{idEntityType} to LeLegalEntityTypes
+  OgOrganizations{idOrganizationType} to OgOrgTypes
+  LeLegalEntities{region} to RgRegions
+  OgOrganizations{idParent} to OgOrganizations
+  OgOrganizations{idLegalEntity} to LeLegalEntities
+}
+
+
+
+paginate * with pagination
+
+dto * with mapstruct
+
+
+

@@ -1,0 +1,58 @@
+@media (min-width: 1200px) {
+    #dataScroll {
+        height: 82vh;
+        height: calc(100vh - 300px);
+    }
+
+    #edit-form {
+        max-height: 90vh;
+    }
+
+    #edit-div {
+        max-height: calc(90vh - 40px);
+    }
+}
+
+.edit-data-popup {
+    background: #FFF;
+    padding: 20px 30px;
+    text-align: left;
+    max-width: 1000px;
+    margin: 40px auto;
+    position: relative;
+}
+
+.edit-area {
+    width: 100%;
+    min-height: 50px;
+}
+
+.page-wrapper-at{padding:0 0px !important;}
+
+.container-fluid-at{padding-left:25px;padding-right:25px;padding-bottom:0px}
+
+.white-box-at{background:#fff;padding:25px;margin-bottom:0px}
+
+.action-button-at{font-size: 20px;color: darkblue;margin-right: 10px;}
+
+.heading-at{font-size: 14px;color: #2b2b2b;font-family: Poppins,sans-serif;font-weight: 600;line-height: 1.1;}
+
+.section-title{line-height: 30px;font-size: 21px;color: #2b2b2b;font-family: Poppins,sans-serif;margin: 10px 0;font-weight: 300;}
+
+.heading-icon-at{font-size:16px;}
+
+.section-icon-at{color: darkblue; font-weight: 300;}
+
+.section-title-at{color: darkblue; font-weight: 300;}
+
+.section-title-at2{color: darkblue; font-weight: 300; vertical-align: top;}
+
+.section-title-nr-at{color: darkblue; font-size: 28px; font-weight: 400;}
+
+.at-img-align{text-align: center;}
+
+.section-details-at{font-size: 16px;}
+
+.at-details{border-left-width: 1px; border-left-style: solid; border-left-color: rgb(221, 221, 221);}
+
+.table.table-striped tr.selectedRow {background: #B0BED9 !important;}

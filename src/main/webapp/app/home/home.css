@@ -24,3 +24,30 @@ only screen and (                min-resolution: 2dppx) {
     }
 }
 
+.login-shadow{
+    box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 6px rgba(0,0,0,0.23);
+}
+.add-transparency{
+    opacity:0.9;
+}
+@media (max-width: 767px){
+    .login-register {
+        position: fixed;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.login-box {
+    background: #fff;
+    width: 800px;
+    margin: 5% auto 0;
+}
+/*input:-webkit-autofill:hover{*/
+/*-webkit-box-shadow: 0 0 0px 1000px white inset;*/
+
+/*}*/
+/*input:-webkit-autofill:focus{*/
+
+/*}*/

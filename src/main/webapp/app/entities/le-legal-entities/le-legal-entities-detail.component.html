@@ -1,0 +1,74 @@
+
+<div *ngIf="leLegalEntities">
+    <h2><span jhiTranslate="hcmEmpApp.leLegalEntities.detail.title">Le Legal Entities</span> {{leLegalEntities.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.code">Code</span></dt>
+        <dd>
+            <span>{{leLegalEntities.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.name">Name</span></dt>
+        <dd>
+            <span>{{leLegalEntities.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{leLegalEntities.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{leLegalEntities.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{leLegalEntities.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{leLegalEntities.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.idNumber">Id Number</span></dt>
+        <dd>
+            <span>{{leLegalEntities.idNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.dutyNumber">Duty Number</span></dt>
+        <dd>
+            <span>{{leLegalEntities.dutyNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.address">Address</span></dt>
+        <dd>
+            <span>{{leLegalEntities.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.postalNumber">Postal Number</span></dt>
+        <dd>
+            <span>{{leLegalEntities.postalNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.idEntityType">Id Entity Type</span></dt>
+        <dd>
+            <div *ngIf="leLegalEntities.idEntityType">
+                <a [routerLink]="['/le-legal-entity-types', leLegalEntities.idEntityType?.id]">{{leLegalEntities.idEntityType?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.region">Region</span></dt>
+        <dd>
+            <div *ngIf="leLegalEntities.region">
+                <a [routerLink]="['/rg-regions', leLegalEntities.region?.id]">{{leLegalEntities.region?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'le-legal-entities/'+ leLegalEntities.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

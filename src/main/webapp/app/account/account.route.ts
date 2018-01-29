@@ -5,20 +5,20 @@ import {
     passwordRoute,
     passwordResetFinishRoute,
     passwordResetInitRoute,
-    registerRoute,
     settingsRoute
 } from './';
+import {DashboardComponent} from "../layouts/dashboard/dashboard.component";
 
 const ACCOUNT_ROUTES = [
     activateRoute,
     passwordRoute,
     passwordResetFinishRoute,
     passwordResetInitRoute,
-    registerRoute,
     settingsRoute
 ];
 
 export const accountState: Routes = [{
-    path: '',
+    path: 'dashboard',
+    component: DashboardComponent,
     children: ACCOUNT_ROUTES
 }];
