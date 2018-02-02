@@ -27,6 +27,7 @@ import {
 import {DashboardModule} from "./layouts/dashboard/dashboard.module";
 import {RegisterComponent} from "./shared/auth/register/register.component";
 import {Register} from "./shared/auth/register/register.service";
+import {NavbarService} from "./layouts/navbar/navbar.service";
 
 @NgModule({
     imports: [

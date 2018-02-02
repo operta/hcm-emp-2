@@ -1,0 +1,149 @@
+
+// an ignored comment
+/** not an ignored comment */
+
+
+entity OgOrgTypes {
+	id Integer,
+	code String,
+	name String,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+
+entity LeLegalEntityTypes {
+	id Integer,
+    code String,
+    name String,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgRegionTypes {
+	id Integer,
+    code String,
+    name String,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+entity RgRegions{
+	id Integer,
+    code String,
+    name String,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant,
+}
+entity LeLegalEntities {
+ 	id Integer,
+    code String,
+    name String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant,
+    idNumber String,
+    dutyNumber String,
+    address String,
+    postalNumber String,
+}
+
+entity OgOrganizations {
+	id Integer,
+	code String,
+	name String,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgQualifications {
+	id Integer,
+	code String,
+	name String,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpTypes {
+	id Integer,
+	code String,
+	name String,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmStatuses {
+	id Integer,
+	code String,
+	name String,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmployees {
+	id Integer,
+    code String,
+    name String,
+    middleName String,
+    surname String,
+    maidenName String,
+    disabilityDegree Integer,
+    ethnicGroup String,
+    gender String,
+    residentialSituation String,
+    maritalStatus String,
+    bloodGroup String,
+    dateOfBirth LocalDate,
+    hireDate LocalDate,
+    ssn String,
+    taxNumber String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+
+
+relationship OneToOne {
+  EmEmployees{idQualification(name)} to RgQualifications
+  EmEmployees{idEmploymentType(name)} to EmEmpTypes
+  EmEmployees{idLegalEntity(name)} to LeLegalEntities
+  EmEmployees{idStatus(name)} to EmStatuses
+  EmEmployees{idUser} to User
+  LeLegalEntities{idEntityType(name)} to LeLegalEntityTypes
+  LeLegalEntities{region(name)} to RgRegions
+  RgRegions{idType(name)} to RgRegionTypes
+  RgRegions{idParent(name)} to RgRegions
+  OgOrganizations{idOrganizationType(name)} to OgOrgTypes
+  OgOrganizations{idParent(name)} to OgOrganizations
+  OgOrganizations{idLegalEntity(name)} to LeLegalEntities
+}
+
+paginate * with pagination except OgOrganizations, LeLegalEntities, EmEmployees
+
+

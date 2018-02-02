@@ -74,7 +74,7 @@ entity OgOrganizations {
 }
 
 relationship OneToOne {
-  LeLegalEntities{idEntityType} to LeLegalEntityTypes
+  LeLegalEntities{idEntityType(name)} to LeLegalEntityTypes
   LeLegalEntities{region} to RgRegions
   RgRegions{idType} to RgRegionTypes
   RgRegions{idParent} to RgRegions
@@ -84,7 +84,5 @@ relationship OneToOne {
 }
 
 
-
-paginate * with pagination
 
 

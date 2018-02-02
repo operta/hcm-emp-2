@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "rgQualifications" : {
+            "home": {
+                "title": "Rg Qualifications",
+                "createLabel": "Create a new Rg Qualifications",
+                "createOrEditLabel": "Create or edit a Rg Qualifications"
+            },
+            "created": "A new Rg Qualifications is created with identifier {{ param }}",
+            "updated": "A Rg Qualifications is updated with identifier {{ param }}",
+            "deleted": "A Rg Qualifications is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Rg Qualifications {{ id }}?"
+            },
+            "detail": {
+                "title": "Rg Qualifications"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

@@ -56,21 +56,21 @@
             <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.idOrganizationType" for="field_idOrganizationType">Id Organization Type</label>
             <select class="form-control" id="field_idOrganizationType" name="idOrganizationType" [(ngModel)]="ogOrganizations.idOrganizationType">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="ogOrgTypesOption.id === ogOrganizations.idOrganizationType?.id ? ogOrganizations.idOrganizationType : ogOrgTypesOption" *ngFor="let ogOrgTypesOption of idorganizationtypes; trackBy: trackOgOrgTypesById">{{ogOrgTypesOption.id}}</option>
+                <option [ngValue]="ogOrgTypesOption.id === ogOrganizations.idOrganizationType?.id ? ogOrganizations.idOrganizationType : ogOrgTypesOption" *ngFor="let ogOrgTypesOption of idorganizationtypes; trackBy: trackOgOrgTypesById">{{ogOrgTypesOption.name}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.idParent" for="field_idParent">Id Parent</label>
             <select class="form-control" id="field_idParent" name="idParent" [(ngModel)]="ogOrganizations.idParent">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="ogOrganizationsOption.id === ogOrganizations.idParent?.id ? ogOrganizations.idParent : ogOrganizationsOption" *ngFor="let ogOrganizationsOption of idparents; trackBy: trackOgOrganizationsById">{{ogOrganizationsOption.id}}</option>
+                <option [ngValue]="ogOrganizationsOption.id === ogOrganizations.idParent?.id ? ogOrganizations.idParent : ogOrganizationsOption" *ngFor="let ogOrganizationsOption of idparents; trackBy: trackOgOrganizationsById">{{ogOrganizationsOption.name}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrganizations.idLegalEntity" for="field_idLegalEntity">Id Legal Entity</label>
             <select class="form-control" id="field_idLegalEntity" name="idLegalEntity" [(ngModel)]="ogOrganizations.idLegalEntity">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="leLegalEntitiesOption.id === ogOrganizations.idLegalEntity?.id ? ogOrganizations.idLegalEntity : leLegalEntitiesOption" *ngFor="let leLegalEntitiesOption of idlegalentities; trackBy: trackLeLegalEntitiesById">{{leLegalEntitiesOption.id}}</option>
+                <option [ngValue]="leLegalEntitiesOption.id === ogOrganizations.idLegalEntity?.id ? ogOrganizations.idLegalEntity : leLegalEntitiesOption" *ngFor="let leLegalEntitiesOption of idlegalentities; trackBy: trackLeLegalEntitiesById">{{leLegalEntitiesOption.name}}</option>
             </select>
         </div>
     </div>

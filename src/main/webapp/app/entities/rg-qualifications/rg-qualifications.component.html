@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.rgQualifications.home.title">Rg Qualifications</span>
+        <button class="btn btn-primary float-right jh-create-entity create-rg-qualifications" [routerLink]="['/', { outlets: { popup: ['rg-qualifications-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.rgQualifications.home.createLabel">
+            Create new Rg Qualifications
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rgQualifications">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="hcmEmpApp.rgQualifications.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="hcmEmpApp.rgQualifications.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="hcmEmpApp.rgQualifications.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.rgQualifications.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.rgQualifications.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.rgQualifications.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.rgQualifications.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rgQualifications of rgQualifications ;trackBy: trackId">
+                <td><a [routerLink]="['../rg-qualifications', rgQualifications.id ]">{{rgQualifications.id}}</a></td>
+                <td>{{rgQualifications.code}}</td>
+                <td>{{rgQualifications.name}}</td>
+                <td>{{rgQualifications.description}}</td>
+                <td>{{rgQualifications.createdBy}}</td>
+                <td>{{rgQualifications.createdAt | date:'medium'}}</td>
+                <td>{{rgQualifications.updatedBy}}</td>
+                <td>{{rgQualifications.updatedAt | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../rg-qualifications', rgQualifications.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rg-qualifications/'+ rgQualifications.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rg-qualifications/'+ rgQualifications.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="rgQualifications && rgQualifications.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

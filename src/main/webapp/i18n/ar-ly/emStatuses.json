@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "emStatuses" : {
+            "home": {
+                "title": "Em Statuses",
+                "createLabel": "Create a new Em Statuses",
+                "createOrEditLabel": "Create or edit a Em Statuses"
+            },
+            "created": "A new Em Statuses is created with identifier {{ param }}",
+            "updated": "A Em Statuses is updated with identifier {{ param }}",
+            "deleted": "A Em Statuses is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Statuses {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Statuses"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

@@ -35,19 +35,19 @@
         <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.idOrganizationType">Id Organization Type</span></dt>
         <dd>
             <div *ngIf="ogOrganizations.idOrganizationType">
-                <a [routerLink]="['/og-org-types', ogOrganizations.idOrganizationType?.id]">{{ogOrganizations.idOrganizationType?.id}}</a>
+                <a [routerLink]="['/og-org-types', ogOrganizations.idOrganizationType?.id]">{{ogOrganizations.idOrganizationType?.name}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.idParent">Id Parent</span></dt>
         <dd>
             <div *ngIf="ogOrganizations.idParent">
-                <a [routerLink]="['/og-organizations', ogOrganizations.idParent?.id]">{{ogOrganizations.idParent?.id}}</a>
+                <a [routerLink]="['/og-organizations', ogOrganizations.idParent?.id]">{{ogOrganizations.idParent?.name}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.ogOrganizations.idLegalEntity">Id Legal Entity</span></dt>
         <dd>
             <div *ngIf="ogOrganizations.idLegalEntity">
-                <a [routerLink]="['/le-legal-entities', ogOrganizations.idLegalEntity?.id]">{{ogOrganizations.idLegalEntity?.id}}</a>
+                <a [routerLink]="['/le-legal-entities', ogOrganizations.idLegalEntity?.id]">{{ogOrganizations.idLegalEntity?.name}}</a>
             </div>
         </dd>
     </dl>

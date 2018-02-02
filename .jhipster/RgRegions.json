@@ -5,7 +5,7 @@
             "relationshipType": "one-to-one",
             "relationshipName": "idType",
             "otherEntityName": "rgRegionTypes",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true,
             "otherEntityRelationshipName": "rgRegions"
         },
@@ -13,7 +13,7 @@
             "relationshipType": "one-to-one",
             "relationshipName": "idParent",
             "otherEntityName": "rgRegions",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true,
             "otherEntityRelationshipName": "rgRegions"
         }

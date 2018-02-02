@@ -71,14 +71,14 @@
             <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.idEntityType" for="field_idEntityType">Id Entity Type</label>
             <select class="form-control" id="field_idEntityType" name="idEntityType" [(ngModel)]="leLegalEntities.idEntityType">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="leLegalEntityTypesOption.id === leLegalEntities.idEntityType?.id ? leLegalEntities.idEntityType : leLegalEntityTypesOption" *ngFor="let leLegalEntityTypesOption of identitytypes; trackBy: trackLeLegalEntityTypesById">{{leLegalEntityTypesOption.id}}</option>
+                <option [ngValue]="leLegalEntityTypesOption.id === leLegalEntities.idEntityType?.id ? leLegalEntities.idEntityType : leLegalEntityTypesOption" *ngFor="let leLegalEntityTypesOption of identitytypes; trackBy: trackLeLegalEntityTypesById">{{leLegalEntityTypesOption.name}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.region" for="field_region">Region</label>
             <select class="form-control" id="field_region" name="region" [(ngModel)]="leLegalEntities.region">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="rgRegionsOption.id === leLegalEntities.region?.id ? leLegalEntities.region : rgRegionsOption" *ngFor="let rgRegionsOption of regions; trackBy: trackRgRegionsById">{{rgRegionsOption.id}}</option>
+                <option [ngValue]="rgRegionsOption.id === leLegalEntities.region?.id ? leLegalEntities.region : rgRegionsOption" *ngFor="let rgRegionsOption of regions; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
             </select>
         </div>
     </div>

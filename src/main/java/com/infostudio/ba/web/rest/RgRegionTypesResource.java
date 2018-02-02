@@ -7,8 +7,6 @@ import com.infostudio.ba.repository.RgRegionTypesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
 import com.infostudio.ba.web.rest.util.PaginationUtil;
-import com.infostudio.ba.service.dto.RgRegionTypesDTO;
-import com.infostudio.ba.service.mapper.RgRegionTypesMapper;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,30 +36,25 @@ public class RgRegionTypesResource {
 
     private final RgRegionTypesRepository rgRegionTypesRepository;
 
-    private final RgRegionTypesMapper rgRegionTypesMapper;
-
-    public RgRegionTypesResource(RgRegionTypesRepository rgRegionTypesRepository, RgRegionTypesMapper rgRegionTypesMapper) {
+    public RgRegionTypesResource(RgRegionTypesRepository rgRegionTypesRepository) {
         this.rgRegionTypesRepository = rgRegionTypesRepository;
-        this.rgRegionTypesMapper = rgRegionTypesMapper;
     }
 
     /**
      * POST  /rg-region-types : Create a new rgRegionTypes.
      *
-     * @param rgRegionTypesDTO the rgRegionTypesDTO to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new rgRegionTypesDTO, or with status 400 (Bad Request) if the rgRegionTypes has already an ID
+     * @param rgRegionTypes the rgRegionTypes to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new rgRegionTypes, or with status 400 (Bad Request) if the rgRegionTypes has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/rg-region-types")
     @Timed
-    public ResponseEntity<RgRegionTypesDTO> createRgRegionTypes(@RequestBody RgRegionTypesDTO rgRegionTypesDTO) throws URISyntaxException {
-        log.debug("REST request to save RgRegionTypes : {}", rgRegionTypesDTO);
-        if (rgRegionTypesDTO.getId() != null) {
+    public ResponseEntity<RgRegionTypes> createRgRegionTypes(@RequestBody RgRegionTypes rgRegionTypes) throws URISyntaxException {
+        log.debug("REST request to save RgRegionTypes : {}", rgRegionTypes);
+        if (rgRegionTypes.getId() != null) {
             throw new BadRequestAlertException("A new rgRegionTypes cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        RgRegionTypes rgRegionTypes = rgRegionTypesMapper.toEntity(rgRegionTypesDTO);
-        rgRegionTypes = rgRegionTypesRepository.save(rgRegionTypes);
-        RgRegionTypesDTO result = rgRegionTypesMapper.toDto(rgRegionTypes);
+        RgRegionTypes result = rgRegionTypesRepository.save(rgRegionTypes);
         return ResponseEntity.created(new URI("/api/rg-region-types/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -70,24 +63,22 @@ public class RgRegionTypesResource {
     /**
      * PUT  /rg-region-types : Updates an existing rgRegionTypes.
      *
-     * @param rgRegionTypesDTO the rgRegionTypesDTO to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated rgRegionTypesDTO,
-     * or with status 400 (Bad Request) if the rgRegionTypesDTO is not valid,
-     * or with status 500 (Internal Server Error) if the rgRegionTypesDTO couldn't be updated
+     * @param rgRegionTypes the rgRegionTypes to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated rgRegionTypes,
+     * or with status 400 (Bad Request) if the rgRegionTypes is not valid,
+     * or with status 500 (Internal Server Error) if the rgRegionTypes couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/rg-region-types")
     @Timed
-    public ResponseEntity<RgRegionTypesDTO> updateRgRegionTypes(@RequestBody RgRegionTypesDTO rgRegionTypesDTO) throws URISyntaxException {
-        log.debug("REST request to update RgRegionTypes : {}", rgRegionTypesDTO);
-        if (rgRegionTypesDTO.getId() == null) {
-            return createRgRegionTypes(rgRegionTypesDTO);
+    public ResponseEntity<RgRegionTypes> updateRgRegionTypes(@RequestBody RgRegionTypes rgRegionTypes) throws URISyntaxException {
+        log.debug("REST request to update RgRegionTypes : {}", rgRegionTypes);
+        if (rgRegionTypes.getId() == null) {
+            return createRgRegionTypes(rgRegionTypes);
         }
-        RgRegionTypes rgRegionTypes = rgRegionTypesMapper.toEntity(rgRegionTypesDTO);
-        rgRegionTypes = rgRegionTypesRepository.save(rgRegionTypes);
-        RgRegionTypesDTO result = rgRegionTypesMapper.toDto(rgRegionTypes);
+        RgRegionTypes result = rgRegionTypesRepository.save(rgRegionTypes);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, rgRegionTypesDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, rgRegionTypes.getId().toString()))
             .body(result);
     }
 
@@ -99,32 +90,31 @@ public class RgRegionTypesResource {
      */
     @GetMapping("/rg-region-types")
     @Timed
-    public ResponseEntity<List<RgRegionTypesDTO>> getAllRgRegionTypes(Pageable pageable) {
+    public ResponseEntity<List<RgRegionTypes>> getAllRgRegionTypes(Pageable pageable) {
         log.debug("REST request to get a page of RgRegionTypes");
         Page<RgRegionTypes> page = rgRegionTypesRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/rg-region-types");
-        return new ResponseEntity<>(rgRegionTypesMapper.toDto(page.getContent()), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
      * GET  /rg-region-types/:id : get the "id" rgRegionTypes.
      *
-     * @param id the id of the rgRegionTypesDTO to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the rgRegionTypesDTO, or with status 404 (Not Found)
+     * @param id the id of the rgRegionTypes to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the rgRegionTypes, or with status 404 (Not Found)
      */
     @GetMapping("/rg-region-types/{id}")
     @Timed
-    public ResponseEntity<RgRegionTypesDTO> getRgRegionTypes(@PathVariable Long id) {
+    public ResponseEntity<RgRegionTypes> getRgRegionTypes(@PathVariable Long id) {
         log.debug("REST request to get RgRegionTypes : {}", id);
         RgRegionTypes rgRegionTypes = rgRegionTypesRepository.findOne(id);
-        RgRegionTypesDTO rgRegionTypesDTO = rgRegionTypesMapper.toDto(rgRegionTypes);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(rgRegionTypesDTO));
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(rgRegionTypes));
     }
 
     /**
      * DELETE  /rg-region-types/:id : delete the "id" rgRegionTypes.
      *
-     * @param id the id of the rgRegionTypesDTO to delete
+     * @param id the id of the rgRegionTypes to delete
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/rg-region-types/{id}")

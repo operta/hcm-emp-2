@@ -1,0 +1,126 @@
+
+<div *ngIf="emEmployees">
+    <h2><span jhiTranslate="hcmEmpApp.emEmployees.detail.title">Em Employees</span> {{emEmployees.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.code">Code</span></dt>
+        <dd>
+            <span>{{emEmployees.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.name">Name</span></dt>
+        <dd>
+            <span>{{emEmployees.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.middleName">Middle Name</span></dt>
+        <dd>
+            <span>{{emEmployees.middleName}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.surname">Surname</span></dt>
+        <dd>
+            <span>{{emEmployees.surname}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.maidenName">Maiden Name</span></dt>
+        <dd>
+            <span>{{emEmployees.maidenName}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.disabilityDegree">Disability Degree</span></dt>
+        <dd>
+            <span>{{emEmployees.disabilityDegree}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.ethnicGroup">Ethnic Group</span></dt>
+        <dd>
+            <span>{{emEmployees.ethnicGroup}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.gender">Gender</span></dt>
+        <dd>
+            <span>{{emEmployees.gender}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.residentialSituation">Residential Situation</span></dt>
+        <dd>
+            <span>{{emEmployees.residentialSituation}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.maritalStatus">Marital Status</span></dt>
+        <dd>
+            <span>{{emEmployees.maritalStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.bloodGroup">Blood Group</span></dt>
+        <dd>
+            <span>{{emEmployees.bloodGroup}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.dateOfBirth">Date Of Birth</span></dt>
+        <dd>
+            <span>{{emEmployees.dateOfBirth | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.hireDate">Hire Date</span></dt>
+        <dd>
+            <span>{{emEmployees.hireDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.ssn">Ssn</span></dt>
+        <dd>
+            <span>{{emEmployees.ssn}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.taxNumber">Tax Number</span></dt>
+        <dd>
+            <span>{{emEmployees.taxNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmployees.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmployees.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmployees.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmployees.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.idQualification">Id Qualification</span></dt>
+        <dd>
+            <div *ngIf="emEmployees.idQualification">
+                <a [routerLink]="['/rg-qualifications', emEmployees.idQualification?.id]">{{emEmployees.idQualification?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.idEmploymentType">Id Employment Type</span></dt>
+        <dd>
+            <div *ngIf="emEmployees.idEmploymentType">
+                <a [routerLink]="['/em-emp-types', emEmployees.idEmploymentType?.id]">{{emEmployees.idEmploymentType?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.idLegalEntity">Id Legal Entity</span></dt>
+        <dd>
+            <div *ngIf="emEmployees.idLegalEntity">
+                <a [routerLink]="['/le-legal-entities', emEmployees.idLegalEntity?.id]">{{emEmployees.idLegalEntity?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.idStatus">Id Status</span></dt>
+        <dd>
+            <div *ngIf="emEmployees.idStatus">
+                <a [routerLink]="['/em-statuses', emEmployees.idStatus?.id]">{{emEmployees.idStatus?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmployees.idUser">Id User</span></dt>
+        <dd>
+            {{emEmployees.idUser?.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-employees/'+ emEmployees.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

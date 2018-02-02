@@ -17,7 +17,7 @@
         Added the entity LeLegalEntities.
     -->
     <changeSet id="20180126144201-1" author="jhipster">
-        <createTable tableName="le_leg_ent">
+        <createTable tableName="le_leg">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -67,8 +67,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="le_leg_ent" columnName="created_at" columnDataType="datetime"/>
-        <dropDefaultValue tableName="le_leg_ent" columnName="updated_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="le_leg" columnName="created_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="le_leg" columnName="updated_at" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

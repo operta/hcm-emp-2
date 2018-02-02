@@ -5,7 +5,7 @@
             "relationshipType": "one-to-one",
             "relationshipName": "idOrganizationType",
             "otherEntityName": "ogOrgTypes",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true,
             "otherEntityRelationshipName": "ogOrganizations"
         },
@@ -13,7 +13,7 @@
             "relationshipType": "one-to-one",
             "relationshipName": "idParent",
             "otherEntityName": "ogOrganizations",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true,
             "otherEntityRelationshipName": "ogOrganizations"
         },
@@ -21,7 +21,7 @@
             "relationshipType": "one-to-one",
             "relationshipName": "idLegalEntity",
             "otherEntityName": "leLegalEntities",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true,
             "otherEntityRelationshipName": "ogOrganizations"
         }
@@ -59,7 +59,7 @@
     "changelogDate": "20180126144159",
     "entityTableName": "og_organizations",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

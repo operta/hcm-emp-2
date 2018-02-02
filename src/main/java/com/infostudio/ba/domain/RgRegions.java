@@ -43,11 +43,11 @@ public class RgRegions implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "ID_TYPE")
+    @JoinColumn(name = "id_type")
     private RgRegionTypes idType;
 
     @OneToOne
-    @JoinColumn(name = "ID_PARENT")
+    @JoinColumn(name = "id_parent")
     private RgRegions idParent;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

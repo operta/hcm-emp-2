@@ -16,3 +16,41 @@ select.ng-invalid.ng-touched {
     flex: 1 1 auto;
     padding: 1.25rem;
 }
+
+.btn.btn-danger.btn-sm {
+    border: none !important;
+    background: none !important;
+    color:  #fb9678!important;
+}
+
+.btn.btn-primary.btn-sm{
+    border: none !important;
+    background: none !important;
+    color: #4F5467!important;
+}
+
+.btn.btn-info.btn-sm{
+    border: none !important;
+    background: none !important;
+    color: #4F5467!important;
+}
+
+.btn-primary {
+    background: #03a9f3 !important;
+    border: 1px solid #03a9f3;
+}
+
+.btn-danger-2 {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.preloader {
+    position: absolute;
+    top :0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}

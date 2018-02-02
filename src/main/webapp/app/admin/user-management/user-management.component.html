@@ -1,7 +1,7 @@
-<div class="white-box">
+<div class="white-box p-1">
     <h2>
         <span jhiTranslate="userManagement.home.title">Users</span>
-        <button class="btn btn-default float-right jh-create-entity" [routerLink]="['/', { outlets: { popup: ['user-management-new'] } }]">
+        <button class="btn btn-primary btn-rounded float-right jh-create-entity" [routerLink]="['/', { outlets: { popup: ['user-management-new'] } }]">
             <span class="fa fa-plus"></span> <span jhiTranslate="userManagement.home.createLabel">Create a new User</span>
         </button>
     </h2>
@@ -28,9 +28,9 @@
                 <td>{{user.login}}</td>
                 <td>{{user.email}}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm" (click)="setActive(user, true)" *ngIf="!user.activated"
+                    <button class="btn btn-danger-2 btn-rounded btn-sm" (click)="setActive(user, true)" *ngIf="!user.activated"
                             jhiTranslate="userManagement.deactivated">Deactivated</button>
-                    <button class="btn btn-success btn-sm" (click)="setActive(user, false)" *ngIf="user.activated"
+                    <button class="btn btn-success btn-rounded btn-sm" (click)="setActive(user, false)" *ngIf="user.activated"
                             [disabled]="currentAccount.login === user.login" jhiTranslate="userManagement.activated">Activated</button>
                 </td>
                 <td>{{user.langKey}}</td>
@@ -54,7 +54,7 @@
                                 [routerLink]="['/', { outlets: { popup: 'user-management/'+ user.login + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
-                                class="btn btn-default btn-sm">
+                                class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>

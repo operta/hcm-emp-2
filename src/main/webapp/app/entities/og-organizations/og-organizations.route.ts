@@ -1,6 +1,4 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
-import { JhiPaginationUtil } from 'ng-jhipster';
+import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from '../../shared';
 import { OgOrganizationsComponent } from './og-organizations.component';
@@ -9,48 +7,28 @@ import { OgOrganizationsPopupComponent } from './og-organizations-dialog.compone
 import { OgOrganizationsDeletePopupComponent } from './og-organizations-delete-dialog.component';
 import {DashboardComponent} from "../../layouts/dashboard/dashboard.component";
 
-@Injectable()
-export class OgOrganizationsResolvePagingParams implements Resolve<any> {
-
-    constructor(private paginationUtil: JhiPaginationUtil) {}
-
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const page = route.queryParams['page'] ? route.queryParams['page'] : '1';
-        const sort = route.queryParams['sort'] ? route.queryParams['sort'] : 'id,asc';
-        return {
-            page: this.paginationUtil.parsePage(page),
-            predicate: this.paginationUtil.parsePredicate(sort),
-            ascending: this.paginationUtil.parseAscending(sort)
-      };
-    }
-}
-
 export const ogOrganizationsRoute: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
         children: [
-            {
-                path: 'og-organizations',
-                component: OgOrganizationsComponent,
-                resolve: {
-                    'pagingParams': OgOrganizationsResolvePagingParams
-                },
-                data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
-                },
-                canActivate: [UserRouteAccessService]
-            }, {
-                path: 'og-organizations/:id',
-                component: OgOrganizationsDetailComponent,
-                data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
-                },
-                canActivate: [UserRouteAccessService]
-            }]
-    }
+    {
+        path: 'og-organizations',
+        component: OgOrganizationsComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    }, {
+        path: 'og-organizations/:id',
+        component: OgOrganizationsDetailComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    }]}
 ];
 
 export const ogOrganizationsPopupRoute: Routes = [

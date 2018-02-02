@@ -15,18 +15,18 @@
     <div class="table-responsive" *ngIf="ogOrganizations">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="code"><span jhiTranslate="hcmEmpApp.ogOrganizations.code">Code</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="name"><span jhiTranslate="hcmEmpApp.ogOrganizations.name">Name</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="description"><span jhiTranslate="hcmEmpApp.ogOrganizations.description">Description</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.ogOrganizations.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.ogOrganizations.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.ogOrganizations.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.ogOrganizations.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idOrganizationType.id"><span jhiTranslate="hcmEmpApp.ogOrganizations.idOrganizationType">Id Organization Type</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idParent.id"><span jhiTranslate="hcmEmpApp.ogOrganizations.idParent">Id Parent</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idLegalEntity.id"><span jhiTranslate="hcmEmpApp.ogOrganizations.idLegalEntity">Id Legal Entity</span> <span class="fa fa-sort"></span></th>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.code">Code</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.name">Name</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.description">Description</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.idOrganizationType">Id Organization Type</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.idParent">Id Parent</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogOrganizations.idLegalEntity">Id Legal Entity</span></th>
             <th></th>
             </tr>
             </thead>
@@ -42,17 +42,17 @@
                 <td>{{ogOrganizations.updatedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="ogOrganizations.idOrganizationType">
-                        <a [routerLink]="['../og-org-types', ogOrganizations.idOrganizationType?.id ]" >{{ogOrganizations.idOrganizationType?.id}}</a>
+                        <a [routerLink]="['../og-org-types', ogOrganizations.idOrganizationType?.id ]" >{{ogOrganizations.idOrganizationType?.name}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="ogOrganizations.idParent">
-                        <a [routerLink]="['../og-organizations', ogOrganizations.idParent?.id ]" >{{ogOrganizations.idParent?.id}}</a>
+                        <a [routerLink]="['../og-organizations', ogOrganizations.idParent?.id ]" >{{ogOrganizations.idParent?.name}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="ogOrganizations.idLegalEntity">
-                        <a [routerLink]="['../le-legal-entities', ogOrganizations.idLegalEntity?.id ]" >{{ogOrganizations.idLegalEntity?.id}}</a>
+                        <a [routerLink]="['../le-legal-entities', ogOrganizations.idLegalEntity?.id ]" >{{ogOrganizations.idLegalEntity?.name}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -84,13 +84,5 @@
             </tr>
             </tbody>
         </table>
-    </div>
-    <div *ngIf="ogOrganizations && ogOrganizations.length">
-        <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div>
-        <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
-        </div>
     </div>
 </div>

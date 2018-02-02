@@ -1,0 +1,129 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idQualification",
+            "otherEntityName": "rgQualifications",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmployees"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idEmploymentType",
+            "otherEntityName": "emEmpTypes",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmployees"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idLegalEntity",
+            "otherEntityName": "leLegalEntities",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmployees"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idStatus",
+            "otherEntityName": "emStatuses",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmployees"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idUser",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmployees"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "middleName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "surname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "maidenName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "disabilityDegree",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "ethnicGroup",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "residentialSituation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "maritalStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bloodGroup",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateOfBirth",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "hireDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "ssn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taxNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180201161836",
+    "entityTableName": "em_employees",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

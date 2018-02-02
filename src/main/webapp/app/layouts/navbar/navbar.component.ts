@@ -7,6 +7,7 @@ import { ProfileService } from '../profiles/profile.service';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
 
 import { VERSION } from '../../app.constants';
+import {NavbarService} from "./navbar.service";
 declare let $:any;
 @Component({
     selector: 'jhi-navbar',
@@ -18,12 +19,13 @@ declare let $:any;
 export class NavbarComponent implements OnInit, AfterViewInit {
     @ViewChild('sideMenu') sideMenu: ElementRef;
     inProduction: boolean;
-    isNavbarCollapsed: boolean;
+    isEntityCollapsed: boolean;
     languages: any[];
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
     name: string;
+    isAdministrationCollapsed: boolean;
 
     constructor(
         private loginService: LoginService,
@@ -32,13 +34,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
-        private router: Router
+        private router: Router,
+        private navbarService: NavbarService
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
-        this.isNavbarCollapsed = true;
+        this.isEntityCollapsed = this.navbarService.getIsEntityCollapsed();
+        this.isAdministrationCollapsed = this.navbarService.getIsAdministrationCollapsed();
     }
 
     ngOnInit() {
+
         this.languageHelper.getAll().then((languages) => {
             this.languages = languages;
         });
@@ -50,7 +55,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
         if (this.isAuthenticated()) {
             this.principal.identity().then((account) => {
-                console.log(account);
                 this.name = account.firstName;
             });
         }
@@ -59,21 +63,40 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(){
         $(".preloader").fadeOut();
         ($(this.sideMenu.nativeElement)).metisMenu();
-        $('.slimscrollsidebar').slimScroll({
-            height: '100%'
+        $('#slimscrollsidebar').slimScroll({
+            height: ''
             , position: 'right'
-            , size: "0px"
             , color: '#dcdcdc'
             , });
     }
+
+    toggleAdministration() {
+        this.navbarService.toggleAdministration();
+        this.isAdministrationCollapsed = this.navbarService.getIsAdministrationCollapsed();
+        this.isEntityCollapsed = this.navbarService.getIsEntityCollapsed();
+
+    }
+
+    toggleEntity() {
+        this.navbarService.toggleEntity();
+        this.isEntityCollapsed = this.navbarService.getIsEntityCollapsed();
+        this.isAdministrationCollapsed = this.navbarService.getIsAdministrationCollapsed();
+
+    }
+
+    collapseLists() {
+        this.isEntityCollapsed = true;
+        this.isAdministrationCollapsed = true;
+        this.navbarService.setIsEntityCollapsed(true);
+        this.navbarService.setIsAdministrationCollapsed(true);
+    }
+
 
     changeLanguage(languageKey: string) {
       this.languageService.changeLanguage(languageKey);
     }
 
-    collapseNavbar() {
-        this.isNavbarCollapsed = true;
-    }
+
 
     isAuthenticated() {
         return this.principal.isAuthenticated();
@@ -84,14 +107,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
 
     logout() {
-        this.collapseNavbar();
+        this.collapseLists();
         this.loginService.logout();
         this.router.navigate(['']);
     }
 
-    toggleNavbar() {
-        this.isNavbarCollapsed = !this.isNavbarCollapsed;
-    }
 
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;

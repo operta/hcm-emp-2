@@ -9,11 +9,14 @@ import {EmployeesComponent} from "../../employees/employees.component";
 import {EmployeesListComponent} from "../../employees/employees-list/employees-list.component";
 import {EmployeeOverviewComponent} from "../../employees/employee-overview/employee-overview.component";
 import {NavbarComponent} from "../navbar/navbar.component";
+import {NavbarService} from "../navbar/navbar.service";
+import {EmployeeOverviewModule} from "../../employees/employee-overview/employee-overview.module";
 
 @NgModule({
     imports: [
         HcmEmpSharedModule,
         DashboardRoutingModule,
+        EmployeeOverviewModule,
         RouterModule
     ],
     declarations: [
@@ -21,12 +24,12 @@ import {NavbarComponent} from "../navbar/navbar.component";
         NavbarComponent,
         EmployeeDashboardComponent,
         EmployeesComponent,
-        EmployeesListComponent,
-        EmployeeOverviewComponent
+        EmployeesListComponent
     ],
     entryComponents: [
     ],
     providers: [
+        NavbarService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

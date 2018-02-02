@@ -1,0 +1,44 @@
+{
+    "hcmEmpApp": {
+        "emEmployees" : {
+            "home": {
+                "title": "Em Employees",
+                "createLabel": "Create a new Em Employees",
+                "createOrEditLabel": "Create or edit a Em Employees"
+            },
+            "created": "A new Em Employees is created with identifier {{ param }}",
+            "updated": "A Em Employees is updated with identifier {{ param }}",
+            "deleted": "A Em Employees is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Employees {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Employees"
+            },
+            "code": "Code",
+            "name": "Name",
+            "middleName": "Middle Name",
+            "surname": "Surname",
+            "maidenName": "Maiden Name",
+            "disabilityDegree": "Disability Degree",
+            "ethnicGroup": "Ethnic Group",
+            "gender": "Gender",
+            "residentialSituation": "Residential Situation",
+            "maritalStatus": "Marital Status",
+            "bloodGroup": "Blood Group",
+            "dateOfBirth": "Date Of Birth",
+            "hireDate": "Hire Date",
+            "ssn": "Ssn",
+            "taxNumber": "Tax Number",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idQualification": "Id Qualification",
+            "idEmploymentType": "Id Employment Type",
+            "idLegalEntity": "Id Legal Entity",
+            "idStatus": "Id Status",
+            "idUser": "Id User"
+        }
+    }
+}

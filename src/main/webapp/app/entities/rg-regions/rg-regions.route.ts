@@ -30,7 +30,6 @@ export const rgRegionsRoute: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         children: [
-
             {
                 path: 'rg-regions',
                 component: RgRegionsComponent,

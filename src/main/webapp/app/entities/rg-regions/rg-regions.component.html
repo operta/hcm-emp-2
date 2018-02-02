@@ -24,8 +24,8 @@
             <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.rgRegions.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.rgRegions.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.rgRegions.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idType.id"><span jhiTranslate="hcmEmpApp.rgRegions.idType">Id Type</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idParent.id"><span jhiTranslate="hcmEmpApp.rgRegions.idParent">Id Parent</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idType.name"><span jhiTranslate="hcmEmpApp.rgRegions.idType">Id Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idParent.name"><span jhiTranslate="hcmEmpApp.rgRegions.idParent">Id Parent</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -41,12 +41,12 @@
                 <td>{{rgRegions.updatedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="rgRegions.idType">
-                        <a [routerLink]="['../rg-region-types', rgRegions.idType?.id ]" >{{rgRegions.idType?.id}}</a>
+                        <a [routerLink]="['../rg-region-types', rgRegions.idType?.id ]" >{{rgRegions.idType?.name}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="rgRegions.idParent">
-                        <a [routerLink]="['../rg-regions', rgRegions.idParent?.id ]" >{{rgRegions.idParent?.id}}</a>
+                        <a [routerLink]="['../rg-regions', rgRegions.idParent?.id ]" >{{rgRegions.idParent?.name}}</a>
                     </div>
                 </td>
                 <td class="text-right">

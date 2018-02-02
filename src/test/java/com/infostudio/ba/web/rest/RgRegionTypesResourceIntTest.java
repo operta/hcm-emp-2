@@ -4,8 +4,6 @@ import com.infostudio.ba.HcmEmpApp;
 
 import com.infostudio.ba.domain.RgRegionTypes;
 import com.infostudio.ba.repository.RgRegionTypesRepository;
-import com.infostudio.ba.service.dto.RgRegionTypesDTO;
-import com.infostudio.ba.service.mapper.RgRegionTypesMapper;
 import com.infostudio.ba.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -67,9 +65,6 @@ public class RgRegionTypesResourceIntTest {
     private RgRegionTypesRepository rgRegionTypesRepository;
 
     @Autowired
-    private RgRegionTypesMapper rgRegionTypesMapper;
-
-    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -88,7 +83,7 @@ public class RgRegionTypesResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final RgRegionTypesResource rgRegionTypesResource = new RgRegionTypesResource(rgRegionTypesRepository, rgRegionTypesMapper);
+        final RgRegionTypesResource rgRegionTypesResource = new RgRegionTypesResource(rgRegionTypesRepository);
         this.restRgRegionTypesMockMvc = MockMvcBuilders.standaloneSetup(rgRegionTypesResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -125,10 +120,9 @@ public class RgRegionTypesResourceIntTest {
         int databaseSizeBeforeCreate = rgRegionTypesRepository.findAll().size();
 
         // Create the RgRegionTypes
-        RgRegionTypesDTO rgRegionTypesDTO = rgRegionTypesMapper.toDto(rgRegionTypes);
         restRgRegionTypesMockMvc.perform(post("/api/rg-region-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypesDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypes)))
             .andExpect(status().isCreated());
 
         // Validate the RgRegionTypes in the database
@@ -151,12 +145,11 @@ public class RgRegionTypesResourceIntTest {
 
         // Create the RgRegionTypes with an existing ID
         rgRegionTypes.setId(1L);
-        RgRegionTypesDTO rgRegionTypesDTO = rgRegionTypesMapper.toDto(rgRegionTypes);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restRgRegionTypesMockMvc.perform(post("/api/rg-region-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypesDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypes)))
             .andExpect(status().isBadRequest());
 
         // Validate the RgRegionTypes in the database
@@ -231,11 +224,10 @@ public class RgRegionTypesResourceIntTest {
             .createdAt(UPDATED_CREATED_AT)
             .updatedBy(UPDATED_UPDATED_BY)
             .updatedAt(UPDATED_UPDATED_AT);
-        RgRegionTypesDTO rgRegionTypesDTO = rgRegionTypesMapper.toDto(updatedRgRegionTypes);
 
         restRgRegionTypesMockMvc.perform(put("/api/rg-region-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypesDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(updatedRgRegionTypes)))
             .andExpect(status().isOk());
 
         // Validate the RgRegionTypes in the database
@@ -257,12 +249,11 @@ public class RgRegionTypesResourceIntTest {
         int databaseSizeBeforeUpdate = rgRegionTypesRepository.findAll().size();
 
         // Create the RgRegionTypes
-        RgRegionTypesDTO rgRegionTypesDTO = rgRegionTypesMapper.toDto(rgRegionTypes);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restRgRegionTypesMockMvc.perform(put("/api/rg-region-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypesDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypes)))
             .andExpect(status().isCreated());
 
         // Validate the RgRegionTypes in the database
@@ -300,28 +291,5 @@ public class RgRegionTypesResourceIntTest {
         assertThat(rgRegionTypes1).isNotEqualTo(rgRegionTypes2);
         rgRegionTypes1.setId(null);
         assertThat(rgRegionTypes1).isNotEqualTo(rgRegionTypes2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(RgRegionTypesDTO.class);
-        RgRegionTypesDTO rgRegionTypesDTO1 = new RgRegionTypesDTO();
-        rgRegionTypesDTO1.setId(1L);
-        RgRegionTypesDTO rgRegionTypesDTO2 = new RgRegionTypesDTO();
-        assertThat(rgRegionTypesDTO1).isNotEqualTo(rgRegionTypesDTO2);
-        rgRegionTypesDTO2.setId(rgRegionTypesDTO1.getId());
-        assertThat(rgRegionTypesDTO1).isEqualTo(rgRegionTypesDTO2);
-        rgRegionTypesDTO2.setId(2L);
-        assertThat(rgRegionTypesDTO1).isNotEqualTo(rgRegionTypesDTO2);
-        rgRegionTypesDTO1.setId(null);
-        assertThat(rgRegionTypesDTO1).isNotEqualTo(rgRegionTypesDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(rgRegionTypesMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(rgRegionTypesMapper.fromId(null)).isNull();
     }
 }

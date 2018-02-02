@@ -52,11 +52,11 @@ public class LeLegalEntities implements Serializable {
     private String postalNumber;
 
     @OneToOne
-    @JoinColumn(name = "ID_ENTITY_TYPE")
+    @JoinColumn(name = "id_entity_type")
     private LeLegalEntityTypes idEntityType;
 
     @OneToOne
-    @JoinColumn(name = "REGION")
+    @JoinColumn(name = "region")
     private RgRegions region;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

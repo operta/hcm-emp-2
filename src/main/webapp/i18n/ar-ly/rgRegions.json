@@ -22,8 +22,8 @@
             "createdAt": "Created At",
             "updatedBy": "Updated By",
             "updatedAt": "Updated At",
-            "idParent": "Id Parent",
-            "idType": "Id Type"
+            "idType": "Id Type",
+            "idParent": "Id Parent"
         }
     }
 }

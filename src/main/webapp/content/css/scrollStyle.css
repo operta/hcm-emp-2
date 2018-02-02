@@ -1,7 +1,38 @@
 @media (min-width: 1200px) {
     #dataScroll {
         height: 82vh;
-        height: calc(100vh - 300px);
+        height: calc(100vh - 270px);
+    }
+    #dataScrollExp {
+        height: 82vh;
+        height: calc(100vh - 270px);
+    }
+    #dataScrollEdu {
+        height: 82vh;
+        height: calc(100vh - 270px);
+    }
+    #dataScrollTra {
+        height: 82vh;
+        height: calc(100vh - 270px);
+    }
+    #dataScrollAcc {
+        height: 82vh;
+        height: calc(100vh - 270px);
+    }
+    #dataScrollDoc {
+        height: 82vh;
+        height: calc(100vh - 270px);
+    }
+    #dataScrollPer {
+        height: 82vh;
+        height: calc(100vh - 270px);
+    }
+    #dataScrollNotes {
+        height: 82vh;
+        height: calc(100vh - 270px);
+    }
+    #slimscrollsidebar {
+        height: calc(100vh - 60px);
     }
 
     #edit-form {

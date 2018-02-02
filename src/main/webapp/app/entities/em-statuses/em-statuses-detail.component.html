@@ -1,0 +1,50 @@
+
+<div *ngIf="emStatuses">
+    <h2><span jhiTranslate="hcmEmpApp.emStatuses.detail.title">Em Statuses</span> {{emStatuses.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emStatuses.code">Code</span></dt>
+        <dd>
+            <span>{{emStatuses.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emStatuses.name">Name</span></dt>
+        <dd>
+            <span>{{emStatuses.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emStatuses.description">Description</span></dt>
+        <dd>
+            <span>{{emStatuses.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emStatuses.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emStatuses.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emStatuses.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emStatuses.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emStatuses.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emStatuses.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emStatuses.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emStatuses.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-statuses/'+ emStatuses.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

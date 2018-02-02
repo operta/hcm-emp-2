@@ -5,7 +5,7 @@
             "relationshipType": "one-to-one",
             "relationshipName": "idEntityType",
             "otherEntityName": "leLegalEntityTypes",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true,
             "otherEntityRelationshipName": "leLegalEntities"
         },
@@ -13,7 +13,7 @@
             "relationshipType": "one-to-one",
             "relationshipName": "region",
             "otherEntityName": "rgRegions",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "ownerSide": true,
             "otherEntityRelationshipName": "leLegalEntities"
         }
@@ -63,7 +63,7 @@
     "changelogDate": "20180126144201",
     "entityTableName": "le_legal_entities",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

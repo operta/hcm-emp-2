@@ -13,6 +13,10 @@
                 "leLegalEntityTypes": "Le Legal Entity Types",
                 "rgRegions": "Rg Regions",
                 "rgRegionTypes": "Rg Region Types",
+                "rgQualifications": "Rg Qualifications",
+                "emEmpTypes": "Em Emp Types",
+                "emStatuses": "Em Statuses",
+                "emEmployees": "Em Employees",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

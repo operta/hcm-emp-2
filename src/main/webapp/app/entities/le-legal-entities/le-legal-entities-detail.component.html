@@ -47,13 +47,13 @@
         <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.idEntityType">Id Entity Type</span></dt>
         <dd>
             <div *ngIf="leLegalEntities.idEntityType">
-                <a [routerLink]="['/le-legal-entity-types', leLegalEntities.idEntityType?.id]">{{leLegalEntities.idEntityType?.id}}</a>
+                <a [routerLink]="['/le-legal-entity-types', leLegalEntities.idEntityType?.id]">{{leLegalEntities.idEntityType?.name}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.leLegalEntities.region">Region</span></dt>
         <dd>
             <div *ngIf="leLegalEntities.region">
-                <a [routerLink]="['/rg-regions', leLegalEntities.region?.id]">{{leLegalEntities.region?.id}}</a>
+                <a [routerLink]="['/rg-regions', leLegalEntities.region?.id]">{{leLegalEntities.region?.name}}</a>
             </div>
         </dd>
     </dl>

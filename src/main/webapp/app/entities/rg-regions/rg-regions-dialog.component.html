@@ -56,14 +56,14 @@
             <label class="form-control-label" jhiTranslate="hcmEmpApp.rgRegions.idType" for="field_idType">Id Type</label>
             <select class="form-control" id="field_idType" name="idType" [(ngModel)]="rgRegions.idType">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="rgRegionTypesOption.id === rgRegions.idType?.id ? rgRegions.idType : rgRegionTypesOption" *ngFor="let rgRegionTypesOption of idtypes; trackBy: trackRgRegionTypesById">{{rgRegionTypesOption.id}}</option>
+                <option [ngValue]="rgRegionTypesOption.id === rgRegions.idType?.id ? rgRegions.idType : rgRegionTypesOption" *ngFor="let rgRegionTypesOption of idtypes; trackBy: trackRgRegionTypesById">{{rgRegionTypesOption.name}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.rgRegions.idParent" for="field_idParent">Id Parent</label>
             <select class="form-control" id="field_idParent" name="idParent" [(ngModel)]="rgRegions.idParent">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="rgRegionsOption.id === rgRegions.idParent?.id ? rgRegions.idParent : rgRegionsOption" *ngFor="let rgRegionsOption of idparents; trackBy: trackRgRegionsById">{{rgRegionsOption.id}}</option>
+                <option [ngValue]="rgRegionsOption.id === rgRegions.idParent?.id ? rgRegions.idParent : rgRegionsOption" *ngFor="let rgRegionsOption of idparents; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
             </select>
         </div>
     </div>

@@ -1,0 +1,122 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.emEmployees.home.title">Em Employees</span>
+        <button class="btn btn-primary float-right jh-create-entity create-em-employees" [routerLink]="['/', { outlets: { popup: ['em-employees-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.emEmployees.home.createLabel">
+            Create new Em Employees
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emEmployees">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.code">Code</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.name">Name</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.middleName">Middle Name</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.surname">Surname</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.maidenName">Maiden Name</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.disabilityDegree">Disability Degree</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.ethnicGroup">Ethnic Group</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.gender">Gender</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.residentialSituation">Residential Situation</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.maritalStatus">Marital Status</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.bloodGroup">Blood Group</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.dateOfBirth">Date Of Birth</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.hireDate">Hire Date</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.ssn">Ssn</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.taxNumber">Tax Number</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.idQualification">Id Qualification</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.idEmploymentType">Id Employment Type</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.idLegalEntity">Id Legal Entity</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.idStatus">Id Status</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmployees.idUser">Id User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emEmployees of emEmployees ;trackBy: trackId">
+                <td><a [routerLink]="['../em-employees', emEmployees.id ]">{{emEmployees.id}}</a></td>
+                <td>{{emEmployees.code}}</td>
+                <td>{{emEmployees.name}}</td>
+                <td>{{emEmployees.middleName}}</td>
+                <td>{{emEmployees.surname}}</td>
+                <td>{{emEmployees.maidenName}}</td>
+                <td>{{emEmployees.disabilityDegree}}</td>
+                <td>{{emEmployees.ethnicGroup}}</td>
+                <td>{{emEmployees.gender}}</td>
+                <td>{{emEmployees.residentialSituation}}</td>
+                <td>{{emEmployees.maritalStatus}}</td>
+                <td>{{emEmployees.bloodGroup}}</td>
+                <td>{{emEmployees.dateOfBirth | date:'mediumDate'}}</td>
+                <td>{{emEmployees.hireDate | date:'mediumDate'}}</td>
+                <td>{{emEmployees.ssn}}</td>
+                <td>{{emEmployees.taxNumber}}</td>
+                <td>{{emEmployees.createdBy}}</td>
+                <td>{{emEmployees.createdAt | date:'medium'}}</td>
+                <td>{{emEmployees.updatedBy}}</td>
+                <td>{{emEmployees.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="emEmployees.idQualification">
+                        <a [routerLink]="['../rg-qualifications', emEmployees.idQualification?.id ]" >{{emEmployees.idQualification?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmployees.idEmploymentType">
+                        <a [routerLink]="['../em-emp-types', emEmployees.idEmploymentType?.id ]" >{{emEmployees.idEmploymentType?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmployees.idLegalEntity">
+                        <a [routerLink]="['../le-legal-entities', emEmployees.idLegalEntity?.id ]" >{{emEmployees.idLegalEntity?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmployees.idStatus">
+                        <a [routerLink]="['../em-statuses', emEmployees.idStatus?.id ]" >{{emEmployees.idStatus?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{emEmployees.idUser?.id}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../em-employees', emEmployees.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-employees/'+ emEmployees.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-employees/'+ emEmployees.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

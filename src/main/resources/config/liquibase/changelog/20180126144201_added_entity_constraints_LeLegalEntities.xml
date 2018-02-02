@@ -9,13 +9,13 @@
     <changeSet id="20180126144201-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="id_entity_type_id"
-                                 baseTableName="le_leg_ent"
+                                 baseTableName="le_leg"
                                  constraintName="le_legal_entit_id_entity_typ_id"
                                  referencedColumnNames="id"
                                  referencedTableName="le_legal_entity_types"/>
 
         <addForeignKeyConstraint baseColumnNames="region_id"
-                                 baseTableName="le_leg_ent"
+                                 baseTableName="le_leg"
                                  constraintName="fk_le_legal_entities_region_id"
                                  referencedColumnNames="id"
                                  referencedTableName="rg_regions"/>

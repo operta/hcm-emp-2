@@ -11,9 +11,14 @@
     <include file="config/liquibase/changelog/20180126144202_added_entity_LeLegalEntityTypes.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180126144203_added_entity_RgRegions.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180126144204_added_entity_RgRegionTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180201161833_added_entity_RgQualifications.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180201161834_added_entity_EmEmpTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180201161835_added_entity_EmStatuses.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180201161836_added_entity_EmEmployees.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180126144159_added_entity_constraints_OgOrganizations.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180126144201_added_entity_constraints_LeLegalEntities.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180126144203_added_entity_constraints_RgRegions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180201161836_added_entity_constraints_EmEmployees.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
