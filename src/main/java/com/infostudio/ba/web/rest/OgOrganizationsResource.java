@@ -6,12 +6,18 @@ import com.infostudio.ba.domain.OgOrganizations;
 import com.infostudio.ba.repository.OgOrganizationsRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
+import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -44,7 +50,7 @@ public class OgOrganizationsResource {
      */
     @PostMapping("/og-organizations")
     @Timed
-    public ResponseEntity<OgOrganizations> createOgOrganizations(@RequestBody OgOrganizations ogOrganizations) throws URISyntaxException {
+    public ResponseEntity<OgOrganizations> createOgOrganizations(@Valid @RequestBody OgOrganizations ogOrganizations) throws URISyntaxException {
         log.debug("REST request to save OgOrganizations : {}", ogOrganizations);
         if (ogOrganizations.getId() != null) {
             throw new BadRequestAlertException("A new ogOrganizations cannot already have an ID", ENTITY_NAME, "idexists");
@@ -66,7 +72,7 @@ public class OgOrganizationsResource {
      */
     @PutMapping("/og-organizations")
     @Timed
-    public ResponseEntity<OgOrganizations> updateOgOrganizations(@RequestBody OgOrganizations ogOrganizations) throws URISyntaxException {
+    public ResponseEntity<OgOrganizations> updateOgOrganizations(@Valid @RequestBody OgOrganizations ogOrganizations) throws URISyntaxException {
         log.debug("REST request to update OgOrganizations : {}", ogOrganizations);
         if (ogOrganizations.getId() == null) {
             return createOgOrganizations(ogOrganizations);
@@ -80,14 +86,17 @@ public class OgOrganizationsResource {
     /**
      * GET  /og-organizations : get all the ogOrganizations.
      *
+     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of ogOrganizations in body
      */
     @GetMapping("/og-organizations")
     @Timed
-    public List<OgOrganizations> getAllOgOrganizations() {
-        log.debug("REST request to get all OgOrganizations");
-        return ogOrganizationsRepository.findAll();
-        }
+    public ResponseEntity<List<OgOrganizations>> getAllOgOrganizations(Pageable pageable) {
+        log.debug("REST request to get a page of OgOrganizations");
+        Page<OgOrganizations> page = ogOrganizationsRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/og-organizations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * GET  /og-organizations/:id : get the "id" ogOrganizations.

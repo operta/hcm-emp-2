@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -49,7 +50,7 @@ public class EmEmpTypesResource {
      */
     @PostMapping("/em-emp-types")
     @Timed
-    public ResponseEntity<EmEmpTypes> createEmEmpTypes(@RequestBody EmEmpTypes emEmpTypes) throws URISyntaxException {
+    public ResponseEntity<EmEmpTypes> createEmEmpTypes(@Valid @RequestBody EmEmpTypes emEmpTypes) throws URISyntaxException {
         log.debug("REST request to save EmEmpTypes : {}", emEmpTypes);
         if (emEmpTypes.getId() != null) {
             throw new BadRequestAlertException("A new emEmpTypes cannot already have an ID", ENTITY_NAME, "idexists");
@@ -71,7 +72,7 @@ public class EmEmpTypesResource {
      */
     @PutMapping("/em-emp-types")
     @Timed
-    public ResponseEntity<EmEmpTypes> updateEmEmpTypes(@RequestBody EmEmpTypes emEmpTypes) throws URISyntaxException {
+    public ResponseEntity<EmEmpTypes> updateEmEmpTypes(@Valid @RequestBody EmEmpTypes emEmpTypes) throws URISyntaxException {
         log.debug("REST request to update EmEmpTypes : {}", emEmpTypes);
         if (emEmpTypes.getId() == null) {
             return createEmEmpTypes(emEmpTypes);

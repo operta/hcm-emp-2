@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -49,7 +50,7 @@ public class LeLegalEntityTypesResource {
      */
     @PostMapping("/le-legal-entity-types")
     @Timed
-    public ResponseEntity<LeLegalEntityTypes> createLeLegalEntityTypes(@RequestBody LeLegalEntityTypes leLegalEntityTypes) throws URISyntaxException {
+    public ResponseEntity<LeLegalEntityTypes> createLeLegalEntityTypes(@Valid @RequestBody LeLegalEntityTypes leLegalEntityTypes) throws URISyntaxException {
         log.debug("REST request to save LeLegalEntityTypes : {}", leLegalEntityTypes);
         if (leLegalEntityTypes.getId() != null) {
             throw new BadRequestAlertException("A new leLegalEntityTypes cannot already have an ID", ENTITY_NAME, "idexists");
@@ -71,7 +72,7 @@ public class LeLegalEntityTypesResource {
      */
     @PutMapping("/le-legal-entity-types")
     @Timed
-    public ResponseEntity<LeLegalEntityTypes> updateLeLegalEntityTypes(@RequestBody LeLegalEntityTypes leLegalEntityTypes) throws URISyntaxException {
+    public ResponseEntity<LeLegalEntityTypes> updateLeLegalEntityTypes(@Valid @RequestBody LeLegalEntityTypes leLegalEntityTypes) throws URISyntaxException {
         log.debug("REST request to update LeLegalEntityTypes : {}", leLegalEntityTypes);
         if (leLegalEntityTypes.getId() == null) {
             return createLeLegalEntityTypes(leLegalEntityTypes);

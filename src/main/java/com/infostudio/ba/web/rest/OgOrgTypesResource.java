@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -49,7 +50,7 @@ public class OgOrgTypesResource {
      */
     @PostMapping("/og-org-types")
     @Timed
-    public ResponseEntity<OgOrgTypes> createOgOrgTypes(@RequestBody OgOrgTypes ogOrgTypes) throws URISyntaxException {
+    public ResponseEntity<OgOrgTypes> createOgOrgTypes(@Valid @RequestBody OgOrgTypes ogOrgTypes) throws URISyntaxException {
         log.debug("REST request to save OgOrgTypes : {}", ogOrgTypes);
         if (ogOrgTypes.getId() != null) {
             throw new BadRequestAlertException("A new ogOrgTypes cannot already have an ID", ENTITY_NAME, "idexists");
@@ -71,7 +72,7 @@ public class OgOrgTypesResource {
      */
     @PutMapping("/og-org-types")
     @Timed
-    public ResponseEntity<OgOrgTypes> updateOgOrgTypes(@RequestBody OgOrgTypes ogOrgTypes) throws URISyntaxException {
+    public ResponseEntity<OgOrgTypes> updateOgOrgTypes(@Valid @RequestBody OgOrgTypes ogOrgTypes) throws URISyntaxException {
         log.debug("REST request to update OgOrgTypes : {}", ogOrgTypes);
         if (ogOrgTypes.getId() == null) {
             return createOgOrgTypes(ogOrgTypes);

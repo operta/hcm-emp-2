@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class EmpPersonalInfoComponent implements OnInit {
     @Input() employee;
+    @Input() isEditable;
     constructor() { }
 
     ngOnInit() {

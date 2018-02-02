@@ -1,0 +1,96 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.home.title">Em Emp Org Work Places</span>
+        <button class="btn btn-primary float-right jh-create-entity create-em-emp-org-work-places" [routerLink]="['/', { outlets: { popup: ['em-emp-org-work-places-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.home.createLabel">
+            Create new Em Emp Org Work Places
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emEmpOrgWorkPlaces">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateFrom"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.dateFrom">Date From</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateTo"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.dateTo">Date To</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="workHistoryCoefficient"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.workHistoryCoefficient">Work History Coefficient</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idEmployee.id"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idEmployee">Id Employee</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idContractType.name"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idContractType">Id Contract Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idOrgWorkPlace.id"><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idOrgWorkPlace">Id Org Work Place</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emEmpOrgWorkPlaces of emEmpOrgWorkPlaces ;trackBy: trackId">
+                <td><a [routerLink]="['../em-emp-org-work-places', emEmpOrgWorkPlaces.id ]">{{emEmpOrgWorkPlaces.id}}</a></td>
+                <td>{{emEmpOrgWorkPlaces.dateFrom | date:'mediumDate'}}</td>
+                <td>{{emEmpOrgWorkPlaces.dateTo | date:'mediumDate'}}</td>
+                <td>{{emEmpOrgWorkPlaces.workHistoryCoefficient}}</td>
+                <td>{{emEmpOrgWorkPlaces.createdBy}}</td>
+                <td>{{emEmpOrgWorkPlaces.createdAt | date:'medium'}}</td>
+                <td>{{emEmpOrgWorkPlaces.updatedBy}}</td>
+                <td>{{emEmpOrgWorkPlaces.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="emEmpOrgWorkPlaces.idEmployee">
+                        <a [routerLink]="['../em-employees', emEmpOrgWorkPlaces.idEmployee?.id ]" >{{emEmpOrgWorkPlaces.idEmployee?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmpOrgWorkPlaces.idContractType">
+                        <a [routerLink]="['../em-contract-types', emEmpOrgWorkPlaces.idContractType?.id ]" >{{emEmpOrgWorkPlaces.idContractType?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmpOrgWorkPlaces.idOrgWorkPlace">
+                        <a [routerLink]="['../og-org-work-places', emEmpOrgWorkPlaces.idOrgWorkPlace?.id ]" >{{emEmpOrgWorkPlaces.idOrgWorkPlace?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../em-emp-org-work-places', emEmpOrgWorkPlaces.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-org-work-places/'+ emEmpOrgWorkPlaces.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-org-work-places/'+ emEmpOrgWorkPlaces.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="emEmpOrgWorkPlaces && emEmpOrgWorkPlaces.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

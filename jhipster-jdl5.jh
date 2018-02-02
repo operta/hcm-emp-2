@@ -1,0 +1,354 @@
+
+// an ignored comment
+/** not an ignored comment */
+
+
+entity OgOrgTypes {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+
+entity LeLegalEntityTypes {
+	id Integer required,
+	code String required,
+	name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgRegionTypes {
+	id Integer required,
+	code String required,
+	name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+entity RgRegions{
+	id Integer required,
+	code String required,
+	name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant,
+}
+entity LeLegalEntities {
+ 	id Integer required,
+    code String required,
+    name String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant,
+    idNumber String,
+    dutyNumber String,
+    address String required,
+    postalNumber String required,
+}
+
+entity OgOrganizations {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgQualifications {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpTypes {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmStatuses {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmployees {
+	id Integer required,
+    code String required,
+    name String required,
+    middleName String,
+    surname String,
+    maidenName String,
+    disabilityDegree Integer,
+    ethnicGroup String,
+    gender String,
+    residentialSituation String,
+    maritalStatus String,
+    bloodGroup String,
+    dateOfBirth LocalDate,
+    hireDate LocalDate,
+    ssn String,
+    taxNumber String,
+    imagePath String,
+    phoneNumber String,
+    email String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity  EmEmpBankAccounts {
+	id Integer required,
+    accountNumber String required,
+    status String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity OgWorkPlaceTypes {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity OgWorkPlaces {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity OgOrgWorkPlaces {
+	id Integer required,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmContractTypes {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+
+entity EmEmpOrgWorkPlaces{
+	id Integer required,
+    dateFrom LocalDate required,
+    dateTo LocalDate,
+    workHistoryCoefficient Integer,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpSalaries {
+	id Integer required,
+    dateFrom LocalDate required,
+    dateTo LocalDate,
+    salaryAmount Integer,
+    salaryCoefficient Integer,
+    workHistoryCoefficient Integer,
+ 	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpSchools {
+	id Integer required,
+    dateFrom LocalDate,
+    dateTo LocalDate,
+    major String,
+    degree String,
+    grade Integer,
+    description String,
+  	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgSchools {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+    address String required,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity AtAccomplishmentTypes {
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity  EmEmpAccomplishments {
+	id Integer required,
+    title String required,
+    description String,
+    organization String,
+    location String,
+    association String,
+    ongoing String,
+    link String,
+    dateFrom LocalDate,
+    dateTo LocalDate,
+    occupation String,
+    proficiency String,
+    licenceNumber String,
+    rating Integer,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity DmDocumentLinks{
+	id Integer required,
+    documentName String,
+    fileName String,
+    filePath String,
+    uri String,
+    documentBlob Blob,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity DmDocumentTypes{
+	id Integer required,
+	code String required,
+	name String required,
+	description String,
+	createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpDocuments{
+    id Integer required,
+    name String required,
+    description String,
+    dateCreated LocalDate required,
+    validFrom LocalDate,
+    validTo LocalDate,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpNotes {
+	id Integer required,
+    title String required,
+    decsription String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+
+relationship OneToOne {
+	EmEmpNotes{idEmployee} to EmEmployees
+	EmEmpDocuments{idEmployee} to EmEmployees
+    EmEmpDocuments{idDocumentType(name)} to DmDocumentTypes
+    EmEmpDocuments{idDocumentLink(name)} to DmDocumentLinks
+	EmEmpAccomplishments{idEmployee} to EmEmployees
+    EmEmpAccomplishments{idAccomplishmentType(name)} to AtAccomplishmentTypes
+	RgSchools{idCity(name)} to RgRegions
+    RgSchools{idCountry(name)} to RgRegions
+    RgSchools{idRegion(name)} to RgRegions
+    EmEmpSchools{idSchool(name)} to RgSchools
+    EmEmpSchools{idEmployee} to EmEmployees
+    EmEmpSchools{idQualification(name)} to RgQualifications
+	EmEmpSalaries{idEmployee} to EmEmployees
+    EmEmpSalaries{idWorkPlace(name)} to OgWorkPlaces
+    EmEmpSalaries{idContractType(name)} to EmContractTypes
+	EmEmpOrgWorkPlaces{idEmployee} to EmEmployees
+    EmEmpOrgWorkPlaces{idContractType(name)} to EmContractTypes
+    EmEmpOrgWorkPlaces{idOrgWorkPlace} to OgOrgWorkPlaces
+	EmEmpBankAccounts{idEmployee} to EmEmployees
+    EmEmpBankAccounts{idBank(name)} to LeLegalEntities
+    EmEmployees{idQualification(name)} to RgQualifications
+    EmEmployees{idEmploymentType(name)} to EmEmpTypes
+    EmEmployees{idLegalEntity(name)} to LeLegalEntities
+    EmEmployees{idStatus(name)} to EmStatuses
+    EmEmployees{idUser} to User
+    LeLegalEntities{idEntityType(name)} to LeLegalEntityTypes
+    LeLegalEntities{region(name)} to RgRegions
+    RgRegions{idType(name)} to RgRegionTypes
+    RgRegions{idParent(name)} to RgRegions
+    OgOrganizations{idOrganizationType(name)} to OgOrgTypes
+    OgOrganizations{idParent(name)} to OgOrganizations
+    OgOrganizations{idLegalEntity(name)} to LeLegalEntities
+    OgOrgWorkPlaces{idOrganization(name)} to OgOrganizations
+    OgOrgWorkPlaces{idWorkPlace(name)} to OgWorkPlaces
+	OgWorkPlaces{idWorkPlaceType(name)}  to OgWorkPlaceTypes
+	OgWorkPlaces{idParent(name)} to OgWorkPlaces
+}
+
+paginate * with pagination

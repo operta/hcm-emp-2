@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {EmEmpBankAccountsService} from "../../../entities/em-emp-bank-accounts/em-emp-bank-accounts.service";
 
 @Component({
   selector: 'jhi-emp-bank-account',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class EmpBankAccountComponent implements OnInit {
+    @Input() employee;
+    @Input() isEditable;
 
-  constructor() { }
+  constructor(private bankAccountService: EmEmpBankAccountsService) { }
 
   ngOnInit() {
+      // find by employee
+      // // this.bankAccountService.find()
+
   }
 
 }

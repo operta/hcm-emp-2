@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -49,7 +50,7 @@ public class RgRegionsResource {
      */
     @PostMapping("/rg-regions")
     @Timed
-    public ResponseEntity<RgRegions> createRgRegions(@RequestBody RgRegions rgRegions) throws URISyntaxException {
+    public ResponseEntity<RgRegions> createRgRegions(@Valid @RequestBody RgRegions rgRegions) throws URISyntaxException {
         log.debug("REST request to save RgRegions : {}", rgRegions);
         if (rgRegions.getId() != null) {
             throw new BadRequestAlertException("A new rgRegions cannot already have an ID", ENTITY_NAME, "idexists");
@@ -71,7 +72,7 @@ public class RgRegionsResource {
      */
     @PutMapping("/rg-regions")
     @Timed
-    public ResponseEntity<RgRegions> updateRgRegions(@RequestBody RgRegions rgRegions) throws URISyntaxException {
+    public ResponseEntity<RgRegions> updateRgRegions(@Valid @RequestBody RgRegions rgRegions) throws URISyntaxException {
         log.debug("REST request to update RgRegions : {}", rgRegions);
         if (rgRegions.getId() == null) {
             return createRgRegions(rgRegions);

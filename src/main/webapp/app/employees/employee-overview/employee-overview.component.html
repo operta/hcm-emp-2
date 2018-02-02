@@ -6,32 +6,32 @@
             <img src="../../../content/images/users/1.jpg" class="img-fluid img-circle" />
         </div>
         <div class="preview"> Bussines phone</div>
-        <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +387 33 267 680</div>
+        <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.phoneNumber}}</div>
         <br>
         <div class="preview"> Private phone</div>
         <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +387 33 267 680</div>
         <br>
         <div class="preview"> Bussines mail</div>
-        <div class="preview" style="font-weight:bold;"><i class="icon-envelope-open"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; john.doe@infostudio.ba</div>
+        <div class="preview" style="font-weight:bold; font-size: 10px;"><i class="icon-envelope-open"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.email}}</div>
         <br>
         <hr class="m-t-0 m-b-20">
         <div class="preview"> Hire date</div>
-        <div class="preview" style="font-weight:bold;"><i class="icon-calender"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16-JUN-2015</div>
+        <div class="preview" style="font-weight:bold;"><i class="icon-calender"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.hireDate | date:'dd/MM/yyyy'}}</div>
         <br>
         <div class="preview"> Contract type</div>
-        <div class="preview" style="font-weight:bold;"><i class="icon-folder-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Full time</div>
+        <div class="preview" style="font-weight:bold;"><i class="icon-folder-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.idEmploymentType?.name}}</div>
         <br>
         <div class="preview"> Department</div>
-        <div class="preview" style="font-weight:bold;"><i class="icon-people"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IT dev/ops</div>
+        <div class="preview" style="font-weight:bold;"><i class="icon-people"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employeeWorkPlace?.idOrgWorkPlace?.idOrganization?.name}}</div>
         <br>
         <div class="preview"> Location</div>
-        <div class="preview" style="font-weight:bold;"><i class="icon-location-pin"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sarajevo</div>
+        <div class="preview" style="font-weight:bold;"><i class="icon-location-pin"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employeeWorkPlace?.idOrgWorkPlace?.idOrganization?.idLegalEntity?.address}}</div>
         <br>
         <hr class="m-t-0 m-b-20">
     </div>
     <div class="col-sm-10">
-        <h3><b>{{employee.name}} {{employee.surname}}</b></h3>
-        <h3><b>Information Systems Architect</b></h3>
+        <h3><b>{{employee?.name}} {{employee?.surname}}</b></h3>
+        <h3><b>{{employeeWorkPlace?.idOrgWorkPlace?.idWorkPlace?.name}}</b></h3>
         <ul class="nav customtab nav-tabs" role="tablist">
             <li role="presentation" class="nav-item"><a href="#personal" (click)="changeTabState('personal')" [class.active]="tabState == 'personal'" class="nav-link" aria-controls="personal" role="tab" data-toggle="tab" aria-expanded="fa;se"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Personal</span></a></li>
             <li role="presentation" class="nav-item"><a href="#job" (click)="changeTabState('job')" [class.active]="tabState == 'job'" class="nav-link" aria-controls="job" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Job & past experience</span></a></li>
@@ -46,11 +46,11 @@
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'personal'"  id="personal">
                 <div id="dataScroll">
                     <form class="form-horizontal" role="form">
-                            <jhi-emp-personal-info [employee]="employee" ></jhi-emp-personal-info>
-                            <jhi-emp-address></jhi-emp-address>
-                            <jhi-emp-ssn-and-tax-no></jhi-emp-ssn-and-tax-no>
+                            <jhi-emp-personal-info [employee]="employee" [isEditable]="isEditable"></jhi-emp-personal-info>
+                            <jhi-emp-address [employee]="employee" [isEditable]="isEditable"></jhi-emp-address>
+                            <jhi-emp-ssn-and-tax-no [employee]="employee" [isEditable]="isEditable"></jhi-emp-ssn-and-tax-no>
                             <jhi-emp-emergency-contact></jhi-emp-emergency-contact>
-                            <jhi-emp-bank-account></jhi-emp-bank-account>
+                            <jhi-emp-bank-account [employee]="employee" [isEditable]="isEditable"></jhi-emp-bank-account>
                     </form>
                 </div>
             </div>

@@ -15,10 +15,35 @@
     <include file="config/liquibase/changelog/20180201161834_added_entity_EmEmpTypes.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180201161835_added_entity_EmStatuses.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180201161836_added_entity_EmEmployees.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093517_added_entity_EmEmpBankAccounts.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093518_added_entity_OgWorkPlaceTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093519_added_entity_OgWorkPlaces.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093520_added_entity_OgOrgWorkPlaces.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093521_added_entity_EmContractTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093522_added_entity_EmEmpOrgWorkPlaces.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093523_added_entity_EmEmpSalaries.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093524_added_entity_EmEmpSchools.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093525_added_entity_RgSchools.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093526_added_entity_AtAccomplishmentTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093527_added_entity_EmEmpAccomplishments.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093528_added_entity_DmDocumentLinks.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093529_added_entity_DmDocumentTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093530_added_entity_EmEmpDocuments.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093531_added_entity_EmEmpNotes.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180126144159_added_entity_constraints_OgOrganizations.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180126144201_added_entity_constraints_LeLegalEntities.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180126144203_added_entity_constraints_RgRegions.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180201161836_added_entity_constraints_EmEmployees.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093517_added_entity_constraints_EmEmpBankAccounts.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093519_added_entity_constraints_OgWorkPlaces.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093520_added_entity_constraints_OgOrgWorkPlaces.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093522_added_entity_constraints_EmEmpOrgWorkPlaces.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093523_added_entity_constraints_EmEmpSalaries.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093524_added_entity_constraints_EmEmpSchools.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093525_added_entity_constraints_RgSchools.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093527_added_entity_constraints_EmEmpAccomplishments.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093530_added_entity_constraints_EmEmpDocuments.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180202093531_added_entity_constraints_EmEmpNotes.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

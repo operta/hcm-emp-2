@@ -1,0 +1,111 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmpSalariesLabel" jhiTranslate="hcmEmpApp.emEmpSalaries.home.createOrEditLabel">Create or edit a Em Emp Salaries</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!emEmpSalaries.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="emEmpSalaries.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.dateFrom" for="field_dateFrom">Date From</label>
+            <div class="input-group">
+                <input id="field_dateFrom" type="text" class="form-control" name="dateFrom" ngbDatepicker  #dateFromDp="ngbDatepicker" [(ngModel)]="emEmpSalaries.dateFrom"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateFromDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateFrom?.dirty && editForm.controls.dateFrom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateFrom?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.dateTo" for="field_dateTo">Date To</label>
+            <div class="input-group">
+                <input id="field_dateTo" type="text" class="form-control" name="dateTo" ngbDatepicker  #dateToDp="ngbDatepicker" [(ngModel)]="emEmpSalaries.dateTo"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateToDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.salaryAmount" for="field_salaryAmount">Salary Amount</label>
+            <input type="number" class="form-control" name="salaryAmount" id="field_salaryAmount"
+                [(ngModel)]="emEmpSalaries.salaryAmount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.salaryCoefficient" for="field_salaryCoefficient">Salary Coefficient</label>
+            <input type="number" class="form-control" name="salaryCoefficient" id="field_salaryCoefficient"
+                [(ngModel)]="emEmpSalaries.salaryCoefficient" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.workHistoryCoefficient" for="field_workHistoryCoefficient">Work History Coefficient</label>
+            <input type="number" class="form-control" name="workHistoryCoefficient" id="field_workHistoryCoefficient"
+                [(ngModel)]="emEmpSalaries.workHistoryCoefficient" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="emEmpSalaries.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.createdAt" for="field_createdAt">Created At</label>
+            <div class="d-flex">
+                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpSalaries.createdAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.updatedBy" for="field_updatedBy">Updated By</label>
+            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                [(ngModel)]="emEmpSalaries.updatedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.updatedAt" for="field_updatedAt">Updated At</label>
+            <div class="d-flex">
+                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpSalaries.updatedAt"
+                />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.idEmployee" for="field_idEmployee">Id Employee</label>
+            <select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpSalaries.idEmployee">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="emEmployeesOption.id === emEmpSalaries.idEmployee?.id ? emEmpSalaries.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.idWorkPlace" for="field_idWorkPlace">Id Work Place</label>
+            <select class="form-control" id="field_idWorkPlace" name="idWorkPlace" [(ngModel)]="emEmpSalaries.idWorkPlace">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ogWorkPlacesOption.id === emEmpSalaries.idWorkPlace?.id ? emEmpSalaries.idWorkPlace : ogWorkPlacesOption" *ngFor="let ogWorkPlacesOption of idworkplaces; trackBy: trackOgWorkPlacesById">{{ogWorkPlacesOption.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSalaries.idContractType" for="field_idContractType">Id Contract Type</label>
+            <select class="form-control" id="field_idContractType" name="idContractType" [(ngModel)]="emEmpSalaries.idContractType">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="emContractTypesOption.id === emEmpSalaries.idContractType?.id ? emEmpSalaries.idContractType : emContractTypesOption" *ngFor="let emContractTypesOption of idcontracttypes; trackBy: trackEmContractTypesById">{{emContractTypesOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

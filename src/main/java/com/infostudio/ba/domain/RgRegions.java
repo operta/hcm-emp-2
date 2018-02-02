@@ -2,6 +2,7 @@ package com.infostudio.ba.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -21,10 +22,12 @@ public class RgRegions implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "code")
+    @NotNull
+    @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "description")

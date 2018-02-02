@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "dmDocumentTypes" : {
+            "home": {
+                "title": "Dm Document Types",
+                "createLabel": "Create a new Dm Document Types",
+                "createOrEditLabel": "Create or edit a Dm Document Types"
+            },
+            "created": "A new Dm Document Types is created with identifier {{ param }}",
+            "updated": "A Dm Document Types is updated with identifier {{ param }}",
+            "deleted": "A Dm Document Types is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Dm Document Types {{ id }}?"
+            },
+            "detail": {
+                "title": "Dm Document Types"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

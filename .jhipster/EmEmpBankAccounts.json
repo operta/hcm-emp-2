@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idEmployee",
+            "otherEntityName": "emEmployees",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpBankAccounts"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idBank",
+            "otherEntityName": "leLegalEntities",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpBankAccounts"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "accountNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180202093517",
+    "entityTableName": "em_emp_bank_accounts",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

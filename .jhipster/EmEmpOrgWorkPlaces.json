@@ -1,0 +1,68 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idEmployee",
+            "otherEntityName": "emEmployees",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpOrgWorkPlaces"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idContractType",
+            "otherEntityName": "emContractTypes",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpOrgWorkPlaces"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idOrgWorkPlace",
+            "otherEntityName": "ogOrgWorkPlaces",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpOrgWorkPlaces"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateFrom",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateTo",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "workHistoryCoefficient",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180202093522",
+    "entityTableName": "em_emp_org_work_places",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

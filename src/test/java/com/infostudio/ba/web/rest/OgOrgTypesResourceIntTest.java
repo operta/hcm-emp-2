@@ -159,6 +159,42 @@ public class OgOrgTypesResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ogOrgTypesRepository.findAll().size();
+        // set the field null
+        ogOrgTypes.setCode(null);
+
+        // Create the OgOrgTypes, which fails.
+
+        restOgOrgTypesMockMvc.perform(post("/api/og-org-types")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(ogOrgTypes)))
+            .andExpect(status().isBadRequest());
+
+        List<OgOrgTypes> ogOrgTypesList = ogOrgTypesRepository.findAll();
+        assertThat(ogOrgTypesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ogOrgTypesRepository.findAll().size();
+        // set the field null
+        ogOrgTypes.setName(null);
+
+        // Create the OgOrgTypes, which fails.
+
+        restOgOrgTypesMockMvc.perform(post("/api/og-org-types")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(ogOrgTypes)))
+            .andExpect(status().isBadRequest());
+
+        List<OgOrgTypes> ogOrgTypesList = ogOrgTypesRepository.findAll();
+        assertThat(ogOrgTypesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllOgOrgTypes() throws Exception {
         // Initialize the database
         ogOrgTypesRepository.saveAndFlush(ogOrgTypes);

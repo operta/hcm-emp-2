@@ -2,6 +2,7 @@ package com.infostudio.ba.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -22,10 +23,12 @@ public class EmEmployees implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "code")
+    @NotNull
+    @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "middle_name")
@@ -66,6 +69,15 @@ public class EmEmployees implements Serializable {
 
     @Column(name = "tax_number")
     private String taxNumber;
+
+    @Column(name = "image_path")
+    private String imagePath;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "created_by")
     private String createdBy;
@@ -303,6 +315,45 @@ public class EmEmployees implements Serializable {
         this.taxNumber = taxNumber;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public EmEmployees imagePath(String imagePath) {
+        this.imagePath = imagePath;
+        return this;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public EmEmployees phoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public EmEmployees email(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getCreatedBy() {
         return createdBy;
     }
@@ -460,6 +511,9 @@ public class EmEmployees implements Serializable {
             ", hireDate='" + getHireDate() + "'" +
             ", ssn='" + getSsn() + "'" +
             ", taxNumber='" + getTaxNumber() + "'" +
+            ", imagePath='" + getImagePath() + "'" +
+            ", phoneNumber='" + getPhoneNumber() + "'" +
+            ", email='" + getEmail() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +

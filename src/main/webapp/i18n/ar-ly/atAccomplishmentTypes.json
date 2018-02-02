@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "atAccomplishmentTypes" : {
+            "home": {
+                "title": "At Accomplishment Types",
+                "createLabel": "Create a new At Accomplishment Types",
+                "createOrEditLabel": "Create or edit a At Accomplishment Types"
+            },
+            "created": "A new At Accomplishment Types is created with identifier {{ param }}",
+            "updated": "A At Accomplishment Types is updated with identifier {{ param }}",
+            "deleted": "A At Accomplishment Types is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete At Accomplishment Types {{ id }}?"
+            },
+            "detail": {
+                "title": "At Accomplishment Types"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

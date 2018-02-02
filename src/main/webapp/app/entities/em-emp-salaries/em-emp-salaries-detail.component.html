@@ -1,0 +1,76 @@
+
+<div *ngIf="emEmpSalaries">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpSalaries.detail.title">Em Emp Salaries</span> {{emEmpSalaries.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.dateFrom">Date From</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.dateFrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.dateTo">Date To</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.dateTo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.salaryAmount">Salary Amount</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.salaryAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.salaryCoefficient">Salary Coefficient</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.salaryCoefficient}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.workHistoryCoefficient">Work History Coefficient</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.workHistoryCoefficient}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpSalaries.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpSalaries.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpSalaries.idEmployee?.id]">{{emEmpSalaries.idEmployee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.idWorkPlace">Id Work Place</span></dt>
+        <dd>
+            <div *ngIf="emEmpSalaries.idWorkPlace">
+                <a [routerLink]="['/og-work-places', emEmpSalaries.idWorkPlace?.id]">{{emEmpSalaries.idWorkPlace?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.idContractType">Id Contract Type</span></dt>
+        <dd>
+            <div *ngIf="emEmpSalaries.idContractType">
+                <a [routerLink]="['/em-contract-types', emEmpSalaries.idContractType?.id]">{{emEmpSalaries.idContractType?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-salaries/'+ emEmpSalaries.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

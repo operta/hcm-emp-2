@@ -1,0 +1,76 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idEmployee",
+            "otherEntityName": "emEmployees",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpSalaries"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idWorkPlace",
+            "otherEntityName": "ogWorkPlaces",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpSalaries"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idContractType",
+            "otherEntityName": "emContractTypes",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpSalaries"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateFrom",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateTo",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "salaryAmount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "salaryCoefficient",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "workHistoryCoefficient",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180202093523",
+    "entityTableName": "em_emp_salaries",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

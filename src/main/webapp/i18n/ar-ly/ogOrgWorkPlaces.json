@@ -1,0 +1,26 @@
+{
+    "hcmEmpApp": {
+        "ogOrgWorkPlaces" : {
+            "home": {
+                "title": "Og Org Work Places",
+                "createLabel": "Create a new Og Org Work Places",
+                "createOrEditLabel": "Create or edit a Og Org Work Places"
+            },
+            "created": "A new Og Org Work Places is created with identifier {{ param }}",
+            "updated": "A Og Org Work Places is updated with identifier {{ param }}",
+            "deleted": "A Og Org Work Places is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Og Org Work Places {{ id }}?"
+            },
+            "detail": {
+                "title": "Og Org Work Places"
+            },
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idOrganization": "Id Organization",
+            "idWorkPlace": "Id Work Place"
+        }
+    }
+}

@@ -1,0 +1,61 @@
+
+<div *ngIf="dmDocumentLinks">
+    <h2><span jhiTranslate="hcmEmpApp.dmDocumentLinks.detail.title">Dm Document Links</span> {{dmDocumentLinks.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.documentName">Document Name</span></dt>
+        <dd>
+            <span>{{dmDocumentLinks.documentName}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.fileName">File Name</span></dt>
+        <dd>
+            <span>{{dmDocumentLinks.fileName}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.filePath">File Path</span></dt>
+        <dd>
+            <span>{{dmDocumentLinks.filePath}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.uri">Uri</span></dt>
+        <dd>
+            <span>{{dmDocumentLinks.uri}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.documentBlob">Document Blob</span></dt>
+        <dd>
+            <div *ngIf="dmDocumentLinks.documentBlob">
+                <a (click)="openFile(dmDocumentLinks.documentBlobContentType, dmDocumentLinks.documentBlob)" jhiTranslate="entity.action.open">open</a>
+                {{dmDocumentLinks.documentBlobContentType}}, {{byteSize(dmDocumentLinks.documentBlob)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{dmDocumentLinks.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{dmDocumentLinks.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{dmDocumentLinks.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{dmDocumentLinks.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dm-document-links/'+ dmDocumentLinks.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

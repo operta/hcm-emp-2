@@ -15,12 +15,24 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="emEmployees.code" />
+                [(ngModel)]="emEmployees.code" required/>
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
-                [(ngModel)]="emEmployees.name" />
+                [(ngModel)]="emEmployees.name" required/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.middleName" for="field_middleName">Middle Name</label>
@@ -96,6 +108,21 @@
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.taxNumber" for="field_taxNumber">Tax Number</label>
             <input type="text" class="form-control" name="taxNumber" id="field_taxNumber"
                 [(ngModel)]="emEmployees.taxNumber" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.imagePath" for="field_imagePath">Image Path</label>
+            <input type="text" class="form-control" name="imagePath" id="field_imagePath"
+                [(ngModel)]="emEmployees.imagePath" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.phoneNumber" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                [(ngModel)]="emEmployees.phoneNumber" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="emEmployees.email" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.createdBy" for="field_createdBy">Created By</label>

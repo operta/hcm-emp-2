@@ -39,7 +39,7 @@ export class EmEmployeesService {
     }
 
     findByUser(id: number): Observable<EmEmployees> {
-        return this.http.get(`${this.resourceUrl}/byUser/${id}`).map((res: Response) => {
+        return this.http.get(`${this.resourceUrl}/user/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });

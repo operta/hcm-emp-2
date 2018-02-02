@@ -174,6 +174,60 @@ public class LeLegalEntitiesResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = leLegalEntitiesRepository.findAll().size();
+        // set the field null
+        leLegalEntities.setCode(null);
+
+        // Create the LeLegalEntities, which fails.
+
+        restLeLegalEntitiesMockMvc.perform(post("/api/le-legal-entities")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(leLegalEntities)))
+            .andExpect(status().isBadRequest());
+
+        List<LeLegalEntities> leLegalEntitiesList = leLegalEntitiesRepository.findAll();
+        assertThat(leLegalEntitiesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkAddressIsRequired() throws Exception {
+        int databaseSizeBeforeTest = leLegalEntitiesRepository.findAll().size();
+        // set the field null
+        leLegalEntities.setAddress(null);
+
+        // Create the LeLegalEntities, which fails.
+
+        restLeLegalEntitiesMockMvc.perform(post("/api/le-legal-entities")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(leLegalEntities)))
+            .andExpect(status().isBadRequest());
+
+        List<LeLegalEntities> leLegalEntitiesList = leLegalEntitiesRepository.findAll();
+        assertThat(leLegalEntitiesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPostalNumberIsRequired() throws Exception {
+        int databaseSizeBeforeTest = leLegalEntitiesRepository.findAll().size();
+        // set the field null
+        leLegalEntities.setPostalNumber(null);
+
+        // Create the LeLegalEntities, which fails.
+
+        restLeLegalEntitiesMockMvc.perform(post("/api/le-legal-entities")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(leLegalEntities)))
+            .andExpect(status().isBadRequest());
+
+        List<LeLegalEntities> leLegalEntitiesList = leLegalEntitiesRepository.findAll();
+        assertThat(leLegalEntitiesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllLeLegalEntities() throws Exception {
         // Initialize the database
         leLegalEntitiesRepository.saveAndFlush(leLegalEntities);

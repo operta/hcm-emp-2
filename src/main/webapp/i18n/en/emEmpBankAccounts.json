@@ -1,0 +1,28 @@
+{
+    "hcmEmpApp": {
+        "emEmpBankAccounts" : {
+            "home": {
+                "title": "Em Emp Bank Accounts",
+                "createLabel": "Create a new Em Emp Bank Accounts",
+                "createOrEditLabel": "Create or edit a Em Emp Bank Accounts"
+            },
+            "created": "A new Em Emp Bank Accounts is created with identifier {{ param }}",
+            "updated": "A Em Emp Bank Accounts is updated with identifier {{ param }}",
+            "deleted": "A Em Emp Bank Accounts is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Emp Bank Accounts {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Emp Bank Accounts"
+            },
+            "accountNumber": "Account Number",
+            "status": "Status",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Id Employee",
+            "idBank": "Id Bank"
+        }
+    }
+}

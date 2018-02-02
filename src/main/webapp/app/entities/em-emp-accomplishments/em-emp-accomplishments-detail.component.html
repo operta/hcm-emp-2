@@ -1,0 +1,102 @@
+
+<div *ngIf="emEmpAccomplishments">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.detail.title">Em Emp Accomplishments</span> {{emEmpAccomplishments.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.title">Title</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.description">Description</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.organization">Organization</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.organization}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.location">Location</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.location}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.association">Association</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.association}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.ongoing">Ongoing</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.ongoing}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.link}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom">Date From</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.dateFrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo">Date To</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.dateTo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.occupation">Occupation</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.occupation}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.proficiency">Proficiency</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.proficiency}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.licenceNumber">Licence Number</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.licenceNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.rating}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpAccomplishments.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpAccomplishments.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpAccomplishments.idEmployee?.id]">{{emEmpAccomplishments.idEmployee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.idAccomplishmentType">Id Accomplishment Type</span></dt>
+        <dd>
+            <div *ngIf="emEmpAccomplishments.idAccomplishmentType">
+                <a [routerLink]="['/at-accomplishment-types', emEmpAccomplishments.idAccomplishmentType?.id]">{{emEmpAccomplishments.idAccomplishmentType?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-accomplishments/'+ emEmpAccomplishments.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,52 @@
+
+<div *ngIf="emEmpNotes">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpNotes.detail.title">Em Emp Notes</span> {{emEmpNotes.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpNotes.title">Title</span></dt>
+        <dd>
+            <span>{{emEmpNotes.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpNotes.decsription">Decsription</span></dt>
+        <dd>
+            <span>{{emEmpNotes.decsription}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpNotes.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpNotes.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpNotes.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpNotes.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpNotes.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpNotes.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpNotes.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpNotes.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpNotes.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpNotes.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpNotes.idEmployee?.id]">{{emEmpNotes.idEmployee?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-notes/'+ emEmpNotes.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

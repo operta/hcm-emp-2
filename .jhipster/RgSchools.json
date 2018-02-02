@@ -1,0 +1,78 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idCity",
+            "otherEntityName": "rgRegions",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "rgSchools"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idCountry",
+            "otherEntityName": "rgRegions",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "rgSchools"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idRegion",
+            "otherEntityName": "rgRegions",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "rgSchools"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180202093525",
+    "entityTableName": "rg_schools",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

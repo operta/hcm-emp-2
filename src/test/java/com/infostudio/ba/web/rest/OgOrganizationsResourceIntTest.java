@@ -159,6 +159,42 @@ public class OgOrganizationsResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ogOrganizationsRepository.findAll().size();
+        // set the field null
+        ogOrganizations.setCode(null);
+
+        // Create the OgOrganizations, which fails.
+
+        restOgOrganizationsMockMvc.perform(post("/api/og-organizations")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(ogOrganizations)))
+            .andExpect(status().isBadRequest());
+
+        List<OgOrganizations> ogOrganizationsList = ogOrganizationsRepository.findAll();
+        assertThat(ogOrganizationsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ogOrganizationsRepository.findAll().size();
+        // set the field null
+        ogOrganizations.setName(null);
+
+        // Create the OgOrganizations, which fails.
+
+        restOgOrganizationsMockMvc.perform(post("/api/og-organizations")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(ogOrganizations)))
+            .andExpect(status().isBadRequest());
+
+        List<OgOrganizations> ogOrganizationsList = ogOrganizationsRepository.findAll();
+        assertThat(ogOrganizationsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllOgOrganizations() throws Exception {
         // Initialize the database
         ogOrganizationsRepository.saveAndFlush(ogOrganizations);

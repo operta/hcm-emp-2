@@ -159,6 +159,42 @@ public class RgRegionsResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = rgRegionsRepository.findAll().size();
+        // set the field null
+        rgRegions.setCode(null);
+
+        // Create the RgRegions, which fails.
+
+        restRgRegionsMockMvc.perform(post("/api/rg-regions")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(rgRegions)))
+            .andExpect(status().isBadRequest());
+
+        List<RgRegions> rgRegionsList = rgRegionsRepository.findAll();
+        assertThat(rgRegionsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = rgRegionsRepository.findAll().size();
+        // set the field null
+        rgRegions.setName(null);
+
+        // Create the RgRegions, which fails.
+
+        restRgRegionsMockMvc.perform(post("/api/rg-regions")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(rgRegions)))
+            .andExpect(status().isBadRequest());
+
+        List<RgRegions> rgRegionsList = rgRegionsRepository.findAll();
+        assertThat(rgRegionsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllRgRegions() throws Exception {
         // Initialize the database
         rgRegionsRepository.saveAndFlush(rgRegions);

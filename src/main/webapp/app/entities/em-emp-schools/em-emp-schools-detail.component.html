@@ -1,0 +1,80 @@
+
+<div *ngIf="emEmpSchools">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpSchools.detail.title">Em Emp Schools</span> {{emEmpSchools.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.dateFrom">Date From</span></dt>
+        <dd>
+            <span>{{emEmpSchools.dateFrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.dateTo">Date To</span></dt>
+        <dd>
+            <span>{{emEmpSchools.dateTo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.major">Major</span></dt>
+        <dd>
+            <span>{{emEmpSchools.major}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.degree">Degree</span></dt>
+        <dd>
+            <span>{{emEmpSchools.degree}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.grade">Grade</span></dt>
+        <dd>
+            <span>{{emEmpSchools.grade}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.description">Description</span></dt>
+        <dd>
+            <span>{{emEmpSchools.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpSchools.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpSchools.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpSchools.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpSchools.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.idSchool">Id School</span></dt>
+        <dd>
+            <div *ngIf="emEmpSchools.idSchool">
+                <a [routerLink]="['/rg-schools', emEmpSchools.idSchool?.id]">{{emEmpSchools.idSchool?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpSchools.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpSchools.idEmployee?.id]">{{emEmpSchools.idEmployee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSchools.idQualification">Id Qualification</span></dt>
+        <dd>
+            <div *ngIf="emEmpSchools.idQualification">
+                <a [routerLink]="['/rg-qualifications', emEmpSchools.idQualification?.id]">{{emEmpSchools.idQualification?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-schools/'+ emEmpSchools.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

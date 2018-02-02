@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "emContractTypes" : {
+            "home": {
+                "title": "Em Contract Types",
+                "createLabel": "Create a new Em Contract Types",
+                "createOrEditLabel": "Create or edit a Em Contract Types"
+            },
+            "created": "A new Em Contract Types is created with identifier {{ param }}",
+            "updated": "A Em Contract Types is updated with identifier {{ param }}",
+            "deleted": "A Em Contract Types is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Contract Types {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Contract Types"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

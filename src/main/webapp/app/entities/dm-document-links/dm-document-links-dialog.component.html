@@ -1,0 +1,87 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myDmDocumentLinksLabel" jhiTranslate="hcmEmpApp.dmDocumentLinks.home.createOrEditLabel">Create or edit a Dm Document Links</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!dmDocumentLinks.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="dmDocumentLinks.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.documentName" for="field_documentName">Document Name</label>
+            <input type="text" class="form-control" name="documentName" id="field_documentName"
+                [(ngModel)]="dmDocumentLinks.documentName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.fileName" for="field_fileName">File Name</label>
+            <input type="text" class="form-control" name="fileName" id="field_fileName"
+                [(ngModel)]="dmDocumentLinks.fileName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.filePath" for="field_filePath">File Path</label>
+            <input type="text" class="form-control" name="filePath" id="field_filePath"
+                [(ngModel)]="dmDocumentLinks.filePath" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.uri" for="field_uri">Uri</label>
+            <input type="text" class="form-control" name="uri" id="field_uri"
+                [(ngModel)]="dmDocumentLinks.uri" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.documentBlob" for="field_documentBlob">Document Blob</label>
+            <div>
+                <div *ngIf="dmDocumentLinks.documentBlob" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(dmDocumentLinks.documentBlobContentType, dmDocumentLinks.documentBlob)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{dmDocumentLinks.documentBlobContentType}}, {{byteSize(dmDocumentLinks.documentBlob)}}</span>
+                    <button type="button" (click)="dmDocumentLinks.documentBlob=null;dmDocumentLinks.documentBlobContentType=null;"
+                            class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_documentBlob" (change)="setFileData($event, dmDocumentLinks, 'documentBlob', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="documentBlob" id="field_documentBlob"
+                [(ngModel)]="dmDocumentLinks.documentBlob" />
+            <input type="hidden" class="form-control" name="documentBlobContentType" id="field_documentBlobContentType"
+                [(ngModel)]="dmDocumentLinks.documentBlobContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="dmDocumentLinks.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.createdAt" for="field_createdAt">Created At</label>
+            <div class="d-flex">
+                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="dmDocumentLinks.createdAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.updatedBy" for="field_updatedBy">Updated By</label>
+            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                [(ngModel)]="dmDocumentLinks.updatedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.updatedAt" for="field_updatedAt">Updated At</label>
+            <div class="d-flex">
+                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="dmDocumentLinks.updatedAt"
+                />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

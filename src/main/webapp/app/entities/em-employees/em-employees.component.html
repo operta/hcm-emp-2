@@ -15,32 +15,35 @@
     <div class="table-responsive" *ngIf="emEmployees">
         <table class="table table-striped">
             <thead>
-            <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.code">Code</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.name">Name</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.middleName">Middle Name</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.surname">Surname</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.maidenName">Maiden Name</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.disabilityDegree">Disability Degree</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.ethnicGroup">Ethnic Group</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.gender">Gender</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.residentialSituation">Residential Situation</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.maritalStatus">Marital Status</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.bloodGroup">Blood Group</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.dateOfBirth">Date Of Birth</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.hireDate">Hire Date</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.ssn">Ssn</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.taxNumber">Tax Number</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.createdBy">Created By</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.createdAt">Created At</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.updatedBy">Updated By</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.updatedAt">Updated At</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.idQualification">Id Qualification</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.idEmploymentType">Id Employment Type</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.idLegalEntity">Id Legal Entity</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.idStatus">Id Status</span></th>
-            <th><span jhiTranslate="hcmEmpApp.emEmployees.idUser">Id User</span></th>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="hcmEmpApp.emEmployees.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="hcmEmpApp.emEmployees.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="middleName"><span jhiTranslate="hcmEmpApp.emEmployees.middleName">Middle Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="surname"><span jhiTranslate="hcmEmpApp.emEmployees.surname">Surname</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="maidenName"><span jhiTranslate="hcmEmpApp.emEmployees.maidenName">Maiden Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="disabilityDegree"><span jhiTranslate="hcmEmpApp.emEmployees.disabilityDegree">Disability Degree</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ethnicGroup"><span jhiTranslate="hcmEmpApp.emEmployees.ethnicGroup">Ethnic Group</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="gender"><span jhiTranslate="hcmEmpApp.emEmployees.gender">Gender</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="residentialSituation"><span jhiTranslate="hcmEmpApp.emEmployees.residentialSituation">Residential Situation</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="maritalStatus"><span jhiTranslate="hcmEmpApp.emEmployees.maritalStatus">Marital Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="bloodGroup"><span jhiTranslate="hcmEmpApp.emEmployees.bloodGroup">Blood Group</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateOfBirth"><span jhiTranslate="hcmEmpApp.emEmployees.dateOfBirth">Date Of Birth</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="hireDate"><span jhiTranslate="hcmEmpApp.emEmployees.hireDate">Hire Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ssn"><span jhiTranslate="hcmEmpApp.emEmployees.ssn">Ssn</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="taxNumber"><span jhiTranslate="hcmEmpApp.emEmployees.taxNumber">Tax Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="imagePath"><span jhiTranslate="hcmEmpApp.emEmployees.imagePath">Image Path</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="phoneNumber"><span jhiTranslate="hcmEmpApp.emEmployees.phoneNumber">Phone Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span jhiTranslate="hcmEmpApp.emEmployees.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.emEmployees.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.emEmployees.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.emEmployees.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.emEmployees.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idQualification.name"><span jhiTranslate="hcmEmpApp.emEmployees.idQualification">Id Qualification</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idEmploymentType.name"><span jhiTranslate="hcmEmpApp.emEmployees.idEmploymentType">Id Employment Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idLegalEntity.name"><span jhiTranslate="hcmEmpApp.emEmployees.idLegalEntity">Id Legal Entity</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idStatus.name"><span jhiTranslate="hcmEmpApp.emEmployees.idStatus">Id Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idUser.id"><span jhiTranslate="hcmEmpApp.emEmployees.idUser">Id User</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -62,6 +65,9 @@
                 <td>{{emEmployees.hireDate | date:'mediumDate'}}</td>
                 <td>{{emEmployees.ssn}}</td>
                 <td>{{emEmployees.taxNumber}}</td>
+                <td>{{emEmployees.imagePath}}</td>
+                <td>{{emEmployees.phoneNumber}}</td>
+                <td>{{emEmployees.email}}</td>
                 <td>{{emEmployees.createdBy}}</td>
                 <td>{{emEmployees.createdAt | date:'medium'}}</td>
                 <td>{{emEmployees.updatedBy}}</td>
@@ -118,5 +124,13 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div *ngIf="emEmployees && emEmployees.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
     </div>
 </div>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity RgSchools.
+    -->
+    <changeSet id="20180202093525-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_city_id"
+                                 baseTableName="rg_schools"
+                                 constraintName="fk_rg_schools_id_city_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rg_regions"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_country_id"
+                                 baseTableName="rg_schools"
+                                 constraintName="fk_rg_schools_id_country_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rg_regions"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_region_id"
+                                 baseTableName="rg_schools"
+                                 constraintName="fk_rg_schools_id_region_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rg_regions"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,32 @@
+{
+    "hcmEmpApp": {
+        "emEmpDocuments" : {
+            "home": {
+                "title": "Em Emp Documents",
+                "createLabel": "Create a new Em Emp Documents",
+                "createOrEditLabel": "Create or edit a Em Emp Documents"
+            },
+            "created": "A new Em Emp Documents is created with identifier {{ param }}",
+            "updated": "A Em Emp Documents is updated with identifier {{ param }}",
+            "deleted": "A Em Emp Documents is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Emp Documents {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Emp Documents"
+            },
+            "name": "Name",
+            "description": "Description",
+            "dateCreated": "Date Created",
+            "validFrom": "Valid From",
+            "validTo": "Valid To",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Id Employee",
+            "idDocumentType": "Id Document Type",
+            "idDocumentLink": "Id Document Link"
+        }
+    }
+}

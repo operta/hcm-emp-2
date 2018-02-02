@@ -2,6 +2,7 @@ package com.infostudio.ba.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -21,7 +22,8 @@ public class LeLegalEntities implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "code")
+    @NotNull
+    @Column(name = "code", nullable = false)
     private String code;
 
     @Column(name = "name")
@@ -45,10 +47,12 @@ public class LeLegalEntities implements Serializable {
     @Column(name = "duty_number")
     private String dutyNumber;
 
-    @Column(name = "address")
+    @NotNull
+    @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "postal_number")
+    @NotNull
+    @Column(name = "postal_number", nullable = false)
     private String postalNumber;
 
     @OneToOne

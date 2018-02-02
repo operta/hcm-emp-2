@@ -6,12 +6,18 @@ import com.infostudio.ba.domain.EmEmployees;
 import com.infostudio.ba.repository.EmEmployeesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
+import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -44,7 +50,7 @@ public class EmEmployeesResource {
      */
     @PostMapping("/em-employees")
     @Timed
-    public ResponseEntity<EmEmployees> createEmEmployees(@RequestBody EmEmployees emEmployees) throws URISyntaxException {
+    public ResponseEntity<EmEmployees> createEmEmployees(@Valid @RequestBody EmEmployees emEmployees) throws URISyntaxException {
         log.debug("REST request to save EmEmployees : {}", emEmployees);
         if (emEmployees.getId() != null) {
             throw new BadRequestAlertException("A new emEmployees cannot already have an ID", ENTITY_NAME, "idexists");
@@ -66,7 +72,7 @@ public class EmEmployeesResource {
      */
     @PutMapping("/em-employees")
     @Timed
-    public ResponseEntity<EmEmployees> updateEmEmployees(@RequestBody EmEmployees emEmployees) throws URISyntaxException {
+    public ResponseEntity<EmEmployees> updateEmEmployees(@Valid @RequestBody EmEmployees emEmployees) throws URISyntaxException {
         log.debug("REST request to update EmEmployees : {}", emEmployees);
         if (emEmployees.getId() == null) {
             return createEmEmployees(emEmployees);
@@ -80,20 +86,16 @@ public class EmEmployeesResource {
     /**
      * GET  /em-employees : get all the emEmployees.
      *
+     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of emEmployees in body
      */
     @GetMapping("/em-employees")
     @Timed
-    public List<EmEmployees> getAllEmEmployees() {
-        log.debug("REST request to get all EmEmployees");
-        return emEmployeesRepository.findAll();
-        }
-
-    @GetMapping("/em-employees/byUser/{id}")
-    @Timed
-    public ResponseEntity<EmEmployees> getEmEmployeesByUser(@PathVariable Long id) {
-        EmEmployees employee = emEmployeesRepository.findByIdUserId(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(employee));
+    public ResponseEntity<List<EmEmployees>> getAllEmEmployees(Pageable pageable) {
+        log.debug("REST request to get a page of EmEmployees");
+        Page<EmEmployees> page = emEmployeesRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/em-employees");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
@@ -107,6 +109,20 @@ public class EmEmployeesResource {
     public ResponseEntity<EmEmployees> getEmEmployees(@PathVariable Long id) {
         log.debug("REST request to get EmEmployees : {}", id);
         EmEmployees emEmployees = emEmployeesRepository.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(emEmployees));
+    }
+
+    /**
+     * GET  /em-employees/user/:id : get the emEmployee by user id.
+     *
+     * @param id the id of the User to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the emEmployees, or with status 404 (Not Found)
+     */
+    @GetMapping("/em-employees/user/{id}")
+    @Timed
+    public ResponseEntity<EmEmployees> getEmEmployeesByUserId(@PathVariable Long id) {
+        log.debug("REST request to get EmEmployees by user id: {}", id);
+        EmEmployees emEmployees = emEmployeesRepository.findByIdUserId(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(emEmployees));
     }
 

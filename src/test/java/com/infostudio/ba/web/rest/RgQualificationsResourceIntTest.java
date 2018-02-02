@@ -159,6 +159,42 @@ public class RgQualificationsResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = rgQualificationsRepository.findAll().size();
+        // set the field null
+        rgQualifications.setCode(null);
+
+        // Create the RgQualifications, which fails.
+
+        restRgQualificationsMockMvc.perform(post("/api/rg-qualifications")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(rgQualifications)))
+            .andExpect(status().isBadRequest());
+
+        List<RgQualifications> rgQualificationsList = rgQualificationsRepository.findAll();
+        assertThat(rgQualificationsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = rgQualificationsRepository.findAll().size();
+        // set the field null
+        rgQualifications.setName(null);
+
+        // Create the RgQualifications, which fails.
+
+        restRgQualificationsMockMvc.perform(post("/api/rg-qualifications")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(rgQualifications)))
+            .andExpect(status().isBadRequest());
+
+        List<RgQualifications> rgQualificationsList = rgQualificationsRepository.findAll();
+        assertThat(rgQualificationsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllRgQualifications() throws Exception {
         // Initialize the database
         rgQualificationsRepository.saveAndFlush(rgQualifications);

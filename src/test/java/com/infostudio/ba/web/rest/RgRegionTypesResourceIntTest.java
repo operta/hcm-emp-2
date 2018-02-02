@@ -159,6 +159,42 @@ public class RgRegionTypesResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = rgRegionTypesRepository.findAll().size();
+        // set the field null
+        rgRegionTypes.setCode(null);
+
+        // Create the RgRegionTypes, which fails.
+
+        restRgRegionTypesMockMvc.perform(post("/api/rg-region-types")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypes)))
+            .andExpect(status().isBadRequest());
+
+        List<RgRegionTypes> rgRegionTypesList = rgRegionTypesRepository.findAll();
+        assertThat(rgRegionTypesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = rgRegionTypesRepository.findAll().size();
+        // set the field null
+        rgRegionTypes.setName(null);
+
+        // Create the RgRegionTypes, which fails.
+
+        restRgRegionTypesMockMvc.perform(post("/api/rg-region-types")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(rgRegionTypes)))
+            .andExpect(status().isBadRequest());
+
+        List<RgRegionTypes> rgRegionTypesList = rgRegionTypesRepository.findAll();
+        assertThat(rgRegionTypesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllRgRegionTypes() throws Exception {
         // Initialize the database
         rgRegionTypesRepository.saveAndFlush(rgRegionTypes);

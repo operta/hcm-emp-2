@@ -131,7 +131,7 @@
                     </a>
                 </li>
                 <li>
-                    <a (click)="collapseLists()" routerLinkActive="active" routerLink="/dashboard/employee-overview"  class="waves-effect">
+                    <a (click)="collapseLists()" routerLinkActive="active"  [routerLink]="['/dashboard/employee-overview', '', accountId ]"  class="waves-effect">
                         <i class="icon-user fa-fw" data-icon="v"></i>
                         <span class="hide-menu"> My Info </span>
                     </a>
@@ -212,68 +212,163 @@
                     </a>
 
                     <ul class="nav nav-second-level" *ngIf="!isEntityCollapsed">
-                        <li>
-                            <a class="" routerLink="og-organizations" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.ogOrganizations">Og Organizations</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="og-org-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.ogOrgTypes">Og Org Types</span>
-                            </a>
-                        </li>
+
 
                         <li>
                             <a class="" routerLink="le-legal-entities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
                                 <span jhiTranslate="global.menu.entities.leLegalEntities">Le Legal Entities</span>
                             </a>
                         </li>
                         <li>
                             <a class="" routerLink="le-legal-entity-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
                                 <span jhiTranslate="global.menu.entities.leLegalEntityTypes">Le Legal Entity Types</span>
                             </a>
                         </li>
                         <li>
                             <a class="" routerLink="rg-regions" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
                                 <span jhiTranslate="global.menu.entities.rgRegions">Rg Regions</span>
                             </a>
                         </li>
                         <li>
                             <a class="" routerLink="rg-region-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
                                 <span jhiTranslate="global.menu.entities.rgRegionTypes">Rg Region Types</span>
                             </a>
                         </li>
 
                         <li>
-                        <a class="" routerLink="rg-qualifications" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                        <a class="" routerLink="rg-qualifications" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
                             <span jhiTranslate="global.menu.entities.rgQualifications">Rg Qualifications</span>
                         </a>
                     </li>
                         <li>
-                        <a class="" routerLink="em-emp-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                        <a class="" routerLink="em-emp-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
                             <span jhiTranslate="global.menu.entities.emEmpTypes">Em Emp Types</span>
                         </a>
                     </li>
                         <li>
-                        <a class="" routerLink="em-statuses" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                        <a class="" routerLink="em-statuses" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
                             <span jhiTranslate="global.menu.entities.emStatuses">Em Statuses</span>
                         </a>
                     </li>
                         <li>
-                        <a class="" routerLink="em-employees" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.emEmployees">Em Employees</span>
-                        </a>
-                    </li>
+                            <a class="" routerLink="em-employees" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmployees">Em Employees</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="at-accomplishment-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.atAccomplishmentTypes">Accomplishment Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="dm-document-links" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.dmDocumentLinks">Document Links</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="dm-document-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.dmDocumentTypes">Document Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-contract-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Contract Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-accomplishments" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpAccomplishments">Employee Accomplishments</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-bank-accounts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpBankAccounts">Bank Accounts</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-documents" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpDocuments">Employee Documents</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-notes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpNotes">Employee Notes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-org-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Employee Workplaces</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="og-org-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Organization Workplaces</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="og-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Workplaces</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="og-work-place-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Workplace Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="og-organizations" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Organizations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="og-org-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Organization Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-salaries" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpSalaries">Employee Salaries</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-schools" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpSchools">Employee Schools</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="rg-schools" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.rgSchools">Schools</span>
+                            </a>
+                        </li>
+
+
+
+
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
@@ -288,7 +383,7 @@
                     <!--</a>-->
 
                     <a (click)="toggleAdministration()" class="waves-effect" aria-expanded="false">
-                        <i class="fa fa-user-plus"></i>
+                        <i class="fa fa-cogs"></i>
                         <span class="hide-menu">Administration
                             <span class="pull-right" [ngClass]="isAdministrationCollapsed ? 'fa fa-caret-down' : 'fa fa-caret-right'"></span>
                         </span>
@@ -297,7 +392,7 @@
                     <ul class="nav nav-second-level" *ngIf="!isAdministrationCollapsed">
                         <li>
                             <a class="" routerLink="user-management" routerLinkActive="active">
-                                <i class="fa fa-fw fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
                                 <span jhiTranslate="global.menu.admin.userManagement">User management</span>
                             </a>
                         </li>

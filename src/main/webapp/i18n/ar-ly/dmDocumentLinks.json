@@ -1,0 +1,29 @@
+{
+    "hcmEmpApp": {
+        "dmDocumentLinks" : {
+            "home": {
+                "title": "Dm Document Links",
+                "createLabel": "Create a new Dm Document Links",
+                "createOrEditLabel": "Create or edit a Dm Document Links"
+            },
+            "created": "A new Dm Document Links is created with identifier {{ param }}",
+            "updated": "A Dm Document Links is updated with identifier {{ param }}",
+            "deleted": "A Dm Document Links is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Dm Document Links {{ id }}?"
+            },
+            "detail": {
+                "title": "Dm Document Links"
+            },
+            "documentName": "Document Name",
+            "fileName": "File Name",
+            "filePath": "File Path",
+            "uri": "Uri",
+            "documentBlob": "Document Blob",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

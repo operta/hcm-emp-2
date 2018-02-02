@@ -49,8 +49,7 @@ export const emEmpTypesRoute: Routes = [
                     pageTitle: 'hcmEmpApp.emEmpTypes.home.title'
                 },
                 canActivate: [UserRouteAccessService]
-            }
-        ]
+            }]
     }
 ];
 

@@ -1,0 +1,30 @@
+{
+    "hcmEmpApp": {
+        "emEmpOrgWorkPlaces" : {
+            "home": {
+                "title": "Em Emp Org Work Places",
+                "createLabel": "Create a new Em Emp Org Work Places",
+                "createOrEditLabel": "Create or edit a Em Emp Org Work Places"
+            },
+            "created": "A new Em Emp Org Work Places is created with identifier {{ param }}",
+            "updated": "A Em Emp Org Work Places is updated with identifier {{ param }}",
+            "deleted": "A Em Emp Org Work Places is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Emp Org Work Places {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Emp Org Work Places"
+            },
+            "dateFrom": "Date From",
+            "dateTo": "Date To",
+            "workHistoryCoefficient": "Work History Coefficient",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Id Employee",
+            "idContractType": "Id Contract Type",
+            "idOrgWorkPlace": "Id Org Work Place"
+        }
+    }
+}

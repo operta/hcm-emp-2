@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idOrganization",
+            "otherEntityName": "ogOrganizations",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "ogOrgWorkPlaces"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idWorkPlace",
+            "otherEntityName": "ogWorkPlaces",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "ogOrgWorkPlaces"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180202093520",
+    "entityTableName": "og_org_work_places",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

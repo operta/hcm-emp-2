@@ -1,0 +1,110 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.emEmpAccomplishments.home.title">Em Emp Accomplishments</span>
+        <button class="btn btn-primary float-right jh-create-entity create-em-emp-accomplishments" [routerLink]="['/', { outlets: { popup: ['em-emp-accomplishments-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.emEmpAccomplishments.home.createLabel">
+            Create new Em Emp Accomplishments
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emEmpAccomplishments">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="title"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.title">Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="organization"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.organization">Organization</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="location"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.location">Location</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="association"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.association">Association</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ongoing"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.ongoing">Ongoing</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="link"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateFrom"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom">Date From</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateTo"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo">Date To</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="occupation"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.occupation">Occupation</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="proficiency"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.proficiency">Proficiency</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="licenceNumber"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.licenceNumber">Licence Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="rating"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idEmployee.id"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.idEmployee">Id Employee</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idAccomplishmentType.name"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.idAccomplishmentType">Id Accomplishment Type</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emEmpAccomplishments of emEmpAccomplishments ;trackBy: trackId">
+                <td><a [routerLink]="['../em-emp-accomplishments', emEmpAccomplishments.id ]">{{emEmpAccomplishments.id}}</a></td>
+                <td>{{emEmpAccomplishments.title}}</td>
+                <td>{{emEmpAccomplishments.description}}</td>
+                <td>{{emEmpAccomplishments.organization}}</td>
+                <td>{{emEmpAccomplishments.location}}</td>
+                <td>{{emEmpAccomplishments.association}}</td>
+                <td>{{emEmpAccomplishments.ongoing}}</td>
+                <td>{{emEmpAccomplishments.link}}</td>
+                <td>{{emEmpAccomplishments.dateFrom | date:'mediumDate'}}</td>
+                <td>{{emEmpAccomplishments.dateTo | date:'mediumDate'}}</td>
+                <td>{{emEmpAccomplishments.occupation}}</td>
+                <td>{{emEmpAccomplishments.proficiency}}</td>
+                <td>{{emEmpAccomplishments.licenceNumber}}</td>
+                <td>{{emEmpAccomplishments.rating}}</td>
+                <td>{{emEmpAccomplishments.createdBy}}</td>
+                <td>{{emEmpAccomplishments.createdAt | date:'medium'}}</td>
+                <td>{{emEmpAccomplishments.updatedBy}}</td>
+                <td>{{emEmpAccomplishments.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="emEmpAccomplishments.idEmployee">
+                        <a [routerLink]="['../em-employees', emEmpAccomplishments.idEmployee?.id ]" >{{emEmpAccomplishments.idEmployee?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmpAccomplishments.idAccomplishmentType">
+                        <a [routerLink]="['../at-accomplishment-types', emEmpAccomplishments.idAccomplishmentType?.id ]" >{{emEmpAccomplishments.idAccomplishmentType?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../em-emp-accomplishments', emEmpAccomplishments.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-accomplishments/'+ emEmpAccomplishments.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-accomplishments/'+ emEmpAccomplishments.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="emEmpAccomplishments && emEmpAccomplishments.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

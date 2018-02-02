@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "ogWorkPlaceTypes" : {
+            "home": {
+                "title": "Og Work Place Types",
+                "createLabel": "Create a new Og Work Place Types",
+                "createOrEditLabel": "Create or edit a Og Work Place Types"
+            },
+            "created": "A new Og Work Place Types is created with identifier {{ param }}",
+            "updated": "A Og Work Place Types is updated with identifier {{ param }}",
+            "deleted": "A Og Work Place Types is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Og Work Place Types {{ id }}?"
+            },
+            "detail": {
+                "title": "Og Work Place Types"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

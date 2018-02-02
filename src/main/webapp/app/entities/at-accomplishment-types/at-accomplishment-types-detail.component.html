@@ -1,0 +1,50 @@
+
+<div *ngIf="atAccomplishmentTypes">
+    <h2><span jhiTranslate="hcmEmpApp.atAccomplishmentTypes.detail.title">At Accomplishment Types</span> {{atAccomplishmentTypes.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.atAccomplishmentTypes.code">Code</span></dt>
+        <dd>
+            <span>{{atAccomplishmentTypes.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.atAccomplishmentTypes.name">Name</span></dt>
+        <dd>
+            <span>{{atAccomplishmentTypes.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.atAccomplishmentTypes.description">Description</span></dt>
+        <dd>
+            <span>{{atAccomplishmentTypes.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.atAccomplishmentTypes.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{atAccomplishmentTypes.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.atAccomplishmentTypes.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{atAccomplishmentTypes.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.atAccomplishmentTypes.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{atAccomplishmentTypes.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.atAccomplishmentTypes.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{atAccomplishmentTypes.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'at-accomplishment-types/'+ atAccomplishmentTypes.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

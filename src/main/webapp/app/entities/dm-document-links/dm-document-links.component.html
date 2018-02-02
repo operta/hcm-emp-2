@@ -1,0 +1,85 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.dmDocumentLinks.home.title">Dm Document Links</span>
+        <button class="btn btn-primary float-right jh-create-entity create-dm-document-links" [routerLink]="['/', { outlets: { popup: ['dm-document-links-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.dmDocumentLinks.home.createLabel">
+            Create new Dm Document Links
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="dmDocumentLinks">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="documentName"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.documentName">Document Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fileName"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.fileName">File Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="filePath"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.filePath">File Path</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="uri"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.uri">Uri</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="documentBlob"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.documentBlob">Document Blob</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.dmDocumentLinks.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dmDocumentLinks of dmDocumentLinks ;trackBy: trackId">
+                <td><a [routerLink]="['../dm-document-links', dmDocumentLinks.id ]">{{dmDocumentLinks.id}}</a></td>
+                <td>{{dmDocumentLinks.documentName}}</td>
+                <td>{{dmDocumentLinks.fileName}}</td>
+                <td>{{dmDocumentLinks.filePath}}</td>
+                <td>{{dmDocumentLinks.uri}}</td>
+                <td>
+                    <a *ngIf="dmDocumentLinks.documentBlob" (click)="openFile(dmDocumentLinks.documentBlobContentType, dmDocumentLinks.documentBlob)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="dmDocumentLinks.documentBlob">{{dmDocumentLinks.documentBlobContentType}}, {{byteSize(dmDocumentLinks.documentBlob)}}</span>
+                </td>
+                <td>{{dmDocumentLinks.createdBy}}</td>
+                <td>{{dmDocumentLinks.createdAt | date:'medium'}}</td>
+                <td>{{dmDocumentLinks.updatedBy}}</td>
+                <td>{{dmDocumentLinks.updatedAt | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../dm-document-links', dmDocumentLinks.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dm-document-links/'+ dmDocumentLinks.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dm-document-links/'+ dmDocumentLinks.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dmDocumentLinks && dmDocumentLinks.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

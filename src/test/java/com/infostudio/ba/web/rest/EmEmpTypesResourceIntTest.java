@@ -159,6 +159,42 @@ public class EmEmpTypesResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = emEmpTypesRepository.findAll().size();
+        // set the field null
+        emEmpTypes.setCode(null);
+
+        // Create the EmEmpTypes, which fails.
+
+        restEmEmpTypesMockMvc.perform(post("/api/em-emp-types")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(emEmpTypes)))
+            .andExpect(status().isBadRequest());
+
+        List<EmEmpTypes> emEmpTypesList = emEmpTypesRepository.findAll();
+        assertThat(emEmpTypesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = emEmpTypesRepository.findAll().size();
+        // set the field null
+        emEmpTypes.setName(null);
+
+        // Create the EmEmpTypes, which fails.
+
+        restEmEmpTypesMockMvc.perform(post("/api/em-emp-types")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(emEmpTypes)))
+            .andExpect(status().isBadRequest());
+
+        List<EmEmpTypes> emEmpTypesList = emEmpTypesRepository.findAll();
+        assertThat(emEmpTypesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllEmEmpTypes() throws Exception {
         // Initialize the database
         emEmpTypesRepository.saveAndFlush(emEmpTypes);

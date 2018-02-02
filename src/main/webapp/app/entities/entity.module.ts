@@ -10,6 +10,21 @@ import { HcmEmpRgQualificationsModule } from './rg-qualifications/rg-qualificati
 import { HcmEmpEmEmpTypesModule } from './em-emp-types/em-emp-types.module';
 import { HcmEmpEmStatusesModule } from './em-statuses/em-statuses.module';
 import { HcmEmpEmEmployeesModule } from './em-employees/em-employees.module';
+import { HcmEmpEmEmpBankAccountsModule } from './em-emp-bank-accounts/em-emp-bank-accounts.module';
+import { HcmEmpOgWorkPlaceTypesModule } from './og-work-place-types/og-work-place-types.module';
+import { HcmEmpOgWorkPlacesModule } from './og-work-places/og-work-places.module';
+import { HcmEmpOgOrgWorkPlacesModule } from './og-org-work-places/og-org-work-places.module';
+import { HcmEmpEmContractTypesModule } from './em-contract-types/em-contract-types.module';
+import { HcmEmpEmEmpOrgWorkPlacesModule } from './em-emp-org-work-places/em-emp-org-work-places.module';
+import { HcmEmpEmEmpSalariesModule } from './em-emp-salaries/em-emp-salaries.module';
+import { HcmEmpEmEmpSchoolsModule } from './em-emp-schools/em-emp-schools.module';
+import { HcmEmpRgSchoolsModule } from './rg-schools/rg-schools.module';
+import { HcmEmpAtAccomplishmentTypesModule } from './at-accomplishment-types/at-accomplishment-types.module';
+import { HcmEmpEmEmpAccomplishmentsModule } from './em-emp-accomplishments/em-emp-accomplishments.module';
+import { HcmEmpDmDocumentLinksModule } from './dm-document-links/dm-document-links.module';
+import { HcmEmpDmDocumentTypesModule } from './dm-document-types/dm-document-types.module';
+import { HcmEmpEmEmpDocumentsModule } from './em-emp-documents/em-emp-documents.module';
+import { HcmEmpEmEmpNotesModule } from './em-emp-notes/em-emp-notes.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -24,6 +39,21 @@ import { HcmEmpEmEmployeesModule } from './em-employees/em-employees.module';
         HcmEmpEmEmpTypesModule,
         HcmEmpEmStatusesModule,
         HcmEmpEmEmployeesModule,
+        HcmEmpEmEmpBankAccountsModule,
+        HcmEmpOgWorkPlaceTypesModule,
+        HcmEmpOgWorkPlacesModule,
+        HcmEmpOgOrgWorkPlacesModule,
+        HcmEmpEmContractTypesModule,
+        HcmEmpEmEmpOrgWorkPlacesModule,
+        HcmEmpEmEmpSalariesModule,
+        HcmEmpEmEmpSchoolsModule,
+        HcmEmpRgSchoolsModule,
+        HcmEmpAtAccomplishmentTypesModule,
+        HcmEmpEmEmpAccomplishmentsModule,
+        HcmEmpDmDocumentLinksModule,
+        HcmEmpDmDocumentTypesModule,
+        HcmEmpEmEmpDocumentsModule,
+        HcmEmpEmEmpNotesModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

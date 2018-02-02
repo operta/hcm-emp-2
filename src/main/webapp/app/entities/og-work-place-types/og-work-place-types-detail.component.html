@@ -1,0 +1,50 @@
+
+<div *ngIf="ogWorkPlaceTypes">
+    <h2><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.detail.title">Og Work Place Types</span> {{ogWorkPlaceTypes.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.code">Code</span></dt>
+        <dd>
+            <span>{{ogWorkPlaceTypes.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.name">Name</span></dt>
+        <dd>
+            <span>{{ogWorkPlaceTypes.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.description">Description</span></dt>
+        <dd>
+            <span>{{ogWorkPlaceTypes.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{ogWorkPlaceTypes.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{ogWorkPlaceTypes.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{ogWorkPlaceTypes.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{ogWorkPlaceTypes.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'og-work-place-types/'+ ogWorkPlaceTypes.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

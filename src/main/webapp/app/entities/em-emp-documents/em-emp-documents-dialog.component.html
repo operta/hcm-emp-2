@@ -1,0 +1,122 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmpDocumentsLabel" jhiTranslate="hcmEmpApp.emEmpDocuments.home.createOrEditLabel">Create or edit a Em Emp Documents</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!emEmpDocuments.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="emEmpDocuments.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="emEmpDocuments.name" required/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="emEmpDocuments.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.dateCreated" for="field_dateCreated">Date Created</label>
+            <div class="input-group">
+                <input id="field_dateCreated" type="text" class="form-control" name="dateCreated" ngbDatepicker  #dateCreatedDp="ngbDatepicker" [(ngModel)]="emEmpDocuments.dateCreated"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateCreatedDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateCreated?.dirty && editForm.controls.dateCreated?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateCreated?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.validFrom" for="field_validFrom">Valid From</label>
+            <div class="input-group">
+                <input id="field_validFrom" type="text" class="form-control" name="validFrom" ngbDatepicker  #validFromDp="ngbDatepicker" [(ngModel)]="emEmpDocuments.validFrom"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="validFromDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.validTo" for="field_validTo">Valid To</label>
+            <div class="input-group">
+                <input id="field_validTo" type="text" class="form-control" name="validTo" ngbDatepicker  #validToDp="ngbDatepicker" [(ngModel)]="emEmpDocuments.validTo"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="validToDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="emEmpDocuments.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.createdAt" for="field_createdAt">Created At</label>
+            <div class="d-flex">
+                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpDocuments.createdAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.updatedBy" for="field_updatedBy">Updated By</label>
+            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                [(ngModel)]="emEmpDocuments.updatedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.updatedAt" for="field_updatedAt">Updated At</label>
+            <div class="d-flex">
+                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpDocuments.updatedAt"
+                />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.idEmployee" for="field_idEmployee">Id Employee</label>
+            <select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpDocuments.idEmployee">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="emEmployeesOption.id === emEmpDocuments.idEmployee?.id ? emEmpDocuments.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.idDocumentType" for="field_idDocumentType">Id Document Type</label>
+            <select class="form-control" id="field_idDocumentType" name="idDocumentType" [(ngModel)]="emEmpDocuments.idDocumentType">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="dmDocumentTypesOption.id === emEmpDocuments.idDocumentType?.id ? emEmpDocuments.idDocumentType : dmDocumentTypesOption" *ngFor="let dmDocumentTypesOption of iddocumenttypes; trackBy: trackDmDocumentTypesById">{{dmDocumentTypesOption.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpDocuments.idDocumentLink" for="field_idDocumentLink">Id Document Link</label>
+            <select class="form-control" id="field_idDocumentLink" name="idDocumentLink" [(ngModel)]="emEmpDocuments.idDocumentLink">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="dmDocumentLinksOption.id === emEmpDocuments.idDocumentLink?.id ? emEmpDocuments.idDocumentLink : dmDocumentLinksOption" *ngFor="let dmDocumentLinksOption of iddocumentlinks; trackBy: trackDmDocumentLinksById">{{dmDocumentLinksOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

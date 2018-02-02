@@ -1,0 +1,76 @@
+
+<div *ngIf="emEmpDocuments">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpDocuments.detail.title">Em Emp Documents</span> {{emEmpDocuments.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.name">Name</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.description">Description</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.dateCreated">Date Created</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.dateCreated | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.validFrom">Valid From</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.validFrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.validTo">Valid To</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.validTo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpDocuments.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpDocuments.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpDocuments.idEmployee?.id]">{{emEmpDocuments.idEmployee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.idDocumentType">Id Document Type</span></dt>
+        <dd>
+            <div *ngIf="emEmpDocuments.idDocumentType">
+                <a [routerLink]="['/dm-document-types', emEmpDocuments.idDocumentType?.id]">{{emEmpDocuments.idDocumentType?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpDocuments.idDocumentLink">Id Document Link</span></dt>
+        <dd>
+            <div *ngIf="emEmpDocuments.idDocumentLink">
+                <a [routerLink]="['/dm-document-links', emEmpDocuments.idDocumentLink?.id]">{{emEmpDocuments.idDocumentLink?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-documents/'+ emEmpDocuments.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

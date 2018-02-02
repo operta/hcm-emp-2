@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EmEmpDocuments.
+    -->
+    <changeSet id="20180202093530-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_employee_id"
+                                 baseTableName="em_doc"
+                                 constraintName="em_emp_documen_id_employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="em_employees"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_document_type_id"
+                                 baseTableName="em_doc"
+                                 constraintName="em_emp_documen_id_document_t_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dm_document_types"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_document_link_id"
+                                 baseTableName="em_doc"
+                                 constraintName="em_emp_documen_id_document_l_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dm_document_links"/>
+
+    </changeSet>
+</databaseChangeLog>

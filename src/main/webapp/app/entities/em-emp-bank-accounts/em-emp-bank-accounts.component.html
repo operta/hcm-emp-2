@@ -1,0 +1,88 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.emEmpBankAccounts.home.title">Em Emp Bank Accounts</span>
+        <button class="btn btn-primary float-right jh-create-entity create-em-emp-bank-accounts" [routerLink]="['/', { outlets: { popup: ['em-emp-bank-accounts-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.emEmpBankAccounts.home.createLabel">
+            Create new Em Emp Bank Accounts
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emEmpBankAccounts">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="accountNumber"><span jhiTranslate="hcmEmpApp.emEmpBankAccounts.accountNumber">Account Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="hcmEmpApp.emEmpBankAccounts.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.emEmpBankAccounts.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.emEmpBankAccounts.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.emEmpBankAccounts.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.emEmpBankAccounts.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idEmployee.id"><span jhiTranslate="hcmEmpApp.emEmpBankAccounts.idEmployee">Id Employee</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idBank.name"><span jhiTranslate="hcmEmpApp.emEmpBankAccounts.idBank">Id Bank</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emEmpBankAccounts of emEmpBankAccounts ;trackBy: trackId">
+                <td><a [routerLink]="['../em-emp-bank-accounts', emEmpBankAccounts.id ]">{{emEmpBankAccounts.id}}</a></td>
+                <td>{{emEmpBankAccounts.accountNumber}}</td>
+                <td>{{emEmpBankAccounts.status}}</td>
+                <td>{{emEmpBankAccounts.createdBy}}</td>
+                <td>{{emEmpBankAccounts.createdAt | date:'medium'}}</td>
+                <td>{{emEmpBankAccounts.updatedBy}}</td>
+                <td>{{emEmpBankAccounts.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="emEmpBankAccounts.idEmployee">
+                        <a [routerLink]="['../em-employees', emEmpBankAccounts.idEmployee?.id ]" >{{emEmpBankAccounts.idEmployee?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmpBankAccounts.idBank">
+                        <a [routerLink]="['../le-legal-entities', emEmpBankAccounts.idBank?.id ]" >{{emEmpBankAccounts.idBank?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../em-emp-bank-accounts', emEmpBankAccounts.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-bank-accounts/'+ emEmpBankAccounts.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-bank-accounts/'+ emEmpBankAccounts.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="emEmpBankAccounts && emEmpBankAccounts.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

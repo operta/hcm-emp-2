@@ -6,12 +6,18 @@ import com.infostudio.ba.domain.LeLegalEntities;
 import com.infostudio.ba.repository.LeLegalEntitiesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
+import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -44,7 +50,7 @@ public class LeLegalEntitiesResource {
      */
     @PostMapping("/le-legal-entities")
     @Timed
-    public ResponseEntity<LeLegalEntities> createLeLegalEntities(@RequestBody LeLegalEntities leLegalEntities) throws URISyntaxException {
+    public ResponseEntity<LeLegalEntities> createLeLegalEntities(@Valid @RequestBody LeLegalEntities leLegalEntities) throws URISyntaxException {
         log.debug("REST request to save LeLegalEntities : {}", leLegalEntities);
         if (leLegalEntities.getId() != null) {
             throw new BadRequestAlertException("A new leLegalEntities cannot already have an ID", ENTITY_NAME, "idexists");
@@ -66,7 +72,7 @@ public class LeLegalEntitiesResource {
      */
     @PutMapping("/le-legal-entities")
     @Timed
-    public ResponseEntity<LeLegalEntities> updateLeLegalEntities(@RequestBody LeLegalEntities leLegalEntities) throws URISyntaxException {
+    public ResponseEntity<LeLegalEntities> updateLeLegalEntities(@Valid @RequestBody LeLegalEntities leLegalEntities) throws URISyntaxException {
         log.debug("REST request to update LeLegalEntities : {}", leLegalEntities);
         if (leLegalEntities.getId() == null) {
             return createLeLegalEntities(leLegalEntities);
@@ -80,14 +86,17 @@ public class LeLegalEntitiesResource {
     /**
      * GET  /le-legal-entities : get all the leLegalEntities.
      *
+     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of leLegalEntities in body
      */
     @GetMapping("/le-legal-entities")
     @Timed
-    public List<LeLegalEntities> getAllLeLegalEntities() {
-        log.debug("REST request to get all LeLegalEntities");
-        return leLegalEntitiesRepository.findAll();
-        }
+    public ResponseEntity<List<LeLegalEntities>> getAllLeLegalEntities(Pageable pageable) {
+        log.debug("REST request to get a page of LeLegalEntities");
+        Page<LeLegalEntities> page = leLegalEntitiesRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/le-legal-entities");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * GET  /le-legal-entities/:id : get the "id" leLegalEntities.

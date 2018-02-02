@@ -1,0 +1,50 @@
+
+<div *ngIf="dmDocumentTypes">
+    <h2><span jhiTranslate="hcmEmpApp.dmDocumentTypes.detail.title">Dm Document Types</span> {{dmDocumentTypes.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentTypes.code">Code</span></dt>
+        <dd>
+            <span>{{dmDocumentTypes.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentTypes.name">Name</span></dt>
+        <dd>
+            <span>{{dmDocumentTypes.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentTypes.description">Description</span></dt>
+        <dd>
+            <span>{{dmDocumentTypes.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentTypes.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{dmDocumentTypes.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentTypes.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{dmDocumentTypes.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentTypes.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{dmDocumentTypes.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.dmDocumentTypes.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{dmDocumentTypes.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dm-document-types/'+ dmDocumentTypes.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

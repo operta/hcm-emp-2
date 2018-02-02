@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     version: string;
     name: string;
     isAdministrationCollapsed: boolean;
+    accountId: number;
 
     constructor(
         private loginService: LoginService,
@@ -56,6 +57,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         if (this.isAuthenticated()) {
             this.principal.identity().then((account) => {
                 this.name = account.firstName;
+                this.accountId = account.id;
             });
         }
     }

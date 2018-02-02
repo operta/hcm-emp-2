@@ -6,45 +6,59 @@ import {Subscription} from "rxjs/Subscription";
 import {JhiAlertService, JhiEventManager} from "ng-jhipster";
 import {EmEmployeesService} from "../../entities/em-employees/em-employees.service";
 import {EmEmployees} from "../../entities/em-employees/em-employees.model";
+import {EmEmpOrgWorkPlacesService} from "../../entities/em-emp-org-work-places/em-emp-org-work-places.service";
+import {EmEmpOrgWorkPlaces} from "../../entities/em-emp-org-work-places/em-emp-org-work-places.model";
+import {ActivatedRoute} from "@angular/router";
 declare  let $:any;
 @Component({
   selector: 'jhi-employee-overview',
   templateUrl: './employee-overview.component.html',
   styles: []
 })
-export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestroy {
+export class EmployeeOverviewComponent implements OnInit, AfterViewInit{
     tabState = 'personal';
     currentAccount: any;
     eventSubscriber: Subscription;
     employee: EmEmployees;
-
+    employeeWorkPlace: EmEmpOrgWorkPlaces;
+    isEditable: boolean = false;
 
     constructor(private principal: Principal,
                 private eventManager: JhiEventManager,
                 private jhiAlertService: JhiAlertService,
-                private employeeService: EmEmployeesService) { }
+                private employeeService: EmEmployeesService,
+                private employeeWorkPlaceService: EmEmpOrgWorkPlacesService,
+                private route: ActivatedRoute) { }
 
-    load() {
-        this.employeeService.findByUser(this.currentAccount.id).subscribe(
-            (emEmployees) => this.employee = emEmployees
-        );
-    }
 
     ngOnInit() {
+
+        this.employee = this.route.snapshot.data['employee'];
+        console.log(this.employee);
+
+        this.employeeWorkPlaceService.findLastWorkPlaceForEmployee(this.employee.id).subscribe(
+            (workplace) => {
+                console.log(workplace);
+                this.employeeWorkPlace = workplace
+            }
+        );
         this.principal.identity().then((account) => {
             this.currentAccount = account;
-            this.load();
+
+            if(this.currentAccount.id === this.employee.idUser.id) {
+                this.isEditable = true;
+            }
         });
-        this.registerChangeInEmployeeOverview();
+        // this.registerChangeInEmployeeOverview();
     }
 
-    ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
-    }
-
-    registerChangeInEmployeeOverview() {
-        this.eventSubscriber = this.eventManager.subscribe('employeeOverviewModification', (response) => this.load());
-    }
+    // ngOnDestroy() {
+    //     this.eventManager.destroy(this.eventSubscriber);
+    // }
+    //
+    // registerChangeInEmployeeOverview() {
+    //     this.eventSubscriber = this.eventManager.subscribe('employeeOverviewModification', (response) => this.load());
+    // }
 
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);

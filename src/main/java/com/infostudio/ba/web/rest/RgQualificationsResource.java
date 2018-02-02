@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -49,7 +50,7 @@ public class RgQualificationsResource {
      */
     @PostMapping("/rg-qualifications")
     @Timed
-    public ResponseEntity<RgQualifications> createRgQualifications(@RequestBody RgQualifications rgQualifications) throws URISyntaxException {
+    public ResponseEntity<RgQualifications> createRgQualifications(@Valid @RequestBody RgQualifications rgQualifications) throws URISyntaxException {
         log.debug("REST request to save RgQualifications : {}", rgQualifications);
         if (rgQualifications.getId() != null) {
             throw new BadRequestAlertException("A new rgQualifications cannot already have an ID", ENTITY_NAME, "idexists");
@@ -71,7 +72,7 @@ public class RgQualificationsResource {
      */
     @PutMapping("/rg-qualifications")
     @Timed
-    public ResponseEntity<RgQualifications> updateRgQualifications(@RequestBody RgQualifications rgQualifications) throws URISyntaxException {
+    public ResponseEntity<RgQualifications> updateRgQualifications(@Valid @RequestBody RgQualifications rgQualifications) throws URISyntaxException {
         log.debug("REST request to update RgQualifications : {}", rgQualifications);
         if (rgQualifications.getId() == null) {
             return createRgQualifications(rgQualifications);

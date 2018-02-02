@@ -1,0 +1,68 @@
+
+<div *ngIf="emEmpOrgWorkPlaces">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.detail.title">Em Emp Org Work Places</span> {{emEmpOrgWorkPlaces.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.dateFrom">Date From</span></dt>
+        <dd>
+            <span>{{emEmpOrgWorkPlaces.dateFrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.dateTo">Date To</span></dt>
+        <dd>
+            <span>{{emEmpOrgWorkPlaces.dateTo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.workHistoryCoefficient">Work History Coefficient</span></dt>
+        <dd>
+            <span>{{emEmpOrgWorkPlaces.workHistoryCoefficient}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpOrgWorkPlaces.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpOrgWorkPlaces.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpOrgWorkPlaces.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpOrgWorkPlaces.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpOrgWorkPlaces.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpOrgWorkPlaces.idEmployee?.id]">{{emEmpOrgWorkPlaces.idEmployee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idContractType">Id Contract Type</span></dt>
+        <dd>
+            <div *ngIf="emEmpOrgWorkPlaces.idContractType">
+                <a [routerLink]="['/em-contract-types', emEmpOrgWorkPlaces.idContractType?.id]">{{emEmpOrgWorkPlaces.idContractType?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idOrgWorkPlace">Id Org Work Place</span></dt>
+        <dd>
+            <div *ngIf="emEmpOrgWorkPlaces.idOrgWorkPlace">
+                <a [routerLink]="['/og-org-work-places', emEmpOrgWorkPlaces.idOrgWorkPlace?.id]">{{emEmpOrgWorkPlaces.idOrgWorkPlace?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-org-work-places/'+ emEmpOrgWorkPlaces.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

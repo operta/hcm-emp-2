@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.home.title">Og Work Place Types</span>
+        <button class="btn btn-primary float-right jh-create-entity create-og-work-place-types" [routerLink]="['/', { outlets: { popup: ['og-work-place-types-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.home.createLabel">
+            Create new Og Work Place Types
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ogWorkPlaceTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.ogWorkPlaceTypes.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ogWorkPlaceTypes of ogWorkPlaceTypes ;trackBy: trackId">
+                <td><a [routerLink]="['../og-work-place-types', ogWorkPlaceTypes.id ]">{{ogWorkPlaceTypes.id}}</a></td>
+                <td>{{ogWorkPlaceTypes.code}}</td>
+                <td>{{ogWorkPlaceTypes.name}}</td>
+                <td>{{ogWorkPlaceTypes.description}}</td>
+                <td>{{ogWorkPlaceTypes.createdBy}}</td>
+                <td>{{ogWorkPlaceTypes.createdAt | date:'medium'}}</td>
+                <td>{{ogWorkPlaceTypes.updatedBy}}</td>
+                <td>{{ogWorkPlaceTypes.updatedAt | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../og-work-place-types', ogWorkPlaceTypes.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'og-work-place-types/'+ ogWorkPlaceTypes.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'og-work-place-types/'+ ogWorkPlaceTypes.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="ogWorkPlaceTypes && ogWorkPlaceTypes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

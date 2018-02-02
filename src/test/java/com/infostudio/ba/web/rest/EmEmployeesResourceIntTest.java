@@ -87,6 +87,15 @@ public class EmEmployeesResourceIntTest {
     private static final String DEFAULT_TAX_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_TAX_NUMBER = "BBBBBBBBBB";
 
+    private static final String DEFAULT_IMAGE_PATH = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE_PATH = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PHONE_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_PHONE_NUMBER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
+    private static final String UPDATED_EMAIL = "BBBBBBBBBB";
+
     private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
 
@@ -152,6 +161,9 @@ public class EmEmployeesResourceIntTest {
             .hireDate(DEFAULT_HIRE_DATE)
             .ssn(DEFAULT_SSN)
             .taxNumber(DEFAULT_TAX_NUMBER)
+            .imagePath(DEFAULT_IMAGE_PATH)
+            .phoneNumber(DEFAULT_PHONE_NUMBER)
+            .email(DEFAULT_EMAIL)
             .createdBy(DEFAULT_CREATED_BY)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedBy(DEFAULT_UPDATED_BY)
@@ -194,6 +206,9 @@ public class EmEmployeesResourceIntTest {
         assertThat(testEmEmployees.getHireDate()).isEqualTo(DEFAULT_HIRE_DATE);
         assertThat(testEmEmployees.getSsn()).isEqualTo(DEFAULT_SSN);
         assertThat(testEmEmployees.getTaxNumber()).isEqualTo(DEFAULT_TAX_NUMBER);
+        assertThat(testEmEmployees.getImagePath()).isEqualTo(DEFAULT_IMAGE_PATH);
+        assertThat(testEmEmployees.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
+        assertThat(testEmEmployees.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testEmEmployees.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
         assertThat(testEmEmployees.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testEmEmployees.getUpdatedBy()).isEqualTo(DEFAULT_UPDATED_BY);
@@ -217,6 +232,42 @@ public class EmEmployeesResourceIntTest {
         // Validate the EmEmployees in the database
         List<EmEmployees> emEmployeesList = emEmployeesRepository.findAll();
         assertThat(emEmployeesList).hasSize(databaseSizeBeforeCreate);
+    }
+
+    @Test
+    @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = emEmployeesRepository.findAll().size();
+        // set the field null
+        emEmployees.setCode(null);
+
+        // Create the EmEmployees, which fails.
+
+        restEmEmployeesMockMvc.perform(post("/api/em-employees")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(emEmployees)))
+            .andExpect(status().isBadRequest());
+
+        List<EmEmployees> emEmployeesList = emEmployeesRepository.findAll();
+        assertThat(emEmployeesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = emEmployeesRepository.findAll().size();
+        // set the field null
+        emEmployees.setName(null);
+
+        // Create the EmEmployees, which fails.
+
+        restEmEmployeesMockMvc.perform(post("/api/em-employees")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(emEmployees)))
+            .andExpect(status().isBadRequest());
+
+        List<EmEmployees> emEmployeesList = emEmployeesRepository.findAll();
+        assertThat(emEmployeesList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -245,6 +296,9 @@ public class EmEmployeesResourceIntTest {
             .andExpect(jsonPath("$.[*].hireDate").value(hasItem(DEFAULT_HIRE_DATE.toString())))
             .andExpect(jsonPath("$.[*].ssn").value(hasItem(DEFAULT_SSN.toString())))
             .andExpect(jsonPath("$.[*].taxNumber").value(hasItem(DEFAULT_TAX_NUMBER.toString())))
+            .andExpect(jsonPath("$.[*].imagePath").value(hasItem(DEFAULT_IMAGE_PATH.toString())))
+            .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER.toString())))
+            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
@@ -277,6 +331,9 @@ public class EmEmployeesResourceIntTest {
             .andExpect(jsonPath("$.hireDate").value(DEFAULT_HIRE_DATE.toString()))
             .andExpect(jsonPath("$.ssn").value(DEFAULT_SSN.toString()))
             .andExpect(jsonPath("$.taxNumber").value(DEFAULT_TAX_NUMBER.toString()))
+            .andExpect(jsonPath("$.imagePath").value(DEFAULT_IMAGE_PATH.toString()))
+            .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER.toString()))
+            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))
@@ -318,6 +375,9 @@ public class EmEmployeesResourceIntTest {
             .hireDate(UPDATED_HIRE_DATE)
             .ssn(UPDATED_SSN)
             .taxNumber(UPDATED_TAX_NUMBER)
+            .imagePath(UPDATED_IMAGE_PATH)
+            .phoneNumber(UPDATED_PHONE_NUMBER)
+            .email(UPDATED_EMAIL)
             .createdBy(UPDATED_CREATED_BY)
             .createdAt(UPDATED_CREATED_AT)
             .updatedBy(UPDATED_UPDATED_BY)
@@ -347,6 +407,9 @@ public class EmEmployeesResourceIntTest {
         assertThat(testEmEmployees.getHireDate()).isEqualTo(UPDATED_HIRE_DATE);
         assertThat(testEmEmployees.getSsn()).isEqualTo(UPDATED_SSN);
         assertThat(testEmEmployees.getTaxNumber()).isEqualTo(UPDATED_TAX_NUMBER);
+        assertThat(testEmEmployees.getImagePath()).isEqualTo(UPDATED_IMAGE_PATH);
+        assertThat(testEmEmployees.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
+        assertThat(testEmEmployees.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testEmEmployees.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testEmEmployees.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testEmEmployees.getUpdatedBy()).isEqualTo(UPDATED_UPDATED_BY);

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EmEmpOrgWorkPlaces.
+    -->
+    <changeSet id="20180202093522-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_employee_id"
+                                 baseTableName="em_org_wp"
+                                 constraintName="em_emp_org_wor_id_employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="em_employees"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_contract_type_id"
+                                 baseTableName="em_org_wp"
+                                 constraintName="em_emp_org_wor_id_contract_t_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="em_contract_types"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_org_work_place_id"
+                                 baseTableName="em_org_wp"
+                                 constraintName="em_emp_org_wor_id_org_work_p_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="og_org_work_places"/>
+
+    </changeSet>
+</databaseChangeLog>

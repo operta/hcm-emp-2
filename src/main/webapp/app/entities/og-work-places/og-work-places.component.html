@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.ogWorkPlaces.home.title">Og Work Places</span>
+        <button class="btn btn-primary float-right jh-create-entity create-og-work-places" [routerLink]="['/', { outlets: { popup: ['og-work-places-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.ogWorkPlaces.home.createLabel">
+            Create new Og Work Places
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ogWorkPlaces">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idWorkPlaceType.name"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.idWorkPlaceType">Id Work Place Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idParent.name"><span jhiTranslate="hcmEmpApp.ogWorkPlaces.idParent">Id Parent</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ogWorkPlaces of ogWorkPlaces ;trackBy: trackId">
+                <td><a [routerLink]="['../og-work-places', ogWorkPlaces.id ]">{{ogWorkPlaces.id}}</a></td>
+                <td>{{ogWorkPlaces.code}}</td>
+                <td>{{ogWorkPlaces.name}}</td>
+                <td>{{ogWorkPlaces.description}}</td>
+                <td>{{ogWorkPlaces.createdBy}}</td>
+                <td>{{ogWorkPlaces.createdAt | date:'medium'}}</td>
+                <td>{{ogWorkPlaces.updatedBy}}</td>
+                <td>{{ogWorkPlaces.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="ogWorkPlaces.idWorkPlaceType">
+                        <a [routerLink]="['../og-work-place-types', ogWorkPlaces.idWorkPlaceType?.id ]" >{{ogWorkPlaces.idWorkPlaceType?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ogWorkPlaces.idParent">
+                        <a [routerLink]="['../og-work-places', ogWorkPlaces.idParent?.id ]" >{{ogWorkPlaces.idParent?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../og-work-places', ogWorkPlaces.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'og-work-places/'+ ogWorkPlaces.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'og-work-places/'+ ogWorkPlaces.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="ogWorkPlaces && ogWorkPlaces.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

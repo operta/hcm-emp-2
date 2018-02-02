@@ -159,6 +159,42 @@ public class EmStatusesResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = emStatusesRepository.findAll().size();
+        // set the field null
+        emStatuses.setCode(null);
+
+        // Create the EmStatuses, which fails.
+
+        restEmStatusesMockMvc.perform(post("/api/em-statuses")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(emStatuses)))
+            .andExpect(status().isBadRequest());
+
+        List<EmStatuses> emStatusesList = emStatusesRepository.findAll();
+        assertThat(emStatusesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = emStatusesRepository.findAll().size();
+        // set the field null
+        emStatuses.setName(null);
+
+        // Create the EmStatuses, which fails.
+
+        restEmStatusesMockMvc.perform(post("/api/em-statuses")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(emStatuses)))
+            .andExpect(status().isBadRequest());
+
+        List<EmStatuses> emStatusesList = emStatusesRepository.findAll();
+        assertThat(emStatusesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllEmStatuses() throws Exception {
         // Initialize the database
         emStatusesRepository.saveAndFlush(emStatuses);
