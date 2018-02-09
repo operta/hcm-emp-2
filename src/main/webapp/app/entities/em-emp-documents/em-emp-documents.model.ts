@@ -1,4 +1,5 @@
 import { BaseEntity } from './../../shared';
+import {DmDocumentLinks} from "../dm-document-links/dm-document-links.model";
 
 export class EmEmpDocuments implements BaseEntity {
     constructor(
@@ -14,7 +15,7 @@ export class EmEmpDocuments implements BaseEntity {
         public updatedAt?: any,
         public idEmployee?: BaseEntity,
         public idDocumentType?: BaseEntity,
-        public idDocumentLink?: BaseEntity,
+        public idDocumentLink?: DmDocumentLinks,
     ) {
     }
 }

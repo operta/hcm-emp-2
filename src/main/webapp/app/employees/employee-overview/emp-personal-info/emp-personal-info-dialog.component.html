@@ -1,162 +1,101 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myEmEmployeesLabel" jhiTranslate="hcmEmpApp.employee.home.createOrEditLabel">Create or edit a Em Employees</h4>
+        <h4 class="modal-title" id="myEmEmployeesLabel" >Edit personal information</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!employee.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="employee.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                   [(ngModel)]="employee.code" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                   [(ngModel)]="employee.name" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.middleName" for="field_middleName">Middle Name</label>
-            <input type="text" class="form-control" name="middleName" id="field_middleName"
-                   [(ngModel)]="employee.middleName" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.surname" for="field_surname">Surname</label>
-            <input type="text" class="form-control" name="surname" id="field_surname"
-                   [(ngModel)]="employee.surname" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.maidenName" for="field_maidenName">Maiden Name</label>
-            <input type="text" class="form-control" name="maidenName" id="field_maidenName"
-                   [(ngModel)]="employee.maidenName" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.disabilityDegree" for="field_disabilityDegree">Disability Degree</label>
-            <input type="number" class="form-control" name="disabilityDegree" id="field_disabilityDegree"
-                   [(ngModel)]="employee.disabilityDegree" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.ethnicGroup" for="field_ethnicGroup">Ethnic Group</label>
-            <input type="text" class="form-control" name="ethnicGroup" id="field_ethnicGroup"
-                   [(ngModel)]="employee.ethnicGroup" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.gender" for="field_gender">Gender</label>
-            <input type="text" class="form-control" name="gender" id="field_gender"
-                   [(ngModel)]="employee.gender" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.residentialSituation" for="field_residentialSituation">Residential Situation</label>
-            <input type="text" class="form-control" name="residentialSituation" id="field_residentialSituation"
-                   [(ngModel)]="employee.residentialSituation" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.maritalStatus" for="field_maritalStatus">Marital Status</label>
-            <input type="text" class="form-control" name="maritalStatus" id="field_maritalStatus"
-                   [(ngModel)]="employee.maritalStatus" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.bloodGroup" for="field_bloodGroup">Blood Group</label>
-            <input type="text" class="form-control" name="bloodGroup" id="field_bloodGroup"
-                   [(ngModel)]="employee.bloodGroup" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.dateOfBirth" for="field_dateOfBirth">Date Of Birth</label>
-            <div class="input-group">
-                <input id="field_dateOfBirth" type="text" class="form-control" name="dateOfBirth" ngbDatepicker  #dateOfBirthDp="ngbDatepicker" [(ngModel)]="employee.dateOfBirth"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-secondary" (click)="dateOfBirthDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
+        <div class="row">
+
+
+            <div class="col-md-2">
+                <div class="form-group" [hidden]="!employee.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                           [(ngModel)]="employee.id" readonly />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.hireDate" for="field_hireDate">Hire Date</label>
-            <div class="input-group">
-                <input id="field_hireDate" type="text" class="form-control" name="hireDate" ngbDatepicker  #hireDateDp="ngbDatepicker" [(ngModel)]="employee.hireDate"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-secondary" (click)="hireDateDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
+            <div class="col-md-10"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">First Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           [(ngModel)]="employee.name" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.ssn" for="field_ssn">Ssn</label>
-            <input type="text" class="form-control" name="ssn" id="field_ssn"
-                   [(ngModel)]="employee.ssn" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.taxNumber" for="field_taxNumber">Tax Number</label>
-            <input type="text" class="form-control" name="taxNumber" id="field_taxNumber"
-                   [(ngModel)]="employee.taxNumber" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                   [(ngModel)]="employee.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.createdAt" for="field_createdAt">Created At</label>
-            <div class="d-flex">
-                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="employee.createdAt"
-                />
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label class="form-control-label" for="field_middleName">Middle Name</label>
+                   <input type="text" class="form-control" name="middleName" id="field_middleName"
+                          [(ngModel)]="employee.middleName" />
+               </div>
+           </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_surname">Last Name</label>
+                    <input type="text" class="form-control" name="surname" id="field_surname"
+                           [(ngModel)]="employee.surname" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.updatedBy" for="field_updatedBy">Updated By</label>
-            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
-                   [(ngModel)]="employee.updatedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="d-flex">
-                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="employee.updatedAt"
-                />
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_maidenName">Maiden Name</label>
+                    <input type="text" class="form-control" name="maidenName" id="field_maidenName"
+                           [(ngModel)]="employee.maidenName" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label"  for="field_gender">Gender</label>
+                    <select class="form-control" id="field_gender" name="gender" [(ngModel)]="employee.gender">
+                        <option value="null"></option>
+                        <option [selected]="employee?.gender == 'Male'" value="Male">Male</option>
+                        <option [selected]="employee?.gender == 'Female'" value="Female">Female</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label"  for="field_maritalStatus">Marital Status</label>
+                    <select class="form-control" id="field_maritalStatus" name="maritalStatus" [(ngModel)]="employee.maritalStatus">
+                        <option value="null"></option>
+                        <option [selected]="employee?.maritalStatus == 'Married'" value="Married">Married</option>
+                        <option [selected]="employee?.maritalStatus == 'Unmarried'" value="Unmarried">Unmarried</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateOfBirth">Date Of Birth</label>
+                    <input id="field_dateOfBirth" type="date" class="form-control" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth"
+                    />
+
+
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.idQualification" for="field_idQualification">Id Qualification</label>
-            <select class="form-control" id="field_idQualification" name="idQualification" [(ngModel)]="employee.idQualification">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="rgQualificationsOption.id === employee.idQualification?.id ? employee.idQualification : rgQualificationsOption" *ngFor="let rgQualificationsOption of idqualifications; trackBy: trackRgQualificationsById">{{rgQualificationsOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.idEmploymentType" for="field_idEmploymentType">Id Employment Type</label>
-            <select class="form-control" id="field_idEmploymentType" name="idEmploymentType" [(ngModel)]="employee.idEmploymentType">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emEmpTypesOption.id === employee.idEmploymentType?.id ? employee.idEmploymentType : emEmpTypesOption" *ngFor="let emEmpTypesOption of idemploymenttypes; trackBy: trackEmEmpTypesById">{{emEmpTypesOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.idLegalEntity" for="field_idLegalEntity">Id Legal Entity</label>
-            <select class="form-control" id="field_idLegalEntity" name="idLegalEntity" [(ngModel)]="employee.idLegalEntity">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="leLegalEntitiesOption.id === employee.idLegalEntity?.id ? employee.idLegalEntity : leLegalEntitiesOption" *ngFor="let leLegalEntitiesOption of idlegalentities; trackBy: trackLeLegalEntitiesById">{{leLegalEntitiesOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.idStatus" for="field_idStatus">Id Status</label>
-            <select class="form-control" id="field_idStatus" name="idStatus" [(ngModel)]="employee.idStatus">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emStatusesOption.id === employee.idStatus?.id ? employee.idStatus : emStatusesOption" *ngFor="let emStatusesOption of idstatuses; trackBy: trackEmStatusesById">{{emStatusesOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.employee.idUser" for="field_idUser">Id User</label>
-            <select class="form-control" id="field_idUser" name="idUser" [(ngModel)]="employee.idUser" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="userOption.id === employee.idUser?.id ? employee.idUser : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
-            </select>
-        </div>
+
+
+
+
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.employee.idQualification" for="field_idQualification">Id Qualification</label>-->
+            <!--<select class="form-control" id="field_idQualification" name="idQualification" [(ngModel)]="employee.idQualification">-->
+                <!--<option [ngValue]="null"></option>-->
+                <!--<option [ngValue]="rgQualificationsOption.id === employee.idQualification?.id ? employee.idQualification : rgQualificationsOption" *ngFor="let rgQualificationsOption of idqualifications; trackBy: trackRgQualificationsById">{{rgQualificationsOption.name}}</option>-->
+            <!--</select>-->
+        <!--</div>-->
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

@@ -5,6 +5,7 @@ import {EmpPersonalInfoPopupComponent} from "./emp-personal-info-dialog.componen
 
 
 export const EmpPersonalInfoPopupRoute: Routes = [
+
     {
         path: 'emp-personal-info-new',
         component: EmpPersonalInfoPopupComponent,

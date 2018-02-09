@@ -25,10 +25,16 @@ import { HcmEmpDmDocumentLinksModule } from './dm-document-links/dm-document-lin
 import { HcmEmpDmDocumentTypesModule } from './dm-document-types/dm-document-types.module';
 import { HcmEmpEmEmpDocumentsModule } from './em-emp-documents/em-emp-documents.module';
 import { HcmEmpEmEmpNotesModule } from './em-emp-notes/em-emp-notes.module';
+import {EmpPersonalInfoModule} from "../employees/employee-overview/emp-personal-info/emp-personal-info.module";
+import {EmpAddressModule} from "../employees/employee-overview/emp-address/emp-address.module";
+import {EmpSsnAndTaxNoModule} from "../employees/employee-overview/emp-ssn-and-tax-no/emp-ssn-and-tax-no.module";
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     imports: [
+        EmpAddressModule,
+        EmpSsnAndTaxNoModule,
+        EmpPersonalInfoModule,
         HcmEmpOgOrganizationsModule,
         HcmEmpOgOrgTypesModule,
         HcmEmpLeLegalEntitiesModule,

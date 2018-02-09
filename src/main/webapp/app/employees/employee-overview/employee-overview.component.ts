@@ -21,7 +21,7 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit{
     eventSubscriber: Subscription;
     employee: EmEmployees;
     employeeWorkPlace: EmEmpOrgWorkPlaces;
-    isEditable: boolean = false;
+    isEditable = false;
 
     constructor(private principal: Principal,
                 private eventManager: JhiEventManager,

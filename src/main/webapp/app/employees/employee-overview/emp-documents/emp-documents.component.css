@@ -1,0 +1,10 @@
+.dropdown-menu>li>a {
+    padding: 9px 5px;
+}
+.dropdown-menu{
+    right: -86px;
+    left: auto !important;
+    /*!*min-width: 160px;*!*/
+    /*margin: 2px -50px 0 !important;*/
+}
+

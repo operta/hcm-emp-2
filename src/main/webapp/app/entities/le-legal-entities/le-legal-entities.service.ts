@@ -31,11 +31,28 @@ export class LeLegalEntitiesService {
         });
     }
 
+    updateLocation(leLegalEntities: LeLegalEntities): Observable<LeLegalEntities> {
+        console.log(leLegalEntities);
+        return this.http.put(this.resourceUrl, leLegalEntities).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServer(jsonResponse);
+        });
+    }
+
     find(id: number): Observable<LeLegalEntities> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
+    }
+
+    findByIdEntityType(idEntityType: any) {
+        return this.http.get(`${this.resourceUrl}/entityType/${idEntityType}`).map(
+            (response: Response) => {
+                const items: LeLegalEntities[] = response.json();
+                return items;
+            }
+        );
     }
 
     query(req?: any): Observable<ResponseWrapper> {

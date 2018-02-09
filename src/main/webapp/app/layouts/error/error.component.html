@@ -1,9 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-fluid rounded"></span>
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-4 col-sm-8 offset-md-4 offset-sm-2">
             <h1 jhiTranslate="error.title">Error Page!</h1>
 
             <div [hidden]="!errorMessage">
@@ -11,6 +8,8 @@
                 </div>
             </div>
             <div [hidden]="!error403" class="alert alert-danger" jhiTranslate="error.http.403">You are not authorized to access this page.
+            </div>
+            <div [hidden]="!error404" class="alert alert-danger">We could not find any data.
             </div>
         </div>
     </div>

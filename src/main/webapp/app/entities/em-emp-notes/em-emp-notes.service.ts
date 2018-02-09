@@ -16,16 +16,16 @@ export class EmEmpNotesService {
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
     create(emEmpNotes: EmEmpNotes): Observable<EmEmpNotes> {
-        const copy = this.convert(emEmpNotes);
-        return this.http.post(this.resourceUrl, copy).map((res: Response) => {
+        // const copy = this.convert(emEmpNotes);
+        return this.http.post(this.resourceUrl, emEmpNotes).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
     update(emEmpNotes: EmEmpNotes): Observable<EmEmpNotes> {
-        const copy = this.convert(emEmpNotes);
-        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+        // const copy = this.convert(emEmpNotes);
+        return this.http.put(this.resourceUrl, emEmpNotes).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
@@ -37,6 +37,16 @@ export class EmEmpNotesService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
+
+    findByIdEmployee(idEmployee: any) {
+        return this.http.get(`${this.resourceUrl}/employee/${idEmployee}`).map(
+            (response: Response) => {
+                const items: EmEmpNotes[] = response.json();
+                return items;
+            }
+        );
+    }
+
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
@@ -74,10 +84,9 @@ export class EmEmpNotesService {
      */
     private convert(emEmpNotes: EmEmpNotes): EmEmpNotes {
         const copy: EmEmpNotes = Object.assign({}, emEmpNotes);
-
         copy.createdAt = this.dateUtils.toDate(emEmpNotes.createdAt);
-
         copy.updatedAt = this.dateUtils.toDate(emEmpNotes.updatedAt);
+
         return copy;
     }
 }

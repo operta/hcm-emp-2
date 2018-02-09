@@ -3,6 +3,7 @@ package com.infostudio.ba.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.infostudio.ba.domain.EmEmpNotes;
 
+import com.infostudio.ba.domain.LeLegalEntities;
 import com.infostudio.ba.repository.EmEmpNotesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
@@ -111,6 +112,21 @@ public class EmEmpNotesResource {
         EmEmpNotes emEmpNotes = emEmpNotesRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(emEmpNotes));
     }
+
+    /**
+     * GET  /em-emp-notes/employee/:id : get the Notes by employee id.
+     *
+     * @param id the idEmployee of the Notes to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the Notes, or with status 404 (Not Found)
+     */
+    @GetMapping("/em-emp-notes/employee/{id}")
+    @Timed
+    public ResponseEntity<List<EmEmpNotes>> getEmployeeNotesByIdEmployee(@PathVariable Long id) {
+        log.debug("REST request to get Employee Notes by empoloyee id : {}", id);
+        List<EmEmpNotes> notes = emEmpNotesRepository.findByIdEmployeeId(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(notes));
+    }
+
 
     /**
      * DELETE  /em-emp-notes/:id : delete the "id" emEmpNotes.

@@ -113,6 +113,20 @@ public class RgRegionsResource {
     }
 
     /**
+     * GET  /rg-regions/type/:id : get the rgRegions by Type.
+     *
+     * @param id the idType of the rgRegions to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the rgRegions, or with status 404 (Not Found)
+     */
+    @GetMapping("/rg-regions/type/{id}")
+    @Timed
+    public ResponseEntity<List<RgRegions>> getRgRegionsByType(@PathVariable Long id) {
+        log.debug("REST request to get RgRegionsByType : {}", id);
+        List<RgRegions> rgRegions = rgRegionsRepository.findByIdTypeId(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(rgRegions));
+    }
+
+    /**
      * DELETE  /rg-regions/:id : delete the "id" rgRegions.
      *
      * @param id the id of the rgRegions to delete

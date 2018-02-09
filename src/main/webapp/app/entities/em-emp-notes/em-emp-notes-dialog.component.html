@@ -1,17 +1,17 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myEmEmpNotesLabel" jhiTranslate="hcmEmpApp.emEmpNotes.home.createOrEditLabel">Create or edit a Em Emp Notes</h4>
+        <h4 class="modal-title" id="myEmEmpNotesLabel">Create or Edit a Note</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!emEmpNotes.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="emEmpNotes.id" readonly />
-        </div>
+        <!--<div class="form-group" [hidden]="!emEmpNotes.id">-->
+            <!--<label for="id" jhiTranslate="global.field.id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id"-->
+                   <!--[(ngModel)]="emEmpNotes.id" readonly />-->
+        <!--</div>-->
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.title" for="field_title">Title</label>
             <input type="text" class="form-control" name="title" id="field_title"
@@ -24,42 +24,42 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.decsription" for="field_decsription">Decsription</label>
+            <label class="form-control-label" for="field_decsription">Description</label>
             <input type="text" class="form-control" name="decsription" id="field_decsription"
                 [(ngModel)]="emEmpNotes.decsription" />
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="emEmpNotes.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.createdAt" for="field_createdAt">Created At</label>
-            <div class="d-flex">
-                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpNotes.createdAt"
-                />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.updatedBy" for="field_updatedBy">Updated By</label>
-            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
-                [(ngModel)]="emEmpNotes.updatedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="d-flex">
-                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpNotes.updatedAt"
-                />
-            </div>
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.createdBy" for="field_createdBy">Created By</label>-->
+            <!--<input type="text" class="form-control" name="createdBy" id="field_createdBy"-->
+                <!--[(ngModel)]="emEmpNotes.createdBy" />-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.createdAt" for="field_createdAt">Created At</label>-->
+            <!--<div class="d-flex">-->
+                <!--<input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpNotes.createdAt"-->
+                <!--/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.updatedBy" for="field_updatedBy">Updated By</label>-->
+            <!--<input type="text" class="form-control" name="updatedBy" id="field_updatedBy"-->
+                <!--[(ngModel)]="emEmpNotes.updatedBy" />-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.updatedAt" for="field_updatedAt">Updated At</label>-->
+            <!--<div class="d-flex">-->
+                <!--<input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpNotes.updatedAt"-->
+                <!--/>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.idEmployee" for="field_idEmployee">Id Employee</label>
-            <select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpNotes.idEmployee">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emEmployeesOption.id === emEmpNotes.idEmployee?.id ? emEmpNotes.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>
-            </select>
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpNotes.idEmployee" for="field_idEmployee">Id Employee</label>-->
+            <!--<select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpNotes.idEmployee">-->
+                <!--<option [ngValue]="null"></option>-->
+                <!--<option [ngValue]="emEmployeesOption.id === emEmpNotes.idEmployee?.id ? emEmpNotes.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>-->
+            <!--</select>-->
+        <!--</div>-->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

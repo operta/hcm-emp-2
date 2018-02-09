@@ -56,7 +56,7 @@
                 </td>
                 <td>
                     <div *ngIf="emEmpDocuments.idDocumentLink">
-                        <a [routerLink]="['../dm-document-links', emEmpDocuments.idDocumentLink?.id ]" >{{emEmpDocuments.idDocumentLink?.name}}</a>
+                        <a [routerLink]="['../dm-document-links', emEmpDocuments.idDocumentLink?.id ]" >{{emEmpDocuments.idDocumentLink?.documentName}}</a>
                     </div>
                 </td>
                 <td class="text-right">

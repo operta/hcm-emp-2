@@ -11,6 +11,8 @@ import { EmEmpNotesPopupService } from './em-emp-notes-popup.service';
 import { EmEmpNotesService } from './em-emp-notes.service';
 import { EmEmployees, EmEmployeesService } from '../em-employees';
 import { ResponseWrapper } from '../../shared';
+import {Principal} from "../../shared/auth/principal.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
     selector: 'jhi-em-emp-notes-dialog',
@@ -20,15 +22,18 @@ export class EmEmpNotesDialogComponent implements OnInit {
 
     emEmpNotes: EmEmpNotes;
     isSaving: boolean;
-
+    accountId: number;
     idemployees: EmEmployees[];
+    employee: EmEmployees;
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private emEmpNotesService: EmEmpNotesService,
         private emEmployeesService: EmEmployeesService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal,
+        private datePipe: DatePipe
     ) {
     }
 
@@ -47,6 +52,9 @@ export class EmEmpNotesDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+        this.principal.identity().then(
+            (account) => this.accountId = account.id
+        );
     }
 
     clear() {
@@ -55,10 +63,15 @@ export class EmEmpNotesDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+
         if (this.emEmpNotes.id !== undefined) {
+           this.emEmpNotes.updatedAt = new Date();
             this.subscribeToSaveResponse(
                 this.emEmpNotesService.update(this.emEmpNotes));
         } else {
+            this.employee = this.idemployees.find((item) => item.idUser.id === this.accountId);
+            this.emEmpNotes.idEmployee = this.employee;
+            this.emEmpNotes.updatedAt = new Date();
             this.subscribeToSaveResponse(
                 this.emEmpNotesService.create(this.emEmpNotes));
         }

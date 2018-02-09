@@ -64,7 +64,8 @@ export class DmDocumentLinksDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: DmDocumentLinks) {
-        this.eventManager.broadcast({ name: 'dmDocumentLinksListModification', content: 'OK'});
+        this.eventManager.broadcast({ name: 'dmDocumentLinksListModification', content: result});
+        console.log(result);
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }

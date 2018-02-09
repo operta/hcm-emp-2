@@ -1,0 +1,68 @@
+<form name="editForm" role="form" (ngSubmit)="selectedCity != null && save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmployeesLabel" >Edit Address Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                           [(ngModel)]="selectedAddress" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label class="form-control-label" for="field_region">Region:</label>
+                   <select id="field_region" class="form-control" (click)="onRegionSelected($event.target.value)" (change)="onRegionSelected($event.target.value)"  name="selectedRegion">
+                       <option [ngValue]="null"></option>
+                       <option *ngFor="let region of regions" [selected]="region.id == selectedRegion.id" [ngValue]="region.name">{{region?.name}}</option>
+                   </select><span class="highlight"></span> <span class="bar"></span>
+               </div>
+           </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_country">Country:</label>
+                    <select id="field_country" class="form-control" (click)="onCountrySelected($event.target.value)" (change)="onCountrySelected($event.target.value)"  name="selectedCountry">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let country of filteredCountries" [selected]="country.id == selectedCountry.id" [ngValue]="country.name">{{country?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_state">State:</label>
+                    <select id="field_state" class="form-control" (click)="onStateSelected($event.target.value)" (change)="onStateSelected($event.target.value)" name="selectedState">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let state of filteredStates" [selected]="state.id == selectedState.id" [ngValue]="state.name">{{state?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_city">City: *</label>
+                    <select id="field_city" class="form-control" (click)="onCitySelected($event.target.value)" (change)="onCitySelected($event.target.value)" name="selectedCity">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let city of filteredCities" [selected]="city.id == selectedCity?.id" [ngValue]="city.name">{{city?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -15,14 +15,19 @@ import { EmpPerformanceComponent } from './emp-performance/emp-performance.compo
 import { EmpTrainingComponent } from './emp-training/emp-training.component';
 import { EmpEmergencyContactComponent } from './emp-emergency-contact/emp-emergency-contact.component';
 import {EmpPersonalInfoModule} from "./emp-personal-info/emp-personal-info.module";
+import { EmployeeNewComponent } from './employee-new/employee-new.component';
+import {RouterModule} from "@angular/router";
+import {HcmEmpSharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
   imports: [
-    CommonModule,
-      EmpPersonalInfoModule
+      RouterModule,
+      CommonModule,
+      HcmEmpSharedModule
   ],
   declarations: [
+      EmpPersonalInfoComponent,
       EmployeeOverviewComponent,
       EmpAddressComponent,
       EmpSsnAndTaxNoComponent,
@@ -35,7 +40,8 @@ import {EmpPersonalInfoModule} from "./emp-personal-info/emp-personal-info.modul
       EmpNotesComponent,
       EmpPerformanceComponent,
       EmpTrainingComponent,
-      EmpEmergencyContactComponent
+      EmpEmergencyContactComponent,
+      EmployeeNewComponent
   ]
 })
 export class EmployeeOverviewModule { }

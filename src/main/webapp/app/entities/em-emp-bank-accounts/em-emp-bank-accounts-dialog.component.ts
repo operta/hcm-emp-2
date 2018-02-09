@@ -51,19 +51,11 @@ export class EmEmpBankAccountsDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-        this.leLegalEntitiesService
-            .query({filter: 'emempbankaccounts-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmpBankAccounts.idBank || !this.emEmpBankAccounts.idBank.id) {
-                    this.idbanks = res.json;
-                } else {
-                    this.leLegalEntitiesService
-                        .find(this.emEmpBankAccounts.idBank.id)
-                        .subscribe((subRes: LeLegalEntities) => {
-                            this.idbanks = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.leLegalEntitiesService.findByIdEntityType(24601).subscribe(
+            (items) => this.idbanks = items,
+            (subRes: ResponseWrapper) => this.onError(subRes.json)
+
+        );
     }
 
     clear() {

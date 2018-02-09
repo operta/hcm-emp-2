@@ -87,7 +87,7 @@
     <!-- End Top Navigation -->
     <!-- Left navbar-header -->
     <div class="navbar-default sidebar" role="navigation">
-        <li id="slimscrollsidebar" class="collapse sidebar-nav navbar-collapse">
+        <li id="slimscrollsidebar" class="collapse sidebar-nav navbar-collapse" role="list">
             <div class="user-profile">
                 <div class="dropdown user-pro-body">
                     <div>
@@ -130,8 +130,8 @@
                         <span class="hide-menu"> Dashboard </span>
                     </a>
                 </li>
-                <li>
-                    <a (click)="collapseLists()" routerLinkActive="active"  [routerLink]="['/dashboard/employee-overview', '', accountId ]"  class="waves-effect">
+                <li *ngIf="accountId">
+                    <a (click)="collapseLists()" routerLinkActive="active"  [routerLink]="['/dashboard/employee-overview', { userId: accountId}]"  class="waves-effect">
                         <i class="icon-user fa-fw" data-icon="v"></i>
                         <span class="hide-menu"> My Info </span>
                     </a>

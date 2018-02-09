@@ -1,11 +1,16 @@
 <h3 class="box-title">Bank account</h3>
+<div class="pull-right" style="margin-top: -35px;margin-right: 15px;">
+    <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-bank-accounts/'+ bankAccounts?.id + '/edit'} }]">
+        <i class="fa fa-pencil action-button-at"></i>
+    </a>
+</div>
 <hr class="m-t-0 m-b-40">
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
             <label class="control-label col-md-3">Bank:</label>
             <div class="col-md-9">
-                <p class="form-control-static"> Unicredit Bank </p>
+                <p class="form-control-static"> {{bankAccounts?.idBank?.name}} </p>
             </div>
         </div>
     </div>
@@ -13,7 +18,7 @@
         <div class="form-group">
             <label class="control-label col-md-3">Bank account:</label>
             <div class="col-md-9">
-                <p class="form-control-static"> 3893-0000-0000-0123 </p>
+                <p class="form-control-static"> {{bankAccounts?.accountNumber}} </p>
             </div>
         </div>
     </div>

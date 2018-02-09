@@ -3,6 +3,7 @@ package com.infostudio.ba.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.infostudio.ba.domain.LeLegalEntities;
 
+import com.infostudio.ba.domain.RgRegions;
 import com.infostudio.ba.repository.LeLegalEntitiesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
@@ -109,6 +110,20 @@ public class LeLegalEntitiesResource {
     public ResponseEntity<LeLegalEntities> getLeLegalEntities(@PathVariable Long id) {
         log.debug("REST request to get LeLegalEntities : {}", id);
         LeLegalEntities leLegalEntities = leLegalEntitiesRepository.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(leLegalEntities));
+    }
+
+    /**
+     * GET  /le-legal-entities/type/:id : get the leLegalEntities by entity type.
+     *
+     * @param id the idEntityType of the leLegalEntities to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the leLegalEntities, or with status 404 (Not Found)
+     */
+    @GetMapping("/le-legal-entities/entityType/{id}")
+    @Timed
+    public ResponseEntity<List<LeLegalEntities>> getLeLegalEntitiesByEntityType(@PathVariable Long id) {
+        log.debug("REST request to get LeLegalEntities by entity type : {}", id);
+        List<LeLegalEntities> leLegalEntities = leLegalEntitiesRepository.findByIdEntityTypeId(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(leLegalEntities));
     }
 

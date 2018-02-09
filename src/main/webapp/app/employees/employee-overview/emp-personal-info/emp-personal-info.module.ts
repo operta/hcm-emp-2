@@ -19,21 +19,16 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        EmpPersonalInfoComponent,
         EmpPersonalInfoDialogComponent,
         EmpPersonalInfoPopupComponent
     ],
     entryComponents: [
-        EmpPersonalInfoComponent,
         EmpPersonalInfoDialogComponent,
         EmpPersonalInfoPopupComponent,
     ],
     providers: [
         LeLegalEntitiesService,
         EmpPersonalInfoPopupService,
-    ],
-    exports: [
-        EmpPersonalInfoComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -3,15 +3,16 @@
         <i class="icon-notebook m-r-5 heading-icon-at"></i>
         <span class="heading-at">DOCUMENTS</span>
         <div class="dropdown user-pro-body pull-right">
-            <a href="#" class="u-dropdown" data-toggle="dropdown"
-               role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-documents-new'} }]">
                 <i class="fa fa-plus action-button-at"></i>
             </a>
-            <ul class="dropdown-menu animated fadeIn">
-                <li><a href="#"><i class="icon-notebook"></i> Hiring paperwork</a></li>
-                <li><a href="#"><i class="icon-notebook"></i> Tasklist</a></li>
-                <li><a href="#"><i class="icon-notebook"></i> Other</a></li>
-            </ul>
+            <!--<ul class="dropdown-menu animated fadeIn">-->
+                <!--<li *ngFor="let type of documentTypes">-->
+                    <!--<a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-documents-new'} }]">-->
+                        <!--<i class="icon-notebook"></i> {{type.name}}-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
         </div>
     </div>
     <div class="form-body">
@@ -19,76 +20,91 @@
             <span class="section-title">Hiring paperwork</span>
         </div>
         <hr class="m-t-0 m-b-40">
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row" *ngFor="let document of hiringDocuments">
+            <div class="col-md-4">
                 <div class="form-group p-l-20">
                     <i class="icon-notebook" data-icon="v"></i>
-                    <span class="hide-menu"> Change of position to System Architect </span>
+                    <span class="hide-menu"> {{document.name}} </span>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
+                <div class="form-group p-l-20">
+                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)">Open</a>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label col-md-3">Date:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> 16-JUN-2016</p>
+                        <p class="form-control-static"> {{document.dateCreated}}</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group p-l-20">
-                    <i class="icon-notebook" data-icon="v"></i>
-                    <span class="hide-menu"> Initial Contract </span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Date:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> 16-JUN-2015</p>
-                    </div>
-                </div>
+            <div class="col-md-2">
+                <a class="popup-with-form btn btn-danger btn-sm" [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
+                    <span class="fa fa-remove"></span>
+                </a>
             </div>
         </div>
+
         <div class="box-title p-b-10 p-t-10 p-r-10">
             <span class="section-title">Tasklist</span>
         </div>
         <hr class="m-t-0 m-b-40">
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row" *ngFor="let document of taskListDocuments">
+            <div class="col-md-4">
                 <div class="form-group p-l-20">
                     <i class="icon-notebook" data-icon="v"></i>
-                    <span class="hide-menu"> List of tasks </span>
+                    <span class="hide-menu"> {{document.name}} </span>
+                   </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group p-l-20">
+                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)">Open</a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label col-md-3">Date:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> 16-JUN-2015</p>
+                        <p class="form-control-static"> {{document.dateCreated}}</p>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-2">
+                <a class="popup-with-form btn btn-danger btn-sm" [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
+                    <span class="fa fa-remove"></span>
+                </a>
             </div>
         </div>
         <div class="box-title p-b-10 p-t-10 p-r-10">
             <span class="section-title">Other documents</span>
         </div>
         <hr class="m-t-0 m-b-40">
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row" *ngFor="let document of otherDocuments">
+            <div class="col-md-4">
                 <div class="form-group p-l-20">
                     <i class="icon-notebook" data-icon="v"></i>
-                    <span class="hide-menu"> Time off reports</span>
+                    <span class="hide-menu"> {{document.name}} </span>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
+                <div class="form-group p-l-20">
+                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)">Open</a>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label col-md-3">Date:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> 20-NOV-2017</p>
+                        <p class="form-control-static"> {{document.dateCreated}}</p>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-2">
+                <a class="popup-with-form btn btn-danger btn-sm" [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
+                    <span class="fa fa-remove"></span>
+                </a>
             </div>
         </div>
     </div>

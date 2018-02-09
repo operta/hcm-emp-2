@@ -113,6 +113,20 @@ public class EmEmpBankAccountsResource {
     }
 
     /**
+     * GET  /em-emp-bank-accounts/employee:id : get the  emEmpBankAccounts by Employee Id.
+     *
+     * @param id the employeeId of the emEmpBankAccounts to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the emEmpBankAccounts, or with status 404 (Not Found)
+     */
+    @GetMapping("/em-emp-bank-accounts/employee/{id}")
+    @Timed
+    public ResponseEntity<EmEmpBankAccounts> getEmEmpBankAccountsByEmployee(@PathVariable Long id) {
+        log.debug("REST request to get EmEmpBankAccounts by employeeId: {}", id);
+        EmEmpBankAccounts emEmpBankAccounts = emEmpBankAccountsRepository.findByIdEmployeeId(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(emEmpBankAccounts));
+    }
+
+    /**
      * DELETE  /em-emp-bank-accounts/:id : delete the "id" emEmpBankAccounts.
      *
      * @param id the id of the emEmpBankAccounts to delete

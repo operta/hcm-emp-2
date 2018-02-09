@@ -1,4 +1,5 @@
 import { BaseEntity, User } from './../../shared';
+import {Timestamp} from "rxjs/Rx";
 
 export class EmEmployees implements BaseEntity {
     constructor(

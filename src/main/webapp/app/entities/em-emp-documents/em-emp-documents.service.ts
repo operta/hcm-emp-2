@@ -38,6 +38,15 @@ export class EmEmpDocumentsService {
         });
     }
 
+    findByIdEmployee(idEmployee: any) {
+        return this.http.get(`${this.resourceUrl}/employee/${idEmployee}`).map(
+            (response: Response) => {
+                const items: EmEmpDocuments[] = response.json();
+                return items;
+            }
+        );
+    }
+
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
         return this.http.get(this.resourceUrl, options)

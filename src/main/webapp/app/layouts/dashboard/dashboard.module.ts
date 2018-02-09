@@ -11,6 +11,7 @@ import {EmployeeOverviewComponent} from "../../employees/employee-overview/emplo
 import {NavbarComponent} from "../navbar/navbar.component";
 import {NavbarService} from "../navbar/navbar.service";
 import {EmployeeOverviewModule} from "../../employees/employee-overview/employee-overview.module";
+import {UserRouteAccessService} from "../../shared/auth/user-route-access-service";
 
 @NgModule({
     imports: [

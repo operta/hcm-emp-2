@@ -31,6 +31,16 @@ export class EmEmployeesService {
         });
     }
 
+    updatePersonalInfo(emEmployees: EmEmployees): Observable<EmEmployees> {
+        // const copy = this.convertPersonalInfo(emEmployees);
+        // console.log(copy);
+        return this.http.put(this.resourceUrl, emEmployees).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServer(jsonResponse);
+        });
+    }
+
+
     find(id: number): Observable<EmEmployees> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
@@ -93,6 +103,12 @@ export class EmEmployeesService {
         copy.createdAt = this.dateUtils.toDate(emEmployees.createdAt);
 
         copy.updatedAt = this.dateUtils.toDate(emEmployees.updatedAt);
+        return copy;
+    }
+
+    private convertPersonalInfo(emEmployees: EmEmployees): EmEmployees {
+        const copy: EmEmployees = Object.assign({}, emEmployees);
+        copy.dateOfBirth = this.dateUtils.convertLocalDateToServer(emEmployees.dateOfBirth);
         return copy;
     }
 }

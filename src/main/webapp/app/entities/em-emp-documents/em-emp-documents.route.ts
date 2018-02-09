@@ -60,6 +60,7 @@ export const emEmpDocumentsPopupRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'hcmEmpApp.emEmpDocuments.home.title'
+
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

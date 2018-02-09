@@ -44,6 +44,15 @@ export class RgRegionsService {
             .map((res: Response) => this.convertResponse(res));
     }
 
+    findByIdType(idType: any) {
+        return this.http.get(`${this.resourceUrl}/type/${idType}`).map(
+            (response: Response) => {
+                const regions: RgRegions[] = response.json();
+                return regions;
+            }
+        );
+    }
+
     delete(id: number): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }

@@ -54,3 +54,15 @@ select.ng-invalid.ng-touched {
     bottom: 0;
     margin: auto;
 }
+
+
+.modal-header .close {
+    padding: 15px;
+    margin: -35px -5px -15px auto;
+}
+
+@media (min-width: 992px) {
+    .modal-lg {
+        max-width: 992px;
+    }
+}

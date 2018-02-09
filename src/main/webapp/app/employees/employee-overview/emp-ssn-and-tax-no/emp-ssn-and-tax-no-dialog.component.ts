@@ -5,22 +5,24 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
-import { EmpPersonalInfoPopupService } from './emp-personal-info-popup.service';
+import { EmpSsnAndTaxNoPopupService } from './emp-ssn-and-tax-no-popup.service';
 import {LeLegalEntities} from "../../../entities/le-legal-entities/le-legal-entities.model";
 import {EmEmployeesService} from "../../../entities/em-employees/em-employees.service";
 import {EmEmployees} from "../../../entities/em-employees/em-employees.model";
+import {LeLegalEntitiesService} from "../../../entities/le-legal-entities/le-legal-entities.service";
 
 @Component({
-    selector: 'jhi-emp-personal-info-dialog',
-    templateUrl: './emp-personal-info-dialog.component.html'
+    selector: 'jhi-emp-ssn-and-tax-no-dialog',
+    templateUrl: './emp-ssn-and-tax-no-dialog.component.html'
 })
-export class EmpPersonalInfoDialogComponent implements OnInit {
+export class EmpSsnAndTaxNoDialogComponent implements OnInit {
     employee: EmEmployees;
     isSaving: boolean;
 
     constructor(
         public activeModal: NgbActiveModal,
         private employeeService: EmEmployeesService,
+        private legalService: LeLegalEntitiesService,
         private eventManager: JhiEventManager) {
     }
 
@@ -34,7 +36,6 @@ export class EmpPersonalInfoDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        console.log(this.employee);
         if (this.employee.id !== undefined) {
             this.subscribeToSaveResponse(this.employeeService.updatePersonalInfo(this.employee));
         }
@@ -51,8 +52,9 @@ export class EmpPersonalInfoDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: LeLegalEntities) {
-        this.eventManager.broadcast({ name: 'EmployeeListModification', content: 'OK'});
+        this.eventManager.broadcast({ name: 'SsnAndTaxNoModification', content: 'OK'});
         this.isSaving = false;
+        this.legalService.update(this.employee.idLegalEntity).subscribe();
         this.activeModal.dismiss(result);
     }
 
@@ -63,26 +65,26 @@ export class EmpPersonalInfoDialogComponent implements OnInit {
 }
 
 @Component({
-    selector: 'jhi-emp-personal-info-popup',
+    selector: 'jhi-emp-ssn-and-tax-no-popup',
     template: ''
 })
-export class EmpPersonalInfoPopupComponent implements OnInit, OnDestroy {
+export class EmpSsnAndTaxNoPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private empPersonalInfoPopupService: EmpPersonalInfoPopupService
+        private empSsnAndTaxNoPopupService: EmpSsnAndTaxNoPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.empPersonalInfoPopupService
-                    .open(EmpPersonalInfoDialogComponent as Component, params['id']);
+                this.empSsnAndTaxNoPopupService
+                    .open(EmpSsnAndTaxNoDialogComponent as Component, params['id']);
             } else {
-                this.empPersonalInfoPopupService
-                    .open(EmpPersonalInfoDialogComponent as Component);
+                this.empSsnAndTaxNoPopupService
+                    .open(EmpSsnAndTaxNoDialogComponent as Component);
             }
         });
     }

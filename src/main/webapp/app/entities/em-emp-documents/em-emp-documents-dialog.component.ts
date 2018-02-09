@@ -13,12 +13,14 @@ import { EmEmployees, EmEmployeesService } from '../em-employees';
 import { DmDocumentTypes, DmDocumentTypesService } from '../dm-document-types';
 import { DmDocumentLinks, DmDocumentLinksService } from '../dm-document-links';
 import { ResponseWrapper } from '../../shared';
+import {Subscription} from "rxjs/Subscription";
+import {Principal} from "../../shared/auth/principal.service";
 
 @Component({
     selector: 'jhi-em-emp-documents-dialog',
     templateUrl: './em-emp-documents-dialog.component.html'
 })
-export class EmEmpDocumentsDialogComponent implements OnInit {
+export class EmEmpDocumentsDialogComponent implements OnInit, OnDestroy {
 
     emEmpDocuments: EmEmpDocuments;
     isSaving: boolean;
@@ -31,6 +33,9 @@ export class EmEmpDocumentsDialogComponent implements OnInit {
     dateCreatedDp: any;
     validFromDp: any;
     validToDp: any;
+    eventSubscriber: Subscription;
+    documentLink: DmDocumentLinks;
+    accountId: number;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -39,7 +44,8 @@ export class EmEmpDocumentsDialogComponent implements OnInit {
         private emEmployeesService: EmEmployeesService,
         private dmDocumentTypesService: DmDocumentTypesService,
         private dmDocumentLinksService: DmDocumentLinksService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal
     ) {
     }
 
@@ -84,7 +90,25 @@ export class EmEmpDocumentsDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+        this.registerChangeInAddress();
+        this.principal.identity().then(
+            (account) => this.accountId = account.id
+        );
     }
+
+
+
+
+    registerChangeInAddress() {
+        this.eventSubscriber = this.eventManager.subscribe('dmDocumentLinksListModification', (response) =>   {
+            this.documentLink = response.content;
+        });
+    }
+
+    ngOnDestroy() {
+        this.eventManager.destroy(this.eventSubscriber);
+    }
+
 
     clear() {
         this.activeModal.dismiss('cancel');
@@ -92,10 +116,13 @@ export class EmEmpDocumentsDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.emEmpDocuments.idDocumentLink = this.documentLink;
+        console.log(this.emEmpDocuments);
         if (this.emEmpDocuments.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.emEmpDocumentsService.update(this.emEmpDocuments));
         } else {
+            this.emEmpDocuments.idEmployee = this.idemployees.find((item) => item.idUser.id === this.accountId);
             this.subscribeToSaveResponse(
                 this.emEmpDocumentsService.create(this.emEmpDocuments));
         }

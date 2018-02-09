@@ -9,7 +9,7 @@
         <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.phoneNumber}}</div>
         <br>
         <div class="preview"> Private phone</div>
-        <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +387 33 267 680</div>
+        <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DODATI POLJE</div>
         <br>
         <div class="preview"> Bussines mail</div>
         <div class="preview" style="font-weight:bold; font-size: 10px;"><i class="icon-envelope-open"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.email}}</div>
@@ -45,13 +45,13 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'personal'"  id="personal">
                 <div id="dataScroll">
-                    <form class="form-horizontal" role="form">
+                    <div class="form-horizontal">
                             <jhi-emp-personal-info [employee]="employee" [isEditable]="isEditable"></jhi-emp-personal-info>
                             <jhi-emp-address [employee]="employee" [isEditable]="isEditable"></jhi-emp-address>
                             <jhi-emp-ssn-and-tax-no [employee]="employee" [isEditable]="isEditable"></jhi-emp-ssn-and-tax-no>
                             <jhi-emp-emergency-contact></jhi-emp-emergency-contact>
                             <jhi-emp-bank-account [employee]="employee" [isEditable]="isEditable"></jhi-emp-bank-account>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'job'" id="job">
@@ -77,7 +77,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'documents'" id="documents">
                 <div id="dataScrollDoc">
-                    <jhi-emp-documents></jhi-emp-documents>
+                    <jhi-emp-documents [employee]="employee" [isEditable]="isEditable"></jhi-emp-documents>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'performance'" id="performance">
@@ -87,7 +87,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'notes'" id="notes">
                 <div id="dataScrollNotes">
-                    <jhi-emp-notes></jhi-emp-notes>
+                    <jhi-emp-notes [employee]="employee" [isEditable]="isEditable"></jhi-emp-notes>
                 </div>
             </div>
         </div>
