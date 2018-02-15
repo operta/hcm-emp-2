@@ -3,7 +3,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const rxPaths = require('rxjs/_esm5/path-mapping');
 const MergeJsonWebpackPlugin = require("merge-jsons-webpack-plugin");
-
 const utils = require('./utils.js');
 
 module.exports = (options) => ({
@@ -33,6 +32,7 @@ module.exports = (options) => ({
             {
                 test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot)$/i,
                 loaders: ['file-loader?hash=sha512&digest=hex&name=content/[hash].[ext]']
+               // loaders: ['file-loader?name=content/images/[name].[ext]']
             },
             {
                 test: /manifest.webapp$/,

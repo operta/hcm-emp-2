@@ -11,17 +11,17 @@
         },
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "idWorkPlace",
-            "otherEntityName": "ogWorkPlaces",
-            "otherEntityField": "name",
+            "relationshipName": "idContractType",
+            "otherEntityName": "emContractTypes",
+            "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "emEmpSalaries"
         },
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "idContractType",
-            "otherEntityName": "emContractTypes",
-            "otherEntityField": "name",
+            "relationshipName": "idWorkPlace",
+            "otherEntityName": "ogWorkPlaces",
+            "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "emEmpSalaries"
         }
@@ -29,26 +29,29 @@
     "fields": [
         {
             "fieldName": "dateFrom",
-            "fieldType": "LocalDate",
+            "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
             "fieldName": "dateTo",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "salaryAmount",
-            "fieldType": "Integer"
+            "fieldType": "Double"
         },
         {
             "fieldName": "salaryCoefficient",
-            "fieldType": "Integer"
+            "fieldType": "Double"
         },
         {
             "fieldName": "workHistoryCoefficient",
-            "fieldType": "Integer"
+            "fieldType": "Double"
         },
         {
             "fieldName": "createdBy",
@@ -70,7 +73,7 @@
     "changelogDate": "20180202093523",
     "entityTableName": "em_emp_salaries",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

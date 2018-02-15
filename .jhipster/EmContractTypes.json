@@ -40,7 +40,7 @@
     "changelogDate": "20180202093521",
     "entityTableName": "em_contract_types",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

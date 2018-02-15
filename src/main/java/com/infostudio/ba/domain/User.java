@@ -70,6 +70,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "image_url", length = 256)
     private String imageUrl;
 
+    @Lob
+    @Column(name = "image_blob")
+    private byte[] imageBlob;
+
+    @Column(name = "image_blob_content_type")
+    private String imageBlobContentType;
+
     @Size(max = 20)
     @Column(name = "activation_key", length = 20)
     @JsonIgnore
@@ -92,6 +99,22 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
+
+    public byte[] getImageBlob() {
+        return imageBlob;
+    }
+
+    public void setImageBlob(byte[] imageBlob) {
+        this.imageBlob = imageBlob;
+    }
+
+    public String getImageBlobContentType() {
+        return imageBlobContentType;
+    }
+
+    public void setImageBlobContentType(String imageContentType) {
+        this.imageBlobContentType = imageContentType;
+    }
 
     public Long getId() {
         return id;

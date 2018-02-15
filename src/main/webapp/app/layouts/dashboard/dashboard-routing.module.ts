@@ -12,6 +12,7 @@ import {EmEmployeesPopupComponent} from "../../entities/em-employees/em-employee
 import {EmEmployeesDeletePopupComponent} from "../../entities/em-employees/em-employees-delete-dialog.component";
 import {EmpPersonalInfoPopupComponent} from "../../employees/employee-overview/emp-personal-info/emp-personal-info-dialog.component";
 import {EmpPersonalInfoPopupRoute} from "../../employees/employee-overview/emp-personal-info/emp-personal-info.route";
+import {EmEmployeesResolvePagingParams} from "../../entities/em-employees/em-employees.route";
 
 
 @Injectable()
@@ -94,7 +95,10 @@ const DASHBOARD_ROUTES = [
                 data: {
                     authorities: ['ROLE_ADMIN']
                 },
-                canActivate: [UserRouteAccessService]
+                canActivate: [UserRouteAccessService],
+                resolve: {
+                    'pagingParams': EmEmployeesResolvePagingParams
+                },
             },
         ]
     }

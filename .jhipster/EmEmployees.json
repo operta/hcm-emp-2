@@ -1,47 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "idQualification",
-            "otherEntityName": "rgQualifications",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "emEmployees"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "idEmploymentType",
-            "otherEntityName": "emEmpTypes",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "emEmployees"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "idLegalEntity",
-            "otherEntityName": "leLegalEntities",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "emEmployees"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "idStatus",
-            "otherEntityName": "emStatuses",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "emEmployees"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "idUser",
-            "otherEntityName": "user",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "emEmployees"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "code",
@@ -141,7 +100,7 @@
     "changelogDate": "20180201161836",
     "entityTableName": "em_employees",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

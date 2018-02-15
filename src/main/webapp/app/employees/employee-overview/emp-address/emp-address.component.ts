@@ -34,7 +34,8 @@ export class EmpAddressComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInAddress() {
-    this.eventSubscriber = this.eventManager.subscribe('AddressModification', (response) =>   {
+    // this.eventSubscriber = this.eventManager.subscribe('AddressModification', (response) =>   {
+      this.eventManager.subscribe('AddressModification', (response) =>   {
         this.legalEntityService.find(this.legalEntityId).subscribe((item) => {
             this.address = item.address;
             this.setRegions(item.region);
@@ -43,7 +44,7 @@ export class EmpAddressComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
+        // this.eventManager.destroy(this.eventSubscriber);
   }
 
   setRegions(cityRegion: any) {

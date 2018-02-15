@@ -8,6 +8,8 @@ import com.infostudio.ba.domain.User;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.persistence.Column;
+import javax.persistence.Lob;
 import javax.validation.constraints.*;
 import java.time.Instant;
 import java.util.Set;
@@ -43,6 +45,10 @@ public class UserDTO {
     @Size(min = 2, max = 6)
     private String langKey;
 
+    private byte[] imageBlob;
+
+    private String imageBlobContentType;
+
     private String createdBy;
 
     private Instant createdDate;
@@ -70,9 +76,27 @@ public class UserDTO {
         this.createdDate = user.getCreatedDate();
         this.lastModifiedBy = user.getLastModifiedBy();
         this.lastModifiedDate = user.getLastModifiedDate();
+        this.imageBlob = user.getImageBlob();
+        this.imageBlobContentType = user.getImageBlobContentType();
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
             .collect(Collectors.toSet());
+    }
+
+    public byte[] getImageBlob() {
+        return imageBlob;
+    }
+
+    public void setImageBlob(byte[] imageBlob) {
+        this.imageBlob = imageBlob;
+    }
+
+    public String getImageBlobContentType() {
+        return imageBlobContentType;
+    }
+
+    public void setImageBlobContentType(String imageContentType) {
+        this.imageBlobContentType = imageContentType;
     }
 
     public Long getId() {

@@ -17,9 +17,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.*;
 
 /**
@@ -127,8 +131,59 @@ public class AccountResource {
             throw new InternalServerErrorException("User could not be found");
         }
         userService.updateUser(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(),
-            userDTO.getLangKey(), userDTO.getImageUrl());
+            userDTO.getLangKey(), userDTO.getImageUrl(), userDTO.getImageBlob(), userDTO.getImageBlobContentType());
    }
+
+
+    @PostMapping(value = "/account/uploadFile")
+    public @ResponseBody String uploadFileHandler(@RequestParam("uploadFile") MultipartFile file) {
+
+
+        String path = System.getProperty("user.dir") + File.separator +
+            "src" + File.separator +
+            "main" + File.separator +
+            "webapp" + File.separator +
+            "content" + File.separator +
+            "images" + File.separator +
+            "clientFiles";
+
+
+        String extension = "";
+        int i = file.getContentType().lastIndexOf('/');
+        if (i > 0) {
+            extension = file.getContentType().substring(i+1);
+        }
+
+        String fileName = file.getName() + Math.random() + "." + extension;
+
+        if (!file.isEmpty()) {
+            try {
+
+                byte[] bytes = file.getBytes();
+
+
+                File dir = new File(path);
+                if (!dir.exists())
+                    dir.mkdirs();
+
+
+                File serverFile = new File(dir.getAbsolutePath()
+                    + File.separator + fileName);
+                BufferedOutputStream stream = new BufferedOutputStream(
+                    new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
+
+
+                return fileName;
+            } catch (Exception e) {
+                return "You failed to upload file => " + e.getMessage();
+            }
+        } else {
+            return "You failed to upload file because it was empty.";
+        }
+
+    }
 
     /**
      * POST  /account/change-password : changes the current user's password

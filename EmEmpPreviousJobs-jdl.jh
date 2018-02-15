@@ -1,0 +1,22 @@
+
+entity EmEmpPreviousJobs {
+	id Integer required,
+    company String required,
+    position String,
+    dateFrom LocalDate required,
+    dateTo LocalDate required,
+    reasonOfLeaving String,
+    managerPosition String,
+    lengthOfServiceYears Integer,
+    lengthOfServiceMonths Integer,
+    lengthOfServiceDays Integer,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+
+relationship OneToOne {
+	EmEmpPreviousJobs{idEmployee} to EmEmployees
+}

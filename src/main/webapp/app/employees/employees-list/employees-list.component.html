@@ -1,49 +1,146 @@
-<div class="comment-center">
-    <div class="comment-body" style="width: 100%;">
-        <div class="row">
-            <div class="col-md-1">
-                <img src="../../../content/images/users/1.jpg" class="img-fluid img-circle" />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="row m-b-20 p-l-5 p-r-10">
+                <div class="col-lg-12">
+                    <div class="panel panel-default m-b-10">
+                        <div>
+                            <span>Search</span>
+                            <select>
+                                <option>Name</option>
+                                <option>Gender</option>
+                                <option>Date of Birth</option>
+                                <option>Address</option>
+                                <option>City</option>
+                                <option>State</option>
+                                <option>Country</option>
+                                <option>Qualification</option>
+                                <option>Industry</option>
+                                <option>Employed</option>
+                            </select>
+                            <input type="text">
+                            <button type="button" class="btn btn-default m-b-5">Search</button>
+                            <div class="panel-action">
+                                <a href="#" data-perform="panel-collapse">[<i class="ti-plus"></i>] Advanced Search</a>
+                            </div>
+                        </div>
+                        <!--<div class="panel-wrapper collapse out">-->
+                            <!--<div class="panel-body p-l-0 p-r-0">-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-sm-12 col-xs-12">-->
+                                        <!--<form>-->
+                                            <!--<div class="row">-->
+                                                <!--<div class="col-md-6">-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label for="asName">Name</label>-->
+                                                        <!--<input type="text" class="form-control" id="asName">-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div class="col-md-6">-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label for="asGender">Gender</label>-->
+                                                        <!--<select class="form-control" id="asGender">-->
+                                                            <!--<option></option>-->
+                                                            <!--<option value="F">Female</option>-->
+                                                            <!--<option value="M">Male</option>-->
+                                                        <!--</select>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="row">-->
+                                                <!--<div class="col-md-6">-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label for="asGender">Password</label>-->
+                                                        <!--<input type="password" class="form-control" placeholder="Password">-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div class="col-md-6">-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label for="exampleInputPassword1">Password</label>-->
+                                                        <!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="row">-->
+                                                <!--<div class="col-md-6">-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<div class="checkbox checkbox-success">-->
+                                                            <!--<input id="checkbox1" type="checkbox">-->
+                                                            <!--<label for="checkbox1"> Remember me </label>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Advanced Search</button>-->
+                                            <!--<button type="button" class="btn btn-default waves-effect waves-light">Clear Search</button>-->
+                                        <!--</form>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                </div>
             </div>
-            <div class="col-md-11">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5><b>John Doe, Information Systems Architect</b></h5>
+            <div class="comment-center">
+                <div *ngFor="let employee of emEmployees;" class="comment-body" style="width: 100%;">
+                    <div *ngIf="emEmpOrgWorkPlaces" class="row">
+                        <div class="col-md-1">
+                            <img src="../../../content/images/users/1.jpg" class="img-fluid img-circle" />
+                        </div>
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5><b>{{employee?.name}} {{employee?.middleName}} {{employee?.surname}}, {{findWorkPlace(employee.id).name}}</b></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <b>Hire date:</b> {{employee?.hireDate | date}}
+                                </div>
+                                <div class="col-md-3">
+                                    <b>Contract type:</b> {{employee?.idEmploymentType.name}}
+                                </div>
+                                <div class="col-md-3">
+                                    <b>Department:</b> {{findOrganization(employee?.id).name}}
+                                </div>
+                                <div class="col-md-3">
+                                    <b>Location:</b> {{findOrganization(employee?.id).idLegalEntity.region.name}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <b>Bussines phone:</b> {{employee?.phoneNumber}}
+                                </div>
+                                <div class="col-md-3">
+                                    <b>Bussines mail:</b> {{employee?.email}}
+                                </div>
+                                <div class="col-md-3">
+                                    <b>Qualification:</b> {{employee?.idQualification.name}}
+                                </div>
+                                <div class="col-md-3">
+                                    <b>Date of Birth:</b> {{employee?.dateOfBirth | date}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br><a [routerLink]="['/dashboard/employee-overview', { id: employee.id}]"  class="label label-rouded label-default" style="color: black;">Details . . .</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <b>Hire date:</b> 16-JUN-2015
-                    </div>
-                    <div class="col-md-3">
-                        <b>Contract type:</b> Full time
-                    </div>
-                    <div class="col-md-3">
-                        <b>Department:</b> IT dev/ops
-                    </div>
-                    <div class="col-md-3">
-                        <b>Location:</b> Sarajevo
-                    </div>
+            </div>
+            <div *ngIf="emEmployees && emEmployees.length">
+                <div class="row justify-content-center">
+                    <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <b>Bussines phone:</b> ++387 33 267 680
-                    </div>
-                    <div class="col-md-3">
-                        <b>Bussines mail:</b> john.doe@infostudio.ba
-                    </div>
-                    <div class="col-md-3">
-                        <b>Qualification:</b> Master's Degree
-                    </div>
-                    <div class="col-md-3">
-                        <b>Date of Birth:</b> 11-JUN-1987 , Age 30
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <br><a href="employee-overview.html" class="label label-rouded label-default" style="color: black;">Details . . .</a>
-                    </div>
+                <div class="row justify-content-center">
+                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
                 </div>
             </div>
         </div>
+        <!-- /.row -->
+
     </div>
 </div>
+
