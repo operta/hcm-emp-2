@@ -37,7 +37,7 @@ export const leLegalEntitiesRoute: Routes = [
                     'pagingParams': LeLegalEntitiesResolvePagingParams
                 },
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.leLegalEntities.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const leLegalEntitiesRoute: Routes = [
                 path: 'le-legal-entities/:id',
                 component: LeLegalEntitiesDetailComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.leLegalEntities.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -58,7 +58,7 @@ export const leLegalEntitiesPopupRoute: Routes = [
         path: 'le-legal-entities-new',
         component: LeLegalEntitiesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.leLegalEntities.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -68,7 +68,7 @@ export const leLegalEntitiesPopupRoute: Routes = [
         path: 'le-legal-entities/:id/edit',
         component: LeLegalEntitiesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.leLegalEntities.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -78,7 +78,7 @@ export const leLegalEntitiesPopupRoute: Routes = [
         path: 'le-legal-entities/:id/delete',
         component: LeLegalEntitiesDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.leLegalEntities.home.title'
         },
         canActivate: [UserRouteAccessService],

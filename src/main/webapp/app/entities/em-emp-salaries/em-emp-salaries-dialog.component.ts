@@ -10,9 +10,10 @@ import { EmEmpSalaries } from './em-emp-salaries.model';
 import { EmEmpSalariesPopupService } from './em-emp-salaries-popup.service';
 import { EmEmpSalariesService } from './em-emp-salaries.service';
 import { EmEmployees, EmEmployeesService } from '../em-employees';
-import { OgWorkPlaces, OgWorkPlacesService } from '../og-work-places';
 import { EmContractTypes, EmContractTypesService } from '../em-contract-types';
+import { OgWorkPlaces, OgWorkPlacesService } from '../og-work-places';
 import { ResponseWrapper } from '../../shared';
+import {Principal} from "../../shared/auth/principal.service";
 
 @Component({
     selector: 'jhi-em-emp-salaries-dialog',
@@ -22,23 +23,23 @@ export class EmEmpSalariesDialogComponent implements OnInit {
 
     emEmpSalaries: EmEmpSalaries;
     isSaving: boolean;
-
+    currentAccount: any;
+    employee: EmEmployees;
     idemployees: EmEmployees[];
 
-    idworkplaces: OgWorkPlaces[];
-
     idcontracttypes: EmContractTypes[];
-    dateFromDp: any;
-    dateToDp: any;
+
+    idworkplaces: OgWorkPlaces[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private emEmpSalariesService: EmEmpSalariesService,
         private emEmployeesService: EmEmployeesService,
-        private ogWorkPlacesService: OgWorkPlacesService,
         private emContractTypesService: EmContractTypesService,
-        private eventManager: JhiEventManager
+        private ogWorkPlacesService: OgWorkPlacesService,
+        private eventManager: JhiEventManager,
+        private principal: Principal
     ) {
     }
 
@@ -57,19 +58,6 @@ export class EmEmpSalariesDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-        this.ogWorkPlacesService
-            .query({filter: 'emempsalaries-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmpSalaries.idWorkPlace || !this.emEmpSalaries.idWorkPlace.id) {
-                    this.idworkplaces = res.json;
-                } else {
-                    this.ogWorkPlacesService
-                        .find(this.emEmpSalaries.idWorkPlace.id)
-                        .subscribe((subRes: OgWorkPlaces) => {
-                            this.idworkplaces = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
         this.emContractTypesService
             .query({filter: 'emempsalaries-is-null'})
             .subscribe((res: ResponseWrapper) => {
@@ -83,6 +71,25 @@ export class EmEmpSalariesDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+        this.ogWorkPlacesService
+            .query({filter: 'emempsalaries-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.emEmpSalaries.idWorkPlace || !this.emEmpSalaries.idWorkPlace.id) {
+                    this.idworkplaces = res.json;
+                } else {
+                    this.ogWorkPlacesService
+                        .find(this.emEmpSalaries.idWorkPlace.id)
+                        .subscribe((subRes: OgWorkPlaces) => {
+                            this.idworkplaces = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+            this.emEmployeesService.findByUser(this.currentAccount.id).subscribe((emEmployees) => {
+                this.employee = emEmployees;
+            });
+        });
     }
 
     clear() {
@@ -91,6 +98,7 @@ export class EmEmpSalariesDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.emEmpSalaries.idEmployee = this.employee;
         if (this.emEmpSalaries.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.emEmpSalariesService.update(this.emEmpSalaries));
@@ -123,11 +131,11 @@ export class EmEmpSalariesDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackOgWorkPlacesById(index: number, item: OgWorkPlaces) {
+    trackEmContractTypesById(index: number, item: EmContractTypes) {
         return item.id;
     }
 
-    trackEmContractTypesById(index: number, item: EmContractTypes) {
+    trackOgWorkPlacesById(index: number, item: OgWorkPlaces) {
         return item.id;
     }
 }

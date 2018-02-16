@@ -12,18 +12,18 @@ import { EmEmpBankAccountsService } from './em-emp-bank-accounts.service';
 import { EmEmployees, EmEmployeesService } from '../em-employees';
 import { LeLegalEntities, LeLegalEntitiesService } from '../le-legal-entities';
 import { ResponseWrapper } from '../../shared';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: 'jhi-em-emp-bank-accounts-dialog',
     templateUrl: './em-emp-bank-accounts-dialog.component.html'
 })
 export class EmEmpBankAccountsDialogComponent implements OnInit {
-
+    employee: EmEmployees;
     emEmpBankAccounts: EmEmpBankAccounts;
     isSaving: boolean;
-
+    employeeId: number;
     idemployees: EmEmployees[];
-
     idbanks: LeLegalEntities[];
 
     constructor(
@@ -32,9 +32,12 @@ export class EmEmpBankAccountsDialogComponent implements OnInit {
         private emEmpBankAccountsService: EmEmpBankAccountsService,
         private emEmployeesService: EmEmployeesService,
         private leLegalEntitiesService: LeLegalEntitiesService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private route: ActivatedRoute
     ) {
     }
+
+
 
     ngOnInit() {
         this.isSaving = false;
@@ -68,6 +71,7 @@ export class EmEmpBankAccountsDialogComponent implements OnInit {
             this.subscribeToSaveResponse(
                 this.emEmpBankAccountsService.update(this.emEmpBankAccounts));
         } else {
+            this.emEmpBankAccounts.idEmployee = this.employee;
             this.subscribeToSaveResponse(
                 this.emEmpBankAccountsService.create(this.emEmpBankAccounts));
         }
@@ -121,7 +125,7 @@ export class EmEmpBankAccountsPopupComponent implements OnInit, OnDestroy {
                     .open(EmEmpBankAccountsDialogComponent as Component, params['id']);
             } else {
                 this.emEmpBankAccountsPopupService
-                    .open(EmEmpBankAccountsDialogComponent as Component);
+                    .open(EmEmpBankAccountsDialogComponent as Component, null, params['employeeId']);
             }
         });
     }

@@ -1,7 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {JhiEventManager} from "ng-jhipster";
-import {Router} from "@angular/router";
-import {EmEmployeesService} from "../../../entities/em-employees/em-employees.service";
 import {Subscription} from "rxjs/Subscription";
 import {LeLegalEntitiesService} from "../../../entities/le-legal-entities/le-legal-entities.service";
 
@@ -34,8 +32,7 @@ export class EmpAddressComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInAddress() {
-    // this.eventSubscriber = this.eventManager.subscribe('AddressModification', (response) =>   {
-      this.eventManager.subscribe('AddressModification', (response) =>   {
+     this.eventSubscriber = this.eventManager.subscribe('AddressModification', (response) =>   {
         this.legalEntityService.find(this.legalEntityId).subscribe((item) => {
             this.address = item.address;
             this.setRegions(item.region);
@@ -44,7 +41,7 @@ export class EmpAddressComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-        // this.eventManager.destroy(this.eventSubscriber);
+        this.eventManager.destroy(this.eventSubscriber);
   }
 
   setRegions(cityRegion: any) {

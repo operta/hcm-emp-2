@@ -55,7 +55,7 @@ export const emEmpBankAccountsRoute: Routes = [
 
 export const emEmpBankAccountsPopupRoute: Routes = [
     {
-        path: 'em-emp-bank-accounts-new',
+        path: 'em-emp-bank-accounts-new/:employeeId',
         component: EmEmpBankAccountsPopupComponent,
         data: {
             authorities: ['ROLE_USER'],

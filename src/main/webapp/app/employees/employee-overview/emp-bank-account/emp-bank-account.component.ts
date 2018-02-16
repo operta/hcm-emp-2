@@ -1,8 +1,9 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {EmEmpBankAccountsService} from "../../../entities/em-emp-bank-accounts/em-emp-bank-accounts.service";
 import {EmEmpBankAccounts} from "../../../entities/em-emp-bank-accounts/em-emp-bank-accounts.model";
-import {JhiEventManager} from "ng-jhipster";
+import {JhiAlertService, JhiEventManager} from "ng-jhipster";
 import {Subscription} from "rxjs/Subscription";
+import {ResponseWrapper} from "../../../shared/model/response-wrapper.model";
 
 @Component({
   selector: 'jhi-emp-bank-account',
@@ -16,21 +17,30 @@ export class EmpBankAccountComponent implements OnInit, OnDestroy {
     eventSubscriber: Subscription;
 
   constructor(private bankAccountService: EmEmpBankAccountsService,
-              private eventManager: JhiEventManager) { }
+              private eventManager: JhiEventManager,
+              private jhiAlertService: JhiAlertService) { }
 
   ngOnInit() {
-      this.bankAccountService.findByIdEmployee(this.employee.id).subscribe(
-          (items) => this.bankAccounts = items
-      );
+      console.log(this.employee);
+      this.loadAll();
       this.registerChangeInAddress()
   }
 
     registerChangeInAddress() {
-        this.eventSubscriber = this.eventManager.subscribe('emEmpBankAccountsListModification', (response) =>   {
-            this.bankAccountService.findByIdEmployee(this.employee.id).subscribe(
-                (items) => this.bankAccounts = items
-            );
-        });
+        this.eventSubscriber = this.eventManager.subscribe('emEmpBankAccountsListModification', (response) =>   this.loadAll());
+    }
+
+    loadAll() {
+      console.log(this.employee.id);
+      this.bankAccountService.findByIdEmployee(this.employee.id).subscribe(
+          (item: EmEmpBankAccounts) => this.bankAccounts = item,
+          (error: Error) => this.onError(error)
+      )
+    }
+
+
+    private onError(error) {
+        this.jhiAlertService.error("Employee has no bank account", null, null);
     }
 
     ngOnDestroy() {

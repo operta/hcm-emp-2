@@ -2,7 +2,7 @@
     <i class="icon-user m-r-5 heading-icon-at"></i>
     <span class="heading-at">PERSONAL INFO</span>
     <div class="pull-right">
-        <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'emp-personal-info/'+ employee.id + '/edit'} }]">
+        <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'emp-personal-info/'+ employee.id + '/edit'} }]">
             <i class="fa fa-pencil action-button-at"></i>
         </a>
     </div>
@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label class="control-label col-md-3">First Name:</label>
                 <div class="col-md-9">
-                    <p class="form-control-static"> {{employee?.name}} </p>
+                    <p class="form-control-static"> {{employee?.name}}</p>
                 </div>
             </div>
         </div>

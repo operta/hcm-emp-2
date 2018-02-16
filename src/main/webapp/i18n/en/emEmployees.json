@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "emEmployees" : {
             "home": {
-                "title": "Em Employees",
-                "createLabel": "Create a new Em Employees",
-                "createOrEditLabel": "Create or edit a Em Employees"
+                "title": "Employees",
+                "createLabel": "Create a new Employee",
+                "createOrEditLabel": "Create or edit a Employee Profile"
             },
-            "created": "A new Em Employees is created with identifier {{ param }}",
-            "updated": "A Em Employees is updated with identifier {{ param }}",
-            "deleted": "A Em Employees is deleted with identifier {{ param }}",
+            "created": "Employee Profile created",
+            "updated": "Employee Profile updated",
+            "deleted": "Employee Profile deleted",
             "delete": {
-                "question": "Are you sure you want to delete Em Employees {{ id }}?"
+                "question": "Are you sure you want to delete Employee Profile {{ id }}?"
             },
             "detail": {
-                "title": "Em Employees"
+                "title": "Employee Profile"
             },
             "code": "Code",
             "name": "Name",
@@ -28,20 +28,21 @@
             "bloodGroup": "Blood Group",
             "dateOfBirth": "Date Of Birth",
             "hireDate": "Hire Date",
-            "ssn": "Ssn",
+            "ssn": "SSN",
             "taxNumber": "Tax Number",
             "imagePath": "Image Path",
-            "phoneNumber": "Phone Number",
-            "email": "Email",
+            "phoneNumber": "Business Phone Number",
+            "personalPhoneNumber": "Personal Phone Number",
+            "email": "Business Email",
             "createdBy": "Created By",
             "createdAt": "Created At",
             "updatedBy": "Updated By",
             "updatedAt": "Updated At",
-            "idQualification": "Id Qualification",
-            "idEmploymentType": "Id Employment Type",
-            "idLegalEntity": "Id Legal Entity",
-            "idStatus": "Id Status",
-            "idUser": "Id User"
+            "idEmploymentType" : "Employment Type",
+            "idQualification" : "Qualification",
+            "idUser" : "User",
+            "idStatus" : "Employment Status",
+            "idLegalEntity" : "Legal Entity"
         }
     }
 }

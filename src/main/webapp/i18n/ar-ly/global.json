@@ -32,6 +32,7 @@
                 "dmDocumentTypes": "Dm Document Types",
                 "emEmpDocuments": "Em Emp Documents",
                 "emEmpNotes": "Em Emp Notes",
+                "emEmpPreviousJobs": "Em Emp Previous Jobs",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

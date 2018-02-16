@@ -13,6 +13,7 @@ import { RgSchools, RgSchoolsService } from '../rg-schools';
 import { EmEmployees, EmEmployeesService } from '../em-employees';
 import { RgQualifications, RgQualificationsService } from '../rg-qualifications';
 import { ResponseWrapper } from '../../shared';
+import {Principal} from "../../shared/auth/principal.service";
 
 @Component({
     selector: 'jhi-em-emp-schools-dialog',
@@ -22,11 +23,10 @@ export class EmEmpSchoolsDialogComponent implements OnInit {
 
     emEmpSchools: EmEmpSchools;
     isSaving: boolean;
-
     idschools: RgSchools[];
-
+    employee: EmEmployees;
     idemployees: EmEmployees[];
-
+    currentAccount: any;
     idqualifications: RgQualifications[];
     dateFromDp: any;
     dateToDp: any;
@@ -38,12 +38,16 @@ export class EmEmpSchoolsDialogComponent implements OnInit {
         private rgSchoolsService: RgSchoolsService,
         private emEmployeesService: EmEmployeesService,
         private rgQualificationsService: RgQualificationsService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal
     ) {
     }
 
     ngOnInit() {
+
+
         this.isSaving = false;
+
         this.rgSchoolsService
             .query({filter: 'emempschools-is-null'})
             .subscribe((res: ResponseWrapper) => {
@@ -57,6 +61,7 @@ export class EmEmpSchoolsDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+
         this.emEmployeesService
             .query({filter: 'emempschools-is-null'})
             .subscribe((res: ResponseWrapper) => {
@@ -91,10 +96,12 @@ export class EmEmpSchoolsDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+
         if (this.emEmpSchools.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.emEmpSchoolsService.update(this.emEmpSchools));
         } else {
+            this.emEmpSchools.idEmployee = this.employee;
             this.subscribeToSaveResponse(
                 this.emEmpSchoolsService.create(this.emEmpSchools));
         }
@@ -152,7 +159,7 @@ export class EmEmpSchoolsPopupComponent implements OnInit, OnDestroy {
                     .open(EmEmpSchoolsDialogComponent as Component, params['id']);
             } else {
                 this.emEmpSchoolsPopupService
-                    .open(EmEmpSchoolsDialogComponent as Component);
+                    .open(EmEmpSchoolsDialogComponent as Component, null, params['employeeId']);
             }
         });
     }

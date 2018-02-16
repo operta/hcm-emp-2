@@ -38,12 +38,12 @@ export class EmEmpBankAccountsService {
         });
     }
 
-    findByIdEmployee(idEmployee: any) {
+    findByIdEmployee(idEmployee: any): Observable<EmEmpBankAccounts> {
         return this.http.get(`${this.resourceUrl}/employee/${idEmployee}`).map(
-            (response: Response) => {
-                const items: EmEmpBankAccounts = response.json();
-                return items;
+            (res: Response) => {
+                return res.json();
             }
+
         );
     }
 
@@ -58,11 +58,15 @@ export class EmEmpBankAccountsService {
     }
 
     private convertResponse(res: Response): ResponseWrapper {
+        console.log(res.json());
         const jsonResponse = res.json();
         const result = [];
+        console.log(jsonResponse.length);
         for (let i = 0; i < jsonResponse.length; i++) {
+            console.log(jsonResponse[i]);
             result.push(this.convertItemFromServer(jsonResponse[i]));
         }
+        console.log(result);
         return new ResponseWrapper(res.headers, result, res.status);
     }
 

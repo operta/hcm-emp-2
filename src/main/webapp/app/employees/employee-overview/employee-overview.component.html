@@ -1,18 +1,26 @@
-
 <div class="row">
+    <div class="col-md-12">
+        <jhi-alert></jhi-alert>
+    </div>
+</div>
+<div class="row">
+
     <div class="col-sm-2">
 
         <div class="at-img-align m-b-30">
             <img src="../../../content/images/users/1.jpg" class="img-fluid img-circle" />
         </div>
+        <a *ngIf="isEditable" class="popup-with-form pull-right" [routerLink]="['/', { outlets: {popup: 'em-employees/'+ employee.id + '/edit'} }]">
+            <i class="fa fa-pencil action-button-at"></i>
+        </a>
         <div class="preview"> Bussines phone</div>
         <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.phoneNumber}}</div>
         <br>
         <div class="preview"> Private phone</div>
-        <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DODATI POLJE</div>
+        <div class="preview" style="font-weight:bold;"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.personalPhoneNumber}}</div>
         <br>
         <div class="preview"> Bussines mail</div>
-        <div class="preview" style="font-weight:bold; font-size: 10px;"><i class="icon-envelope-open"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.email}}</div>
+        <div class="preview" style="font-weight:bold; white-space: pre-wrap; word-break: break-all;"><i class="icon-envelope-open"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee?.email}}</div>
         <br>
         <hr class="m-t-0 m-b-20">
         <div class="preview"> Hire date</div>
@@ -37,7 +45,7 @@
             <li role="presentation" class="nav-item"><a href="#job" (click)="changeTabState('job')" [class.active]="tabState == 'job'" class="nav-link" aria-controls="job" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Job & past experience</span></a></li>
             <li role="presentation" class="nav-item"><a href="#education" (click)="changeTabState('education')" [class.active]="tabState == 'education'" class="nav-link" aria-controls="education" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-settings"></i></span> <span class="hidden-xs">Education</span></a></li>
             <li role="presentation" class="nav-item"><a href="#training" (click)="changeTabState('training')" [class.active]="tabState == 'training'" class="nav-link" aria-controls="training" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-settings"></i></span> <span class="hidden-xs">Training</span></a></li>
-            <li role="presentation" class="nav-item"><a href="#acomplishments" (click)="changeTabState('accomplishments')" [class.active]="tabState == 'accomplishments'" class="nav-link" aria-controls="acomplishments" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-settings"></i></span> <span class="hidden-xs">Acomplishments</span></a></li>
+            <li role="presentation" class="nav-item"><a href="#acomplishments" (click)="changeTabState('accomplishments')" [class.active]="tabState == 'accomplishments'" class="nav-link" aria-controls="acomplishments" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-settings"></i></span> <span class="hidden-xs">Accomplishments</span></a></li>
             <li role="presentation" class="nav-item"><a href="#documents" (click)="changeTabState('documents')" [class.active]="tabState == 'documents'" class="nav-link" aria-controls="documents" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-email"></i></span> <span class="hidden-xs">Documents</span></a></li>
             <li role="presentation" class="nav-item"><a href="#performance" (click)="changeTabState('performance')" [class.active]="tabState == 'performance'" class="nav-link" aria-controls="performance" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-settings"></i></span> <span class="hidden-xs">Performance</span></a></li>
             <li role="presentation" class="nav-item"><a href="#notes" (click)="changeTabState('notes')" [class.active]="tabState == 'notes'" class="nav-link" aria-controls="notes" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-settings"></i></span> <span class="hidden-xs">Notes</span></a></li>
@@ -56,13 +64,13 @@
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'job'" id="job">
                 <div id="dataScrollExp">
-                    <jhi-emp-job-experience></jhi-emp-job-experience>
-                    <jhi-emp-payroll-changes></jhi-emp-payroll-changes>
+                    <jhi-emp-job-experience [isEditable]="isEditable" [employeeId]="employee.id"></jhi-emp-job-experience>
+                    <jhi-emp-payroll-changes [employeeId]="employee.id" [isEditable]="isEditable"></jhi-emp-payroll-changes>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'education'" id="education">
                 <div id="dataScrollEdu">
-                    <jhi-emp-education></jhi-emp-education>
+                    <jhi-emp-education [isEditable]="isEditable" [employeeId]="employee.id"></jhi-emp-education>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'training'" id="training">
@@ -72,7 +80,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'accomplishments'" id="acomplishments">
                 <div id="dataScrollAcc">
-                    <jhi-emp-accomplishments></jhi-emp-accomplishments>
+                    <jhi-emp-accomplishments [isEditable]="isEditable" [employeeId]="employee.id"></jhi-emp-accomplishments>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'documents'" id="documents">

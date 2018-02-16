@@ -130,7 +130,7 @@
                         <span class="hide-menu"> Dashboard </span>
                     </a>
                 </li>
-                <li *ngIf="accountId">
+                <li *jhiHasAnyAuthority="'ROLE_USER'">
                     <a (click)="collapseLists()" routerLinkActive="active"  [routerLink]="['/dashboard/employee-overview', { userId: accountId}]"  class="waves-effect">
                         <i class="icon-user fa-fw" data-icon="v"></i>
                         <span class="hide-menu"> My Info </span>
@@ -140,6 +140,12 @@
                     <a (click)="collapseLists()" routerLinkActive="active" routerLink="/dashboard/employees" class="waves-effect">
                         <i class="icon-people fa-fw" data-icon="v"></i>
                         <span class="hide-menu"> Employees </span>
+                    </a>
+                </li>
+                <li>
+                    <a (click)="logout()" routerLink="/module" class="waves-effect">
+                        <i class="fa-indent fa-fw" data-icon="v"></i>
+                        <span class="hide-menu"> Modules </span>
                     </a>
                 </li>
                 <!--<li>-->

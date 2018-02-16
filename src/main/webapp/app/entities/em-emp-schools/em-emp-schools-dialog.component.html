@@ -13,6 +13,20 @@
                    [(ngModel)]="emEmpSchools.id" readonly />
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.idSchool" for="field_idSchool">School name</label>
+            <select class="form-control" id="field_idSchool" name="idSchool" [(ngModel)]="emEmpSchools.idSchool">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="rgSchoolsOption.id === emEmpSchools.idSchool?.id ? emEmpSchools.idSchool : rgSchoolsOption" *ngFor="let rgSchoolsOption of idschools; trackBy: trackRgSchoolsById">{{rgSchoolsOption.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.idQualification" for="field_idQualification">Qualification</label>
+            <select class="form-control" id="field_idQualification" name="idQualification" [(ngModel)]="emEmpSchools.idQualification">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="rgQualificationsOption.id === emEmpSchools.idQualification?.id ? emEmpSchools.idQualification : rgQualificationsOption" *ngFor="let rgQualificationsOption of idqualifications; trackBy: trackRgQualificationsById">{{rgQualificationsOption.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.dateFrom" for="field_dateFrom">Date From</label>
             <div class="input-group">
                 <input id="field_dateFrom" type="text" class="form-control" name="dateFrom" ngbDatepicker  #dateFromDp="ngbDatepicker" [(ngModel)]="emEmpSchools.dateFrom"
@@ -35,69 +49,25 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.major" for="field_major">Major</label>
             <input type="text" class="form-control" name="major" id="field_major"
-                [(ngModel)]="emEmpSchools.major" />
+                   [(ngModel)]="emEmpSchools.major" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.degree" for="field_degree">Degree</label>
             <input type="text" class="form-control" name="degree" id="field_degree"
-                [(ngModel)]="emEmpSchools.degree" />
+                   [(ngModel)]="emEmpSchools.degree" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.grade" for="field_grade">Grade</label>
             <input type="number" class="form-control" name="grade" id="field_grade"
-                [(ngModel)]="emEmpSchools.grade" />
+                   [(ngModel)]="emEmpSchools.grade" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.description" for="field_description">Description</label>
             <input type="text" class="form-control" name="description" id="field_description"
-                [(ngModel)]="emEmpSchools.description" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="emEmpSchools.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.createdAt" for="field_createdAt">Created At</label>
-            <div class="d-flex">
-                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpSchools.createdAt"
-                />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.updatedBy" for="field_updatedBy">Updated By</label>
-            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
-                [(ngModel)]="emEmpSchools.updatedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="d-flex">
-                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpSchools.updatedAt"
-                />
-            </div>
+                   [(ngModel)]="emEmpSchools.description" />
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.idSchool" for="field_idSchool">Id School</label>
-            <select class="form-control" id="field_idSchool" name="idSchool" [(ngModel)]="emEmpSchools.idSchool">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="rgSchoolsOption.id === emEmpSchools.idSchool?.id ? emEmpSchools.idSchool : rgSchoolsOption" *ngFor="let rgSchoolsOption of idschools; trackBy: trackRgSchoolsById">{{rgSchoolsOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.idEmployee" for="field_idEmployee">Id Employee</label>
-            <select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpSchools.idEmployee">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emEmployeesOption.id === emEmpSchools.idEmployee?.id ? emEmpSchools.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.idQualification" for="field_idQualification">Id Qualification</label>
-            <select class="form-control" id="field_idQualification" name="idQualification" [(ngModel)]="emEmpSchools.idQualification">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="rgQualificationsOption.id === emEmpSchools.idQualification?.id ? emEmpSchools.idQualification : rgQualificationsOption" *ngFor="let rgQualificationsOption of idqualifications; trackBy: trackRgQualificationsById">{{rgQualificationsOption.name}}</option>
-            </select>
-        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

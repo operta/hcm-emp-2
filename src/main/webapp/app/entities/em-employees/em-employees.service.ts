@@ -48,6 +48,11 @@ export class EmEmployeesService {
         });
     }
 
+    findEmployee(id: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/${id}`)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
     findByUser(id: number): Observable<EmEmployees> {
         return this.http.get(`${this.resourceUrl}/user/${id}`).map((res: Response) => {
             const jsonResponse = res.json();

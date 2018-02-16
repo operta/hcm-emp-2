@@ -21,6 +21,7 @@ export class EmEmployees implements BaseEntity {
         public taxNumber?: string,
         public imagePath?: string,
         public phoneNumber?: string,
+        public personalPhoneNumber?: string,
         public email?: string,
         public createdBy?: string,
         public createdAt?: any,

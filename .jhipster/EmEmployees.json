@@ -77,6 +77,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "personalPhoneNumber",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "email",
             "fieldType": "String"
         },

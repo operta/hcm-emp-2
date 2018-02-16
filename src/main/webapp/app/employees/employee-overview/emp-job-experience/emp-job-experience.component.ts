@@ -29,7 +29,6 @@ export class EmpJobExperienceComponent implements OnInit {
         this.emEmpPreviousJobsService.queryByEmployee(this.employeeId).subscribe(
             (res: ResponseWrapper) => {
                 this.emEmpPreviousJobs = res.json;
-                console.log(this.emEmpPreviousJobs);
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
@@ -54,8 +53,12 @@ export class EmpJobExperienceComponent implements OnInit {
     navigateEdit(jobId: number) {
         this.router.navigate(['/', { outlets: { popup: 'em-emp-previous-jobs/'+ jobId + '/edit'} }]);
     }
-    navigateAdd() {
-        this.router.navigate(['/', { outlets: { popup: ['em-emp-previous-jobs-new'] } }]);
+
+    checkIsManager(ongoingString): boolean {
+        if (ongoingString == "T") {
+            return true;
+        }
+        return false;
     }
 
 }

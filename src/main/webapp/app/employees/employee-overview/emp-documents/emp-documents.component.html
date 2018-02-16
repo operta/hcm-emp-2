@@ -3,7 +3,7 @@
         <i class="icon-notebook m-r-5 heading-icon-at"></i>
         <span class="heading-at">DOCUMENTS</span>
         <div class="dropdown user-pro-body pull-right">
-            <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-documents-new'} }]">
+            <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-documents-new/' + employee.id} }]">
                 <i class="fa fa-plus action-button-at"></i>
             </a>
             <!--<ul class="dropdown-menu animated fadeIn">-->
@@ -34,14 +34,14 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Date:</label>
+                    <label class="control-label col-md-3" style="padding-top: 0px;">Date:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> {{document.dateCreated}}</p>
+                        <p class="form-control-static" style="padding-top: 0px;"> {{document.dateCreated | date:'dd/MM/yyyy'}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
-                <a class="popup-with-form btn btn-danger btn-sm" [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
+            <div *ngIf="isEditable" class="col-md-2">
+                <a class="popup-with-form btn btn-danger btn-sm" style="font-size:20px;padding-top: 0px;"  [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
                     <span class="fa fa-remove"></span>
                 </a>
             </div>
@@ -65,14 +65,14 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Date:</label>
+                    <label class="control-label col-md-3" style="padding-top: 0px;">Date:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> {{document.dateCreated}}</p>
+                        <p class="form-control-static" style="padding-top: 0px;"> {{document.dateCreated | date:'dd/MM/yyyy'}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
-                <a class="popup-with-form btn btn-danger btn-sm" [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
+            <div *ngIf="isEditable" class="col-md-2">
+                <a class="popup-with-form btn btn-danger btn-sm" style="font-size:20px;padding-top: 0px;"  [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
                     <span class="fa fa-remove"></span>
                 </a>
             </div>
@@ -95,14 +95,14 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Date:</label>
+                    <label class="control-label col-md-3" style="padding-top: 0px;">Date:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> {{document.dateCreated}}</p>
+                        <p class="form-control-static" style="padding-top: 0px;"> {{document.dateCreated | date:'dd/MM/yyyy'}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
-                <a class="popup-with-form btn btn-danger btn-sm" [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
+            <div *ngIf="isEditable" class="col-md-2">
+                <a class="popup-with-form btn btn-danger btn-sm" style="font-size:20px;padding-top: 0px;" [routerLink]="['/', { outlets: {popup: 'em-emp-documents/'+ document.id + '/delete'} }]">
                     <span class="fa fa-remove"></span>
                 </a>
             </div>

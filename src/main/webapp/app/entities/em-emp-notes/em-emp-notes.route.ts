@@ -55,7 +55,7 @@ export const emEmpNotesRoute: Routes = [
 
 export const emEmpNotesPopupRoute: Routes = [
     {
-        path: 'em-emp-notes-new',
+        path: 'em-emp-notes-new/:employeeId',
         component: EmEmpNotesPopupComponent,
         data: {
             authorities: ['ROLE_USER'],

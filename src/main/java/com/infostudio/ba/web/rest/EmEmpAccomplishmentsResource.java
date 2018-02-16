@@ -113,6 +113,19 @@ public class EmEmpAccomplishmentsResource {
     }
 
     /**
+     * GET  /em-emp-accomplishments/byEmployee/:id : get all the emEmpAccomplishments by employee ID.
+     *
+     * @param id the id of employee
+     * @return the ResponseEntity with status 200 (OK) and the list of emEmpAccomplishments in body
+     */
+    @GetMapping("/em-emp-accomplishments/employee/{id}")
+    @Timed
+    public List<EmEmpAccomplishments> getAllEmEmpAccomplishmentsByEmployee(@PathVariable String id) {
+        log.debug("REST request to get all EmEmpAccomplishments");
+        return emEmpAccomplishmentsRepository.findAllByIdEmployee_IdOrderByIdAccomplishmentType(Long.valueOf(id));
+    }
+
+    /**
      * DELETE  /em-emp-accomplishments/:id : delete the "id" emEmpAccomplishments.
      *
      * @param id the id of the emEmpAccomplishments to delete

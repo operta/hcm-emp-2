@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "emEmpNotes" : {
             "home": {
-                "title": "Em Emp Notes",
-                "createLabel": "Create a new Em Emp Notes",
-                "createOrEditLabel": "Create or edit a Em Emp Notes"
+                "title": "Note",
+                "createLabel": "Create a new Note",
+                "createOrEditLabel": "Create or edit a Note"
             },
-            "created": "A new Em Emp Notes is created with identifier {{ param }}",
-            "updated": "A Em Emp Notes is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Notes is deleted with identifier {{ param }}",
+            "created": "A new Note is created with identifier {{ param }}",
+            "updated": "A Note is updated with identifier {{ param }}",
+            "deleted": "A Note is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Notes {{ id }}?"
+                "question": "Are you sure you want to delete Note with title: {{ title }}?"
             },
             "detail": {
-                "title": "Em Emp Notes"
+                "title": "Note"
             },
             "title": "Title",
             "decsription": "Decsription",
@@ -21,7 +21,7 @@
             "createdAt": "Created At",
             "updatedBy": "Updated By",
             "updatedAt": "Updated At",
-            "idEmployee": "Id Employee"
+            "idEmployee": "Employee Id"
         }
     }
 }

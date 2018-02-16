@@ -38,13 +38,9 @@ export class EmEmpNotesService {
         });
     }
 
-    findByIdEmployee(idEmployee: any) {
-        return this.http.get(`${this.resourceUrl}/employee/${idEmployee}`).map(
-            (response: Response) => {
-                const items: EmEmpNotes[] = response.json();
-                return items;
-            }
-        );
+    findByIdEmployee(idEmployee: any): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/employee/${idEmployee}`)
+            .map((res: Response) => this.convertResponse(res));
     }
 
 

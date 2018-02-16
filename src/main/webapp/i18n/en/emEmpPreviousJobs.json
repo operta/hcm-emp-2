@@ -1,0 +1,34 @@
+{
+    "hcmEmpApp": {
+        "emEmpPreviousJobs" : {
+            "home": {
+                "title": "Previous Job",
+                "createLabel": "Create a new Previous Job",
+                "createOrEditLabel": "Create or edit a Previous Job"
+            },
+            "created": "A new Previous Job is created with identifier {{ param }}",
+            "updated": "A Previous Job is updated with identifier {{ param }}",
+            "deleted": "A Previous Job is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Previous Job {{ id }}?"
+            },
+            "detail": {
+                "title": "Previous Job"
+            },
+            "company": "Company",
+            "position": "Position",
+            "dateFrom": "Date From",
+            "dateTo": "Date To",
+            "reasonOfLeaving": "Reason Of Leaving",
+            "managerPosition": "Manager Position",
+            "lengthOfServiceYears": "Length Of Service Years",
+            "lengthOfServiceMonths": "Length Of Service Months",
+            "lengthOfServiceDays": "Length Of Service Days",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Employee"
+        }
+    }
+}

@@ -1,0 +1,88 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmpPreviousJobsLabel" jhiTranslate="hcmEmpApp.emEmpPreviousJobs.home.createOrEditLabel">Create or edit a Em Emp Previous Jobs</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpPreviousJobs.company" for="field_company">Company</label>
+            <input type="text" class="form-control" name="company" id="field_company"
+                   [(ngModel)]="emEmpPreviousJobs.company" required/>
+            <div [hidden]="!(editForm.controls.company?.dirty && editForm.controls.company?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.company?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpPreviousJobs.position" for="field_position">Position</label>
+            <input type="text" class="form-control" name="position" id="field_position"
+                   [(ngModel)]="emEmpPreviousJobs.position" required/>
+            <div [hidden]="!(editForm.controls.position?.dirty && editForm.controls.position?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.position?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.dateFrom" for="field_dateFrom">Date From</label>
+            <div class="input-group">
+                <input id="field_dateFrom" type="text" class="form-control" name="dateFrom" ngbDatepicker  #dateFromDp="ngbDatepicker" [(ngModel)]="emEmpPreviousJobs.dateFrom" required
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateFromDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateFrom?.dirty && editForm.controls.dateFrom?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.dateFrom?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.dateTo" for="field_dateTo">Date To</label>
+            <div class="input-group">
+                <input id="field_dateTo" type="text" class="form-control" name="dateTo" ngbDatepicker  #dateToDp="ngbDatepicker" [(ngModel)]="emEmpPreviousJobs.dateTo"
+                required />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateToDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateTo?.dirty && editForm.controls.dateTo?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.dateTo?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpPreviousJobs.reasonOfLeaving" for="field_reasonOfLeaving">Reason Of Leaving</label>
+            <input type="text" class="form-control" name="reasonOfLeaving" id="field_reasonOfLeaving"
+                   [(ngModel)]="emEmpPreviousJobs.reasonOfLeaving" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success btn-rounded btn-sm" type="button" (click)="managerPosition = !managerPosition" name="ongoing">Manager Position <i *ngIf="managerPosition" class="fa fa-check" aria-hidden="true"></i></button>
+
+        </div>
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

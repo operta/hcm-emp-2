@@ -7,131 +7,127 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!emEmpAccomplishments.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="emEmpAccomplishments.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.title" for="field_title">Title</label>
-            <input type="text" class="form-control" name="title" id="field_title"
-                [(ngModel)]="emEmpAccomplishments.title" required/>
-            <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
+        <div class="row">
+
+
+            <div class="form-group col-md-12" [hidden]="!emEmpAccomplishments.id">
+                <label for="id" jhiTranslate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id" name="id"
+                       [(ngModel)]="emEmpAccomplishments.id" readonly />
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.description" for="field_description">Description</label>
-            <input type="text" class="form-control" name="description" id="field_description"
-                [(ngModel)]="emEmpAccomplishments.description" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.organization" for="field_organization">Organization</label>
-            <input type="text" class="form-control" name="organization" id="field_organization"
-                [(ngModel)]="emEmpAccomplishments.organization" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.location" for="field_location">Location</label>
-            <input type="text" class="form-control" name="location" id="field_location"
-                [(ngModel)]="emEmpAccomplishments.location" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.association" for="field_association">Association</label>
-            <input type="text" class="form-control" name="association" id="field_association"
-                [(ngModel)]="emEmpAccomplishments.association" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.ongoing" for="field_ongoing">Ongoing</label>
-            <input type="text" class="form-control" name="ongoing" id="field_ongoing"
-                [(ngModel)]="emEmpAccomplishments.ongoing" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.link" for="field_link">Link</label>
-            <input type="text" class="form-control" name="link" id="field_link"
-                [(ngModel)]="emEmpAccomplishments.link" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom" for="field_dateFrom">Date From</label>
-            <div class="input-group">
-                <input id="field_dateFrom" type="text" class="form-control" name="dateFrom" ngbDatepicker  #dateFromDp="ngbDatepicker" [(ngModel)]="emEmpAccomplishments.dateFrom"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-secondary" (click)="dateFromDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
+
+            <div class="form-group col-md-12">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.idAccomplishmentType" for="field_idAccomplishmentType">Accomplishment Type</label>
+                <select class="form-control" id="field_idAccomplishmentType" name="idAccomplishmentType" [(ngModel)]="emEmpAccomplishments.idAccomplishmentType" required>
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="atAccomplishmentTypesOption.id === emEmpAccomplishments.idAccomplishmentType?.id ? emEmpAccomplishments.idAccomplishmentType : atAccomplishmentTypesOption" *ngFor="let atAccomplishmentTypesOption of idaccomplishmenttypes; trackBy: trackAtAccomplishmentTypesById">{{atAccomplishmentTypesOption.name}}</option>
+                </select>
+                <div [hidden]="!(editForm.controls.idAccomplishmentType?.dirty && editForm.controls.idAccomplishmentType?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo" for="field_dateTo">Date To</label>
-            <div class="input-group">
-                <input id="field_dateTo" type="text" class="form-control" name="dateTo" ngbDatepicker  #dateToDp="ngbDatepicker" [(ngModel)]="emEmpAccomplishments.dateTo"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-secondary" (click)="dateToDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
+
+            <div class="form-group col-md-12">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.name" for="field_title">Name</label>
+                <input type="text" class="form-control" name="title" id="field_title"
+                       [(ngModel)]="emEmpAccomplishments.title" required/>
+                <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.occupation" for="field_occupation">Occupation</label>
-            <input type="text" class="form-control" name="occupation" id="field_occupation"
-                [(ngModel)]="emEmpAccomplishments.occupation" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.proficiency" for="field_proficiency">Proficiency</label>
-            <input type="text" class="form-control" name="proficiency" id="field_proficiency"
-                [(ngModel)]="emEmpAccomplishments.proficiency" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.licenceNumber" for="field_licenceNumber">Licence Number</label>
-            <input type="text" class="form-control" name="licenceNumber" id="field_licenceNumber"
-                [(ngModel)]="emEmpAccomplishments.licenceNumber" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating" for="field_rating">Rating</label>
-            <input type="number" class="form-control" name="rating" id="field_rating"
-                [(ngModel)]="emEmpAccomplishments.rating" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="emEmpAccomplishments.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdAt" for="field_createdAt">Created At</label>
-            <div class="d-flex">
-                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpAccomplishments.createdAt"
-                />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedBy" for="field_updatedBy">Updated By</label>
-            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
-                [(ngModel)]="emEmpAccomplishments.updatedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="d-flex">
-                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpAccomplishments.updatedAt"
-                />
+            <div *ngIf="emEmpAccomplishments.idAccomplishmentType" class="col-md-12">
+                <div  *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 1 || emEmpAccomplishments.idAccomplishmentType.id == 2 || emEmpAccomplishments.idAccomplishmentType.id == 3 || emEmpAccomplishments.idAccomplishmentType.id == 5 || emEmpAccomplishments.idAccomplishmentType.id == 6" class="form-group col-md-12">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.link" for="field_link">Link</label>
+                    <input type="text" class="form-control" name="link" id="field_link"
+                           [(ngModel)]="emEmpAccomplishments.link" />
+                </div>
+
+                <div  *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 1 || emEmpAccomplishments.idAccomplishmentType.id == 2 || emEmpAccomplishments.idAccomplishmentType.id == 5" class="form-group col-md-6">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom" for="field_dateFrom">Date From</label>
+                    <div class="input-group">
+                        <input id="field_dateFrom" type="text" class="form-control" name="dateFrom" ngbDatepicker  #dateFromDp="ngbDatepicker" [(ngModel)]="emEmpAccomplishments.dateFrom"
+                        />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-secondary" (click)="dateFromDp.toggle()"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div  *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 6 || emEmpAccomplishments.idAccomplishmentType.id == 3" class="form-group col-md-6">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateFromDp="ngbDatepicker" [(ngModel)]="emEmpAccomplishments.dateFrom"
+                        />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-secondary" (click)="dateFromDp.toggle()"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div  *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 1 || emEmpAccomplishments.idAccomplishmentType.id == 2 || emEmpAccomplishments.idAccomplishmentType.id == 5" class="form-group col-md-6">
+                     <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo" for="field_dateTo">Date To</label>
+                    <div *ngIf="!ongoing" class="input-group">
+                        <input id="field_dateTo" type="text" class="form-control" name="dateTo" ngbDatepicker  #dateToDp="ngbDatepicker" [(ngModel)]="emEmpAccomplishments.dateTo"
+                        />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-secondary" (click)="dateToDp.toggle()"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                    <button class="btn btn-success btn-rounded btn-sm" type="button" (click)="ongoing = !ongoing" name="ongoing">Present <i *ngIf="ongoing" class="fa fa-check" aria-hidden="true"></i></button>
+
+                </div>
+                <div class="clearfix"></div>
+
+                <div *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 1" class="form-group col-md-6">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.licenceNumber" for="field_licenceNumber">Licence Number</label>
+                    <input type="text" class="form-control" name="licenceNumber" id="field_licenceNumber"
+                           [(ngModel)]="emEmpAccomplishments.licenceNumber" />
+                </div>
+                <div *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 1" class="form-group col-md-6">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.certAuthority" for="field_association">Certification Authority</label>
+                    <input type="text" class="form-control" name="association" id="field_association"
+                           [(ngModel)]="emEmpAccomplishments.association" />
+                </div>
+                <div *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 5" class="form-group col-md-6">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.occupation" for="field_occupation">Occupation</label>
+                    <input type="text" class="form-control" name="occupation" id="field_occupation"
+                           [(ngModel)]="emEmpAccomplishments.occupation" />
+                </div>
+                <div *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 4" class="form-group col-md-6">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.proficiency" for="field_proficiency">Proficiency</label>
+                    <input type="text" class="form-control" name="proficiency" id="field_proficiency"
+                           [(ngModel)]="emEmpAccomplishments.proficiency" />
+                </div>
+                <div *ngIf="emEmpAccomplishments.idAccomplishmentType.id == 2 || emEmpAccomplishments.idAccomplishmentType.id == 3 || emEmpAccomplishments.idAccomplishmentType.id == 5 || emEmpAccomplishments.idAccomplishmentType.id == 6" class="form-group col-md-6">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           [(ngModel)]="emEmpAccomplishments.description" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating" for="field_rating">Rating</label>
+                    <input type="number" class="form-control" name="rating" id="field_rating"
+                           [(ngModel)]="emEmpAccomplishments.rating" />
+                </div>
+
+            <!--<div class="form-group">-->
+                <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.organization" for="field_organization">Organization</label>-->
+                <!--<input type="text" class="form-control" name="organization" id="field_organization"-->
+                       <!--[(ngModel)]="emEmpAccomplishments.organization" />-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.location" for="field_location">Location</label>-->
+                <!--<input type="text" class="form-control" name="location" id="field_location"-->
+                       <!--[(ngModel)]="emEmpAccomplishments.location" />-->
+            <!--</div>-->
+
+
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.idEmployee" for="field_idEmployee">Id Employee</label>
-            <select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpAccomplishments.idEmployee">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emEmployeesOption.id === emEmpAccomplishments.idEmployee?.id ? emEmpAccomplishments.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.idAccomplishmentType" for="field_idAccomplishmentType">Id Accomplishment Type</label>
-            <select class="form-control" id="field_idAccomplishmentType" name="idAccomplishmentType" [(ngModel)]="emEmpAccomplishments.idAccomplishmentType">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="atAccomplishmentTypesOption.id === emEmpAccomplishments.idAccomplishmentType?.id ? emEmpAccomplishments.idAccomplishmentType : atAccomplishmentTypesOption" *ngFor="let atAccomplishmentTypesOption of idaccomplishmenttypes; trackBy: trackAtAccomplishmentTypesById">{{atAccomplishmentTypesOption.name}}</option>
-            </select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

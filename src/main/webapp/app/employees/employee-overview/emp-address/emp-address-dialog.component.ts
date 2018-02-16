@@ -48,16 +48,12 @@ export class EmpAddressDialogComponent implements OnInit {
     setRegions(cityRegion: any) {
         if(cityRegion) {
             this.selectedCity = cityRegion;
-            console.log(this.selectedCity);
             if(cityRegion.idParent) {
                 this.selectedState = cityRegion.idParent;
-                console.log(this.selectedState);
                 if(cityRegion.idParent.idParent) {
                     this.selectedCountry = cityRegion.idParent.idParent;
-                    console.log(this.selectedCountry);
                     if(cityRegion.idParent.idParent.idParent) {
                         this.selectedRegion = cityRegion.idParent.idParent.idParent
-                        console.log(this.selectedRegion);
                     }
                 }
             }
@@ -122,18 +118,14 @@ export class EmpAddressDialogComponent implements OnInit {
     }
 
     onStateSelected(value: string){
-        console.log(value);
         if(value) {
             this.selectedState = this.states.find(item => item.name === value);
-            console.log(this.selectedState);
             this.filteredCities = this.cities.filter((city) => city.idParent.id == this.selectedState.id);
             this.selectedCity = null;
         }
         else {
             this.filteredCities = []
         }
-
-
     }
 
     onCitySelected(value: string) {

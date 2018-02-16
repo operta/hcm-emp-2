@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "leLegalEntities" : {
             "home": {
-                "title": "Le Legal Entities",
-                "createLabel": "Create a new Le Legal Entities",
-                "createOrEditLabel": "Create or edit a Le Legal Entities"
+                "title": "Legal Entities",
+                "createLabel": "Create a new Legal Entity",
+                "createOrEditLabel": "Create or edit a Legal Entity"
             },
-            "created": "A new Le Legal Entities is created with identifier {{ param }}",
-            "updated": "A Le Legal Entities is updated with identifier {{ param }}",
-            "deleted": "A Le Legal Entities is deleted with identifier {{ param }}",
+            "created": "A new Legal Entity is created with identifier {{ param }}",
+            "updated": "A Legal Entity is updated with identifier {{ param }}",
+            "deleted": "A Legal Entity is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Le Legal Entities {{ id }}?"
+                "question": "Are you sure you want to delete Legal Entity {{ id }}?"
             },
             "detail": {
-                "title": "Le Legal Entities"
+                "title": "Legal Entity"
             },
             "code": "Code",
             "name": "Name",
@@ -25,7 +25,7 @@
             "dutyNumber": "Duty Number",
             "address": "Address",
             "postalNumber": "Postal Number",
-            "idEntityType": "Id Entity Type",
+            "idEntityType": "Entity Type",
             "region": "Region"
         }
     }

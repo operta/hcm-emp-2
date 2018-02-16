@@ -3,16 +3,19 @@
         <i class="icon-notebook m-r-5 heading-icon-at"></i>
         <span class="heading-at">Notes</span>
         <div class="pull-right">
-            <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-notes-new'} }]">
+            <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-notes-new/' + employee.id} }]">
                 <i class="fa fa-plus action-button-at"></i>
             </a>
         </div>
     </div>
     <div class="form-body" *ngFor="let note of notes | orderBy:'updatedAt':true">
         <div class="box-title">{{note?.title}}, {{note?.updatedAt | date:'dd/MM/yyyy HH:mm'}}</div>
-            <div class="pull-right">
+            <div *ngIf="isEditable" class="pull-right">
                 <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-notes/'+ note.id + '/edit'} }]">
                     <i class="fa fa-pencil action-button-at"></i>
+                </a>
+                <a class="popup-with-form btn btn-danger btn-sm" style="font-size:20px" [routerLink]="['/', { outlets: {popup: 'em-emp-notes/'+ note.id + '/delete'} }]">
+                    <span class="fa fa-remove"></span>
                 </a>
             </div>
         <div class="row">

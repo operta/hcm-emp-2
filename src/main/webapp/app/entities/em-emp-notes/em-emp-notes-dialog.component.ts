@@ -39,22 +39,6 @@ export class EmEmpNotesDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.emEmployeesService
-            .query({filter: 'emempnotes-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmpNotes.idEmployee || !this.emEmpNotes.idEmployee.id) {
-                    this.idemployees = res.json;
-                } else {
-                    this.emEmployeesService
-                        .find(this.emEmpNotes.idEmployee.id)
-                        .subscribe((subRes: EmEmployees) => {
-                            this.idemployees = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
-        this.principal.identity().then(
-            (account) => this.accountId = account.id
-        );
     }
 
     clear() {
@@ -69,7 +53,6 @@ export class EmEmpNotesDialogComponent implements OnInit {
             this.subscribeToSaveResponse(
                 this.emEmpNotesService.update(this.emEmpNotes));
         } else {
-            this.employee = this.idemployees.find((item) => item.idUser.id === this.accountId);
             this.emEmpNotes.idEmployee = this.employee;
             this.emEmpNotes.updatedAt = new Date();
             this.subscribeToSaveResponse(
@@ -121,7 +104,7 @@ export class EmEmpNotesPopupComponent implements OnInit, OnDestroy {
                     .open(EmEmpNotesDialogComponent as Component, params['id']);
             } else {
                 this.emEmpNotesPopupService
-                    .open(EmEmpNotesDialogComponent as Component);
+                    .open(EmEmpNotesDialogComponent as Component, null, params['employeeId']);
             }
         });
     }

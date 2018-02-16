@@ -4,6 +4,8 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { EmEmpSchools } from './em-emp-schools.model';
 import { EmEmpSchoolsService } from './em-emp-schools.service';
+import {EmEmployeesService} from "../em-employees/em-employees.service";
+import {EmEmployees} from "../em-employees/em-employees.model";
 
 @Injectable()
 export class EmEmpSchoolsPopupService {
@@ -13,13 +15,14 @@ export class EmEmpSchoolsPopupService {
         private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
-        private emEmpSchoolsService: EmEmpSchoolsService
+        private emEmpSchoolsService: EmEmpSchoolsService,
+        private employeeService: EmEmployeesService
 
     ) {
         this.ngbModalRef = null;
     }
 
-    open(component: Component, id?: number | any): Promise<NgbModalRef> {
+    open(component: Component, id?: number | any, employeeId?: number | any): Promise<NgbModalRef> {
         return new Promise<NgbModalRef>((resolve, reject) => {
             const isOpen = this.ngbModalRef !== null;
             if (isOpen) {
@@ -50,18 +53,21 @@ export class EmEmpSchoolsPopupService {
                     resolve(this.ngbModalRef);
                 });
             } else {
-                // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
-                setTimeout(() => {
-                    this.ngbModalRef = this.emEmpSchoolsModalRef(component, new EmEmpSchools());
+                this.employeeService.find(employeeId).subscribe((employee) => {
+                    this.ngbModalRef = this.emEmpSchoolsModalRef(component, new EmEmpSchools(), employee);
                     resolve(this.ngbModalRef);
-                }, 0);
+                });
+
             }
         });
     }
 
-    emEmpSchoolsModalRef(component: Component, emEmpSchools: EmEmpSchools): NgbModalRef {
+    emEmpSchoolsModalRef(component: Component, emEmpSchools: EmEmpSchools, employee?: EmEmployees): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.emEmpSchools = emEmpSchools;
+        if(employee){
+            modalRef.componentInstance.employee = employee;
+        }
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;

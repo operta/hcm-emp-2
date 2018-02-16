@@ -28,10 +28,13 @@ import { HcmEmpEmEmpNotesModule } from './em-emp-notes/em-emp-notes.module';
 import {EmpPersonalInfoModule} from "../employees/employee-overview/emp-personal-info/emp-personal-info.module";
 import {EmpAddressModule} from "../employees/employee-overview/emp-address/emp-address.module";
 import {EmpSsnAndTaxNoModule} from "../employees/employee-overview/emp-ssn-and-tax-no/emp-ssn-and-tax-no.module";
+import { HcmEmpEmEmpPreviousJobsModule } from './em-emp-previous-jobs/em-emp-previous-jobs.module';
+import {HcmEmpEmployeesListModule} from "../employees/employees-list/employees-list.module";
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     imports: [
+        HcmEmpEmployeesListModule,
         EmpAddressModule,
         EmpSsnAndTaxNoModule,
         EmpPersonalInfoModule,
@@ -60,6 +63,7 @@ import {EmpSsnAndTaxNoModule} from "../employees/employee-overview/emp-ssn-and-t
         HcmEmpDmDocumentTypesModule,
         HcmEmpEmEmpDocumentsModule,
         HcmEmpEmEmpNotesModule,
+        HcmEmpEmEmpPreviousJobsModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

@@ -12,6 +12,7 @@ import { EmEmpAccomplishmentsService } from './em-emp-accomplishments.service';
 import { EmEmployees, EmEmployeesService } from '../em-employees';
 import { AtAccomplishmentTypes, AtAccomplishmentTypesService } from '../at-accomplishment-types';
 import { ResponseWrapper } from '../../shared';
+import {Principal} from "../../shared/auth/principal.service";
 
 @Component({
     selector: 'jhi-em-emp-accomplishments-dialog',
@@ -21,12 +22,15 @@ export class EmEmpAccomplishmentsDialogComponent implements OnInit {
 
     emEmpAccomplishments: EmEmpAccomplishments;
     isSaving: boolean;
+    currentAccount: any;
+    employee: EmEmployees;
 
     idemployees: EmEmployees[];
 
     idaccomplishmenttypes: AtAccomplishmentTypes[];
     dateFromDp: any;
     dateToDp: any;
+    ongoing = false;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -34,7 +38,8 @@ export class EmEmpAccomplishmentsDialogComponent implements OnInit {
         private emEmpAccomplishmentsService: EmEmpAccomplishmentsService,
         private emEmployeesService: EmEmployeesService,
         private atAccomplishmentTypesService: AtAccomplishmentTypesService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal
     ) {
     }
 
@@ -66,6 +71,14 @@ export class EmEmpAccomplishmentsDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+
+        if(this.emEmpAccomplishments) {
+            if(this.emEmpAccomplishments.ongoing == "T"){
+                this.ongoing = true;
+            } else {
+                this.ongoing = false;
+            }
+        }
     }
 
     clear() {
@@ -73,11 +86,18 @@ export class EmEmpAccomplishmentsDialogComponent implements OnInit {
     }
 
     save() {
+        if (this.ongoing) {
+            this.emEmpAccomplishments.ongoing = "T";
+        } else {
+            this.emEmpAccomplishments.ongoing = "F";
+        }
         this.isSaving = true;
+
         if (this.emEmpAccomplishments.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.emEmpAccomplishmentsService.update(this.emEmpAccomplishments));
         } else {
+            this.emEmpAccomplishments.idEmployee = this.employee;
             this.subscribeToSaveResponse(
                 this.emEmpAccomplishmentsService.create(this.emEmpAccomplishments));
         }
@@ -131,7 +151,7 @@ export class EmEmpAccomplishmentsPopupComponent implements OnInit, OnDestroy {
                     .open(EmEmpAccomplishmentsDialogComponent as Component, params['id']);
             } else {
                 this.emEmpAccomplishmentsPopupService
-                    .open(EmEmpAccomplishmentsDialogComponent as Component);
+                    .open(EmEmpAccomplishmentsDialogComponent as Component, null, params['employeeId']);
             }
         });
     }

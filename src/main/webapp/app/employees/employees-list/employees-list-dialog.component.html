@@ -1,0 +1,87 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmployeesLabel" jhiTranslate="hcmEmpApp.emEmployees.home.createOrEditLabel">Create or edit a Em Employees</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-control-label" for="field_name">First Name</label>
+                <input type="text" class="form-control" name="name" id="field_name"
+                       [(ngModel)]="emEmployees.name" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-control-label" for="field_surname">Last Name</label>
+                <input type="text" class="form-control" name="surname" id="field_surname"
+                       [(ngModel)]="emEmployees.surname" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.hireDate" for="field_hireDate">Hire Date</label>
+            <div class="input-group">
+                <input id="field_hireDate" type="text" class="form-control" name="hireDate" ngbDatepicker  #hireDateDp="ngbDatepicker" [(ngModel)]="emEmployees.hireDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="hireDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idEmploymentType" for="field_idEmploymentType">Employment Type</label>
+            <select class="form-control" id="field_idEmploymentType" name="idEmploymentType" [(ngModel)]="emEmployees.idEmploymentType">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="emEmpTypesOption.id === emEmployees.idEmploymentType?.id ? emEmployees.idEmploymentType : emEmpTypesOption" *ngFor="let emEmpTypesOption of idemploymenttypes; trackBy: trackEmEmpTypesById">{{emEmpTypesOption.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idQualification" for="field_idQualification">Id Qualification</label>
+            <select class="form-control" id="field_idQualification" name="idQualification" [(ngModel)]="emEmployees.idQualification">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="rgQualificationsOption.id === emEmployees.idQualification?.id ? emEmployees.idQualification : rgQualificationsOption" *ngFor="let rgQualificationsOption of idqualifications; trackBy: trackRgQualificationsById">{{rgQualificationsOption.name}}</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-10">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idLegalEntity" for="field_idLegalEntity">Id Legal Entity</label>
+                <select class="form-control" id="field_idLegalEntity" name="idLegalEntity" [(ngModel)]="emEmployees.idLegalEntity">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="leLegalEntitiesOption.id === emEmployees.idLegalEntity?.id ? emEmployees.idLegalEntity : leLegalEntitiesOption" *ngFor="let leLegalEntitiesOption of idlegalentities; trackBy: trackLeLegalEntitiesById">{{leLegalEntitiesOption.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-2" style="margin-top: 35px;">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'le-legal-entities-new'} }]">
+                    <i class="fa fa-plus action-button-at"></i> Add Legal Entity
+                </a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idStatus" for="field_idStatus">Id Status</label>
+            <select class="form-control" id="field_idStatus" name="idStatus" [(ngModel)]="emEmployees.idStatus">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="emStatusesOption.id === emEmployees.idStatus?.id ? emEmployees.idStatus : emStatusesOption" *ngFor="let emStatusesOption of idstatuses; trackBy: trackEmStatusesById">{{emStatusesOption.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idUser" for="field_idUser">Id User</label>
+            <select class="form-control" id="field_idUser" name="idUser" [(ngModel)]="emEmployees.idUser" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === emEmployees.idUser?.id ? emEmployees.idUser : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

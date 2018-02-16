@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "emEmpSalaries" : {
             "home": {
-                "title": "Em Emp Salaries",
-                "createLabel": "Create a new Em Emp Salaries",
-                "createOrEditLabel": "Create or edit a Em Emp Salaries"
+                "title": "Salaries",
+                "createLabel": "Create a new Salary",
+                "createOrEditLabel": "Create or edit a Salary"
             },
-            "created": "A new Em Emp Salaries is created with identifier {{ param }}",
-            "updated": "A Em Emp Salaries is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Salaries is deleted with identifier {{ param }}",
+            "created": "A new Salary is created with identifier {{ param }}",
+            "updated": "A Salary is updated with identifier {{ param }}",
+            "deleted": "A Salary is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Salaries {{ id }}?"
+                "question": "Are you sure you want to delete Salary {{ id }}?"
             },
             "detail": {
-                "title": "Em Emp Salaries"
+                "title": "Salary"
             },
             "dateFrom": "Date From",
             "dateTo": "Date To",
@@ -24,9 +24,9 @@
             "createdAt": "Created At",
             "updatedBy": "Updated By",
             "updatedAt": "Updated At",
-            "idEmployee": "Id Employee",
-            "idWorkPlace": "Id Work Place",
-            "idContractType": "Id Contract Type"
+            "idEmployee": "Employee",
+            "idWorkPlace": "Work Place",
+            "idContractType": "Contract Type"
         }
     }
 }

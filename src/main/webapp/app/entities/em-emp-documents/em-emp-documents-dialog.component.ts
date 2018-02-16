@@ -24,8 +24,8 @@ export class EmEmpDocumentsDialogComponent implements OnInit, OnDestroy {
 
     emEmpDocuments: EmEmpDocuments;
     isSaving: boolean;
+    employee: EmEmployees;
 
-    idemployees: EmEmployees[];
 
     iddocumenttypes: DmDocumentTypes[];
 
@@ -41,7 +41,6 @@ export class EmEmpDocumentsDialogComponent implements OnInit, OnDestroy {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private emEmpDocumentsService: EmEmpDocumentsService,
-        private emEmployeesService: EmEmployeesService,
         private dmDocumentTypesService: DmDocumentTypesService,
         private dmDocumentLinksService: DmDocumentLinksService,
         private eventManager: JhiEventManager,
@@ -51,19 +50,7 @@ export class EmEmpDocumentsDialogComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.isSaving = false;
-        this.emEmployeesService
-            .query({filter: 'emempdocuments-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmpDocuments.idEmployee || !this.emEmpDocuments.idEmployee.id) {
-                    this.idemployees = res.json;
-                } else {
-                    this.emEmployeesService
-                        .find(this.emEmpDocuments.idEmployee.id)
-                        .subscribe((subRes: EmEmployees) => {
-                            this.idemployees = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+
         this.dmDocumentTypesService
             .query({filter: 'emempdocuments-is-null'})
             .subscribe((res: ResponseWrapper) => {
@@ -122,7 +109,7 @@ export class EmEmpDocumentsDialogComponent implements OnInit, OnDestroy {
             this.subscribeToSaveResponse(
                 this.emEmpDocumentsService.update(this.emEmpDocuments));
         } else {
-            this.emEmpDocuments.idEmployee = this.idemployees.find((item) => item.idUser.id === this.accountId);
+            this.emEmpDocuments.idEmployee = this.employee;
             this.subscribeToSaveResponse(
                 this.emEmpDocumentsService.create(this.emEmpDocuments));
         }
@@ -180,7 +167,7 @@ export class EmEmpDocumentsPopupComponent implements OnInit, OnDestroy {
                     .open(EmEmpDocumentsDialogComponent as Component, params['id']);
             } else {
                 this.emEmpDocumentsPopupService
-                    .open(EmEmpDocumentsDialogComponent as Component);
+                    .open(EmEmpDocumentsDialogComponent as Component, null, params['employeeId']);
             }
         });
     }

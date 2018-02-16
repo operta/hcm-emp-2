@@ -34,7 +34,6 @@ export class EmpPersonalInfoDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        console.log(this.employee);
         if (this.employee.id !== undefined) {
             this.subscribeToSaveResponse(this.employeeService.updatePersonalInfo(this.employee));
         }

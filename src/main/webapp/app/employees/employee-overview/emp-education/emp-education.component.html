@@ -2,18 +2,21 @@
     <div class="panel-footer p-b-20 p-t-20 m-b-10">
         <i class="icon-graduation m-r-5 heading-icon-at"></i>
         <span class="heading-at">EDUCATION</span>
-        <div class="pull-right">
-            <a class="popup-with-form" href="#edit-form3">
+        <div *ngIf="isEditable" class="pull-right">
+            <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-schools-new/'+ employeeId} }]">
                 <i class="fa fa-plus action-button-at"></i>
             </a>
         </div>
     </div>
-    <div class="form-body">
+    <div *ngFor="let emEmpSchool of emEmpSchools" class="form-body">
         <div class="box-title p-b-10 p-t-10 p-r-10">
-            <span class="section-title">School of Economics and Business Sarajevo</span>
-            <div class="pull-right">
-                <a class="popup-with-form" href="#edit-form4">
-                    <i class="fa fa-pencil action-button-at"></i>
+            <span class="section-title">{{emEmpSchool.idSchool.name}}</span>
+            <div *ngIf="isEditable" class="pull-right">
+                <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-schools/'+ emEmpSchool.id + '/delete'} }]">
+                    <span class="fa fa-remove pull-right"></span>
+                </a>
+                <a class="popup-with-form" (click)="navigateEdit(emEmpSchool.id)">
+                    <i class="fa fa-pencil action-button-at pull-right"></i>
                 </a>
             </div>
         </div>
@@ -23,7 +26,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3">Degree:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> Master's degree </p>
+                        <p class="form-control-static"> {{emEmpSchool.degree}} </p>
                     </div>
                 </div>
             </div>
@@ -31,7 +34,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3">Field of study:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> Strategic Information Management </p>
+                        <p class="form-control-static"> {{emEmpSchool.major}} </p>
                     </div>
                 </div>
             </div>
@@ -41,7 +44,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3">From year:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> 2010 </p>
+                        <p class="form-control-static"> {{emEmpSchool.dateFrom}} </p>
                     </div>
                 </div>
             </div>
@@ -49,7 +52,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3">To year <br>(or expected):</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> 2015 </p>
+                        <p class="form-control-static"> {{emEmpSchool.dateTo}} </p>
                     </div>
                 </div>
             </div>
@@ -59,7 +62,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3">Grade:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static">  </p>
+                        <p class="form-control-static"> {{emEmpSchool.grade}} </p>
                     </div>
                 </div>
             </div>
@@ -67,74 +70,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-3">Description:</label>
                     <div class="col-md-9">
-                        <p class="form-control-static"> Join Master programme with Faculty of Economics of University in Zagreb "MA + 1" </p>
+                        <p class="form-control-static"> {{emEmpSchool.description}} </p>
                     </div>
                 </div>
             </div>
         </div>
         <!--/row-->
-        <div class="box-title p-b-10 p-t-10 p-r-10">
-            <span class="section-title">Faculty of Electrical Engineering</span>
-            <div class="pull-right">
-                <a class="popup-with-form" href="#edit-form4">
-                    <i class="fa fa-pencil action-button-at"></i>
-                </a>
-            </div>
-        </div>
-        <hr class="m-t-0 m-b-40">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Degree:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> Bachelor's degree </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Field of study:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> Computing </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">From year:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> 2006 </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">To year <br>(or expected):</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> 2010 </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Grade:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static">  </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Description:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static">  </p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </form>

@@ -38,12 +38,10 @@ export class EmEmpDocumentsService {
         });
     }
 
-    findByIdEmployee(idEmployee: any) {
+    findByIdEmployee(idEmployee: any): Observable<ResponseWrapper>{
         return this.http.get(`${this.resourceUrl}/employee/${idEmployee}`).map(
-            (response: Response) => {
-                const items: EmEmpDocuments[] = response.json();
-                return items;
-            }
+            (res: Response) =>
+                this.convertResponse(res)
         );
     }
 

@@ -4,6 +4,8 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { EmEmpBankAccounts } from './em-emp-bank-accounts.model';
 import { EmEmpBankAccountsService } from './em-emp-bank-accounts.service';
+import {EmEmployees} from "../em-employees/em-employees.model";
+import {EmEmployeesService} from "../em-employees/em-employees.service";
 
 @Injectable()
 export class EmEmpBankAccountsPopupService {
@@ -13,13 +15,14 @@ export class EmEmpBankAccountsPopupService {
         private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
-        private emEmpBankAccountsService: EmEmpBankAccountsService
+        private emEmpBankAccountsService: EmEmpBankAccountsService,
+        private employeeService: EmEmployeesService
 
     ) {
         this.ngbModalRef = null;
     }
 
-    open(component: Component, id?: number | any): Promise<NgbModalRef> {
+    open(component: Component, id?: number | any, employeeId?: number | any): Promise<NgbModalRef> {
         return new Promise<NgbModalRef>((resolve, reject) => {
             const isOpen = this.ngbModalRef !== null;
             if (isOpen) {
@@ -36,18 +39,21 @@ export class EmEmpBankAccountsPopupService {
                     resolve(this.ngbModalRef);
                 });
             } else {
-                // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
-                setTimeout(() => {
-                    this.ngbModalRef = this.emEmpBankAccountsModalRef(component, new EmEmpBankAccounts());
+                this.employeeService.find(employeeId).subscribe((employee) => {
+                    this.ngbModalRef = this.emEmpBankAccountsModalRef(component, new EmEmpBankAccounts(), employee);
                     resolve(this.ngbModalRef);
-                }, 0);
+                });
+
             }
         });
     }
 
-    emEmpBankAccountsModalRef(component: Component, emEmpBankAccounts: EmEmpBankAccounts): NgbModalRef {
+    emEmpBankAccountsModalRef(component: Component, emEmpBankAccounts: EmEmpBankAccounts, employee?: EmEmployees): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.emEmpBankAccounts = emEmpBankAccounts;
+        if(employee){
+            modalRef.componentInstance.employee = employee;
+        }
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;

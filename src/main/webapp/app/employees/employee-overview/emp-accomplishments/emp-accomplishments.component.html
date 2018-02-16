@@ -2,158 +2,461 @@
     <div class="panel-footer p-b-20 p-t-20 m-b-10">
         <i class="ti-check-box m-r-5 heading-icon-at"></i>
         <span class="heading-at">ACCOMPLISHMENTS</span>
-        <div class="dropdown user-pro-body pull-right">
-            <a href="#" class="u-dropdown" data-toggle="dropdown"
-               role="button" aria-haspopup="true" aria-expanded="false">
+        <div *ngIf="isEditable" class="dropdown user-pro-body pull-right">
+            <a [routerLink]="['/', { outlets: {popup: 'em-emp-accomplishments-new/'+ employeeId} }]" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-plus action-button-at"></i>
             </a>
-            <ul class="dropdown-menu animated fadeIn">
-                <li><a href="#"><i class="icon-badge"></i> Certification</a></li>
-                <li><a href="#"><i class="icon-notebook"></i> Course</a></li>
-                <li><a href="#"><i class="icon-trophy"></i> Honor and Award</a></li>
-                <li><a href="#"><i class="ti-announcement"></i> Language</a></li>
-                <li><a href="#"><i class="ti-blackboard"></i> Project</a></li>
-                <li><a href="#"><i class="ti-write"></i> Publication</a></li>
-            </ul>
         </div>
     </div>
     <div class="form-body">
-        <div class="box-title p-b-10 p-t-10 p-r-10">
-            <i class="fa ti-blackboard m-r-5 m-l-15 section-icon-at"></i>
-            <span class="section-title section-title-at">Projects</span>
-        </div>
-        <hr class="m-t-0 m-b-40">
-        <div class="row">
-            <div class="col-md-12 pull-right">
-                <a class="popup-with-form" href="#edit-form5">
-                    <i class="fa fa-pencil action-button-at pull-right"></i>
-                </a>
+        <div *ngIf="certifications?.length > 0">
+            <div class="box-title p-b-10 p-t-10 p-r-10">
+                <i class="fa icon-badge m-r-5 m-l-15 section-icon-at"></i>
+                <span class="section-title section-title-at">CERTIFICATIONS</span>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Project name:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> POS (Point Of Sale) </p>
+            <hr class="m-t-0 m-b-40">
+            <div *ngFor="let accomplishment of certifications">
+                <div class="row">
+                    <div *ngIf="isEditable" class="col-md-12 pull-right">
+                        <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-accomplishments/'+ accomplishment.id + '/delete'} }]">
+                            <span class="fa fa-remove pull-right"></span>
+                        </a>
+                        <a class="popup-with-form" (click)="navigateEdit(accomplishment.id)">
+                            <i class="fa fa-pencil action-button-at pull-right"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Role:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> Team lead</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">From:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> September 2016 </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">To:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> Present </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Review:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus, felis interdum condimentum consectetur, nisl libero elementum eros, vehicula congue lacus eros non diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo. Cras sit amet erat sit amet lacus egestas placerat.
-                            Aenean ultricies ultrices mauris ac congue. In vel tortor vel velit tristique tempus ac id nisi. Proin quis lorem velit. Nunc dui dui, blandit a ullamcorper vitae, congue fringilla lectus. Aliquam ultricies malesuada feugiat. Vestibulum placerat turpis et eros lobortis vel semper sapien pulvinar. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Rating:</label>
-                    <div class="col-md-9">
-                        <div data-label="4.5" class="css-bar css-bar-90 css-bar-lg m-b-0 m-r-10 css-bar-info ">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.title}} </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <hr class="m-t-0 m-b-40">
-        <div class="row">
-            <div class="col-md-12 pull-right">
-                <a class="popup-with-form" href="#edit-form5">
-                    <i class="fa fa-pencil action-button-at pull-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Project name:</label>
-                    <div class="col-md-3">
-                        <p class="form-control-static"> POS (Point Of Sale) </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Role:</label>
-                    <div class="col-md-3">
-                        <p class="form-control-static"> Team member </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">From:</label>
-                    <div class="col-md-3">
-                        <p class="form-control-static"> September 2015 </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">To:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> April 2016 </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Review:</label>
-                    <div class="col-md-9">
-                        <p class="form-control-static"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus, felis interdum condimentum consectetur, nisl libero elementum eros, vehicula congue lacus eros non diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo. Cras sit amet erat sit amet lacus egestas placerat.
-                            Aenean ultricies ultrices mauris ac congue. In vel tortor vel velit tristique tempus ac id nisi. Proin quis lorem velit. Nunc dui dui, blandit a ullamcorper vitae, congue fringilla lectus. Aliquam ultricies malesuada feugiat. Vestibulum placerat turpis et eros lobortis vel semper sapien pulvinar. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label col-md-3">Rating:</label>
-                    <div class="col-md-9">
-                        <div class="col-md-3">
-                            <div data-label="5.0" class="css-bar css-bar-100 css-bar-lg m-b-0 m-r-10 css-bar-success pull-right">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Link:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.link}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">From:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">To:</label>
+                            <div class="col-md-9">
+                                <p *ngIf="!checkIsPresent(accomplishment?.ongoing)" class="form-control-static"> {{accomplishment?.dateTo | date:'dd/MM/yyyy'}} </p>
+                                <button *ngIf="checkIsPresent(accomplishment?.ongoing)" class="btn btn-success btn-rounded btn-sm" type="button" disabled name="ongoing">Present <i class="fa fa-check" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Licence Number:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.licenceNumber}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Certification Authority:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.association}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Rating:</label>
+                            <div class="col-md-9">
+                                <div [attr.data-label]="accomplishment?.rating"
+                                     [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-t-0 m-b-40">
+             </div>
+        </div>
+
+
+        <div *ngIf="courses?.length > 0">
+            <div class="box-title p-b-10 p-t-10 p-r-10">
+                <i class="fa icon-notebook m-r-5 m-l-15 section-icon-at"></i>
+                <span class="section-title section-title-at">COURSES</span>
+            </div>
+            <hr class="m-t-0 m-b-40">
+            <div *ngFor="let accomplishment of courses">
+                <div class="row">
+                    <div *ngIf="isEditable" class="col-md-12 pull-right">
+                        <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-accomplishments/'+ accomplishment.id + '/delete'} }]">
+                            <span class="fa fa-remove pull-right"></span>
+                        </a>
+                        <a class="popup-with-form" (click)="navigateEdit(accomplishment.id)">
+                            <i class="fa fa-pencil action-button-at pull-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.title}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Link:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.link}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">From:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">To:</label>
+                            <div class="col-md-9">
+                                <p *ngIf="!checkIsPresent(accomplishment?.ongoing)" class="form-control-static"> {{accomplishment?.dateTo | date:'dd/MM/yyyy'}} </p>
+                                <button *ngIf="checkIsPresent(accomplishment?.ongoing)" class="btn btn-success btn-rounded btn-sm" type="button" disabled name="ongoing">Present <i class="fa fa-check" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Description:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.description}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Rating:</label>
+                            <div class="col-md-9">
+                                <div [attr.data-label]="accomplishment?.rating"
+                                     [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-t-0 m-b-40">
             </div>
         </div>
+
+        <div *ngIf="honors?.length > 0">
+            <div class="box-title p-b-10 p-t-10 p-r-10">
+                <i class="fa icon-trophy m-r-5 m-l-15 section-icon-at"></i>
+                <span class="section-title section-title-at">HONORS AND AWARDS</span>
+            </div>
+            <hr class="m-t-0 m-b-40">
+            <div *ngFor="let accomplishment of honors">
+                <div class="row">
+                    <div *ngIf="isEditable" class="col-md-12 pull-right">
+                        <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-accomplishments/'+ accomplishment.id + '/delete'} }]">
+                            <span class="fa fa-remove pull-right"></span>
+                        </a>
+                        <a class="popup-with-form" (click)="navigateEdit(accomplishment.id)">
+                            <i class="fa fa-pencil action-button-at pull-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.title}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Link:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.link}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Date:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Description:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.description}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Rating:</label>
+                            <div class="col-md-9">
+                                <div [attr.data-label]="accomplishment?.rating"
+                                     [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-t-0 m-b-40">
+            </div>
+        </div>
+
+
+        <div *ngIf="languages?.length > 0">
+            <div class="box-title p-b-10 p-t-10 p-r-10">
+                <i class="fa ti-announcement m-r-5 m-l-15 section-icon-at"></i>
+                <span class="section-title section-title-at">LANGUAGES</span>
+            </div>
+            <hr class="m-t-0 m-b-40">
+            <div *ngFor="let accomplishment of languages">
+                <div class="row">
+                    <div *ngIf="isEditable" class="col-md-12 pull-right">
+                        <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-accomplishments/'+ accomplishment.id + '/delete'} }]">
+                            <span class="fa fa-remove pull-right"></span>
+                        </a>
+                        <a class="popup-with-form" (click)="navigateEdit(accomplishment.id)">
+                            <i class="fa fa-pencil action-button-at pull-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.title}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Proficiency:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.proficiency}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row">-->
+                    <!--<div class="col-md-6 col-md-offset-6">-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="control-label col-md-3">Rating:</label>-->
+                            <!--<div class="col-md-9">-->
+                                <!--<div data-label="4.5" class="css-bar css-bar-90 css-bar-lg m-b-0 m-r-10 css-bar-info ">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <hr class="m-t-0 m-b-40">
+            </div>
+        </div>
+
+        <div *ngIf="projects?.length > 0">
+            <div class="box-title p-b-10 p-t-10 p-r-10">
+                <i class="fa ti-blackboard m-r-5 m-l-15 section-icon-at"></i>
+                <span class="section-title section-title-at">PROJECTS</span>
+            </div>
+            <hr class="m-t-0 m-b-40">
+            <div *ngFor="let accomplishment of projects">
+                <div class="row">
+                    <div *ngIf="isEditable" class="col-md-12 pull-right">
+                        <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-accomplishments/'+ accomplishment.id + '/delete'} }]">
+                            <span class="fa fa-remove pull-right"></span>
+                        </a>
+                        <a class="popup-with-form" (click)="navigateEdit(accomplishment.id)">
+                            <i class="fa fa-pencil action-button-at pull-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.title}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Link:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.link}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">From:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">To:</label>
+                            <div class="col-md-9">
+                                <p *ngIf="!checkIsPresent(accomplishment?.ongoing)" class="form-control-static"> {{accomplishment?.dateTo | date:'dd/MM/yyyy'}} </p>
+                                <button *ngIf="checkIsPresent(accomplishment?.ongoing)" class="btn btn-success btn-rounded btn-sm" type="button" disabled name="ongoing">Present <i class="fa fa-check" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Description:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.description}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Occupation:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.occupation}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Rating:</label>
+                            <div class="col-md-9">
+                                <div [attr.data-label]="accomplishment?.rating"
+                                     [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-t-0 m-b-40">
+            </div>
+        </div>
+
+        <div *ngIf="publications?.length > 0">
+            <div class="box-title p-b-10 p-t-10 p-r-10">
+                <i class="fa ti-write m-r-5 m-l-15 section-icon-at"></i>
+                <span class="section-title section-title-at">PUBLICATIONS</span>
+            </div>
+            <hr class="m-t-0 m-b-40">
+            <div *ngFor="let accomplishment of publications">
+                <div class="row">
+                    <div *ngIf="isEditable" class="col-md-12 pull-right">
+                        <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-accomplishments/'+ accomplishment.id + '/delete'} }]">
+                            <span class="fa fa-remove pull-right"></span>
+                        </a>
+                        <a class="popup-with-form" (click)="navigateEdit(accomplishment.id)">
+                            <i class="fa fa-pencil action-button-at pull-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.title}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Link:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.link}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Date:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Description:</label>
+                            <div class="col-md-9">
+                                <p class="form-control-static"> {{accomplishment?.description}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Rating:</label>
+                            <div class="col-md-9">
+                                <div [attr.data-label]="accomplishment?.rating"
+                                     [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-t-0 m-b-40">
+            </div>
+        </div>
+
+
+
+
     </div>
 </form>

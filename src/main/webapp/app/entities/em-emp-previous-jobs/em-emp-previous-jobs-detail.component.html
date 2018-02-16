@@ -1,0 +1,80 @@
+
+<div *ngIf="emEmpPreviousJobs">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.detail.title">Em Emp Previous Jobs</span> {{emEmpPreviousJobs.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.company">Company</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.company}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.position">Position</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.position}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.dateFrom">Date From</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.dateFrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.dateTo">Date To</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.dateTo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.reasonOfLeaving">Reason Of Leaving</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.reasonOfLeaving}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.managerPosition">Manager Position</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.managerPosition}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.lengthOfServiceYears">Length Of Service Years</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.lengthOfServiceYears}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.lengthOfServiceMonths">Length Of Service Months</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.lengthOfServiceMonths}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.lengthOfServiceDays">Length Of Service Days</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.lengthOfServiceDays}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpPreviousJobs.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpPreviousJobs.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpPreviousJobs.idEmployee?.id]">{{emEmpPreviousJobs.idEmployee?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-previous-jobs/'+ emEmpPreviousJobs.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

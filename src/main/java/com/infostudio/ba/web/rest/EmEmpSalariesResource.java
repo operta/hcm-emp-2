@@ -99,6 +99,19 @@ public class EmEmpSalariesResource {
     }
 
     /**
+     * GET  /em-emp-salaries : get all the emEmpSalaries by id_employee.
+     *
+     * @param id the id of the employee
+     * @return the ResponseEntity with status 200 (OK) and the list of emEmpSalaries in body
+     */
+    @GetMapping("/em-emp-salaries/employee/{id}")
+    @Timed
+    public List<EmEmpSalaries> getAllEmEmpSalariesByEmployee(@PathVariable String id) {
+        log.debug("REST request to get all EmEmpSalaries");
+        return emEmpSalariesRepository.findAllByIdEmployee_IdOrderByDateFromDesc(Long.valueOf(id));
+    }
+
+    /**
      * GET  /em-emp-salaries/:id : get the "id" emEmpSalaries.
      *
      * @param id the id of the emEmpSalaries to retrieve

@@ -46,6 +46,10 @@ export class LeLegalEntitiesService {
         });
     }
 
+    findById(id: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => this.convertResponse(res));
+    }
+
     findByIdEntityType(idEntityType: any) {
         return this.http.get(`${this.resourceUrl}/entityType/${idEntityType}`).map(
             (response: Response) => {

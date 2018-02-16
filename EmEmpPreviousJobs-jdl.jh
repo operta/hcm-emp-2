@@ -16,6 +16,32 @@ entity EmEmpPreviousJobs {
     updatedAt Instant
 }
 
+entity EmEmployees {
+	id Integer required,
+    code String required,
+    name String required,
+    middleName String,
+    surname String,
+    maidenName String,
+    disabilityDegree Integer,
+    ethnicGroup String,
+    gender String,
+    residentialSituation String,
+    maritalStatus String,
+    bloodGroup String,
+    dateOfBirth LocalDate,
+    hireDate LocalDate,
+    ssn String,
+    taxNumber String,
+    imagePath String,
+    phoneNumber String,
+    personalPhoneNumber String,
+    email String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
 
 relationship OneToOne {
 	EmEmpPreviousJobs{idEmployee} to EmEmployees

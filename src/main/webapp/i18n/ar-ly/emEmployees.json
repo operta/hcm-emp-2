@@ -32,16 +32,12 @@
             "taxNumber": "Tax Number",
             "imagePath": "Image Path",
             "phoneNumber": "Phone Number",
+            "personalPhoneNumber": "Personal Phone Number",
             "email": "Email",
             "createdBy": "Created By",
             "createdAt": "Created At",
             "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idQualification": "Id Qualification",
-            "idEmploymentType": "Id Employment Type",
-            "idLegalEntity": "Id Legal Entity",
-            "idStatus": "Id Status",
-            "idUser": "Id User"
+            "updatedAt": "Updated At"
         }
     }
 }

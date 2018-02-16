@@ -30,6 +30,7 @@
     <include file="config/liquibase/changelog/20180202093529_added_entity_DmDocumentTypes.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180202093530_added_entity_EmEmpDocuments.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180202093531_added_entity_EmEmpNotes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180215154617_added_entity_EmEmpPreviousJobs.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180126144159_added_entity_constraints_OgOrganizations.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180126144201_added_entity_constraints_LeLegalEntities.xml" relativeToChangelogFile="false"/>
@@ -45,5 +46,6 @@
     <include file="config/liquibase/changelog/20180202093527_added_entity_constraints_EmEmpAccomplishments.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180202093530_added_entity_constraints_EmEmpDocuments.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180202093531_added_entity_constraints_EmEmpNotes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180215154617_added_entity_constraints_EmEmpPreviousJobs.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -1,0 +1,88 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.home.title">Em Emp Previous Jobs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-em-emp-previous-jobs" [routerLink]="['/', { outlets: { popup: ['em-emp-previous-jobs-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.emEmpPreviousJobs.home.createLabel">
+            Create new Em Emp Previous Jobs
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emEmpPreviousJobs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.company">Company</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.position">Position</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.dateFrom">Date From</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.dateTo">Date To</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.reasonOfLeaving">Reason Of Leaving</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.managerPosition">Manager Position</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.lengthOfServiceYears">Length Of Service Years</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.lengthOfServiceMonths">Length Of Service Months</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.lengthOfServiceDays">Length Of Service Days</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpPreviousJobs.idEmployee">Id Employee</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emEmpPreviousJobs of emEmpPreviousJobs ;trackBy: trackId">
+                <td><a [routerLink]="['../em-emp-previous-jobs', emEmpPreviousJobs.id ]">{{emEmpPreviousJobs.id}}</a></td>
+                <td>{{emEmpPreviousJobs.company}}</td>
+                <td>{{emEmpPreviousJobs.position}}</td>
+                <td>{{emEmpPreviousJobs.dateFrom | date:'mediumDate'}}</td>
+                <td>{{emEmpPreviousJobs.dateTo | date:'mediumDate'}}</td>
+                <td>{{emEmpPreviousJobs.reasonOfLeaving}}</td>
+                <td>{{emEmpPreviousJobs.managerPosition}}</td>
+                <td>{{emEmpPreviousJobs.lengthOfServiceYears}}</td>
+                <td>{{emEmpPreviousJobs.lengthOfServiceMonths}}</td>
+                <td>{{emEmpPreviousJobs.lengthOfServiceDays}}</td>
+                <td>{{emEmpPreviousJobs.createdBy}}</td>
+                <td>{{emEmpPreviousJobs.createdAt | date:'medium'}}</td>
+                <td>{{emEmpPreviousJobs.updatedBy}}</td>
+                <td>{{emEmpPreviousJobs.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="emEmpPreviousJobs.idEmployee">
+                        <a [routerLink]="['../em-employees', emEmpPreviousJobs.idEmployee?.id ]" >{{emEmpPreviousJobs.idEmployee?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../em-emp-previous-jobs', emEmpPreviousJobs.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-previous-jobs/'+ emEmpPreviousJobs.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-previous-jobs/'+ emEmpPreviousJobs.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

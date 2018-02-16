@@ -1,4 +1,9 @@
 <div class="row">
+    <div class="col-md-12">
+        <jhi-alert></jhi-alert>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-12">
         <div class="white-box">
             <div class="row m-b-20 p-l-5 p-r-10">
@@ -81,6 +86,12 @@
                     </div>
                 </div>
             </div>
+            <button class="btn btn-primary float-right jh-create-entity create-em-employees" [routerLink]="['/', { outlets: { popup: ['employees-list-new'] } }]">
+                <span class="fa fa-plus"></span>
+                <span  jhiTranslate="hcmEmpApp.emEmployees.home.createLabel">
+            Create new Em Employees
+            </span>
+            </button>
             <div class="comment-center">
                 <div *ngFor="let employee of emEmployees;" class="comment-body" style="width: 100%;">
                     <div *ngIf="emEmpOrgWorkPlaces" class="row">

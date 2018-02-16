@@ -65,8 +65,10 @@ const DASHBOARD_ROUTES = [
             {
                 path: 'employee-dashboard',
                 component: EmployeeDashboardComponent,
+
                 data: {
-                    authorities: ['ROLE_ADMIN', 'ROLE_USER']
+                    authorities: ['ROLE_ADMIN', 'ROLE_USER'],
+                    pageTitle: 'global.employeeDashboard'
                 },
                 canActivate: [UserRouteAccessService]
             },
@@ -74,7 +76,8 @@ const DASHBOARD_ROUTES = [
                 path: 'employee-overview',
                 component: EmployeeOverviewComponent,
                 data: {
-                    authorities: ['ROLE_ADMIN', 'ROLE_USER']
+                    authorities: ['ROLE_ADMIN', 'ROLE_USER'],
+                    pageTitle: 'global.employeeOverview'
                 },
                 canActivate: [UserRouteAccessService],
                 resolve: {
@@ -93,7 +96,8 @@ const DASHBOARD_ROUTES = [
                 path: 'employees',
                 component: EmployeesComponent,
                 data: {
-                    authorities: ['ROLE_ADMIN']
+                    authorities: ['ROLE_ADMIN'],
+                    pageTitle: 'global.employees'
                 },
                 canActivate: [UserRouteAccessService],
                 resolve: {

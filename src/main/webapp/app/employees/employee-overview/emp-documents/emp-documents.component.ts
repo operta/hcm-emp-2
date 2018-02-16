@@ -32,7 +32,8 @@ export class EmpDocumentsComponent implements OnInit {
                 private dataUtils: JhiDataUtils) { }
 
     ngOnInit() {
-        this.loadAll();
+        this.loadTypes();
+        this.loadDocuments();
         this.registerChangeInAddress()
     }
 
@@ -44,12 +45,7 @@ export class EmpDocumentsComponent implements OnInit {
 
     registerChangeInAddress() {
         this.eventSubscriber = this.eventManager.subscribe('emEmpDocumentsListModification', (response) =>   {
-            this.empDocumentsService.findByIdEmployee(this.employee.id).subscribe(
-                (items) => {
-                    this.empDocuments = items;
-                    console.log(this.empDocuments);
-                    this.filterEmpDocuments();
-            });
+            this.loadDocuments();
          });
     }
 
@@ -58,37 +54,33 @@ export class EmpDocumentsComponent implements OnInit {
     }
 
 
-    loadAll() {
+    loadTypes() {
         this.documentTypesService.query().subscribe(
-            (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
+            (res: ResponseWrapper) => this.onSuccessTypes(res.json),
             (res: ResponseWrapper) => this.onError(res.json)
         );
+    }
 
+    loadDocuments() {
         this.empDocumentsService.findByIdEmployee(this.employee.id).subscribe(
-            (items) => {
-                this.empDocuments = items;
-                console.log(this.empDocuments);
-                this.filterEmpDocuments();
-            }
+            (res: ResponseWrapper) => this.onSuccess(res.json),
+            (res: ResponseWrapper) => this.onError(res.json)
         );
     }
 
 
     filterEmpDocuments() {
         this.hiringDocuments = this.empDocuments.filter((item) => item.idDocumentType.id == 26051);
-        console.log(this.hiringDocuments);
         this.taskListDocuments = this.empDocuments.filter((item) => item.idDocumentType.id == 26052);
-        console.log(this.taskListDocuments);
         this.otherDocuments = this.empDocuments.filter((item) => item.idDocumentType.id == 26053);
-        console.log(this.otherDocuments);
-
     }
 
-
-    private onSuccess(data, headers) {
-
+    private onSuccess(data){
+        this.empDocuments = data;
+        this.filterEmpDocuments();
+    }
+    private onSuccessTypes(data) {
         this.documentTypes = data;
-        console.log(this.documentTypes);
     }
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);

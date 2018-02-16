@@ -76,6 +76,9 @@ public class EmEmployees implements Serializable {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "personal_phone_number")
+    private String personalPhoneNumber;
+
     @Column(name = "email")
     private String email;
 
@@ -112,6 +115,15 @@ public class EmEmployees implements Serializable {
     private User idUser;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+
+    public String getPersonalPhoneNumber() {
+        return personalPhoneNumber;
+    }
+
+    public void setPersonalPhoneNumber(String personalPhoneNumber) {
+        this.personalPhoneNumber = personalPhoneNumber;
+    }
+
     public Long getId() {
         return id;
     }

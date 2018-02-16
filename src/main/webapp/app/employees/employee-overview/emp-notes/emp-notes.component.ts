@@ -2,7 +2,8 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {EmEmpNotesService} from "../../../entities/em-emp-notes/em-emp-notes.service";
 import {EmEmpNotes} from "../../../entities/em-emp-notes/em-emp-notes.model";
 import {Subscription} from "rxjs/Subscription";
-import {JhiEventManager} from "ng-jhipster";
+import {JhiAlertService, JhiEventManager} from "ng-jhipster";
+import {ResponseWrapper} from "../../../shared/model/response-wrapper.model";
 
 @Component({
   selector: 'jhi-emp-notes',
@@ -16,31 +17,35 @@ export class EmpNotesComponent implements OnInit, OnDestroy {
     eventSubscriber: Subscription;
 
   constructor(private notesService: EmEmpNotesService,
-              private eventManager: JhiEventManager) { }
+              private eventManager: JhiEventManager,
+              private jhiAlertService: JhiAlertService) { }
 
-  ngOnInit() {
-    this.notesService.findByIdEmployee(this.employee.id).subscribe(
-        (items) => {
-            this.notes = items;
-            console.log(this.notes);
-        }
-    );
-      this.registerChangeInAddress()
-  }
+    ngOnInit() {
+        this.loadAll();
+        this.registerChangeInAddress()
+    }
 
     registerChangeInAddress() {
-        this.eventSubscriber = this.eventManager.subscribe('emEmpNotesListModification', (response) =>   {
-            this.notesService.findByIdEmployee(this.employee.id).subscribe(
-                (items) => {
-                    this.notes = items;
-                    console.log(this.notes);
-                }
-            );
-        });
+        this.eventSubscriber = this.eventManager.subscribe('emEmpNotesListModification', (response) =>  this.loadAll());
     }
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
+    }
+
+    loadAll() {
+        this.notesService.findByIdEmployee(this.employee.id).subscribe(
+            (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+
+    }
+
+    private onSuccess(data, headers) {
+        this.notes = data;
+    }
+    private onError(error) {
+        this.jhiAlertService.error(error.message, null, null);
     }
 
 

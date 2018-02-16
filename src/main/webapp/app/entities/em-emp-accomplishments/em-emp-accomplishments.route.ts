@@ -55,7 +55,7 @@ export const emEmpAccomplishmentsRoute: Routes = [
 
 export const emEmpAccomplishmentsPopupRoute: Routes = [
     {
-        path: 'em-emp-accomplishments-new',
+        path: 'em-emp-accomplishments-new/:employeeId',
         component: EmEmpAccomplishmentsPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
