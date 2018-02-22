@@ -37,7 +37,7 @@ export const emEmpTypesRoute: Routes = [
                     'pagingParams': EmEmpTypesResolvePagingParams
                 },
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.emEmpTypes.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const emEmpTypesRoute: Routes = [
                 path: 'em-emp-types/:id',
                 component: EmEmpTypesDetailComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.emEmpTypes.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -58,7 +58,7 @@ export const emEmpTypesPopupRoute: Routes = [
         path: 'em-emp-types-new',
         component: EmEmpTypesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emEmpTypes.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -68,7 +68,7 @@ export const emEmpTypesPopupRoute: Routes = [
         path: 'em-emp-types/:id/edit',
         component: EmEmpTypesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emEmpTypes.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -78,7 +78,7 @@ export const emEmpTypesPopupRoute: Routes = [
         path: 'em-emp-types/:id/delete',
         component: EmEmpTypesDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emEmpTypes.home.title'
         },
         canActivate: [UserRouteAccessService],

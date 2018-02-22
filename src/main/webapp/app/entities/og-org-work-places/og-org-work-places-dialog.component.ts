@@ -12,12 +12,13 @@ import { OgOrgWorkPlacesService } from './og-org-work-places.service';
 import { OgOrganizations, OgOrganizationsService } from '../og-organizations';
 import { OgWorkPlaces, OgWorkPlacesService } from '../og-work-places';
 import { ResponseWrapper } from '../../shared';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: 'jhi-og-org-work-places-dialog',
     templateUrl: './og-org-work-places-dialog.component.html'
 })
-export class OgOrgWorkPlacesDialogComponent implements OnInit {
+export class OgOrgWorkPlacesDialogComponent implements OnInit, OnDestroy {
 
     ogOrgWorkPlaces: OgOrgWorkPlaces;
     isSaving: boolean;
@@ -25,6 +26,7 @@ export class OgOrgWorkPlacesDialogComponent implements OnInit {
     idorganizations: OgOrganizations[];
 
     idworkplaces: OgWorkPlaces[];
+    eventSubscription: Subscription;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -51,6 +53,20 @@ export class OgOrgWorkPlacesDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+            this.loadWorkplaces();
+            this.registerToChanges();
+
+    }
+
+    clear() {
+        this.activeModal.dismiss('cancel');
+    }
+
+    registerToChanges() {
+        this.eventSubscription = this.eventManager.subscribe('ogWorkPlacesListModification', (response) => this.loadWorkplaces());
+    }
+
+    loadWorkplaces() {
         this.ogWorkPlacesService
             .query({filter: 'ogorgworkplaces-is-null'})
             .subscribe((res: ResponseWrapper) => {
@@ -66,9 +82,6 @@ export class OgOrgWorkPlacesDialogComponent implements OnInit {
             }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
-    clear() {
-        this.activeModal.dismiss('cancel');
-    }
 
     save() {
         this.isSaving = true;
@@ -106,6 +119,10 @@ export class OgOrgWorkPlacesDialogComponent implements OnInit {
 
     trackOgWorkPlacesById(index: number, item: OgWorkPlaces) {
         return item.id;
+    }
+
+    ngOnDestroy() {
+        this.eventManager.destroy(this.eventSubscription);
     }
 }
 

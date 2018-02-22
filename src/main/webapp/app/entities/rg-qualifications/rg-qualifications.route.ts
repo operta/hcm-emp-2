@@ -37,7 +37,7 @@ export const rgQualificationsRoute: Routes = [
                     'pagingParams': RgQualificationsResolvePagingParams
                 },
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.rgQualifications.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const rgQualificationsRoute: Routes = [
                 path: 'rg-qualifications/:id',
                 component: RgQualificationsDetailComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.rgQualifications.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -58,7 +58,7 @@ export const rgQualificationsPopupRoute: Routes = [
         path: 'rg-qualifications-new',
         component: RgQualificationsPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.rgQualifications.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -68,7 +68,7 @@ export const rgQualificationsPopupRoute: Routes = [
         path: 'rg-qualifications/:id/edit',
         component: RgQualificationsPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.rgQualifications.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -78,7 +78,7 @@ export const rgQualificationsPopupRoute: Routes = [
         path: 'rg-qualifications/:id/delete',
         component: RgQualificationsDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.rgQualifications.home.title'
         },
         canActivate: [UserRouteAccessService],

@@ -37,7 +37,7 @@ export const emEmpOrgWorkPlacesRoute: Routes = [
                     'pagingParams': EmEmpOrgWorkPlacesResolvePagingParams
                 },
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.emEmpOrgWorkPlaces.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const emEmpOrgWorkPlacesRoute: Routes = [
                 path: 'em-emp-org-work-places/:id',
                 component: EmEmpOrgWorkPlacesDetailComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.emEmpOrgWorkPlaces.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -54,11 +54,21 @@ export const emEmpOrgWorkPlacesRoute: Routes = [
 ];
 
 export const emEmpOrgWorkPlacesPopupRoute: Routes = [
+    // {
+    //     path: 'em-emp-org-work-places-new',
+    //     component: EmEmpOrgWorkPlacesPopupComponent,
+    //     data: {
+    //         authorities: ['ROLE_ADMIN'],
+    //         pageTitle: 'hcmEmpApp.emEmpOrgWorkPlaces.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService],
+    //     outlet: 'popup'
+    // },
     {
-        path: 'em-emp-org-work-places-new',
+        path: 'em-emp-org-work-places-new/:employeeId',
         component: EmEmpOrgWorkPlacesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emEmpOrgWorkPlaces.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -68,7 +78,7 @@ export const emEmpOrgWorkPlacesPopupRoute: Routes = [
         path: 'em-emp-org-work-places/:id/edit',
         component: EmEmpOrgWorkPlacesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emEmpOrgWorkPlaces.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -78,7 +88,7 @@ export const emEmpOrgWorkPlacesPopupRoute: Routes = [
         path: 'em-emp-org-work-places/:id/delete',
         component: EmEmpOrgWorkPlacesDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emEmpOrgWorkPlaces.home.title'
         },
         canActivate: [UserRouteAccessService],

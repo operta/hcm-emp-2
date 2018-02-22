@@ -37,7 +37,7 @@ export const emStatusesRoute: Routes = [
                     'pagingParams': EmStatusesResolvePagingParams
                 },
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.emStatuses.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const emStatusesRoute: Routes = [
                 path: 'em-statuses/:id',
                 component: EmStatusesDetailComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.emStatuses.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -58,7 +58,7 @@ export const emStatusesPopupRoute: Routes = [
         path: 'em-statuses-new',
         component: EmStatusesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emStatuses.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -68,7 +68,7 @@ export const emStatusesPopupRoute: Routes = [
         path: 'em-statuses/:id/edit',
         component: EmStatusesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emStatuses.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -78,7 +78,7 @@ export const emStatusesPopupRoute: Routes = [
         path: 'em-statuses/:id/delete',
         component: EmStatusesDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.emStatuses.home.title'
         },
         canActivate: [UserRouteAccessService],

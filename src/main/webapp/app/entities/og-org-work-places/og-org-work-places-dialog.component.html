@@ -13,44 +13,27 @@
                    [(ngModel)]="ogOrgWorkPlaces.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="ogOrgWorkPlaces.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.createdAt" for="field_createdAt">Created At</label>
-            <div class="d-flex">
-                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="ogOrgWorkPlaces.createdAt"
-                />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.updatedBy" for="field_updatedBy">Updated By</label>
-            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
-                [(ngModel)]="ogOrgWorkPlaces.updatedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="d-flex">
-                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="ogOrgWorkPlaces.updatedAt"
-                />
-            </div>
-        </div>
-
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idOrganization" for="field_idOrganization">Id Organization</label>
             <select class="form-control" id="field_idOrganization" name="idOrganization" [(ngModel)]="ogOrgWorkPlaces.idOrganization">
                 <option [ngValue]="null"></option>
                 <option [ngValue]="ogOrganizationsOption.id === ogOrgWorkPlaces.idOrganization?.id ? ogOrgWorkPlaces.idOrganization : ogOrganizationsOption" *ngFor="let ogOrganizationsOption of idorganizations; trackBy: trackOgOrganizationsById">{{ogOrganizationsOption.name}}</option>
             </select>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idWorkPlace" for="field_idWorkPlace">Id Work Place</label>
-            <select class="form-control" id="field_idWorkPlace" name="idWorkPlace" [(ngModel)]="ogOrgWorkPlaces.idWorkPlace">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="ogWorkPlacesOption.id === ogOrgWorkPlaces.idWorkPlace?.id ? ogOrgWorkPlaces.idWorkPlace : ogWorkPlacesOption" *ngFor="let ogWorkPlacesOption of idworkplaces; trackBy: trackOgWorkPlacesById">{{ogWorkPlacesOption.name}}</option>
-            </select>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idWorkPlace" for="field_idWorkPlace">Id Work Place</label>
+                <select class="form-control" id="field_idWorkPlace" name="idWorkPlace" [(ngModel)]="ogOrgWorkPlaces.idWorkPlace">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="ogWorkPlacesOption.id === ogOrgWorkPlaces.idWorkPlace?.id ? ogOrgWorkPlaces.idWorkPlace : ogWorkPlacesOption" *ngFor="let ogWorkPlacesOption of idworkplaces; trackBy: trackOgWorkPlacesById">{{ogWorkPlacesOption.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-4" style="margin-top: 35px;">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'og-work-places-new'} }]">
+                    <i class="fa fa-plus action-button-at"></i> Add Workplace
+                </a>
+            </div>
         </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

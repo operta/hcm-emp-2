@@ -43,38 +43,14 @@
             <input type="number" class="form-control" name="workHistoryCoefficient" id="field_workHistoryCoefficient"
                 [(ngModel)]="emEmpOrgWorkPlaces.workHistoryCoefficient" />
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="emEmpOrgWorkPlaces.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.createdAt" for="field_createdAt">Created At</label>
-            <div class="d-flex">
-                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpOrgWorkPlaces.createdAt"
-                />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.updatedBy" for="field_updatedBy">Updated By</label>
-            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
-                [(ngModel)]="emEmpOrgWorkPlaces.updatedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="d-flex">
-                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpOrgWorkPlaces.updatedAt"
-                />
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idEmployee" for="field_idEmployee">Id Employee</label>
-            <select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpOrgWorkPlaces.idEmployee">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emEmployeesOption.id === emEmpOrgWorkPlaces.idEmployee?.id ? emEmpOrgWorkPlaces.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>
-            </select>
-        </div>
+        <!--<div class="form-group" *ngIf="!employee">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idEmployee" for="field_idEmployee">Id Employee</label>-->
+            <!--<select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpOrgWorkPlaces.idEmployee">-->
+                <!--<option [ngValue]="null"></option>-->
+                <!--<option [ngValue]="emEmployeesOption.id === emEmpOrgWorkPlaces.idEmployee?.id ? emEmpOrgWorkPlaces.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.name}}</option>-->
+            <!--</select>-->
+        <!--</div>-->
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idContractType" for="field_idContractType">Id Contract Type</label>
             <select class="form-control" id="field_idContractType" name="idContractType" [(ngModel)]="emEmpOrgWorkPlaces.idContractType">
@@ -83,12 +59,34 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idOrgWorkPlace" for="field_idOrgWorkPlace">Id Org Work Place</label>
-            <select class="form-control" id="field_idOrgWorkPlace" name="idOrgWorkPlace" [(ngModel)]="emEmpOrgWorkPlaces.idOrgWorkPlace">
+            <label class="form-control-label"  for="field_idOrganization">Organization</label>
+            <select class="form-control" id="field_idOrganization" name="idOrganization" [(ngModel)]="organization" (mouseleave)="filterOrganizationWorkplaces()"  (click)="filterOrganizationWorkplaces()">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="ogOrgWorkPlacesOption.id === emEmpOrgWorkPlaces.idOrgWorkPlace?.id ? emEmpOrgWorkPlaces.idOrgWorkPlace : ogOrgWorkPlacesOption" *ngFor="let ogOrgWorkPlacesOption of idorgworkplaces; trackBy: trackOgOrgWorkPlacesById">{{ogOrgWorkPlacesOption.id}}</option>
+                <option [ngValue]="ogOrganizationsOption.id === emEmpOrgWorkPlaces.idOrgWorkPlace?.idOrganization.id ? emEmpOrgWorkPlaces.idOrgWorkPlace?.idOrganization : ogOrganizationsOption" *ngFor="let ogOrganizationsOption of organizations">{{ogOrganizationsOption.name}}</option>
             </select>
         </div>
+        <div class="row">
+            <div *ngIf="!organization" class="form-group col-md-8">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idOrgWorkPlace" for="field_idOrgWorkPlace2">Id Org Work Place</label>
+            <select class="form-control" id="field_idOrgWorkPlace2" name="idOrgWorkPlace2" [(ngModel)]="emEmpOrgWorkPlaces.idOrgWorkPlace">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ogOrgWorkPlacesOption.id === emEmpOrgWorkPlaces.idOrgWorkPlace?.id ? emEmpOrgWorkPlaces.idOrgWorkPlace : ogOrgWorkPlacesOption" *ngFor="let ogOrgWorkPlacesOption of idorgworkplaces;">{{ogOrgWorkPlacesOption.idWorkPlace.name}}</option>
+            </select>
+        </div>
+            <div *ngIf="organization" class="form-group col-md-8">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpOrgWorkPlaces.idOrgWorkPlace" for="field_idOrgWorkPlace">Id Org Work Place</label>
+                <select class="form-control" id="field_idOrgWorkPlace" name="idOrgWorkPlace" [(ngModel)]="emEmpOrgWorkPlaces.idOrgWorkPlace">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="ogOrgWorkPlacesOption.id === emEmpOrgWorkPlaces.idOrgWorkPlace?.id ? emEmpOrgWorkPlaces.idOrgWorkPlace : ogOrgWorkPlacesOption" *ngFor="let ogOrgWorkPlacesOption of organizationWorkplaces;">{{ogOrgWorkPlacesOption.idWorkPlace.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-4" style="margin-top: 35px;">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'og-org-work-places-new'} }]">
+                    <i class="fa fa-plus action-button-at"></i> Add Organization Workplace
+                </a>
+            </div>
+        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

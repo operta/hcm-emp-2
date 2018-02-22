@@ -94,9 +94,26 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.leLegalEntities.region" for="field_region">Region</label>
-            <select class="form-control" id="field_region" name="region" [(ngModel)]="leLegalEntities.region">
+            <p *ngIf="leLegalEntities.region">{{leLegalEntities.region.name}}</p>
+            <div class="input-group stylish-input-group">
+                <input type="text" class="form-control" [(ngModel)]="searchValue" (click)="isHidden = !isHidden" (input)="isHidden = false" name="search" placeholder="Type to search" >
+                <span class="input-group-addon">
+                <button>
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                </span>
+            </div>
+
+            <ul *ngIf="!isHidden" class="dropdown-menu show form-group">
+                <li *ngFor="let city of cities | searchPipe:searchValue:searchableList; trackBy: trackRgRegionsById">
+                    <a class="dropdown-item" (click)="leLegalEntities.region = city; isHidden = true; searchValue = ''">{{city.name}}</a>
+                </li>
+            </ul>
+
+
+            <select *ngIf="leLegalEntities && leLegalEntities.id" class="form-control" id="field_region"  name="region" [(ngModel)]="leLegalEntities.region">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="rgRegionsOption.id === leLegalEntities.region?.id ? leLegalEntities.region : rgRegionsOption" *ngFor="let rgRegionsOption of regions; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
+                <option [ngValue]="rgRegionsOption.id === leLegalEntities.region?.id ? leLegalEntities.region : rgRegionsOption" *ngFor="let rgRegionsOption of cities | searchPipe:searchValue:searchableList; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
             </select>
         </div>
     </div>

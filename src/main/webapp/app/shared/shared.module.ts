@@ -16,6 +16,7 @@ import {
     HasAnyAuthorityDirective,
 } from './';
 import {OrderByPipe} from "./orderBy.pipe";
+import {SearchPipe} from "./search.pipe";
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import {OrderByPipe} from "./orderBy.pipe";
     declarations: [
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
-        OrderByPipe
+        OrderByPipe,
+        SearchPipe
     ],
     providers: [
         LoginService,
@@ -44,7 +46,8 @@ import {OrderByPipe} from "./orderBy.pipe";
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
         DatePipe,
-        OrderByPipe
+        OrderByPipe,
+        SearchPipe
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 

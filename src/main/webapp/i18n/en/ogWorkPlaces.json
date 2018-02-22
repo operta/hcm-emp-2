@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "ogWorkPlaces" : {
             "home": {
-                "title": "Og Work Places",
-                "createLabel": "Create a new Og Work Places",
-                "createOrEditLabel": "Create or edit a Og Work Places"
+                "title": "Workplaces",
+                "createLabel": "Create a new Workplace",
+                "createOrEditLabel": "Create or edit a Workplace"
             },
-            "created": "A new Og Work Places is created with identifier {{ param }}",
-            "updated": "A Og Work Places is updated with identifier {{ param }}",
-            "deleted": "A Og Work Places is deleted with identifier {{ param }}",
+            "created": "A new Workplace is created with identifier {{ param }}",
+            "updated": "A Workplace is updated with identifier {{ param }}",
+            "deleted": "A Workplace is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Og Work Places {{ id }}?"
+                "question": "Are you sure you want to delete Workplace {{ id }}?"
             },
             "detail": {
-                "title": "Og Work Places"
+                "title": "Workplace"
             },
             "code": "Code",
             "name": "Name",
@@ -22,8 +22,8 @@
             "createdAt": "Created At",
             "updatedBy": "Updated By",
             "updatedAt": "Updated At",
-            "idWorkPlaceType": "Id Work Place Type",
-            "idParent": "Id Parent"
+            "idWorkPlaceType": "Workplace Type",
+            "idParent": "Parent"
         }
     }
 }

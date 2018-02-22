@@ -16,7 +16,8 @@ declare  let $:any;
 export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestroy{
     tabState = 'personal';
     currentAccount: any;
-    eventSubscriber: Subscription;
+    eventSubscriber1: Subscription;
+    eventSubscriber2: Subscription;
     employee: EmEmployees;
     employeeWorkPlace: EmEmpOrgWorkPlaces;
     isEditable = false;
@@ -37,12 +38,8 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
             this.isEditable = false;
         }
         this.employee = this.route.snapshot.data['employee'];
+        this.loadEmployeeWorkPlace();
 
-        this.employeeWorkPlaceService.findLastWorkPlaceForEmployee(this.employee.id).subscribe(
-            (workplace) => {
-                this.employeeWorkPlace = workplace
-            }
-        );
         this.principal.identity().then((account) => {
             this.currentAccount = account;
 
@@ -53,12 +50,22 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
         this.registerChangeInEmployeeOverview();
     }
 
+    loadEmployeeWorkPlace() {
+        this.employeeWorkPlaceService.findLastWorkPlaceForEmployee(this.employee.id).subscribe(
+            (workplace) => {
+                this.employeeWorkPlace = workplace
+            }
+        );
+    }
+
     ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
+        this.eventManager.destroy(this.eventSubscriber1);
+        this.eventManager.destroy(this.eventSubscriber2);
     }
 
     registerChangeInEmployeeOverview() {
-        this.eventSubscriber = this.eventManager.subscribe('emEmployeesListModification', (response) => this.reload());
+        this.eventSubscriber1 = this.eventManager.subscribe('emEmployeesListModification', (response) => this.reload());
+        this.eventSubscriber2 = this.eventManager.subscribe('emEmpOrgWorkPlacesListModification', (response) => this.loadEmployeeWorkPlace())
     }
 
 
@@ -116,6 +123,12 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
           , position: 'right'
           , color: '#dcdcdc'
           , });
+        $('.dataScrollUniversal').slimScroll({
+            height: ''
+            , position: 'right'
+            , color: '#dcdcdc'
+            , });
+
     }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
@@ -15,16 +15,19 @@ import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-le-legal-entities-dialog',
-    templateUrl: './le-legal-entities-dialog.component.html'
+    templateUrl: './le-legal-entities-dialog.component.html',
+    styleUrls: ['./le-legal-entities-dialog.component.css']
 })
 export class LeLegalEntitiesDialogComponent implements OnInit {
-
+    @ViewChild('regionSelect') regionSelect: Element;
     leLegalEntities: LeLegalEntities;
     isSaving: boolean;
-
     identitytypes: LeLegalEntityTypes[];
-
     regions: RgRegions[];
+    cities: RgRegions[];
+    searchableList: string[];
+    searchValue = '';
+    isHidden = true;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -37,6 +40,7 @@ export class LeLegalEntitiesDialogComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.searchableList = ['name'];
         this.isSaving = false;
         this.leLegalEntityTypesService
             .query({filter: 'lelegalentities-is-null'})
@@ -63,11 +67,20 @@ export class LeLegalEntitiesDialogComponent implements OnInit {
                             this.regions = [subRes].concat(res.json);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
+                this.filterRegionsByCity();
             }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
+    openRegionSelect() {
+        // console.log(this.regionSelect.ope);
     }
 
     clear() {
         this.activeModal.dismiss('cancel');
+    }
+
+    filterRegionsByCity(){
+        this.cities = this.regions.filter((item) => item.idType.id == 4);
     }
 
     save() {

@@ -12,6 +12,8 @@ import {EmEmpOrgWorkPlaces} from "../../entities/em-emp-org-work-places/em-emp-o
 import {OgOrgWorkPlaces} from "../../entities/og-org-work-places/og-org-work-places.model";
 import {OgWorkPlaces} from "../../entities/og-work-places/og-work-places.model";
 import {OgOrganizations} from "../../entities/og-organizations/og-organizations.model";
+import {LeLegalEntities} from "../../entities/le-legal-entities/le-legal-entities.model";
+import {RgRegions} from "../../entities/rg-regions/rg-regions.model";
 
 @Component({
   selector: 'jhi-employees-list',
@@ -59,6 +61,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
         this.emEmpOrgWorkPlacesService.query().subscribe(
             (res: ResponseWrapper) => {
                 this.emEmpOrgWorkPlaces = res.json;
+                console.log(this.emEmpOrgWorkPlaces);
             },
             (res: ResponseWrapper) => this.onErrorWP(res.json)
         );
@@ -97,9 +100,6 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     }
     ngOnInit() {
         this.loadAll();
-
-
-        console.log(Date.now());
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
@@ -130,13 +130,41 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     }
 
     findWorkPlace(employeeId: number) {
-        let orgWorkPlace: OgOrgWorkPlaces = this.emEmpOrgWorkPlaces.filter(x => x.idEmployee.id === employeeId && x.dateTo.getTime() > Date.now())[0].idOrgWorkPlace;
-        return orgWorkPlace.idWorkPlace;
+        if(this.emEmpOrgWorkPlaces) {
+           let employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
+            if(employeeWorkPlaces.length > 0) {
+               let lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
+               let lastWorkPlace: OgWorkPlaces = lastOrgWorkPlace.idWorkPlace;
+               return lastWorkPlace.name;
+            }
+        }
+        return null;
     }
 
     findOrganization(employeeId: number) {
-        let orgWorkPlace: OgOrgWorkPlaces = this.emEmpOrgWorkPlaces.filter(x => x.idEmployee.id === employeeId && x.dateTo.getTime() > Date.now())[0].idOrgWorkPlace;
-        return orgWorkPlace.idOrganization;
+        if(this.emEmpOrgWorkPlaces) {
+            let employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
+            if(employeeWorkPlaces.length > 0) {
+                let lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
+                let organization: OgOrganizations = lastOrgWorkPlace.idOrganization;
+                return organization.name;
+            }
+        }
+        return null;
+    }
+
+    findOrganizationLocation(employeeId: number) {
+        if(this.emEmpOrgWorkPlaces) {
+            let employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
+            if(employeeWorkPlaces.length > 0) {
+                let lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
+                let organization: OgOrganizations = lastOrgWorkPlace.idOrganization;
+                let entity : LeLegalEntities = organization.idLegalEntity;
+                let region: RgRegions = entity.region;
+                return region.name;
+            }
+        }
+        return null;
     }
 
     private onSuccess(data, headers) {

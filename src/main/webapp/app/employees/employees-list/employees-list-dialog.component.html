@@ -7,73 +7,202 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="form-control-label" for="field_code">Code</label>
+                <input type="text" class="form-control" name="code" id="field_code"
+                       [(ngModel)]="emEmployees.code" required/>
+                <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+        </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label class="form-control-label" for="field_name">First Name</label>
                 <input type="text" class="form-control" name="name" id="field_name"
-                       [(ngModel)]="emEmployees.name" />
+                       [(ngModel)]="emEmployees.name" required/>
+                <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
         </div>
-
         <div class="col-md-6">
             <div class="form-group">
                 <label class="form-control-label" for="field_surname">Last Name</label>
                 <input type="text" class="form-control" name="surname" id="field_surname"
-                       [(ngModel)]="emEmployees.surname" />
+                       [(ngModel)]="emEmployees.surname" required/>
+                <div [hidden]="!(editForm.controls.surname?.dirty && editForm.controls.surname?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.surname?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-control-label" for="field_phone">Business Phone</label>
+                <input type="text" class="form-control" name="phone" id="field_phone"
+                       [(ngModel)]="emEmployees.phoneNumber" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-control-label" for="field_email">Business Email</label>
+                <input type="text" class="form-control" name="email" id="field_email"
+                       [(ngModel)]="emEmployees.email" />
             </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.hireDate" for="field_hireDate">Hire Date</label>
             <div class="input-group">
                 <input id="field_hireDate" type="text" class="form-control" name="hireDate" ngbDatepicker  #hireDateDp="ngbDatepicker" [(ngModel)]="emEmployees.hireDate"
-                />
+                required/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-secondary" (click)="hireDateDp.toggle()"><i class="fa fa-calendar"></i></button>
                 </span>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idEmploymentType" for="field_idEmploymentType">Employment Type</label>
-            <select class="form-control" id="field_idEmploymentType" name="idEmploymentType" [(ngModel)]="emEmployees.idEmploymentType">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emEmpTypesOption.id === emEmployees.idEmploymentType?.id ? emEmployees.idEmploymentType : emEmpTypesOption" *ngFor="let emEmpTypesOption of idemploymenttypes; trackBy: trackEmEmpTypesById">{{emEmpTypesOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idQualification" for="field_idQualification">Id Qualification</label>
-            <select class="form-control" id="field_idQualification" name="idQualification" [(ngModel)]="emEmployees.idQualification">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="rgQualificationsOption.id === emEmployees.idQualification?.id ? emEmployees.idQualification : rgQualificationsOption" *ngFor="let rgQualificationsOption of idqualifications; trackBy: trackRgQualificationsById">{{rgQualificationsOption.name}}</option>
-            </select>
+            <div [hidden]="!(editForm.controls.hireDate?.dirty && editForm.controls.hireDate?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.hireDate?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-8">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idEmploymentType" for="field_idEmploymentType">Employment Type</label>
+                <select class="form-control" id="field_idEmploymentType" name="idEmploymentType" [(ngModel)]="emEmployees.idEmploymentType" required>
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="emEmpTypesOption.id === emEmployees.idEmploymentType?.id ? emEmployees.idEmploymentType : emEmpTypesOption" *ngFor="let emEmpTypesOption of idemploymenttypes; trackBy: trackEmEmpTypesById">{{emEmpTypesOption.name}}</option>
+                </select>
+                <div [hidden]="!(editForm.controls.idEmploymentType?.dirty && editForm.controls.idEmploymentType?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.idEmploymentType?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-4" style="margin-top: 35px;">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-types-new'} }]">
+                    <i class="fa fa-plus action-button-at"></i> Add Employment Type
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idQualification" for="field_idQualification">Id Qualification</label>
+                <select class="form-control" id="field_idQualification" name="idQualification" [(ngModel)]="emEmployees.idQualification" required>
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="rgQualificationsOption.id === emEmployees.idQualification?.id ? emEmployees.idQualification : rgQualificationsOption" *ngFor="let rgQualificationsOption of idqualifications; trackBy: trackRgQualificationsById">{{rgQualificationsOption.name}}</option>
+                </select>
+                <div [hidden]="!(editForm.controls.idQualification?.dirty && editForm.controls.idQualification?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.idQualification?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-4" style="margin-top: 35px;">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'rg-qualifications-new'} }]">
+                    <i class="fa fa-plus action-button-at"></i> Add Qualification
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8">
                 <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idLegalEntity" for="field_idLegalEntity">Id Legal Entity</label>
-                <select class="form-control" id="field_idLegalEntity" name="idLegalEntity" [(ngModel)]="emEmployees.idLegalEntity">
+
+                <div class="input-group stylish-input-group">
+                    <input type="text" class="form-control" [(ngModel)]="searchValue" (click)="isHidden = !isHidden" (input)="isHidden = false" name="search" placeholder="Type to search" >
+                    <span class="input-group-addon">
+                <button>
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                </span>
+                </div>
+
+                <ul *ngIf="!isHidden" class="dropdown-menu show form-group">
+                    <li *ngFor="let legalEntity of idlegalentities | searchPipe:searchValue:searchableList; trackBy: trackRgRegionsById">
+                        <a class="dropdown-item" (click)="emEmployees.idLegalEntity = legalEntity; isHidden = true; searchValue = ''">{{legalEntity.name}}</a>
+                    </li>
+                </ul>
+
+                <select class="form-control" id="field_idLegalEntity" name="idLegalEntity" [(ngModel)]="emEmployees.idLegalEntity" required>
                     <option [ngValue]="null"></option>
                     <option [ngValue]="leLegalEntitiesOption.id === emEmployees.idLegalEntity?.id ? emEmployees.idLegalEntity : leLegalEntitiesOption" *ngFor="let leLegalEntitiesOption of idlegalentities; trackBy: trackLeLegalEntitiesById">{{leLegalEntitiesOption.name}}</option>
                 </select>
+                <div [hidden]="!(editForm.controls.idLegalEntity?.dirty && editForm.controls.idLegalEntity?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.idLegalEntity?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
-            <div class="col-md-2" style="margin-top: 35px;">
+            <div class="col-md-4" style="margin-top: 35px;">
                 <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'le-legal-entities-new'} }]">
                     <i class="fa fa-plus action-button-at"></i> Add Legal Entity
                 </a>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idStatus" for="field_idStatus">Id Status</label>
-            <select class="form-control" id="field_idStatus" name="idStatus" [(ngModel)]="emEmployees.idStatus">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emStatusesOption.id === emEmployees.idStatus?.id ? emEmployees.idStatus : emStatusesOption" *ngFor="let emStatusesOption of idstatuses; trackBy: trackEmStatusesById">{{emStatusesOption.name}}</option>
-            </select>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idStatus" for="field_idStatus">Id Status</label>
+                <select class="form-control" id="field_idStatus" name="idStatus" [(ngModel)]="emEmployees.idStatus" required>
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="emStatusesOption.id === emEmployees.idStatus?.id ? emEmployees.idStatus : emStatusesOption" *ngFor="let emStatusesOption of idstatuses; trackBy: trackEmStatusesById">{{emStatusesOption.name}}</option>
+                </select>
+                <div [hidden]="!(editForm.controls.idStatus?.dirty && editForm.controls.idStatus?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.idStatus?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-4" style="margin-top: 35px;">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-statuses-new'} }]">
+                    <i class="fa fa-plus action-button-at"></i> Add Employee Status
+                </a>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idUser" for="field_idUser">Id User</label>
-            <select class="form-control" id="field_idUser" name="idUser" [(ngModel)]="emEmployees.idUser" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="userOption.id === emEmployees.idUser?.id ? emEmployees.idUser : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.name}}</option>
-            </select>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idUser" for="field_idUser">Id User</label>
+
+                <!--<div class="input-group stylish-input-group">-->
+                    <!--<input type="text" class="form-control" [(ngModel)]="searchUValue" (click)="isUHidden = !isUHidden" (input)="isUHidden = false" name="search" placeholder="Type to search" >-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<button>-->
+                            <!--<span class="glyphicon glyphicon-search"></span>-->
+                        <!--</button>-->
+                     <!--</span>-->
+                <!--</div>-->
+
+                <!--<ul *ngIf="!isUHidden" class="dropdown-menu show form-group">-->
+                    <!--<li *ngFor="let user of users | searchPipe:searchUValue:searchableUList; trackBy: trackRgRegionsById">-->
+                        <!--<a class="dropdown-item" (click)="emEmployees.idUser = user; isUHidden = true; searchUValue = ''">{{user.firstName}} {{user.lastName}}</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+                <select class="form-control" id="field_idUser" name="idUser" [(ngModel)]="emEmployees.idUser" >
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="userOption.id === emEmployees.idUser?.id ? emEmployees.idUser : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.firstName}} {{userOption.lastName}}</option>
+                </select>
+
+            </div>
+            <div class="col-md-4" style="margin-top: 35px;">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'user-management-new'} }]">
+                    <i class="fa fa-plus action-button-at"></i> Add User
+                </a>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "emStatuses" : {
             "home": {
-                "title": "Em Statuses",
-                "createLabel": "Create a new Em Statuses",
-                "createOrEditLabel": "Create or edit a Em Statuses"
+                "title": "Employee Status",
+                "createLabel": "Create a new Status",
+                "createOrEditLabel": "Create or edit a Status"
             },
-            "created": "A new Em Statuses is created with identifier {{ param }}",
-            "updated": "A Em Statuses is updated with identifier {{ param }}",
-            "deleted": "A Em Statuses is deleted with identifier {{ param }}",
+            "created": "A new Status is created with identifier {{ param }}",
+            "updated": "A Status is updated with identifier {{ param }}",
+            "deleted": "A Status is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Em Statuses {{ id }}?"
+                "question": "Are you sure you want to delete Status {{ id }}?"
             },
             "detail": {
-                "title": "Em Statuses"
+                "title": "Status"
             },
             "code": "Code",
             "name": "Name",

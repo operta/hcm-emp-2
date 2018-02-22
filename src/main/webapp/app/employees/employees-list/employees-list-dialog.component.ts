@@ -19,28 +19,39 @@ import {LeLegalEntitiesService} from "../../entities/le-legal-entities/le-legal-
 import {EmStatusesService} from "../../entities/em-statuses/em-statuses.service";
 import {EmployeesListPopupService} from "./employees-list-popup.service";
 import {Subscription} from "rxjs/Subscription";
+import {OgOrganizations} from "../../entities/og-organizations/og-organizations.model";
+import {OgOrganizationsService} from "../../entities/og-organizations/og-organizations.service";
+import {OgOrgWorkPlaces} from "../../entities/og-org-work-places/og-org-work-places.model";
+import {OgOrgWorkPlacesService} from "../../entities/og-org-work-places/og-org-work-places.service";
 
 @Component({
     selector: 'jhi-em-employees-dialog',
-    templateUrl: './employees-list-dialog.component.html'
+    templateUrl: './employees-list-dialog.component.html',
+    styleUrls: ['./employees-list-dialog.component.css']
 })
 export class EmployeesListDialogComponent implements OnInit, OnDestroy {
-
-    emEmployees: EmEmployees;
+    eventSubscriber1: Subscription;
+    eventSubscriber2: Subscription;
+    eventSubscriber3: Subscription;
+    eventSubscriber4: Subscription;
+    eventSubscriber5: Subscription;
     isSaving: boolean;
 
-    idqualifications: RgQualifications[];
-
-    idemploymenttypes: EmEmpTypes[];
-
-    idlegalentities: LeLegalEntities[];
-
-    idstatuses: EmStatuses[];
-    eventSubscriber: Subscription;
-
+    emEmployees: EmEmployees;
     users: User[];
     dateOfBirthDp: any;
     hireDateDp: any;
+
+    idqualifications: RgQualifications[];
+    idemploymenttypes: EmEmpTypes[];
+    idlegalentities: LeLegalEntities[];
+    idstatuses: EmStatuses[];
+    searchValue = '';
+    isHidden = true;
+    searchableList: string[];
+    searchUValue = '';
+    isUHidden = true;
+    searchableUList: string[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -56,50 +67,15 @@ export class EmployeesListDialogComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.searchableList = ['name'];
+        this.searchableUList = ['firstName'];
         this.isSaving = false;
-        this.rgQualificationsService
-            .query({filter: 'ememployees-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmployees.idQualification || !this.emEmployees.idQualification.id) {
-                    this.idqualifications = res.json;
-                } else {
-                    this.rgQualificationsService
-                        .find(this.emEmployees.idQualification.id)
-                        .subscribe((subRes: RgQualifications) => {
-                            this.idqualifications = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
-        this.emEmpTypesService
-            .query({filter: 'ememployees-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmployees.idEmploymentType || !this.emEmployees.idEmploymentType.id) {
-                    this.idemploymenttypes = res.json;
-                } else {
-                    this.emEmpTypesService
-                        .find(this.emEmployees.idEmploymentType.id)
-                        .subscribe((subRes: EmEmpTypes) => {
-                            this.idemploymenttypes = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
-       this.loadLegalEntities();
-        this.emStatusesService
-            .query({filter: 'ememployees-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmployees.idStatus || !this.emEmployees.idStatus.id) {
-                    this.idstatuses = res.json;
-                } else {
-                    this.emStatusesService
-                        .find(this.emEmployees.idStatus.id)
-                        .subscribe((subRes: EmStatuses) => {
-                            this.idstatuses = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
-        this.userService.query()
-            .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.registerChangeInLeLegalEntities()
+        this.loadUsers();
+        this.loadQualifications();
+        this.loadLegalEntities();
+        this.loadEmployeeTypes();
+        this.loadEmployeeStatuses();
+        this.registerChangeInModels();
     }
 
     loadLegalEntities() {
@@ -118,16 +94,78 @@ export class EmployeesListDialogComponent implements OnInit, OnDestroy {
             }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
+    loadQualifications() {
+        this.rgQualificationsService
+            .query({filter: 'ememployees-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.emEmployees.idQualification || !this.emEmployees.idQualification.id) {
+                    this.idqualifications = res.json;
+                } else {
+                    this.rgQualificationsService
+                        .find(this.emEmployees.idQualification.id)
+                        .subscribe((subRes: RgQualifications) => {
+                            this.idqualifications = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
+
+    }
+
+    loadUsers(){
+        this.userService.query()
+            .subscribe((res: ResponseWrapper) => { this.users = res.json; console.log(this.users)}, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
+    loadEmployeeStatuses() {
+        this.emStatusesService
+            .query({filter: 'ememployees-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.emEmployees.idStatus || !this.emEmployees.idStatus.id) {
+                    this.idstatuses = res.json;
+                } else {
+                    this.emStatusesService
+                        .find(this.emEmployees.idStatus.id)
+                        .subscribe((subRes: EmStatuses) => {
+                            this.idstatuses = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
+    loadEmployeeTypes() {
+        this.emEmpTypesService
+            .query({filter: 'ememployees-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.emEmployees.idEmploymentType || !this.emEmployees.idEmploymentType.id) {
+                    this.idemploymenttypes = res.json;
+                } else {
+                    this.emEmpTypesService
+                        .find(this.emEmployees.idEmploymentType.id)
+                        .subscribe((subRes: EmEmpTypes) => {
+                            this.idemploymenttypes = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
     ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
+        this.eventManager.destroy(this.eventSubscriber1);
+        this.eventManager.destroy(this.eventSubscriber2);
+        this.eventManager.destroy(this.eventSubscriber3);
+        this.eventManager.destroy(this.eventSubscriber4);
+        this.eventManager.destroy(this.eventSubscriber5);
     }
 
     clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    registerChangeInLeLegalEntities() {
-        this.eventSubscriber = this.eventManager.subscribe('leLegalEntitiesListModification', (response) => this.loadLegalEntities());
+    registerChangeInModels() {
+        this.eventSubscriber1 = this.eventManager.subscribe('leLegalEntitiesListModification', (response) => this.loadLegalEntities());
+        this.eventSubscriber2 = this.eventManager.subscribe('emEmpTypesListModification', (response) => this.loadEmployeeTypes());
+        this.eventSubscriber3 = this.eventManager.subscribe('rgQualificationsListModification', (response) => this.loadQualifications());
+        this.eventSubscriber4 = this.eventManager.subscribe('emStatusesListModification', (response) => this.loadEmployeeStatuses());
+        this.eventSubscriber5 = this.eventManager.subscribe('userListModification', (response) => this.loadUsers());
     }
 
     save() {

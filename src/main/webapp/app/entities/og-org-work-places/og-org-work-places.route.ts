@@ -37,7 +37,7 @@ export const ogOrgWorkPlacesRoute: Routes = [
                     'pagingParams': OgOrgWorkPlacesResolvePagingParams
                 },
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.ogOrgWorkPlaces.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const ogOrgWorkPlacesRoute: Routes = [
                 path: 'og-org-work-places/:id',
                 component: OgOrgWorkPlacesDetailComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_ADMIN'],
                     pageTitle: 'hcmEmpApp.ogOrgWorkPlaces.home.title'
                 },
                 canActivate: [UserRouteAccessService]
@@ -58,7 +58,7 @@ export const ogOrgWorkPlacesPopupRoute: Routes = [
         path: 'og-org-work-places-new',
         component: OgOrgWorkPlacesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.ogOrgWorkPlaces.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -68,7 +68,7 @@ export const ogOrgWorkPlacesPopupRoute: Routes = [
         path: 'og-org-work-places/:id/edit',
         component: OgOrgWorkPlacesPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.ogOrgWorkPlaces.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -78,7 +78,7 @@ export const ogOrgWorkPlacesPopupRoute: Routes = [
         path: 'og-org-work-places/:id/delete',
         component: OgOrgWorkPlacesDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.ogOrgWorkPlaces.home.title'
         },
         canActivate: [UserRouteAccessService],

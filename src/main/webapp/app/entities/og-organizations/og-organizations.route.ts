@@ -38,7 +38,7 @@ export const ogOrganizationsRoute: Routes = [
             'pagingParams': OgOrganizationsResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -46,7 +46,7 @@ export const ogOrganizationsRoute: Routes = [
         path: 'og-organizations/:id',
         component: OgOrganizationsDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -58,7 +58,7 @@ export const ogOrganizationsPopupRoute: Routes = [
         path: 'og-organizations-new',
         component: OgOrganizationsPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -68,7 +68,7 @@ export const ogOrganizationsPopupRoute: Routes = [
         path: 'og-organizations/:id/edit',
         component: OgOrganizationsPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -78,7 +78,7 @@ export const ogOrganizationsPopupRoute: Routes = [
         path: 'og-organizations/:id/delete',
         component: OgOrganizationsDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'hcmEmpApp.ogOrganizations.home.title'
         },
         canActivate: [UserRouteAccessService],

@@ -13,13 +13,16 @@ import { EmEmployees, EmEmployeesService } from '../em-employees';
 import { EmContractTypes, EmContractTypesService } from '../em-contract-types';
 import { OgOrgWorkPlaces, OgOrgWorkPlacesService } from '../og-org-work-places';
 import { ResponseWrapper } from '../../shared';
+import {OgOrganizations} from "../og-organizations/og-organizations.model";
+import {OgOrganizationsService} from "../og-organizations/og-organizations.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: 'jhi-em-emp-org-work-places-dialog',
     templateUrl: './em-emp-org-work-places-dialog.component.html'
 })
-export class EmEmpOrgWorkPlacesDialogComponent implements OnInit {
-
+export class EmEmpOrgWorkPlacesDialogComponent implements OnInit, OnDestroy {
+    employee: EmEmployees;
     emEmpOrgWorkPlaces: EmEmpOrgWorkPlaces;
     isSaving: boolean;
 
@@ -28,6 +31,10 @@ export class EmEmpOrgWorkPlacesDialogComponent implements OnInit {
     idcontracttypes: EmContractTypes[];
 
     idorgworkplaces: OgOrgWorkPlaces[];
+    organizations: OgOrganizations[];
+    organization: OgOrganizations;
+    organizationWorkplaces: OgOrgWorkPlaces[];
+    eventSubscription: Subscription;
     dateFromDp: any;
     dateToDp: any;
 
@@ -38,6 +45,7 @@ export class EmEmpOrgWorkPlacesDialogComponent implements OnInit {
         private emEmployeesService: EmEmployeesService,
         private emContractTypesService: EmContractTypesService,
         private ogOrgWorkPlacesService: OgOrgWorkPlacesService,
+        private organizationsService: OgOrganizationsService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -70,19 +78,46 @@ export class EmEmpOrgWorkPlacesDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+        this.loadOrganizationWorkplaces();
+        this.loadOrganizations();
+        this.registerToChangeEvents();
+    }
+
+    registerToChangeEvents() {
+        this.eventSubscription = this.eventManager.subscribe('ogOrgWorkPlacesListModification', (response) => this.loadOrganizationWorkplaces());
+    }
+
+    loadOrganizationWorkplaces() {
         this.ogOrgWorkPlacesService
             .query({filter: 'ememporgworkplaces-is-null'})
             .subscribe((res: ResponseWrapper) => {
                 if (!this.emEmpOrgWorkPlaces.idOrgWorkPlace || !this.emEmpOrgWorkPlaces.idOrgWorkPlace.id) {
                     this.idorgworkplaces = res.json;
+                    console.log(this.idorgworkplaces);
                 } else {
                     this.ogOrgWorkPlacesService
                         .find(this.emEmpOrgWorkPlaces.idOrgWorkPlace.id)
                         .subscribe((subRes: OgOrgWorkPlaces) => {
                             this.idorgworkplaces = [subRes].concat(res.json);
+                            console.log(this.idorgworkplaces);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
+                this.filterOrganizationWorkplaces();
             }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
+    loadOrganizations() {
+        this.organizationsService
+            .query({filter: 'ogorganizations-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                this.organizations = res.json;
+            }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
+    filterOrganizationWorkplaces() {
+        if(this.organization){
+            this.organizationWorkplaces = this.idorgworkplaces.filter((item) => item.idOrganization.id == this.organization.id);
+        }
     }
 
     clear() {
@@ -95,6 +130,7 @@ export class EmEmpOrgWorkPlacesDialogComponent implements OnInit {
             this.subscribeToSaveResponse(
                 this.emEmpOrgWorkPlacesService.update(this.emEmpOrgWorkPlaces));
         } else {
+            this.emEmpOrgWorkPlaces.idEmployee = this.employee;
             this.subscribeToSaveResponse(
                 this.emEmpOrgWorkPlacesService.create(this.emEmpOrgWorkPlaces));
         }
@@ -130,6 +166,10 @@ export class EmEmpOrgWorkPlacesDialogComponent implements OnInit {
     trackOgOrgWorkPlacesById(index: number, item: OgOrgWorkPlaces) {
         return item.id;
     }
+
+    ngOnDestroy() {
+        this.eventManager.destroy(this.eventSubscription);
+    }
 }
 
 @Component({
@@ -152,7 +192,7 @@ export class EmEmpOrgWorkPlacesPopupComponent implements OnInit, OnDestroy {
                     .open(EmEmpOrgWorkPlacesDialogComponent as Component, params['id']);
             } else {
                 this.emEmpOrgWorkPlacesPopupService
-                    .open(EmEmpOrgWorkPlacesDialogComponent as Component);
+                    .open(EmEmpOrgWorkPlacesDialogComponent as Component, null, params['employeeId']);
             }
         });
     }

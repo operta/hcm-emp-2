@@ -42,7 +42,7 @@
                 <td>{{emEmpOrgWorkPlaces.updatedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="emEmpOrgWorkPlaces.idEmployee">
-                        <a [routerLink]="['../em-employees', emEmpOrgWorkPlaces.idEmployee?.id ]" >{{emEmpOrgWorkPlaces.idEmployee?.id}}</a>
+                        <a [routerLink]="['../em-employees', emEmpOrgWorkPlaces.idEmployee?.id ]" >{{emEmpOrgWorkPlaces.idEmployee?.name}} {{emEmpOrgWorkPlaces.idEmployee?.surname}}</a>
                     </div>
                 </td>
                 <td>
@@ -52,7 +52,7 @@
                 </td>
                 <td>
                     <div *ngIf="emEmpOrgWorkPlaces.idOrgWorkPlace">
-                        <a [routerLink]="['../og-org-work-places', emEmpOrgWorkPlaces.idOrgWorkPlace?.id ]" >{{emEmpOrgWorkPlaces.idOrgWorkPlace?.id}}</a>
+                        <a [routerLink]="['../og-org-work-places', emEmpOrgWorkPlaces.idOrgWorkPlace?.id ]" >{{emEmpOrgWorkPlaces.idOrgWorkPlace?.idWorkPlace.name}}</a>
                     </div>
                 </td>
                 <td class="text-right">

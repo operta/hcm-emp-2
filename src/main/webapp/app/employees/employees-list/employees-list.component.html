@@ -101,7 +101,7 @@
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h5><b>{{employee?.name}} {{employee?.middleName}} {{employee?.surname}}, {{findWorkPlace(employee.id).name}}</b></h5>
+                                    <h5><b>{{employee?.name}} {{employee?.middleName}} {{employee?.surname}}, {{findWorkPlace(employee.id)}}</b></h5>
                                 </div>
                             </div>
                             <div class="row">
@@ -111,11 +111,11 @@
                                 <div class="col-md-3">
                                     <b>Contract type:</b> {{employee?.idEmploymentType.name}}
                                 </div>
-                                <div class="col-md-3">
-                                    <b>Department:</b> {{findOrganization(employee?.id).name}}
+                                <div class="col-md-3" *ngIf="emEmpOrgWorkPlaces">
+                                    <b>Department:</b> {{findOrganization(employee?.id)}}
                                 </div>
-                                <div class="col-md-3">
-                                    <b>Location:</b> {{findOrganization(employee?.id).idLegalEntity.region.name}}
+                                <div class="col-md-3" *ngIf="emEmpOrgWorkPlaces">
+                                    <b>Location:</b> {{findOrganizationLocation(employee?.id)}}
                                 </div>
                             </div>
                             <div class="row">

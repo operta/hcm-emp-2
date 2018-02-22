@@ -31,6 +31,10 @@
         height: 82vh;
         height: calc(100vh - 270px);
     }
+    .dataScrollUniversal {
+        height: 82vh;
+        height: calc(100vh - 270px);
+    }
     #slimscrollsidebar {
         height: calc(100vh - 60px);
     }
