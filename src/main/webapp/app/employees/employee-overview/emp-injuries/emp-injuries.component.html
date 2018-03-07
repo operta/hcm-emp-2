@@ -1,3 +1,44 @@
-<p>
-  emp-injuries works!
-</p>
+<form class="form-horizontal" role="form">
+    <div class="panel-footer p-b-20 p-t-20 m-b-10">
+        <i class="fa fa-medkit m-r-5 heading-icon-at"></i>
+        <span class="heading-at">Injuries</span>
+        <div class="pull-right">
+            <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-injuries-new/' + employee.id} }]">
+                <i class="fa fa-plus action-button-at"></i>
+            </a>
+        </div>
+    </div>
+    <div *ngFor="let item of injuries" class="form-body m-b-20">
+        <div class="box-title p-b-10 p-t-10 p-r-10">
+            <!--<span class="section-title">{{item.name}}</span>-->
+            <div *ngIf="isEditable" class="pull-right">
+                <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-injuries/'+ item.id + '/delete'} }]">
+                    <span class="fa fa-remove pull-right"></span>
+                </a>
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-injuries/'+ item.id + '/edit'} }]">
+                    <i class="fa fa-pencil action-button-at pull-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Description:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.description}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Injury Type:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.idInjury.name}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+</form>

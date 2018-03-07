@@ -1,0 +1,86 @@
+
+<div *ngIf="emEmpBorrowings">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpBorrowings.detail.title">Em Emp Borrowings</span> {{emEmpBorrowings.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.title">Title</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.description">Description</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.serialNumber">Serial Number</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.serialNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.dateFrom">Date From</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.dateFrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.chargedBy">Charged By</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.chargedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.dateTo">Date To</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.dateTo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.dischargedBy">Discharged By</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.dischargedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.damage">Damage</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.damage}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.damagedByEmployee">Damaged By Employee</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.damagedByEmployee}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpBorrowings.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpBorrowings.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpBorrowings.idEmployee?.id]">{{emEmpBorrowings.idEmployee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpBorrowings.idBorrowing">Id Borrowing</span></dt>
+        <dd>
+            <div *ngIf="emEmpBorrowings.idBorrowing">
+                <a [routerLink]="['/em-borrowing-types', emEmpBorrowings.idBorrowing?.id]">{{emEmpBorrowings.idBorrowing?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-borrowings/'+ emEmpBorrowings.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

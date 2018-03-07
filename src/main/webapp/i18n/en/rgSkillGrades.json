@@ -1,0 +1,29 @@
+{
+    "hcmEmpApp": {
+        "rgSkillGrades" : {
+            "home": {
+                "title": "Skill Grades",
+                "createLabel": "Create a new Skill Grade",
+                "createOrEditLabel": "Create or edit a Skill Grade"
+            },
+            "created": "A new Skill Grade is created with identifier {{ param }}",
+            "updated": "A Skill Grade is updated with identifier {{ param }}",
+            "deleted": "A Skill Grade is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Skill Grade {{ id }}?"
+            },
+            "detail": {
+                "title": "Skill Grade"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "grade": "Grade",
+            "numerical": "Numerical",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

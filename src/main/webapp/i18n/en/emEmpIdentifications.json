@@ -1,0 +1,30 @@
+{
+    "hcmEmpApp": {
+        "emEmpIdentifications" : {
+            "home": {
+                "title": "Employee Identifications",
+                "createLabel": "Create a new Employee Identification",
+                "createOrEditLabel": "Create or edit a Employee Identification"
+            },
+            "created": "A new Employee Identification is created with identifier {{ param }}",
+            "updated": "A Employee Identification is updated with identifier {{ param }}",
+            "deleted": "A Employee Identification is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Employee Identification {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee Identification"
+            },
+            "identificationNumber": "Identification Number",
+            "jurisdiction": "Jurisdiction",
+            "validThrough": "Valid Through",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Employee",
+            "idIdentification": "Identification Type",
+            "idRegion": "Region"
+        }
+    }
+}

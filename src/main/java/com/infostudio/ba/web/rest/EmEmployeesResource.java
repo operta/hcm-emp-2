@@ -1,8 +1,10 @@
 package com.infostudio.ba.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.infostudio.ba.domain.EmEmpOrgWorkPlaces;
 import com.infostudio.ba.domain.EmEmployees;
 
+import com.infostudio.ba.repository.EmEmpOrgWorkPlacesRepository;
 import com.infostudio.ba.repository.EmEmployeesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
@@ -10,7 +12,10 @@ import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,8 +26,9 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 /**
  * REST controller for managing EmEmployees.
@@ -36,6 +42,9 @@ public class EmEmployeesResource {
     private static final String ENTITY_NAME = "emEmployees";
 
     private final EmEmployeesRepository emEmployeesRepository;
+
+    @Autowired
+    private EmEmpOrgWorkPlacesRepository emEmpOrgWorkPlacesRepository;
 
     public EmEmployeesResource(EmEmployeesRepository emEmployeesRepository) {
         this.emEmployeesRepository = emEmployeesRepository;
@@ -97,6 +106,104 @@ public class EmEmployeesResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/em-employees");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    /**
+     * GET  /em-employees/search : get a page of Employees by search parameters.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of AuditEvents in body
+     */
+    @GetMapping("/em-employees/search")
+    public ResponseEntity<List<EmEmployees>> getByHireDate(
+        @RequestParam(value = "fromDate", required = false) LocalDate fromDate,
+        @RequestParam(value = "toDate", required = false) LocalDate toDate,
+        @RequestParam(value = "name", required = false) String name,
+        @RequestParam(value ="surname", required = false) String surname,
+        @RequestParam(value = "organizationId", required = false) String organizationId,
+        @RequestParam(value = "workplaceId", required = false) String workplaceId,
+        @RequestParam(value = "qualificationId", required = false) String qualificationId,
+        Pageable pageable)
+    {
+
+        System.out.println();
+        System.out.println(organizationId);
+        Set<Integer> employeeIds = new HashSet<Integer>(Arrays.asList(extractIds(emEmployeesRepository.findAll())));
+
+        if(fromDate != null) {
+            List<EmEmployees> list  = emEmployeesRepository.findByHireDateGreaterThanEqual(fromDate);
+            Set<Integer> s = new HashSet<Integer>(Arrays.asList(extractIds(list)));
+            employeeIds.retainAll(s);
+        }
+        if(toDate != null) {
+            List<EmEmployees> list = emEmployeesRepository.findByHireDateLessThanEqual(toDate);
+            Set<Integer> s = new HashSet<Integer>(Arrays.asList(extractIds(list)));
+            employeeIds.retainAll(s);
+        }
+        if(name != null && !name.isEmpty()) {
+            List<EmEmployees> list = emEmployeesRepository.findByNameContainingIgnoreCase(name);
+            Set<Integer> s = new HashSet<Integer>(Arrays.asList(extractIds(list)));
+            employeeIds.retainAll(s);
+        }
+        if(surname != null && !surname.isEmpty()) {
+            List<EmEmployees> list = emEmployeesRepository.findBySurnameContainingIgnoreCase(surname);
+            Set<Integer> s = new HashSet<Integer>(Arrays.asList(extractIds(list)));
+            employeeIds.retainAll(s);
+        }
+        if(qualificationId != null) {
+            List<EmEmployees> list = emEmployeesRepository.findByIdQualificationId(Long.valueOf(qualificationId));
+            Set<Integer> s = new HashSet<Integer>(Arrays.asList(extractIds(list)));
+            employeeIds.retainAll(s);
+        }
+        if(organizationId != null) {
+            List<EmEmpOrgWorkPlaces> list = emEmpOrgWorkPlacesRepository.findByIdOrgWorkPlaceIdOrganizationId(Long.valueOf(organizationId));
+            Set<Integer> s = new HashSet<Integer>(Arrays.asList(extractIds2(list)));
+            employeeIds.retainAll(s);
+        }
+        if(workplaceId != null) {
+            List<EmEmpOrgWorkPlaces> list = emEmpOrgWorkPlacesRepository.findByIdOrgWorkPlaceIdWorkPlaceId(Long.valueOf(workplaceId));
+            Set<Integer> s = new HashSet<Integer>(Arrays.asList(extractIds2(list)));
+            employeeIds.retainAll(s);
+        }
+
+        Integer[] result = employeeIds.toArray(new Integer[employeeIds.size()]);
+
+        for(int i = 0; i < result.length; i++) {
+            System.out.println(result[i]);
+        }
+
+        List<EmEmployees> employees = new ArrayList<EmEmployees>();
+        for(int i = 0; i < result.length; i++) {
+            EmEmployees employee = emEmployeesRepository.findOne(result[i].longValue());
+            employees.add(employee);
+        }
+
+        Page<EmEmployees> page = new PageImpl<EmEmployees>(employees, pageable, employees.size());
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/em-employees");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    public static Integer[] extractIds(List<EmEmployees> array) {
+        if(array.size() == 0) {
+            return new Integer[0];
+        }
+        Integer[] result = new Integer[array.size()];
+        for(int i = 0; i < array.size(); i++) {
+            result[i] = (array.get(i).getId().intValue());
+        }
+        return result;
+    }
+
+    public static Integer[] extractIds2(List<EmEmpOrgWorkPlaces> array) {
+        if(array.size() == 0) {
+            return new Integer[0];
+        }
+        Integer[] result = new Integer[array.size()];
+        for(int i = 0; i < array.size(); i++) {
+            result[i] = (array.get(i).getIdEmployee().getId().intValue());
+        }
+        return result;
+    }
+
 
     /**
      * GET  /em-employees/:id : get the "id" emEmployees.

@@ -1,0 +1,35 @@
+{
+    "hcmEmpApp": {
+        "emEmpBorrowings" : {
+            "home": {
+                "title": "Em Emp Borrowings",
+                "createLabel": "Create a new Em Emp Borrowings",
+                "createOrEditLabel": "Create or edit a Em Emp Borrowings"
+            },
+            "created": "A new Em Emp Borrowings is created with identifier {{ param }}",
+            "updated": "A Em Emp Borrowings is updated with identifier {{ param }}",
+            "deleted": "A Em Emp Borrowings is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Emp Borrowings {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Emp Borrowings"
+            },
+            "title": "Title",
+            "description": "Description",
+            "serialNumber": "Serial Number",
+            "dateFrom": "Date From",
+            "chargedBy": "Charged By",
+            "dateTo": "Date To",
+            "dischargedBy": "Discharged By",
+            "damage": "Damage",
+            "damagedByEmployee": "Damaged By Employee",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Id Employee",
+            "idBorrowing": "Id Borrowing"
+        }
+    }
+}

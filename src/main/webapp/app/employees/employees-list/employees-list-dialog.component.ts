@@ -68,7 +68,7 @@ export class EmployeesListDialogComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.searchableList = ['name'];
-        this.searchableUList = ['firstName'];
+        this.searchableUList = ['name'];
         this.isSaving = false;
         this.loadUsers();
         this.loadQualifications();

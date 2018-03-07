@@ -31,6 +31,20 @@
     <include file="config/liquibase/changelog/20180202093530_added_entity_EmEmpDocuments.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180202093531_added_entity_EmEmpNotes.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180215154617_added_entity_EmEmpPreviousJobs.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122917_added_entity_EmBorrowingTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122918_added_entity_EmEmpBorrowings.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122919_added_entity_RgFamilyRoles.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122920_added_entity_EmEmpFamilies.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122922_added_entity_RgIdentificationTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122923_added_entity_EmEmpIdentifications.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122924_added_entity_EmInjuryTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122925_added_entity_EmEmpInjuries.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122926_added_entity_EmRewardTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122927_added_entity_EmEmpRewards.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122928_added_entity_RgSkills.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122929_added_entity_RgSkillGrades.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122930_added_entity_EmEmpSkills.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122931_added_entity_EmPenalties.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180126144159_added_entity_constraints_OgOrganizations.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180126144201_added_entity_constraints_LeLegalEntities.xml" relativeToChangelogFile="false"/>
@@ -47,5 +61,12 @@
     <include file="config/liquibase/changelog/20180202093530_added_entity_constraints_EmEmpDocuments.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180202093531_added_entity_constraints_EmEmpNotes.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180215154617_added_entity_constraints_EmEmpPreviousJobs.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122918_added_entity_constraints_EmEmpBorrowings.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122920_added_entity_constraints_EmEmpFamilies.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122923_added_entity_constraints_EmEmpIdentifications.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122925_added_entity_constraints_EmEmpInjuries.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122927_added_entity_constraints_EmEmpRewards.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122930_added_entity_constraints_EmEmpSkills.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180222122931_added_entity_constraints_EmPenalties.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

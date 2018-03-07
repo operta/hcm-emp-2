@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EmEmpIdentifications.
+    -->
+    <changeSet id="20180222122923-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_employee_id"
+                                 baseTableName="em_id"
+                                 constraintName="em_emp_identif_id_employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="em_employees"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_identification_id"
+                                 baseTableName="em_id"
+                                 constraintName="em_emp_identif_id_identifica_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rg_identification_types"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_region_id"
+                                 baseTableName="em_id"
+                                 constraintName="em_emp_identif_id_region_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rg_regions"/>
+
+    </changeSet>
+</databaseChangeLog>

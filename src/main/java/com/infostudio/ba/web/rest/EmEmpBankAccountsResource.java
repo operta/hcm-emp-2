@@ -120,9 +120,9 @@ public class EmEmpBankAccountsResource {
      */
     @GetMapping("/em-emp-bank-accounts/employee/{id}")
     @Timed
-    public ResponseEntity<EmEmpBankAccounts> getEmEmpBankAccountsByEmployee(@PathVariable Long id) {
+    public ResponseEntity<List<EmEmpBankAccounts>> getEmEmpBankAccountsByEmployee(@PathVariable Long id) {
         log.debug("REST request to get EmEmpBankAccounts by employeeId: {}", id);
-        EmEmpBankAccounts emEmpBankAccounts = emEmpBankAccountsRepository.findByIdEmployeeId(id);
+        List<EmEmpBankAccounts> emEmpBankAccounts = emEmpBankAccountsRepository.findByIdEmployeeId(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(emEmpBankAccounts));
     }
 

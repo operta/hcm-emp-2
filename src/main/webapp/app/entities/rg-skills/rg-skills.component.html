@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.rgSkills.home.title">Rg Skills</span>
+        <button class="btn btn-primary float-right jh-create-entity create-rg-skills" [routerLink]="['/', { outlets: { popup: ['rg-skills-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.rgSkills.home.createLabel">
+            Create new Rg Skills
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rgSkills">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkills.code">Code</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkills.name">Name</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkills.description">Description</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkills.field">Field</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkills.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkills.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkills.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkills.updatedAt">Updated At</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rgSkills of rgSkills ;trackBy: trackId">
+                <td><a [routerLink]="['../rg-skills', rgSkills.id ]">{{rgSkills.id}}</a></td>
+                <td>{{rgSkills.code}}</td>
+                <td>{{rgSkills.name}}</td>
+                <td>{{rgSkills.description}}</td>
+                <td>{{rgSkills.field}}</td>
+                <td>{{rgSkills.createdBy}}</td>
+                <td>{{rgSkills.createdAt | date:'medium'}}</td>
+                <td>{{rgSkills.updatedBy}}</td>
+                <td>{{rgSkills.updatedAt | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../rg-skills', rgSkills.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rg-skills/'+ rgSkills.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rg-skills/'+ rgSkills.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

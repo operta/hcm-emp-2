@@ -1,0 +1,28 @@
+{
+    "hcmEmpApp": {
+        "rgFamilyRoles" : {
+            "home": {
+                "title": "Family Roles",
+                "createLabel": "Create a new Family Role",
+                "createOrEditLabel": "Create or edit a Family Role"
+            },
+            "created": "A new Family Role is created with identifier {{ param }}",
+            "updated": "A Family Role is updated with identifier {{ param }}",
+            "deleted": "A Family Role is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Family Role {{ id }}?"
+            },
+            "detail": {
+                "title": "Family Role"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "uniqueRelation": "Unique Relation",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

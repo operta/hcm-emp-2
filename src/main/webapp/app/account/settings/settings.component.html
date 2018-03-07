@@ -4,9 +4,6 @@
             <div class="at-img-align m-b-30">
                 <img #userImage *ngIf="settingsAccount" [src]="trustedUrl" class="img-fluid img-circle m-b-30" />
                 <button class="btn btn-default btn-rounded" (click)="file.click()">Change image</button>
-
-                <!--<input type="file" name="file" (change)="onFileChange($event)" ngModel #file style="display: none">-->
-                <!--<input type="file" name="file" (change)="onFileChange($event)" ngModel  style="display: none">-->
                 <input type="file" #file name="file" (change)="setFileData($event, settingsAccount, 'imageBlob', false)" ngModel style="display: none"/>
                 <!--<a class="pull-left" (click)="openFile(settingsAccount.imageBlobContentType, settingsAccount.imageBlob)" jhiTranslate="entity.action.open">open</a><br>-->
 

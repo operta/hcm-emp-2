@@ -1,0 +1,50 @@
+
+<div *ngIf="emBorrowingTypes">
+    <h2><span jhiTranslate="hcmEmpApp.emBorrowingTypes.detail.title">Em Borrowing Types</span> {{emBorrowingTypes.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emBorrowingTypes.code">Code</span></dt>
+        <dd>
+            <span>{{emBorrowingTypes.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emBorrowingTypes.name">Name</span></dt>
+        <dd>
+            <span>{{emBorrowingTypes.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emBorrowingTypes.description">Description</span></dt>
+        <dd>
+            <span>{{emBorrowingTypes.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emBorrowingTypes.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emBorrowingTypes.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emBorrowingTypes.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emBorrowingTypes.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emBorrowingTypes.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emBorrowingTypes.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emBorrowingTypes.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emBorrowingTypes.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-borrowing-types/'+ emBorrowingTypes.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

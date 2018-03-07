@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EmEmpSkills.
+    -->
+    <changeSet id="20180222122930-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_employee_id"
+                                 baseTableName="em_emp_skills"
+                                 constraintName="em_emp_skills_id_employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="em_employees"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_skill_id"
+                                 baseTableName="em_emp_skills"
+                                 constraintName="fk_em_emp_skills_id_skill_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rg_skills"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_grade_id"
+                                 baseTableName="em_emp_skills"
+                                 constraintName="fk_em_emp_skills_id_grade_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rg_skill_grades"/>
+
+    </changeSet>
+</databaseChangeLog>

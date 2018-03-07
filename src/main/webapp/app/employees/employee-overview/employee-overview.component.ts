@@ -1,12 +1,14 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {Principal} from "../../shared/auth/principal.service";
 import {Subscription} from "rxjs/Subscription";
-import {JhiAlertService, JhiEventManager} from "ng-jhipster";
+import {JhiAlertService, JhiDataUtils, JhiEventManager} from "ng-jhipster";
 import {EmEmployeesService} from "../../entities/em-employees/em-employees.service";
 import {EmEmployees} from "../../entities/em-employees/em-employees.model";
 import {EmEmpOrgWorkPlacesService} from "../../entities/em-emp-org-work-places/em-emp-org-work-places.service";
 import {EmEmpOrgWorkPlaces} from "../../entities/em-emp-org-work-places/em-emp-org-work-places.model";
 import {ActivatedRoute} from "@angular/router";
+import {DomSanitizer} from "@angular/platform-browser";
+import {Observable} from "rxjs/Observable";
 declare  let $:any;
 @Component({
   selector: 'jhi-employee-overview',
@@ -21,13 +23,17 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
     employee: EmEmployees;
     employeeWorkPlace: EmEmpOrgWorkPlaces;
     isEditable = false;
+    objectUrl: any;
+    trustedUrl: any;
 
     constructor(private principal: Principal,
                 private eventManager: JhiEventManager,
                 private jhiAlertService: JhiAlertService,
                 private employeeService: EmEmployeesService,
                 private employeeWorkPlaceService: EmEmpOrgWorkPlacesService,
-                private route: ActivatedRoute) { }
+                private route: ActivatedRoute,
+                private dataUtils: JhiDataUtils,
+                private sanitizer: DomSanitizer) { }
 
 
     ngOnInit() {
@@ -38,15 +44,14 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
             this.isEditable = false;
         }
         this.employee = this.route.snapshot.data['employee'];
+        this.generateImage(this.employee);
         this.loadEmployeeWorkPlace();
 
         this.principal.identity().then((account) => {
             this.currentAccount = account;
-
-            // if(this.currentAccount.id === this.employee.idUser.id) {
-            //     this.isEditable = false;
-            // }
         });
+
+
         this.registerChangeInEmployeeOverview();
     }
 
@@ -70,7 +75,10 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
 
 
     reload(){
-        this.employeeService.find(this.employee.id).subscribe((item) => this.employee = item);
+        this.employeeService.find(this.employee.id).subscribe((item) => {
+            this.employee = item;
+            this.generateImage(this.employee);
+        });
     }
 
     private onError(error) {
@@ -81,6 +89,57 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
     changeTabState(newState) {
         this.tabState = newState;
     }
+
+    setFileData(event, entity, field, isImage) {
+        this.dataUtils.setFileData(event, entity, field, isImage);
+        setTimeout(() => { this.save()}, 1000);
+    }
+
+    save() {
+        this.subscribeToSaveResponse(this.employeeService.updatePersonalInfo(this.employee));
+    }
+
+    private subscribeToSaveResponse(result: Observable<EmEmployees>) {
+        result
+            .subscribe(
+                (res: EmEmployees) => {
+                    this.onSaveSuccess(res);
+                },
+                (res: Response) => this.onSaveError()
+            );
+    }
+
+    private onSaveSuccess(result) {
+       this.employee = result;
+        this.eventManager.broadcast({ name: 'profileImageChange', content: 'OK'});
+        this.generateImage(this.employee);
+    }
+
+    private onSaveError() {
+       console.log('ERROR');
+    }
+
+    dataURItoBlob(dataURI) {
+        var mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        var binary = atob(dataURI.split(',')[1]);
+        var array = [];
+        for (var i = 0; i < binary.length; i++) {
+            array.push(binary.charCodeAt(i));
+        }
+        return new Blob([new Uint8Array(array)], {type: mime});
+    }
+
+    generateImage(employee:any){
+        var binaryData = [];
+        binaryData.push(employee.imageBlob);
+        this.objectUrl =  URL.createObjectURL(new Blob(binaryData, {type: employee.imageBlobContentType}));
+        var dataUrl = 'data:' + employee.imageBlobContentType + ';base64,' + employee.imageBlob;
+        this.objectUrl = URL.createObjectURL(this.dataURItoBlob(dataUrl));
+        this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.objectUrl);
+        console.log(this.trustedUrl);
+    }
+
+
 
     ngAfterViewInit() {
       $('#dataScroll').slimScroll({

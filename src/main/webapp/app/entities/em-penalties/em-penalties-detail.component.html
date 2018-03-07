@@ -1,0 +1,56 @@
+
+<div *ngIf="emPenalties">
+    <h2><span jhiTranslate="hcmEmpApp.emPenalties.detail.title">Em Penalties</span> {{emPenalties.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emPenalties.description">Description</span></dt>
+        <dd>
+            <span>{{emPenalties.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emPenalties.dateFrom">Date From</span></dt>
+        <dd>
+            <span>{{emPenalties.dateFrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emPenalties.dateTo">Date To</span></dt>
+        <dd>
+            <span>{{emPenalties.dateTo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emPenalties.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emPenalties.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emPenalties.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emPenalties.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emPenalties.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emPenalties.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emPenalties.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emPenalties.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emPenalties.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emPenalties.idEmployee">
+                <a [routerLink]="['/em-employees', emPenalties.idEmployee?.id]">{{emPenalties.idEmployee?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-penalties/'+ emPenalties.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

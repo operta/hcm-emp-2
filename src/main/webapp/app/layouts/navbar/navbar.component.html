@@ -91,8 +91,8 @@
             <div class="user-profile">
                 <div class="dropdown user-pro-body">
                     <div>
-                        <img *ngIf="!getImageUrl()" src="../../../content/images/users/user.png" alt="user-img" class="img-circle">
-                        <img *ngIf="getImageUrl()" [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
+                        <img *ngIf="!employee" src="../../../content/images/users/user-male-icon.png" alt="user-img" class="img-circle">
+                        <img *ngIf="employee && employee.imageBlob" [src]="generateImage(employee)" class="profile-image img-circle" alt="Avatar">
                     </div>
                     <a class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">
@@ -144,7 +144,7 @@
                 </li>
                 <li>
                     <a (click)="logout()" routerLink="/module" class="waves-effect">
-                        <i class="fa-indent fa-fw" data-icon="v"></i>
+                        <i class="fa fa-indent fa-fw" data-icon="v"></i>
                         <span class="hide-menu"> Modules </span>
                     </a>
                 </li>
@@ -371,6 +371,92 @@
                                 <span jhiTranslate="global.menu.entities.rgSchools">Schools</span>
                             </a>
                         </li>
+                        <li>
+                            <a class="" routerLink="rg-skills" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.rgSkills">Skills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-borrowing-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emBorrowingTypes"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-borrowings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpBorrowings"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-families" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpFamilies"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-idenitifications" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpIdentifications"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-injuries" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpInjuries"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-rewards" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpRewards"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-skills" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpSkills"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-injury-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emInjuryTypes"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-penalties" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emPenalties"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-reward-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emRewardTypes"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="rg-family-roles" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.rgFamilyRoles"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="rg-identification-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.rgIdentificationTypes"></span>
+                            </a>
+                        </li>s
+                        <li>
+                            <a class="" routerLink="rg-skill-grades" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.rgSkillGrades"></span>
+                            </a>
+                        </li>
+
+
 
 
 

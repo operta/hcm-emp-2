@@ -1,6 +1,11 @@
 package com.infostudio.ba.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -36,14 +41,15 @@ public class AtAccomplishmentTypes implements Serializable {
     @Column(name = "created_by")
     private String createdBy;
 
-    @Column(name = "created_at")
-    private Instant createdAt;
-
     @Column(name = "updated_by")
     private String updatedBy;
 
+    @Column(name = "created_at")
+    private Instant createdAt;
+
     @Column(name = "updated_at")
     private Instant updatedAt;
+
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -97,22 +103,12 @@ public class AtAccomplishmentTypes implements Serializable {
         return createdBy;
     }
 
-    public AtAccomplishmentTypes createdBy(String createdBy) {
-        this.createdBy = createdBy;
-        return this;
-    }
-
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
     public Instant getCreatedAt() {
         return createdAt;
-    }
-
-    public AtAccomplishmentTypes createdAt(Instant createdAt) {
-        this.createdAt = createdAt;
-        return this;
     }
 
     public void setCreatedAt(Instant createdAt) {
@@ -123,11 +119,6 @@ public class AtAccomplishmentTypes implements Serializable {
         return updatedBy;
     }
 
-    public AtAccomplishmentTypes updatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-        return this;
-    }
-
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
@@ -136,14 +127,10 @@ public class AtAccomplishmentTypes implements Serializable {
         return updatedAt;
     }
 
-    public AtAccomplishmentTypes updatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-        return this;
-    }
-
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -169,14 +156,14 @@ public class AtAccomplishmentTypes implements Serializable {
     @Override
     public String toString() {
         return "AtAccomplishmentTypes{" +
-            "id=" + getId() +
-            ", code='" + getCode() + "'" +
-            ", name='" + getName() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", createdBy='" + getCreatedBy() + "'" +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updatedBy='" + getUpdatedBy() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
-            "}";
+            "id=" + id +
+            ", code='" + code + '\'' +
+            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", createdBy='" + createdBy + '\'' +
+            ", updatedBy='" + updatedBy + '\'' +
+            ", createdAt=" + createdAt +
+            ", updatedAt=" + updatedAt +
+            '}';
     }
 }

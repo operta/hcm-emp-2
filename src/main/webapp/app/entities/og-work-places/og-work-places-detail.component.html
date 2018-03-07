@@ -1,62 +1,84 @@
 
 <div *ngIf="ogWorkPlaces">
-    <h2><span jhiTranslate="hcmEmpApp.ogWorkPlaces.detail.title">Og Work Places</span> {{ogWorkPlaces.id}}</h2>
+    <h2><span jhiTranslate="hcmEmpApp.ogWorkPlaces.detail.title">Og Work Places</span> - {{ogWorkPlaces.name}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.code">Code</span></dt>
-        <dd>
-            <span>{{ogWorkPlaces.code}}</span>
-        </dd>
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.name">Name</span></dt>
-        <dd>
-            <span>{{ogWorkPlaces.name}}</span>
-        </dd>
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.description">Description</span></dt>
-        <dd>
-            <span>{{ogWorkPlaces.description}}</span>
-        </dd>
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.createdBy">Created By</span></dt>
-        <dd>
-            <span>{{ogWorkPlaces.createdBy}}</span>
-        </dd>
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.createdAt">Created At</span></dt>
-        <dd>
-            <span>{{ogWorkPlaces.createdAt | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.updatedBy">Updated By</span></dt>
-        <dd>
-            <span>{{ogWorkPlaces.updatedBy}}</span>
-        </dd>
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.updatedAt">Updated At</span></dt>
-        <dd>
-            <span>{{ogWorkPlaces.updatedAt | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.idWorkPlaceType">Id Work Place Type</span></dt>
-        <dd>
-            <div *ngIf="ogWorkPlaces.idWorkPlaceType">
-                <a [routerLink]="['/og-work-place-types', ogWorkPlaces.idWorkPlaceType?.id]">{{ogWorkPlaces.idWorkPlaceType?.name}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="hcmEmpApp.ogWorkPlaces.idParent">Id Parent</span></dt>
-        <dd>
-            <div *ngIf="ogWorkPlaces.idParent">
-                <a [routerLink]="['/og-work-places', ogWorkPlaces.idParent?.id]">{{ogWorkPlaces.idParent?.name}}</a>
-            </div>
-        </dd>
-    </dl>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <h3><b>CODE</b> <span class="pull-right">{{ogWorkPlaces.code}}</span></h3>
 
-    <button type="submit"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
+                <h3><b>ID</b> <span class="pull-right">{{ogWorkPlaces.id}}</span></h3>
 
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'og-work-places/'+ ogWorkPlaces.id + '/edit'} }]"
-            replaceUrl="true"
-            queryParamsHandling="merge"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-    </button>
+                <h3><b>TYPE</b>
+                    <span class="pull-right">
+                        <div *ngIf="ogWorkPlaces.idWorkPlaceType">
+                            <a [routerLink]="['/og-work-place-types', ogWorkPlaces.idWorkPlaceType?.id]">{{ogWorkPlaces.idWorkPlaceType?.name}}</a>
+                        </div>
+                    </span>
+                </h3>
+
+                <h3><b>PARENT</b>
+                    <span class="pull-right">
+                        <div *ngIf="ogWorkPlaces.idParent">
+                            <a [routerLink]="['/og-work-places', ogWorkPlaces.idParent?.id]">{{ogWorkPlaces.idParent?.name}}</a>
+                        </div>
+                    </span>
+                </h3>
+                <h3><b>DESCRIPTION</b>
+                </h3>
+                <p class=" m-l-5">
+                    {{ogWorkPlaces.description}}
+                </p>
+                <hr>
+                <h3> &nbsp;<b class="text-danger">Workplace Skills</b></h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive m-t-40">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Description</th>
+                                    <th class="text-right">Quantity</th>
+                                    <th class="text-right">Unit Cost</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td>Milk Powder</td>
+                                    <td class="text-right">2 </td>
+                                    <td class="text-right"> $24 </td>
+                                    <td class="text-right"> $48 </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <button type="submit"
+                                    (click)="previousState()"
+                                    class="btn btn-info">
+                                <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+                            </button>
+
+                            <button type="button"
+                                    [routerLink]="['/', { outlets: { popup: 'og-work-places/'+ ogWorkPlaces.id + '/edit'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-primary">
+                                <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

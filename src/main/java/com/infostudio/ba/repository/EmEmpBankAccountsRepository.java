@@ -14,5 +14,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface EmEmpBankAccountsRepository extends JpaRepository<EmEmpBankAccounts, Long> {
-    EmEmpBankAccounts findByIdEmployeeId (Long id);
+    List<EmEmpBankAccounts> findByIdEmployeeId (Long id);
 }

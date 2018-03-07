@@ -1,0 +1,109 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmpBorrowingsLabel" jhiTranslate="hcmEmpApp.emEmpBorrowings.home.createOrEditLabel">Create or edit a Em Emp Borrowings</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!emEmpBorrowings.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="emEmpBorrowings.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="emEmpBorrowings.title" required/>
+            <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="emEmpBorrowings.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.serialNumber" for="field_serialNumber">Serial Number</label>
+            <input type="text" class="form-control" name="serialNumber" id="field_serialNumber"
+                [(ngModel)]="emEmpBorrowings.serialNumber" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.dateFrom" for="field_dateFrom">Date From</label>
+            <div class="input-group">
+                <input id="field_dateFrom" type="text" class="form-control" name="dateFrom" ngbDatepicker  #dateFromDp="ngbDatepicker" [(ngModel)]="emEmpBorrowings.dateFrom"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateFromDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateFrom?.dirty && editForm.controls.dateFrom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateFrom?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.chargedBy" for="field_chargedBy">Charged By</label>
+            <input type="text" class="form-control" name="chargedBy" id="field_chargedBy"
+                [(ngModel)]="emEmpBorrowings.chargedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.dateTo" for="field_dateTo">Date To</label>
+            <div class="input-group">
+                <input id="field_dateTo" type="text" class="form-control" name="dateTo" ngbDatepicker  #dateToDp="ngbDatepicker" [(ngModel)]="emEmpBorrowings.dateTo"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateToDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.dischargedBy" for="field_dischargedBy">Discharged By</label>
+            <input type="text" class="form-control" name="dischargedBy" id="field_dischargedBy"
+                [(ngModel)]="emEmpBorrowings.dischargedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.damage" for="field_damage">Damage</label>
+            <input type="text" class="form-control" name="damage" id="field_damage"
+                [(ngModel)]="emEmpBorrowings.damage" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success btn-rounded btn-sm" type="button" (click)="damagedByEmployee = !damagedByEmployee" name="damagedByEmployee">Damaged by employee <i *ngIf="damagedByEmployee" class="fa fa-check" aria-hidden="true"></i></button>
+        </div>
+        <!--<div class="form-group" *ngIf="!employee">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.idEmployee" for="field_idEmployee">Id Employee</label>-->
+            <!--<select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpBorrowings.idEmployee">-->
+                <!--<option [ngValue]="null"></option>-->
+                <!--<option [ngValue]="emEmployeesOption.id === emEmpBorrowings.idEmployee?.id ? emEmpBorrowings.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.name}}</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpBorrowings.idBorrowing" for="field_idBorrowing">Id Borrowing</label>
+            <select class="form-control" id="field_idBorrowing" name="idBorrowing" [(ngModel)]="emEmpBorrowings.idBorrowing" required>
+                <option [ngValue]="null"></option>
+                <option [ngValue]="emBorrowingTypesOption.id === emEmpBorrowings.idBorrowing?.id ? emEmpBorrowings.idBorrowing : emBorrowingTypesOption" *ngFor="let emBorrowingTypesOption of idborrowings; trackBy: trackEmBorrowingTypesById">{{emBorrowingTypesOption.name}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.idBorrowing?.dirty && editForm.controls.idBorrowing?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.idBorrowing?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

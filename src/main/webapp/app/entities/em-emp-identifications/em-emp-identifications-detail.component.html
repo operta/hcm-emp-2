@@ -1,0 +1,68 @@
+
+<div *ngIf="emEmpIdentifications">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpIdentifications.detail.title">Em Emp Identifications</span> {{emEmpIdentifications.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.identificationNumber">Identification Number</span></dt>
+        <dd>
+            <span>{{emEmpIdentifications.identificationNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.jurisdiction">Jurisdiction</span></dt>
+        <dd>
+            <span>{{emEmpIdentifications.jurisdiction}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.validThrough">Valid Through</span></dt>
+        <dd>
+            <span>{{emEmpIdentifications.validThrough | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpIdentifications.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpIdentifications.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpIdentifications.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpIdentifications.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpIdentifications.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpIdentifications.idEmployee?.id]">{{emEmpIdentifications.idEmployee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.idIdentification">Id Identification</span></dt>
+        <dd>
+            <div *ngIf="emEmpIdentifications.idIdentification">
+                <a [routerLink]="['/rg-identification-types', emEmpIdentifications.idIdentification?.id]">{{emEmpIdentifications.idIdentification?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpIdentifications.idRegion">Id Region</span></dt>
+        <dd>
+            <div *ngIf="emEmpIdentifications.idRegion">
+                <a [routerLink]="['/rg-regions', emEmpIdentifications.idRegion?.id]">{{emEmpIdentifications.idRegion?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-identifications/'+ emEmpIdentifications.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

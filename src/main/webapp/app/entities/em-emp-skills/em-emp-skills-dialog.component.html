@@ -1,0 +1,66 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmpSkillsLabel" jhiTranslate="hcmEmpApp.emEmpSkills.home.createOrEditLabel">Create or edit a Em Emp Skills</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!emEmpSkills.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="emEmpSkills.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSkills.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="emEmpSkills.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSkills.dateSkill" for="field_dateSkill">Date Skill</label>
+            <div class="input-group">
+                <input id="field_dateSkill" type="text" class="form-control" name="dateSkill" ngbDatepicker  #dateSkillDp="ngbDatepicker" [(ngModel)]="emEmpSkills.dateSkill"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateSkillDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSkills.idEmployee" for="field_idEmployee">Id Employee</label>-->
+            <!--<select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpSkills.idEmployee">-->
+                <!--<option [ngValue]="null"></option>-->
+                <!--<option [ngValue]="emEmployeesOption.id === emEmpSkills.idEmployee?.id ? emEmpSkills.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSkills.idSkill" for="field_idSkill">Id Skill</label>
+            <select class="form-control" id="field_idSkill" name="idSkill" [(ngModel)]="emEmpSkills.idSkill" required>
+                <option [ngValue]="null"></option>
+                <option [ngValue]="rgSkillsOption.id === emEmpSkills.idSkill?.id ? emEmpSkills.idSkill : rgSkillsOption" *ngFor="let rgSkillsOption of idskills; trackBy: trackRgSkillsById">{{rgSkillsOption.name}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.idSkill?.dirty && editForm.controls.idSkill?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.idSkill?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSkills.idGrade" for="field_idGrade">Id Grade</label>
+            <select class="form-control" id="field_idGrade" name="idGrade" [(ngModel)]="emEmpSkills.idGrade">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="rgSkillGradesOption.id === emEmpSkills.idGrade?.id ? emEmpSkills.idGrade : rgSkillGradesOption" *ngFor="let rgSkillGradesOption of idgrades; trackBy: trackRgSkillGradesById">{{rgSkillGradesOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

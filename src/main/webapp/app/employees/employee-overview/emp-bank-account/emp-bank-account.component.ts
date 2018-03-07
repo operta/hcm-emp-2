@@ -33,14 +33,17 @@ export class EmpBankAccountComponent implements OnInit, OnDestroy {
     loadAll() {
       console.log(this.employee.id);
       this.bankAccountService.findByIdEmployee(this.employee.id).subscribe(
-          (item: EmEmpBankAccounts) => this.bankAccounts = item,
-          (error: Error) => this.onError(error)
+          (res: ResponseWrapper) => this.onSuccess(res.json),
+          (res: ResponseWrapper) => this.onError(res.json)
       )
     }
 
 
+    private onSuccess(data) {
+      this.bankAccounts = data;
+    }
     private onError(error) {
-        this.jhiAlertService.error("Employee has no bank account", null, null);
+        this.jhiAlertService.error(error, null, null);
     }
 
     ngOnDestroy() {

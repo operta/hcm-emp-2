@@ -1,0 +1,84 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.emEmpRewards.home.title">Em Emp Rewards</span>
+        <button class="btn btn-primary float-right jh-create-entity create-em-emp-rewards" [routerLink]="['/', { outlets: { popup: ['em-emp-rewards-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.emEmpRewards.home.createLabel">
+            Create new Em Emp Rewards
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emEmpRewards">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.description">Description</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.dateReward">Date Reward</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.amount">Amount</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.rewardedBy">Rewarded By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.idEmployee">Id Employee</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpRewards.idReward">Id Reward</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emEmpRewards of emEmpRewards ;trackBy: trackId">
+                <td><a [routerLink]="['../em-emp-rewards', emEmpRewards.id ]">{{emEmpRewards.id}}</a></td>
+                <td>{{emEmpRewards.description}}</td>
+                <td>{{emEmpRewards.dateReward | date:'mediumDate'}}</td>
+                <td>{{emEmpRewards.amount}}</td>
+                <td>{{emEmpRewards.rewardedBy}}</td>
+                <td>{{emEmpRewards.createdBy}}</td>
+                <td>{{emEmpRewards.createdAt | date:'medium'}}</td>
+                <td>{{emEmpRewards.updatedBy}}</td>
+                <td>{{emEmpRewards.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="emEmpRewards.idEmployee">
+                        <a [routerLink]="['../em-employees', emEmpRewards.idEmployee?.id ]" >{{emEmpRewards.idEmployee?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmpRewards.idReward">
+                        <a [routerLink]="['../em-reward-types', emEmpRewards.idReward?.id ]" >{{emEmpRewards.idReward?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../em-emp-rewards', emEmpRewards.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-rewards/'+ emEmpRewards.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-rewards/'+ emEmpRewards.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

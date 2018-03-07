@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.emInjuryTypes.home.title">Em Injury Types</span>
+        <button class="btn btn-primary float-right jh-create-entity create-em-injury-types" [routerLink]="['/', { outlets: { popup: ['em-injury-types-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.emInjuryTypes.home.createLabel">
+            Create new Em Injury Types
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emInjuryTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emInjuryTypes.code">Code</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emInjuryTypes.name">Name</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emInjuryTypes.description">Description</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emInjuryTypes.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emInjuryTypes.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emInjuryTypes.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emInjuryTypes.updatedAt">Updated At</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emInjuryTypes of emInjuryTypes ;trackBy: trackId">
+                <td><a [routerLink]="['../em-injury-types', emInjuryTypes.id ]">{{emInjuryTypes.id}}</a></td>
+                <td>{{emInjuryTypes.code}}</td>
+                <td>{{emInjuryTypes.name}}</td>
+                <td>{{emInjuryTypes.description}}</td>
+                <td>{{emInjuryTypes.createdBy}}</td>
+                <td>{{emInjuryTypes.createdAt | date:'medium'}}</td>
+                <td>{{emInjuryTypes.updatedBy}}</td>
+                <td>{{emInjuryTypes.updatedAt | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../em-injury-types', emInjuryTypes.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-injury-types/'+ emInjuryTypes.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-injury-types/'+ emInjuryTypes.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

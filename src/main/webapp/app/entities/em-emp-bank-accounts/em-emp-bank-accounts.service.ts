@@ -38,12 +38,9 @@ export class EmEmpBankAccountsService {
         });
     }
 
-    findByIdEmployee(idEmployee: any): Observable<EmEmpBankAccounts> {
+    findByIdEmployee(idEmployee: any): Observable<ResponseWrapper> {
         return this.http.get(`${this.resourceUrl}/employee/${idEmployee}`).map(
-            (res: Response) => {
-                return res.json();
-            }
-
+            (res: Response) => this.convertResponse(res)
         );
     }
 

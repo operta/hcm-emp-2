@@ -6,86 +6,85 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="white-box">
-            <div class="row m-b-20 p-l-5 p-r-10">
-                <div class="col-lg-12">
-                    <div class="panel panel-default m-b-10">
-                        <div>
-                            <span>Search</span>
-                            <select>
-                                <option>Name</option>
-                                <option>Gender</option>
-                                <option>Date of Birth</option>
-                                <option>Address</option>
-                                <option>City</option>
-                                <option>State</option>
-                                <option>Country</option>
-                                <option>Qualification</option>
-                                <option>Industry</option>
-                                <option>Employed</option>
-                            </select>
-                            <input type="text">
-                            <button type="button" class="btn btn-default m-b-5">Search</button>
-                            <div class="panel-action">
-                                <a href="#" data-perform="panel-collapse">[<i class="ti-plus"></i>] Advanced Search</a>
-                            </div>
-                        </div>
-                        <!--<div class="panel-wrapper collapse out">-->
-                            <!--<div class="panel-body p-l-0 p-r-0">-->
-                                <!--<div class="row">-->
-                                    <!--<div class="col-sm-12 col-xs-12">-->
-                                        <!--<form>-->
-                                            <!--<div class="row">-->
-                                                <!--<div class="col-md-6">-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label for="asName">Name</label>-->
-                                                        <!--<input type="text" class="form-control" id="asName">-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                                <!--<div class="col-md-6">-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label for="asGender">Gender</label>-->
-                                                        <!--<select class="form-control" id="asGender">-->
-                                                            <!--<option></option>-->
-                                                            <!--<option value="F">Female</option>-->
-                                                            <!--<option value="M">Male</option>-->
-                                                        <!--</select>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                                <!--<div class="col-md-6">-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label for="asGender">Password</label>-->
-                                                        <!--<input type="password" class="form-control" placeholder="Password">-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                                <!--<div class="col-md-6">-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label for="exampleInputPassword1">Password</label>-->
-                                                        <!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                                <!--<div class="col-md-6">-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<div class="checkbox checkbox-success">-->
-                                                            <!--<input id="checkbox1" type="checkbox">-->
-                                                            <!--<label for="checkbox1"> Remember me </label>-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                            <!--<button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Advanced Search</button>-->
-                                            <!--<button type="button" class="btn btn-default waves-effect waves-light">Clear Search</button>-->
-                                        <!--</form>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
+
+            <h4 >Search by</h4>
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="d-flex">
+                        <span class="input-group-addon">Name</span>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="name"/>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p class="d-flex">
+                        <span class="input-group-addon">Surname</span>
+                        <input type="text" class="form-control" name="surname" [(ngModel)]="surname"/>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" (click)="onSearchChange($event)">Search</button>
                     </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-default" (click)="toggleAdvSearch = !toggleAdvSearch"><i class="ti-plus"></i> Advanced Search</button>
+                    </div>
+                    <!--<div class="col-md-4">-->
+                    <!--<button class="btn btn-default" (click)="onClear()">Clear Search Parameters</button>-->
+                    <!--</div>-->
                 </div>
             </div>
+            <hr>
+
+            <div *ngIf="toggleAdvSearch">
+                <h4 >Filter by</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="d-flex">
+                            <span class="input-group-addon">Hire Date From</span>
+                            <input type="date" class="form-control" name="start" [(ngModel)]="fromDate" (ngModelChange)="onSearchChange($event)"/>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="d-flex">
+                            <span class="input-group-addon">Hire Date To</span>
+                            <input type="date" class="form-control" name="end" [(ngModel)]="toDate" (ngModelChange)="onSearchChange($event)"/>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="d-flex">
+                            <span class="input-group-addon">Organization</span>
+                            <select class="form-control" id="field_organization" name="organizaton" [(ngModel)]="organizationId" (ngModelChange)="onSearchChange($event)">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="organization.id" *ngFor="let organization of organizations;">{{organization.name}}</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="d-flex">
+                            <span class="input-group-addon">Workplace</span>
+                            <select class="form-control" id="field_workplace" name="workplace" [(ngModel)]="workplaceId" (ngModelChange)="onSearchChange($event)">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="item.id" *ngFor="let item of workplaces;">{{item.name}}</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="d-flex">
+                            <span class="input-group-addon">Qualification</span>
+                            <select class="form-control" id="field_qualification" name="qualification" [(ngModel)]="qualificationId" (ngModelChange)="onSearchChange($event)">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="item.id" *ngFor="let item of qualifications;">{{item.name}}</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+
+
             <button class="btn btn-primary float-right jh-create-entity create-em-employees" [routerLink]="['/', { outlets: { popup: ['employees-list-new'] } }]">
                 <span class="fa fa-plus"></span>
                 <span  jhiTranslate="hcmEmpApp.emEmployees.home.createLabel">
@@ -96,7 +95,8 @@
                 <div *ngFor="let employee of emEmployees;" class="comment-body" style="width: 100%;">
                     <div *ngIf="emEmpOrgWorkPlaces" class="row">
                         <div class="col-md-1">
-                            <img src="../../../content/images/users/1.jpg" class="img-fluid img-circle" />
+                            <img #userImage *ngIf="employee.imageBlob" [src]="findUrl(employee.id)" class="img-fluid img-circle m-b-30" />
+                            <img *ngIf="!employee.imageBlob" src="../../../content/images/users/user-male-icon.png" class="img-fluid img-circle" />
                         </div>
                         <div class="col-md-11">
                             <div class="row">

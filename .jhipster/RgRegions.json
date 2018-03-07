@@ -1,23 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "idType",
-            "otherEntityName": "rgRegionTypes",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "rgRegions"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "idParent",
-            "otherEntityName": "rgRegions",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "rgRegions"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "code",
@@ -57,7 +40,7 @@
     "changelogDate": "20180126144203",
     "entityTableName": "rg_regions",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

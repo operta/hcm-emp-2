@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.emEmpBorrowings.home.title">Em Emp Borrowings</span>
+        <button class="btn btn-primary float-right jh-create-entity create-em-emp-borrowings" [routerLink]="['/', { outlets: { popup: ['em-emp-borrowings-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.emEmpBorrowings.home.createLabel">
+            Create new Em Emp Borrowings
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emEmpBorrowings">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.title">Title</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.description">Description</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.serialNumber">Serial Number</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.dateFrom">Date From</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.chargedBy">Charged By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.dateTo">Date To</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.dischargedBy">Discharged By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.damage">Damage</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.damagedByEmployee">Damaged By Employee</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.idEmployee">Id Employee</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpBorrowings.idBorrowing">Id Borrowing</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emEmpBorrowings of emEmpBorrowings ;trackBy: trackId">
+                <td><a [routerLink]="['../em-emp-borrowings', emEmpBorrowings.id ]">{{emEmpBorrowings.id}}</a></td>
+                <td>{{emEmpBorrowings.title}}</td>
+                <td>{{emEmpBorrowings.description}}</td>
+                <td>{{emEmpBorrowings.serialNumber}}</td>
+                <td>{{emEmpBorrowings.dateFrom | date:'mediumDate'}}</td>
+                <td>{{emEmpBorrowings.chargedBy}}</td>
+                <td>{{emEmpBorrowings.dateTo | date:'mediumDate'}}</td>
+                <td>{{emEmpBorrowings.dischargedBy}}</td>
+                <td>{{emEmpBorrowings.damage}}</td>
+                <td>{{emEmpBorrowings.damagedByEmployee}}</td>
+                <td>{{emEmpBorrowings.createdBy}}</td>
+                <td>{{emEmpBorrowings.createdAt | date:'medium'}}</td>
+                <td>{{emEmpBorrowings.updatedBy}}</td>
+                <td>{{emEmpBorrowings.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="emEmpBorrowings.idEmployee">
+                        <a [routerLink]="['../em-employees', emEmpBorrowings.idEmployee?.id ]" >{{emEmpBorrowings.idEmployee?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emEmpBorrowings.idBorrowing">
+                        <a [routerLink]="['../em-borrowing-types', emEmpBorrowings.idBorrowing?.id ]" >{{emEmpBorrowings.idBorrowing?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../em-emp-borrowings', emEmpBorrowings.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-borrowings/'+ emEmpBorrowings.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'em-emp-borrowings/'+ emEmpBorrowings.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

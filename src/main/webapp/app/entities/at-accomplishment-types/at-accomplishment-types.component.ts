@@ -113,6 +113,7 @@ currentAccount: any;
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.atAccomplishmentTypes = data;
+        console.log(this.atAccomplishmentTypes);
     }
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);

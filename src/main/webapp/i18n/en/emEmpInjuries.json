@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "emEmpInjuries" : {
+            "home": {
+                "title": "Employee Injuries",
+                "createLabel": "Create a new Employee Injury",
+                "createOrEditLabel": "Create or edit a Employee Injury"
+            },
+            "created": "A new Employee Injury is created with identifier {{ param }}",
+            "updated": "A Employee Injury is updated with identifier {{ param }}",
+            "deleted": "A Employee Injury is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Employee Injury {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee Injury"
+            },
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Employee",
+            "idInjury": "Injury Type"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "hcmEmpApp": {
+        "emEmpSkills" : {
+            "home": {
+                "title": "Em Emp Skills",
+                "createLabel": "Create a new Em Emp Skills",
+                "createOrEditLabel": "Create or edit a Em Emp Skills"
+            },
+            "created": "A new Em Emp Skills is created with identifier {{ param }}",
+            "updated": "A Em Emp Skills is updated with identifier {{ param }}",
+            "deleted": "A Em Emp Skills is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Emp Skills {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Emp Skills"
+            },
+            "description": "Description",
+            "dateSkill": "Date Skill",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Id Employee",
+            "idSkill": "Id Skill",
+            "idGrade": "Id Grade"
+        }
+    }
+}

@@ -10,7 +10,7 @@ export const EmpPersonalInfoPopupRoute: Routes = [
         path: 'emp-personal-info-new',
         component: EmpPersonalInfoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'Personal Information'
         },
         canActivate: [UserRouteAccessService],
@@ -20,7 +20,7 @@ export const EmpPersonalInfoPopupRoute: Routes = [
         path: 'emp-personal-info/:id/edit',
         component: EmpPersonalInfoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'Personal Information'
         },
         canActivate: [UserRouteAccessService],

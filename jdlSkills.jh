@@ -1,0 +1,221 @@
+
+entity EmEmployees {
+	id Integer required,
+    code String required,
+    name String required,
+    middleName String,
+    surname String,
+    maidenName String,
+    disabilityDegree Integer,
+    ethnicGroup String,
+    gender String,
+    residentialSituation String,
+    maritalStatus String,
+    bloodGroup String,
+    dateOfBirth LocalDate,
+    hireDate LocalDate,
+    ssn String,
+    taxNumber String,
+    imagePath String,
+    phoneNumber String,
+    email String,
+    personalPhoneNumber String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmBorrowingTypes {
+	id Integer required,
+    code String required,
+    name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpBorrowings {
+	id Integer required,
+    title String required,
+    description String,
+    serialNumber String,
+    dateFrom LocalDate required,
+    chargedBy String,
+    dateTo LocalDate,
+    dischargedBy String,
+    damage String,
+    damagedByEmployee String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgFamilyRoles {
+	id Integer required,
+    code String required,
+    name String required,
+    description String,
+    uniqueRelation String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpFamilies {
+	id Integer required,
+    name String required,
+	middleName String,
+    surname String,
+    maidenName String,
+    identificationNumber String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgRegions{
+	id Integer required,
+	code String required,
+	name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant,
+}
+
+entity RgIdentificationTypes {
+	id Integer required,
+    code String required,
+    name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpIdentifications {
+	id Integer required,
+    identificationNumber String required,
+    jurisdiction String,
+    validThrough LocalDate,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmInjuryTypes {
+	id Integer required,
+    code String required,
+    name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpInjuries {
+	id Integer required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmRewardTypes {
+	id Integer required,
+    code String required,
+    name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpRewards {
+	id Integer required,
+    description String,
+    dateReward LocalDate,
+    amount Integer,
+    rewardedBy String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgSkills {
+	id Integer required,
+    code String required,
+    name String required,
+    description String,
+    field String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity RgSkillGrades {
+	id Integer required,
+    code String required,
+    name String required,
+    description String,
+    grade Integer required,
+    numerical String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmpSkills {
+	id Integer required,
+    description String,
+    dateSkill LocalDate,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmPenalties {
+	id Integer required,
+    description String,
+    dateFrom LocalDate,
+    dateTo LocalDate,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+
+relationship OneToOne {
+	EmEmpBorrowings{idEmployee} to EmEmployees
+    EmEmpBorrowings{idBorrowing(name)} to EmBorrowingTypes
+    EmEmpFamilies{idFamily(name)} to RgFamilyRoles
+    EmEmpFamilies{idEmployee} to EmEmployees
+    EmEmpIdentifications{idEmployee} to EmEmployees
+    EmEmpIdentifications{idIdentification(name)} to RgIdentificationTypes
+    EmEmpIdentifications{idRegion(name)} to RgRegions
+    EmEmpInjuries{idEmployee} to EmEmployees
+    EmEmpInjuries{idInjury(name)} to EmInjuryTypes
+    EmEmpRewards{idEmployee} to EmEmployees
+    EmEmpRewards{idReward(name)} to EmRewardTypes
+    EmEmpSkills{idEmployee} to EmEmployees
+    EmEmpSkills{idSkill(name)} to RgSkills
+    EmEmpSkills{idGrade(name)} to RgSkillGrades
+    EmPenalties{idEmployee} to EmEmployees
+}

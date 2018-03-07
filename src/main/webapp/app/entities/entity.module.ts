@@ -30,6 +30,20 @@ import {EmpAddressModule} from "../employees/employee-overview/emp-address/emp-a
 import {EmpSsnAndTaxNoModule} from "../employees/employee-overview/emp-ssn-and-tax-no/emp-ssn-and-tax-no.module";
 import { HcmEmpEmEmpPreviousJobsModule } from './em-emp-previous-jobs/em-emp-previous-jobs.module';
 import {HcmEmpEmployeesListModule} from "../employees/employees-list/employees-list.module";
+import { HcmEmpEmBorrowingTypesModule } from './em-borrowing-types/em-borrowing-types.module';
+import { HcmEmpEmEmpBorrowingsModule } from './em-emp-borrowings/em-emp-borrowings.module';
+import { HcmEmpRgFamilyRolesModule } from './rg-family-roles/rg-family-roles.module';
+import { HcmEmpEmEmpFamiliesModule } from './em-emp-families/em-emp-families.module';
+import { HcmEmpRgIdentificationTypesModule } from './rg-identification-types/rg-identification-types.module';
+import { HcmEmpEmEmpIdentificationsModule } from './em-emp-identifications/em-emp-identifications.module';
+import { HcmEmpEmInjuryTypesModule } from './em-injury-types/em-injury-types.module';
+import { HcmEmpEmEmpInjuriesModule } from './em-emp-injuries/em-emp-injuries.module';
+import { HcmEmpEmRewardTypesModule } from './em-reward-types/em-reward-types.module';
+import { HcmEmpEmEmpRewardsModule } from './em-emp-rewards/em-emp-rewards.module';
+import { HcmEmpRgSkillsModule } from './rg-skills/rg-skills.module';
+import { HcmEmpRgSkillGradesModule } from './rg-skill-grades/rg-skill-grades.module';
+import { HcmEmpEmEmpSkillsModule } from './em-emp-skills/em-emp-skills.module';
+import { HcmEmpEmPenaltiesModule } from './em-penalties/em-penalties.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -64,6 +78,20 @@ import {HcmEmpEmployeesListModule} from "../employees/employees-list/employees-l
         HcmEmpEmEmpDocumentsModule,
         HcmEmpEmEmpNotesModule,
         HcmEmpEmEmpPreviousJobsModule,
+        HcmEmpEmBorrowingTypesModule,
+        HcmEmpEmEmpBorrowingsModule,
+        HcmEmpRgFamilyRolesModule,
+        HcmEmpEmEmpFamiliesModule,
+        HcmEmpRgIdentificationTypesModule,
+        HcmEmpEmEmpIdentificationsModule,
+        HcmEmpEmInjuryTypesModule,
+        HcmEmpEmEmpInjuriesModule,
+        HcmEmpEmRewardTypesModule,
+        HcmEmpEmEmpRewardsModule,
+        HcmEmpRgSkillsModule,
+        HcmEmpRgSkillGradesModule,
+        HcmEmpEmEmpSkillsModule,
+        HcmEmpEmPenaltiesModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

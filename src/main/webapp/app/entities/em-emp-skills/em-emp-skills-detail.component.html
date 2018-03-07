@@ -1,0 +1,64 @@
+
+<div *ngIf="emEmpSkills">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpSkills.detail.title">Em Emp Skills</span> {{emEmpSkills.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.description">Description</span></dt>
+        <dd>
+            <span>{{emEmpSkills.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.dateSkill">Date Skill</span></dt>
+        <dd>
+            <span>{{emEmpSkills.dateSkill | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpSkills.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpSkills.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpSkills.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpSkills.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpSkills.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpSkills.idEmployee?.id]">{{emEmpSkills.idEmployee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.idSkill">Id Skill</span></dt>
+        <dd>
+            <div *ngIf="emEmpSkills.idSkill">
+                <a [routerLink]="['/rg-skills', emEmpSkills.idSkill?.id]">{{emEmpSkills.idSkill?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSkills.idGrade">Id Grade</span></dt>
+        <dd>
+            <div *ngIf="emEmpSkills.idGrade">
+                <a [routerLink]="['/rg-skill-grades', emEmpSkills.idGrade?.id]">{{emEmpSkills.idGrade?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-skills/'+ emEmpSkills.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

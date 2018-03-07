@@ -1,0 +1,30 @@
+{
+    "hcmEmpApp": {
+        "emEmpRewards" : {
+            "home": {
+                "title": "Employee Rewards",
+                "createLabel": "Create a new Employee Reward",
+                "createOrEditLabel": "Create or edit a Employee Reward"
+            },
+            "created": "A new Employee Reward is created with identifier {{ param }}",
+            "updated": "A Employee Reward is updated with identifier {{ param }}",
+            "deleted": "A Employee Reward is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Employee Reward {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee Reward"
+            },
+            "description": "Description",
+            "dateReward": "Date Reward",
+            "amount": "Amount",
+            "rewardedBy": "Rewarded By",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Employee",
+            "idReward": "Reward Type"
+        }
+    }
+}

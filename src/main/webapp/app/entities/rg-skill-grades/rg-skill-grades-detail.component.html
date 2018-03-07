@@ -1,0 +1,58 @@
+
+<div *ngIf="rgSkillGrades">
+    <h2><span jhiTranslate="hcmEmpApp.rgSkillGrades.detail.title">Rg Skill Grades</span> {{rgSkillGrades.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.code">Code</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.name">Name</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.description">Description</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.grade">Grade</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.grade}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.numerical">Numerical</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.numerical}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{rgSkillGrades.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'rg-skill-grades/'+ rgSkillGrades.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

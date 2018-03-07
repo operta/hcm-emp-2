@@ -11,7 +11,13 @@ export const createRequestOption = (req?: any): BaseRequestOptions => {
         }
         params.set('query', req.query);
         params.set('filter', req.filter);
-
+        params.set('fromDate', req.fromDate);
+        params.set('toDate', req.toDate);
+        params.set('name', req.name);
+        params.set('surname', req.surname);
+        params.set('qualificationId', req.qualificationId);
+        params.set('workplaceId', req.workplaceId);
+        params.set('organizationId', req.organizationId);
         options.params = params;
     }
     return options;

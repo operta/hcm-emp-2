@@ -1,0 +1,54 @@
+
+<div *ngIf="rgFamilyRoles">
+    <h2><span jhiTranslate="hcmEmpApp.rgFamilyRoles.detail.title">Rg Family Roles</span> {{rgFamilyRoles.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.rgFamilyRoles.code">Code</span></dt>
+        <dd>
+            <span>{{rgFamilyRoles.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgFamilyRoles.name">Name</span></dt>
+        <dd>
+            <span>{{rgFamilyRoles.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgFamilyRoles.description">Description</span></dt>
+        <dd>
+            <span>{{rgFamilyRoles.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgFamilyRoles.uniqueRelation">Unique Relation</span></dt>
+        <dd>
+            <span>{{rgFamilyRoles.uniqueRelation}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgFamilyRoles.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{rgFamilyRoles.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgFamilyRoles.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{rgFamilyRoles.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgFamilyRoles.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{rgFamilyRoles.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgFamilyRoles.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{rgFamilyRoles.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'rg-family-roles/'+ rgFamilyRoles.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

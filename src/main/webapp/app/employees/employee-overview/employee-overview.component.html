@@ -7,8 +7,11 @@
 
     <div class="col-sm-2">
 
-        <div class="at-img-align m-b-30">
-            <img src="../../../content/images/users/1.jpg" class="img-fluid img-circle" />
+        <div class="at-img-align m-b-30 image-holder">
+            <img #userImage *ngIf="employee.imageBlob" [src]="trustedUrl" class="img-fluid img-circle m-b-30" />
+            <a style="position: absolute; top:0; right: 0;" (click)="file.click()"><i class="fa fa-pencil action-button-at"></i></a>
+            <input type="file" #file name="file" (change)="setFileData($event, employee, 'imageBlob', true)" ngModel style="display: none"/>
+            <img *ngIf="!employee.imageBlob" src="../../../content/images/users/1.jpg" class="img-fluid img-circle" />
         </div>
         <a *ngIf="isEditable" class="popup-with-form pull-right" [routerLink]="['/', { outlets: {popup: 'em-employees/'+ employee.id + '/edit'} }]">
             <i class="fa fa-pencil action-button-at"></i>
@@ -81,12 +84,12 @@
                     </li>
                     <li>
                         <a (click)="changeTabState('families')"  class="popup-with-form">
-                            <i class="fa fa-slideshare"></i> Families
+                            <i class="fa fa-slideshare"></i> Family
                         </a>
                     </li>
                     <li>
                         <a (click)="changeTabState('identifications')"  class="popup-with-form">
-                            <i class="fa fa-id-badge"></i> Identifications
+                            <i class="fa fa-user"></i> Identifications
                         </a>
                     </li>
                     <li>
@@ -172,37 +175,37 @@
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'rewards'" id="rewards">
                 <div id="1" class="dataScrollUniversal">
-                    <jhi-emp-rewards></jhi-emp-rewards>
+                    <jhi-emp-rewards [employee]="employee" [isEditable]="isEditable"></jhi-emp-rewards>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'penalties'" id="penalties">
                 <div id="2" class="dataScrollUniversal">
-                    <jhi-emp-penalties></jhi-emp-penalties>
+                    <jhi-emp-penalties [employee]="employee" [isEditable]="isEditable"></jhi-emp-penalties>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'injuries'" id="injuries">
                 <div id="3" class="dataScrollUniversal">
-                    <jhi-emp-injuries></jhi-emp-injuries>
+                    <jhi-emp-injuries [employee]="employee" [isEditable]="isEditable"></jhi-emp-injuries>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'borrowings'" id="borrowings">
                 <div id="4" class="dataScrollUniversal">
-                    <jhi-emp-borrowings></jhi-emp-borrowings>
+                    <jhi-emp-borrowings [employee]="employee" [isEditable]="isEditable"></jhi-emp-borrowings>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'families'" id="families">
                 <div id="5" class="dataScrollUniversal">
-                    <jhi-emp-families></jhi-emp-families>
+                    <jhi-emp-families [employee]="employee" [isEditable]="isEditable"></jhi-emp-families>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'identifications'" id="identifications">
                 <div id="6" class="dataScrollUniversal">
-                    <jhi-emp-identifications></jhi-emp-identifications>
+                    <jhi-emp-identifications [employee]="employee" [isEditable]="isEditable"></jhi-emp-identifications>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'skills'" id="skills">
                 <div id="7" class="dataScrollUniversal">
-                    <jhi-emp-skills></jhi-emp-skills>
+                    <jhi-emp-skills [employee]="employee" [isEditable]="isEditable"></jhi-emp-skills>
                 </div>
             </div>
         </div>

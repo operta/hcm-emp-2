@@ -77,11 +77,11 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "personalPhoneNumber",
+            "fieldName": "email",
             "fieldType": "String"
         },
         {
-            "fieldName": "email",
+            "fieldName": "personalPhoneNumber",
             "fieldType": "String"
         },
         {

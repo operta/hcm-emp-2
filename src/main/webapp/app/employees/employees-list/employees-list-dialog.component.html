@@ -47,20 +47,20 @@
             </div>
 
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="form-control-label" for="field_phone">Business Phone</label>
-                <input type="text" class="form-control" name="phone" id="field_phone"
-                       [(ngModel)]="emEmployees.phoneNumber" />
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="form-control-label" for="field_email">Business Email</label>
-                <input type="text" class="form-control" name="email" id="field_email"
-                       [(ngModel)]="emEmployees.email" />
-            </div>
-        </div>
+        <!--<div class="col-md-6">-->
+            <!--<div class="form-group">-->
+                <!--<label class="form-control-label" for="field_phone">Business Phone</label>-->
+                <!--<input type="text" class="form-control" name="phone" id="field_phone"-->
+                       <!--[(ngModel)]="emEmployees.phoneNumber" />-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-6">-->
+            <!--<div class="form-group">-->
+                <!--<label class="form-control-label" for="field_email">Business Email</label>-->
+                <!--<input type="text" class="form-control" name="email" id="field_email"-->
+                       <!--[(ngModel)]="emEmployees.email" />-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.hireDate" for="field_hireDate">Hire Date</label>
             <div class="input-group">
@@ -117,25 +117,28 @@
                 </a>
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-md-8">
-                <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmployees.idLegalEntity" for="field_idLegalEntity">Id Legal Entity</label>
 
+        <div class="row">
+            <label class="form-control-label" style="padding-left: 7.5px;" jhiTranslate="hcmEmpApp.emEmployees.idLegalEntity" for="field_idLegalEntity">Id Legal Entity</label>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
                 <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control" [(ngModel)]="searchValue" (click)="isHidden = !isHidden" (input)="isHidden = false" name="search" placeholder="Type to search" >
-                    <span class="input-group-addon">
+                        <input type="text" class="form-control" [(ngModel)]="searchValue" (click)="isHidden = !isHidden" (input)="isHidden = false" name="search" placeholder="Type to search" >
+                        <span class="input-group-addon">
                 <button>
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
                 </span>
                 </div>
-
-                <ul *ngIf="!isHidden" class="dropdown-menu show form-group">
+                <ul *ngIf="!isHidden" class="dropdown-menu show form-group" style="margin-top: 0">
                     <li *ngFor="let legalEntity of idlegalentities | searchPipe:searchValue:searchableList; trackBy: trackRgRegionsById">
                         <a class="dropdown-item" (click)="emEmployees.idLegalEntity = legalEntity; isHidden = true; searchValue = ''">{{legalEntity.name}}</a>
                     </li>
                 </ul>
+            </div>
 
+            <div class="col-md-4">
                 <select class="form-control" id="field_idLegalEntity" name="idLegalEntity" [(ngModel)]="emEmployees.idLegalEntity" required>
                     <option [ngValue]="null"></option>
                     <option [ngValue]="leLegalEntitiesOption.id === emEmployees.idLegalEntity?.id ? emEmployees.idLegalEntity : leLegalEntitiesOption" *ngFor="let leLegalEntitiesOption of idlegalentities; trackBy: trackLeLegalEntitiesById">{{leLegalEntitiesOption.name}}</option>
@@ -147,7 +150,7 @@
                     </small>
                 </div>
             </div>
-            <div class="col-md-4" style="margin-top: 35px;">
+            <div class="col-md-4" style="margin-top: 10px">
                 <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'le-legal-entities-new'} }]">
                     <i class="fa fa-plus action-button-at"></i> Add Legal Entity
                 </a>

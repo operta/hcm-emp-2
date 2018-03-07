@@ -70,8 +70,12 @@ public class EmEmployees implements Serializable {
     @Column(name = "tax_number")
     private String taxNumber;
 
-    @Column(name = "image_path")
-    private String imagePath;
+    @Lob
+    @Column(name = "image_blob")
+    private byte[] imageBlob;
+
+    @Column(name = "image_blob_content_type")
+    private String imageBlobContentType;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -122,6 +126,22 @@ public class EmEmployees implements Serializable {
 
     public void setPersonalPhoneNumber(String personalPhoneNumber) {
         this.personalPhoneNumber = personalPhoneNumber;
+    }
+
+    public byte[] getImageBlob() {
+        return imageBlob;
+    }
+
+    public void setImageBlob(byte[] imageBlob) {
+        this.imageBlob = imageBlob;
+    }
+
+    public String getImageBlobContentType() {
+        return imageBlobContentType;
+    }
+
+    public void setImageBlobContentType(String imageBlobContentType) {
+        this.imageBlobContentType = imageBlobContentType;
     }
 
     public Long getId() {
@@ -327,18 +347,6 @@ public class EmEmployees implements Serializable {
         this.taxNumber = taxNumber;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public EmEmployees imagePath(String imagePath) {
-        this.imagePath = imagePath;
-        return this;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -523,7 +531,6 @@ public class EmEmployees implements Serializable {
             ", hireDate='" + getHireDate() + "'" +
             ", ssn='" + getSsn() + "'" +
             ", taxNumber='" + getTaxNumber() + "'" +
-            ", imagePath='" + getImagePath() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", email='" + getEmail() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +

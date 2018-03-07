@@ -8,9 +8,9 @@ export class User {
     public langKey?: string;
     public authorities?: any[];
     public createdBy?: string;
-    public createdDate?: Date;
-    public lastModifiedBy?: string;
-    public lastModifiedDate?: Date;
+    public createdAt?: Date;
+    public updatedBy?: string;
+    public updatedAt?: Date;
     public password?: string;
 
     constructor(
@@ -37,9 +37,9 @@ export class User {
         this.langKey = langKey ? langKey : null;
         this.authorities = authorities ? authorities : null;
         this.createdBy = createdBy ? createdBy : null;
-        this.createdDate = createdDate ? createdDate : null;
-        this.lastModifiedBy = lastModifiedBy ? lastModifiedBy : null;
-        this.lastModifiedDate = lastModifiedDate ? lastModifiedDate : null;
+        this.createdAt = createdDate ? createdDate : null;
+        this.updatedBy = lastModifiedBy ? lastModifiedBy : null;
+        this.updatedAt = lastModifiedDate ? lastModifiedDate : null;
         this.password = password ? password : null;
     }
 }

@@ -1,0 +1,31 @@
+{
+    "hcmEmpApp": {
+        "emEmpFamilies" : {
+            "home": {
+                "title": "Em Emp Families",
+                "createLabel": "Create a new Em Emp Families",
+                "createOrEditLabel": "Create or edit a Em Emp Families"
+            },
+            "created": "A new Em Emp Families is created with identifier {{ param }}",
+            "updated": "A Em Emp Families is updated with identifier {{ param }}",
+            "deleted": "A Em Emp Families is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Emp Families {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Emp Families"
+            },
+            "name": "Name",
+            "middleName": "Middle Name",
+            "surname": "Surname",
+            "maidenName": "Maiden Name",
+            "identificationNumber": "Identification Number",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idFamily": "Id Family",
+            "idEmployee": "Id Employee"
+        }
+    }
+}

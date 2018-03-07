@@ -51,11 +51,11 @@ public class UserDTO {
 
     private String createdBy;
 
-    private Instant createdDate;
+    private Instant createdAt;
 
-    private String lastModifiedBy;
+    private String updatedBy;
 
-    private Instant lastModifiedDate;
+    private Instant updatedAt;
 
     private Set<String> authorities;
 
@@ -73,9 +73,9 @@ public class UserDTO {
         this.imageUrl = user.getImageUrl();
         this.langKey = user.getLangKey();
         this.createdBy = user.getCreatedBy();
-        this.createdDate = user.getCreatedDate();
-        this.lastModifiedBy = user.getLastModifiedBy();
-        this.lastModifiedDate = user.getLastModifiedDate();
+        this.createdAt = user.getCreatedAt();
+        this.updatedBy = user.getUpdatedBy();
+        this.updatedAt = user.getUpdatedAt();
         this.imageBlob = user.getImageBlob();
         this.imageBlobContentType = user.getImageBlobContentType();
         this.authorities = user.getAuthorities().stream()
@@ -171,28 +171,28 @@ public class UserDTO {
         this.createdBy = createdBy;
     }
 
-    public Instant getCreatedDate() {
-        return createdDate;
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedDate(Instant createdDate) {
-        this.createdDate = createdDate;
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
+    public String getUpdatedBy() {
+        return updatedBy;
     }
 
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
-    public Instant getLastModifiedDate() {
-        return lastModifiedDate;
+    public Instant getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setLastModifiedDate(Instant lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public Set<String> getAuthorities() {
@@ -214,9 +214,9 @@ public class UserDTO {
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
             ", createdBy=" + createdBy +
-            ", createdDate=" + createdDate +
-            ", lastModifiedBy='" + lastModifiedBy + '\'' +
-            ", lastModifiedDate=" + lastModifiedDate +
+            ", createdAt=" + createdAt +
+            ", updatedBy='" + updatedBy + '\'' +
+            ", updatedAt=" + updatedAt +
             ", authorities=" + authorities +
             "}";
     }

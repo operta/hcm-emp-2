@@ -1,3 +1,81 @@
-<p>
-  emp-families works!
-</p>
+<form class="form-horizontal" role="form">
+    <div class="panel-footer p-b-20 p-t-20 m-b-10">
+        <i class="fa fa-slideshare m-r-5 heading-icon-at"></i>
+        <span class="heading-at">Family</span>
+        <div class="pull-right">
+            <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-families-new/' + employee.id} }]">
+                <i class="fa fa-plus action-button-at"></i>
+            </a>
+        </div>
+    </div>
+    <div *ngFor="let item of families" class="form-body m-b-20">
+        <div class="box-title p-b-10 p-t-10 p-r-10">
+            <!--<span class="section-title">{{item.name}}</span>-->
+            <div *ngIf="isEditable" class="pull-right">
+                <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-families/'+ item.id + '/delete'} }]">
+                    <span class="fa fa-remove pull-right"></span>
+                </a>
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-families/'+ item.id + '/edit'} }]">
+                    <i class="fa fa-pencil action-button-at pull-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Name:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.name}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Middle name:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.middleName}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Surname:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.surname}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Maiden name:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.maidenName}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Family Role:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.idFamily.name}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Identification Number:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.identificationNumber}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+        <hr>
+    </div>
+
+</form>

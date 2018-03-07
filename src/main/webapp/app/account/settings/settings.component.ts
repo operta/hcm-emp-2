@@ -32,8 +32,6 @@ export class SettingsComponent implements OnInit {
 
     setFileData(event, entity, field, isImage) {
         this.dataUtils.setFileData(event, entity, field, isImage);
-        console.log('here');
-
     }
 
     openFile(contentType, field) {
@@ -107,21 +105,21 @@ export class SettingsComponent implements OnInit {
         };
     }
 
-    onFileChange(fileInput: any) {
-        if (fileInput.target.files && fileInput.target.files[0]) {
-            const reader = new FileReader();
-
-            reader.onload = ((e) => {
-                this.settingsAccount.imageUrl = e.target['result'];
-            });
-
-            reader.readAsDataURL(fileInput.target.files[0]);
-
-            this.account.saveImage(fileInput.target.files[0]).subscribe((fileName: string) => {
-
-                //this.settingsAccount.imageUrl = fileName;
-                this.save();
-            });
-        }
-    }
+    // onFileChange(fileInput: any) {
+    //     if (fileInput.target.files && fileInput.target.files[0]) {
+    //         const reader = new FileReader();
+    //
+    //         reader.onload = ((e) => {
+    //             this.settingsAccount.imageUrl = e.target['result'];
+    //         });
+    //
+    //         reader.readAsDataURL(fileInput.target.files[0]);
+    //
+    //         this.account.saveImage(fileInput.target.files[0]).subscribe((fileName: string) => {
+    //
+    //             //this.settingsAccount.imageUrl = fileName;
+    //             this.save();
+    //         });
+    //     }
+    // }
 }

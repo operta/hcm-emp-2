@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.rgSkillGrades.home.title">Rg Skill Grades</span>
+        <button class="btn btn-primary float-right jh-create-entity create-rg-skill-grades" [routerLink]="['/', { outlets: { popup: ['rg-skill-grades-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.rgSkillGrades.home.createLabel">
+            Create new Rg Skill Grades
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rgSkillGrades">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.code">Code</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.name">Name</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.description">Description</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.grade">Grade</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.numerical">Numerical</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.rgSkillGrades.updatedAt">Updated At</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rgSkillGrades of rgSkillGrades ;trackBy: trackId">
+                <td><a [routerLink]="['../rg-skill-grades', rgSkillGrades.id ]">{{rgSkillGrades.id}}</a></td>
+                <td>{{rgSkillGrades.code}}</td>
+                <td>{{rgSkillGrades.name}}</td>
+                <td>{{rgSkillGrades.description}}</td>
+                <td>{{rgSkillGrades.grade}}</td>
+                <td>{{rgSkillGrades.numerical}}</td>
+                <td>{{rgSkillGrades.createdBy}}</td>
+                <td>{{rgSkillGrades.createdAt | date:'medium'}}</td>
+                <td>{{rgSkillGrades.updatedBy}}</td>
+                <td>{{rgSkillGrades.updatedAt | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../rg-skill-grades', rgSkillGrades.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rg-skill-grades/'+ rgSkillGrades.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rg-skill-grades/'+ rgSkillGrades.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

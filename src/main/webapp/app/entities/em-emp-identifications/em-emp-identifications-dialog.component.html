@@ -1,0 +1,79 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmpIdentificationsLabel" jhiTranslate="hcmEmpApp.emEmpIdentifications.home.createOrEditLabel">Create or edit a Em Emp Identifications</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!emEmpIdentifications.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="emEmpIdentifications.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpIdentifications.identificationNumber" for="field_identificationNumber">Identification Number</label>
+            <input type="text" class="form-control" name="identificationNumber" id="field_identificationNumber"
+                [(ngModel)]="emEmpIdentifications.identificationNumber" required/>
+            <div [hidden]="!(editForm.controls.identificationNumber?.dirty && editForm.controls.identificationNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.identificationNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpIdentifications.jurisdiction" for="field_jurisdiction">Jurisdiction</label>
+            <input type="text" class="form-control" name="jurisdiction" id="field_jurisdiction"
+                [(ngModel)]="emEmpIdentifications.jurisdiction" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpIdentifications.validThrough" for="field_validThrough">Valid Through</label>
+            <div class="input-group">
+                <input id="field_validThrough" type="text" class="form-control" name="validThrough" ngbDatepicker  #validThroughDp="ngbDatepicker" [(ngModel)]="emEmpIdentifications.validThrough"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="validThroughDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpIdentifications.idEmployee" for="field_idEmployee">Id Employee</label>-->
+            <!--<select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpIdentifications.idEmployee">-->
+                <!--<option [ngValue]="null"></option>-->
+                <!--<option [ngValue]="emEmployeesOption.id === emEmpIdentifications.idEmployee?.id ? emEmpIdentifications.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpIdentifications.idIdentification" for="field_idIdentification">Id Identification</label>
+            <select class="form-control" id="field_idIdentification" name="idIdentification" [(ngModel)]="emEmpIdentifications.idIdentification" required>
+                <option [ngValue]="null"></option>
+                <option [ngValue]="rgIdentificationTypesOption.id === emEmpIdentifications.idIdentification?.id ? emEmpIdentifications.idIdentification : rgIdentificationTypesOption" *ngFor="let rgIdentificationTypesOption of ididentifications; trackBy: trackRgIdentificationTypesById">{{rgIdentificationTypesOption.name}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.idIdentification?.dirty && editForm.controls.idIdentification?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.idIdentification?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpIdentifications.idRegion" for="field_idRegion">Id Region</label>
+            <select class="form-control" id="field_idRegion" name="idRegion" [(ngModel)]="emEmpIdentifications.idRegion">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="rgRegionsOption.id === emEmpIdentifications.idRegion?.id ? emEmpIdentifications.idRegion : rgRegionsOption" *ngFor="let rgRegionsOption of idregions; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

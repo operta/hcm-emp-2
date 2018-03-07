@@ -1,3 +1,97 @@
-<p>
-  emp-borrowings works!
-</p>
+<form class="form-horizontal" role="form">
+    <div class="panel-footer p-b-20 p-t-20 m-b-10">
+        <i class="fa fa-credit-card m-r-5 heading-icon-at"></i>
+        <span class="heading-at">Borrowings</span>
+        <div class="pull-right">
+            <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-borrowings-new/' + employee.id} }]">
+                <i class="fa fa-plus action-button-at"></i>
+            </a>
+        </div>
+    </div>
+    <div *ngFor="let item of borrowings" class="form-body m-b-20">
+        <div class="box-title p-b-10 p-t-10 p-r-10">
+            <span class="section-title">{{item.title}}</span>
+            <div *ngIf="isEditable" class="pull-right">
+                <a class="popup-with-form btn btn-danger btn-sm pull-right" style="font-size:20px; padding-top: 0px" [routerLink]="['/', { outlets: {popup: 'em-emp-borrowings/'+ item.id + '/delete'} }]">
+                    <span class="fa fa-remove pull-right"></span>
+                </a>
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-borrowings/'+ item.id + '/edit'} }]">
+                    <i class="fa fa-pencil action-button-at pull-right"></i>
+                </a>
+            </div>
+        </div>
+        <hr class="m-t-0 m-b-40">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Borrowing type:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.idBorrowing.name}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Description:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.description}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Serial Number:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.serialNumber}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">From:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.dateFrom | date:'dd/MM/yyyy'}} </p>
+                    </div>
+                    <label class="control-label col-md-3">To:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.dateTo | date:'dd/MM/yyyy'}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Charged By:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.chargedBy}} </p>
+                    </div>
+                    <label class="control-label col-md-3">Discharged By:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.dischargedBy}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Damage:</label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"> {{item.damage}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <button *ngIf="checkIsDamagedByEmployee(item?.damagedByEmployee)" class="btn btn-success btn-rounded btn-sm" type="button" disabled name="ongoing">Damaged by employee <i class="fa fa-check" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+
+</form>

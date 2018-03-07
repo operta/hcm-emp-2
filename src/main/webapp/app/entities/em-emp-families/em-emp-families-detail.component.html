@@ -1,0 +1,70 @@
+
+<div *ngIf="emEmpFamilies">
+    <h2><span jhiTranslate="hcmEmpApp.emEmpFamilies.detail.title">Em Emp Families</span> {{emEmpFamilies.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.name">Name</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.middleName">Middle Name</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.middleName}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.surname">Surname</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.surname}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.maidenName">Maiden Name</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.maidenName}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.identificationNumber">Identification Number</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.identificationNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{emEmpFamilies.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.idFamily">Id Family</span></dt>
+        <dd>
+            <div *ngIf="emEmpFamilies.idFamily">
+                <a [routerLink]="['/rg-family-roles', emEmpFamilies.idFamily?.id]">{{emEmpFamilies.idFamily?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpFamilies.idEmployee">Id Employee</span></dt>
+        <dd>
+            <div *ngIf="emEmpFamilies.idEmployee">
+                <a [routerLink]="['/em-employees', emEmpFamilies.idEmployee?.id]">{{emEmpFamilies.idEmployee?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'em-emp-families/'+ emEmpFamilies.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,28 @@
+{
+    "hcmEmpApp": {
+        "emPenalties" : {
+            "home": {
+                "title": "Em Penalties",
+                "createLabel": "Create a new Em Penalties",
+                "createOrEditLabel": "Create or edit a Em Penalties"
+            },
+            "created": "A new Em Penalties is created with identifier {{ param }}",
+            "updated": "A Em Penalties is updated with identifier {{ param }}",
+            "deleted": "A Em Penalties is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Penalties {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Penalties"
+            },
+            "description": "Description",
+            "dateFrom": "Date From",
+            "dateTo": "Date To",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Id Employee"
+        }
+    }
+}

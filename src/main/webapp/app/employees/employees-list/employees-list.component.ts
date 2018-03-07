@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {EmEmployees} from "../../entities/em-employees/em-employees.model";
 import {Subscription} from "rxjs/Subscription";
 import {EmEmployeesService} from "../../entities/em-employees/em-employees.service";
-import {JhiAlertService, JhiEventManager, JhiParseLinks} from "ng-jhipster";
+import {JhiAlertService, JhiDataUtils, JhiEventManager, JhiParseLinks} from "ng-jhipster";
 import {Principal} from "../../shared/auth/principal.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ITEMS_PER_PAGE} from "../../shared/constants/pagination.constants";
@@ -14,13 +14,18 @@ import {OgWorkPlaces} from "../../entities/og-work-places/og-work-places.model";
 import {OgOrganizations} from "../../entities/og-organizations/og-organizations.model";
 import {LeLegalEntities} from "../../entities/le-legal-entities/le-legal-entities.model";
 import {RgRegions} from "../../entities/rg-regions/rg-regions.model";
+import {RgQualificationsService} from "../../entities/rg-qualifications/rg-qualifications.service";
+import {RgQualifications} from "../../entities/rg-qualifications/rg-qualifications.model";
+import {OgOrganizationsService} from "../../entities/og-organizations/og-organizations.service";
+import {OgWorkPlacesService} from "../../entities/og-work-places/og-work-places.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'jhi-employees-list',
   templateUrl: './employees-list.component.html',
   styles: []
 })
-export class EmployeesListComponent implements OnInit, OnDestroy {
+export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
 
     currentAccount: any;
     emEmployees: EmEmployees[];
@@ -37,6 +42,20 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     previousPage: any;
     reverse: any;
     emEmpOrgWorkPlaces: EmEmpOrgWorkPlaces[];
+    fromDate: string;
+    toDate: string;
+    name: string;
+    surname: string;
+    organizationId: string;
+    workplaceId: string;
+    qualificationId: string;
+    qualifications: RgQualifications[];
+    workplaces: OgWorkPlaces[];
+    organizations: OgOrganizations[];
+    toggleAdvSearch = false;
+    objectUrl: any;
+    trustedUrl: any;
+    urlTuple = [];
 
     constructor(
         private emEmployeesService: EmEmployeesService,
@@ -46,8 +65,13 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private eventManager: JhiEventManager,
-        private emEmpOrgWorkPlacesService: EmEmpOrgWorkPlacesService
-) {
+        private emEmpOrgWorkPlacesService: EmEmpOrgWorkPlacesService,
+        private qualificationsService: RgQualificationsService,
+        private organizationsService: OgOrganizationsService,
+        private workplacesService: OgWorkPlacesService,
+        private dataUtils: JhiDataUtils,
+        private sanitizer: DomSanitizer)
+    {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -65,6 +89,47 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
             },
             (res: ResponseWrapper) => this.onErrorWP(res.json)
         );
+       this.loadEmployees();
+    }
+
+    loadPage(page: number) {
+        if (page !== this.previousPage) {
+            this.previousPage = page;
+            this.transition();
+        }
+    }
+
+    loadQualifications() {
+        this.qualificationsService.query({
+            page: this.page - 1,
+            size: this.itemsPerPage,
+            sort: this.sort()}).subscribe(
+            (res: ResponseWrapper) => this.qualifications = res.json,
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
+    loadWorkplaces() {
+        this.workplacesService.query({
+            page: this.page - 1,
+            size: this.itemsPerPage,
+            sort: this.sort()}).subscribe(
+            (res: ResponseWrapper) => this.workplaces = res.json,
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
+    loadOrganizations() {
+        this.organizationsService.query({
+            page: this.page - 1,
+            size: this.itemsPerPage,
+            sort: this.sort()}).subscribe(
+            (res: ResponseWrapper) => this.organizations = res.json,
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
+    loadEmployees() {
         this.emEmployeesService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
@@ -73,12 +138,45 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
-    loadPage(page: number) {
-        if (page !== this.previousPage) {
-            this.previousPage = page;
-            this.transition();
-        }
+
+    onSearchChange() {
+        console.log(this.fromDate);
+        console.log(this.toDate);
+        console.log(this.organizationId);
+        this.emEmployeesService.querySearch({
+            page: this.page - 1,
+            size: this.itemsPerPage,
+            fromDate: this.fromDate,
+            toDate: this.toDate,
+            name: this.name,
+            surname: this.surname,
+            organizationId: this.organizationId,
+            workplaceId: this.workplaceId,
+            qualificationId: this.qualificationId
+        }).subscribe((res) => {
+            console.log(res);
+            this.links = this.parseLinks.parse(res.headers.get('link'));
+            this.totalItems = + res.headers.get('X-Total-Count');
+            this.queryCount = this.totalItems;
+            this.emEmployees = res.json;
+        });
     }
+
+    ngOnChanges() {
+        this.generateLinks(this.emEmployees);
+    }
+
+    onClear() {
+        this.fromDate = null;
+        this.toDate = null;
+        this.name = null;
+        this.surname = null;
+        this.organizationId = null;
+        this.workplaceId = null;
+        this.qualificationId = null;
+        this.onSearchChange()
+    }
+
     transition() {
         this.router.navigate(['/dashboard/employees'], {queryParams:
             {
@@ -100,10 +198,15 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     }
     ngOnInit() {
         this.loadAll();
+        this.loadWorkplaces();
+        this.loadOrganizations();
+        this.loadQualifications();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
         this.registerChangeInEmEmployees();
+        // this.generateImage(this.emEmployees[0]);
+        // this.generateLinks(this.emEmployees);
     }
 
     ngOnDestroy() {
@@ -167,14 +270,59 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
         return null;
     }
 
+
+    dataURItoBlob(dataURI) {
+        var mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        var binary = atob(dataURI.split(',')[1]);
+        var array = [];
+        for (var i = 0; i < binary.length; i++) {
+            array.push(binary.charCodeAt(i));
+        }
+        return new Blob([new Uint8Array(array)], {type: mime});
+    }
+
+    generateImage(employee:any): any{
+            var binaryData = [];
+            binaryData.push(employee.imageBlob);
+            this.objectUrl =  URL.createObjectURL(new Blob(binaryData, {type: employee.imageBlobContentType}));
+            var dataUrl = 'data:' + employee.imageBlobContentType + ';base64,' + employee.imageBlob;
+            this.objectUrl = URL.createObjectURL(this.dataURItoBlob(dataUrl));
+            let url = this.sanitizer.bypassSecurityTrustResourceUrl(this.objectUrl);
+
+        return url;
+    }
+
+
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.emEmployees = data;
+        this.generateLinks(this.emEmployees);
     }
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    generateLinks(employees: EmEmployees[]) {
+        if(employees != null){
+            for (let i = 0; i< employees.length; i++){
+                let item = {
+                    empId: employees[i].id,
+                    url: this.generateImage(employees[i])
+                };
+                console.log(item);
+
+                this.urlTuple.push(item);
+            }
+        }
+
+        console.log(this.urlTuple);
+
+    }
+
+    findUrl(id: any){
+        return this.urlTuple.find((item) => item.empId == id).url;
     }
 }

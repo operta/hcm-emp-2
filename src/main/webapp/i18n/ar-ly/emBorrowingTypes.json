@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "emBorrowingTypes" : {
+            "home": {
+                "title": "Em Borrowing Types",
+                "createLabel": "Create a new Em Borrowing Types",
+                "createOrEditLabel": "Create or edit a Em Borrowing Types"
+            },
+            "created": "A new Em Borrowing Types is created with identifier {{ param }}",
+            "updated": "A Em Borrowing Types is updated with identifier {{ param }}",
+            "deleted": "A Em Borrowing Types is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Borrowing Types {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Borrowing Types"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}
