@@ -73,10 +73,12 @@ export class JhiLoginModalComponent implements AfterViewInit {
                 this.router.navigate([redirect]);
             }
             this.principal.identity().then((account) => {
-                if(account.authorities.length > 0){
+                console.log(account.authorities.length);
+                if(account.authorities.length > 1){
                     this.router.navigate(['/dashboard/employees']);
+                } else {
+                    this.router.navigate(['/dashboard/employee-overview/', { userId: account.id}]);
                 }
-                this.router.navigate(['/dashboard/employee-overview/', { userId: account.id}]);
             });
 
         }).catch(() => {
