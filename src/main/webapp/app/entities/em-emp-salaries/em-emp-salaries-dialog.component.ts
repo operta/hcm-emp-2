@@ -88,7 +88,8 @@ export class EmEmpSalariesDialogComponent implements OnInit {
             this.currentAccount = account;
             this.emEmployeesService.findByUser(this.currentAccount.id).subscribe((emEmployees) => {
                 this.employee = emEmployees;
-            });
+            }, (error) => console.log(error)
+            );
         });
     }
 

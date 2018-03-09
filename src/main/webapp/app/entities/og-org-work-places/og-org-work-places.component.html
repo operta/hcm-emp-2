@@ -17,22 +17,23 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idOrganization.name"><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idOrganization">Id Organization</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idWorkPlace.name"><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idWorkPlace">Id Work Place</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idOrganization.name"><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idOrganization">Id Organization</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idWorkPlace.name"><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idWorkPlace">Id Work Place</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let ogOrgWorkPlaces of ogOrgWorkPlaces ;trackBy: trackId">
-                <td><a [routerLink]="['../og-org-work-places', ogOrgWorkPlaces.id ]">{{ogOrgWorkPlaces.id}}</a></td>
-                <td>{{ogOrgWorkPlaces.createdBy}}</td>
-                <td>{{ogOrgWorkPlaces.createdAt | date:'medium'}}</td>
-                <td>{{ogOrgWorkPlaces.updatedBy}}</td>
-                <td>{{ogOrgWorkPlaces.updatedAt | date:'medium'}}</td>
+                <td>
+                    <!--<a [routerLink]="['../og-org-work-places', ogOrgWorkPlaces.id ]">-->
+                        <!---->
+                    <!--</a>-->
+                    {{ogOrgWorkPlaces.id}}
+                </td>
                 <td>
                     <div *ngIf="ogOrgWorkPlaces.idOrganization">
                         <a [routerLink]="['../og-organizations', ogOrgWorkPlaces.idOrganization?.id ]" >{{ogOrgWorkPlaces.idOrganization?.name}}</a>
@@ -43,6 +44,10 @@
                         <a [routerLink]="['../og-work-places', ogOrgWorkPlaces.idWorkPlace?.id ]" >{{ogOrgWorkPlaces.idWorkPlace?.name}}</a>
                     </div>
                 </td>
+                <td>{{ogOrgWorkPlaces.createdBy}}</td>
+                <td>{{ogOrgWorkPlaces.createdAt | date:'medium'}}</td>
+                <td>{{ogOrgWorkPlaces.updatedBy}}</td>
+                <td>{{ogOrgWorkPlaces.updatedAt | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

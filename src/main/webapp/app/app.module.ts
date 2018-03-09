@@ -28,6 +28,8 @@ import {DashboardModule} from "./layouts/dashboard/dashboard.module";
 import {RegisterComponent} from "./shared/auth/register/register.component";
 import {Register} from "./shared/auth/register/register.service";
 import {NavbarService} from "./layouts/navbar/navbar.service";
+import {BusyModule} from "angular2-busy";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     imports: [
@@ -39,7 +41,8 @@ import {NavbarService} from "./layouts/navbar/navbar.service";
         HcmEmpAdminModule,
         HcmEmpAccountModule,
         HcmEmpEntityModule,
-        DashboardModule
+        DashboardModule,
+        BrowserAnimationsModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

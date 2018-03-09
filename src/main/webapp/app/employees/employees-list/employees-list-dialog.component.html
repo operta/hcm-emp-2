@@ -7,7 +7,7 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="col-md-12">
+        <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="field_code">Code</label>
                 <input type="text" class="form-control" name="code" id="field_code"
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="field_name">First Name</label>
                 <input type="text" class="form-control" name="name" id="field_name"
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="field_surname">Last Name</label>
                 <input type="text" class="form-control" name="surname" id="field_surname"
@@ -197,7 +197,7 @@
 
                 <select class="form-control" id="field_idUser" name="idUser" [(ngModel)]="emEmployees.idUser" >
                     <option [ngValue]="null"></option>
-                    <option [ngValue]="userOption.id === emEmployees.idUser?.id ? emEmployees.idUser : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.firstName}} {{userOption.lastName}}</option>
+                    <option [ngValue]="userOption.id === emEmployees.idUser?.id ? emEmployees.idUser : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
                 </select>
 
             </div>

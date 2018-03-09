@@ -36,7 +36,7 @@
                 <td>{{rgSkillGrades.name}}</td>
                 <td>{{rgSkillGrades.description}}</td>
                 <td>{{rgSkillGrades.grade}}</td>
-                <td>{{rgSkillGrades.numerical}}</td>
+                <td><input type="checkbox" disabled [checked]="rgSkillGrades.numerical == 'Y' ? true : false"></td>
                 <td>{{rgSkillGrades.createdBy}}</td>
                 <td>{{rgSkillGrades.createdAt | date:'medium'}}</td>
                 <td>{{rgSkillGrades.updatedBy}}</td>

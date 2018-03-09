@@ -68,7 +68,7 @@ export class EmployeesListDialogComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.searchableList = ['name'];
-        this.searchableUList = ['name'];
+        this.searchableUList = ['login'];
         this.isSaving = false;
         this.loadUsers();
         this.loadQualifications();
@@ -91,6 +91,7 @@ export class EmployeesListDialogComponent implements OnInit, OnDestroy {
                             this.idlegalentities = [subRes].concat(res.json);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
+                console.log(this.idlegalentities);
             }, (res: ResponseWrapper) => this.onError(res.json));
     }
 

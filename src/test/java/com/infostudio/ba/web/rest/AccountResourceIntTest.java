@@ -303,9 +303,9 @@ public class AccountResourceIntTest {
         duplicatedUser.setImageUrl(validUser.getImageUrl());
         duplicatedUser.setLangKey(validUser.getLangKey());
         duplicatedUser.setCreatedBy(validUser.getCreatedBy());
-        duplicatedUser.setCreatedDate(validUser.getCreatedDate());
-        duplicatedUser.setLastModifiedBy(validUser.getLastModifiedBy());
-        duplicatedUser.setLastModifiedDate(validUser.getLastModifiedDate());
+        duplicatedUser.setCreatedAt(validUser.getCreatedAt());
+        duplicatedUser.setUpdatedBy(validUser.getUpdatedBy());
+        duplicatedUser.setUpdatedAt(validUser.getUpdatedAt());
         duplicatedUser.setAuthorities(new HashSet<>(validUser.getAuthorities()));
 
         // Good user
@@ -352,9 +352,9 @@ public class AccountResourceIntTest {
         duplicatedUser.setImageUrl(validUser.getImageUrl());
         duplicatedUser.setLangKey(validUser.getLangKey());
         duplicatedUser.setCreatedBy(validUser.getCreatedBy());
-        duplicatedUser.setCreatedDate(validUser.getCreatedDate());
-        duplicatedUser.setLastModifiedBy(validUser.getLastModifiedBy());
-        duplicatedUser.setLastModifiedDate(validUser.getLastModifiedDate());
+        duplicatedUser.setCreatedAt(validUser.getCreatedAt());
+        duplicatedUser.setUpdatedBy(validUser.getUpdatedBy());
+        duplicatedUser.setUpdatedAt(validUser.getUpdatedAt());
         duplicatedUser.setAuthorities(new HashSet<>(validUser.getAuthorities()));
 
         // Good user
@@ -383,9 +383,9 @@ public class AccountResourceIntTest {
         userWithUpperCaseEmail.setImageUrl(validUser.getImageUrl());
         userWithUpperCaseEmail.setLangKey(validUser.getLangKey());
         userWithUpperCaseEmail.setCreatedBy(validUser.getCreatedBy());
-        userWithUpperCaseEmail.setCreatedDate(validUser.getCreatedDate());
-        userWithUpperCaseEmail.setLastModifiedBy(validUser.getLastModifiedBy());
-        userWithUpperCaseEmail.setLastModifiedDate(validUser.getLastModifiedDate());
+        userWithUpperCaseEmail.setCreatedAt(validUser.getCreatedAt());
+        userWithUpperCaseEmail.setUpdatedBy(validUser.getUpdatedBy());
+        userWithUpperCaseEmail.setUpdatedAt(validUser.getUpdatedAt());
         userWithUpperCaseEmail.setAuthorities(new HashSet<>(validUser.getAuthorities()));
 
         restMvc.perform(

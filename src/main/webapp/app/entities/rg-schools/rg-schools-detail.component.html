@@ -39,19 +39,19 @@
         <dt><span jhiTranslate="hcmEmpApp.rgSchools.idCity">Id City</span></dt>
         <dd>
             <div *ngIf="rgSchools.idCity">
-                <a [routerLink]="['/rg-regions', rgSchools.idCity?.id]">{{rgSchools.idCity?.name}}</a>
+                <a [routerLink]="['/dashboard/rg-regions', rgSchools.idCity?.id]">{{rgSchools.idCity?.name}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.rgSchools.idCountry">Id Country</span></dt>
         <dd>
             <div *ngIf="rgSchools.idCountry">
-                <a [routerLink]="['/rg-regions', rgSchools.idCountry?.id]">{{rgSchools.idCountry?.name}}</a>
+                <a [routerLink]="['/dashboard/rg-regions', rgSchools.idCountry?.id]">{{rgSchools.idCountry?.name}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.rgSchools.idRegion">Id Region</span></dt>
         <dd>
             <div *ngIf="rgSchools.idRegion">
-                <a [routerLink]="['/rg-regions', rgSchools.idRegion?.id]">{{rgSchools.idRegion?.name}}</a>
+                <a [routerLink]="['/dashboard/rg-regions', rgSchools.idRegion?.id]">{{rgSchools.idRegion?.name}}</a>
             </div>
         </dd>
     </dl>

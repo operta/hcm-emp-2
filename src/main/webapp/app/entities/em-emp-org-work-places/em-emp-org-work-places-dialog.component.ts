@@ -90,20 +90,13 @@ export class EmEmpOrgWorkPlacesDialogComponent implements OnInit, OnDestroy {
     loadOrganizationWorkplaces() {
         this.ogOrgWorkPlacesService
             .query({filter: 'ememporgworkplaces-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmpOrgWorkPlaces.idOrgWorkPlace || !this.emEmpOrgWorkPlaces.idOrgWorkPlace.id) {
+            .subscribe(
+                (res: ResponseWrapper) => {
                     this.idorgworkplaces = res.json;
-                    console.log(this.idorgworkplaces);
-                } else {
-                    this.ogOrgWorkPlacesService
-                        .find(this.emEmpOrgWorkPlaces.idOrgWorkPlace.id)
-                        .subscribe((subRes: OgOrgWorkPlaces) => {
-                            this.idorgworkplaces = [subRes].concat(res.json);
-                            console.log(this.idorgworkplaces);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-                this.filterOrganizationWorkplaces();
-            }, (res: ResponseWrapper) => this.onError(res.json));
+                    this.filterOrganizationWorkplaces();
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
     }
 
     loadOrganizations() {

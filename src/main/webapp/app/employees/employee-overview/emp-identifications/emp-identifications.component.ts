@@ -13,7 +13,6 @@ import {Subscription} from "rxjs/Subscription";
 export class EmpIdentificationsComponent implements OnInit, OnDestroy {
     @Input() employee;
     @Input() isEditable;
-
     identifications: EmEmpIdentifications[];
     eventSubscription: Subscription;
 

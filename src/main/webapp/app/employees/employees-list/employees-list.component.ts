@@ -27,6 +27,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
 
+    busy: Subscription;
     currentAccount: any;
     emEmployees: EmEmployees[];
     error: any;
@@ -70,8 +71,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
         private organizationsService: OgOrganizationsService,
         private workplacesService: OgWorkPlacesService,
         private dataUtils: JhiDataUtils,
-        private sanitizer: DomSanitizer)
-    {
+        private sanitizer: DomSanitizer) {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -85,7 +85,6 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
         this.emEmpOrgWorkPlacesService.query().subscribe(
             (res: ResponseWrapper) => {
                 this.emEmpOrgWorkPlaces = res.json;
-                console.log(this.emEmpOrgWorkPlaces);
             },
             (res: ResponseWrapper) => this.onErrorWP(res.json)
         );
@@ -130,7 +129,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     loadEmployees() {
-        this.emEmployeesService.query({
+        this.busy = this.emEmployeesService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
             sort: this.sort()}).subscribe(
@@ -140,10 +139,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     onSearchChange() {
-        console.log(this.fromDate);
-        console.log(this.toDate);
-        console.log(this.organizationId);
-        this.emEmployeesService.querySearch({
+        this.busy = this.emEmployeesService.querySearch({
             page: this.page - 1,
             size: this.itemsPerPage,
             fromDate: this.fromDate,
@@ -154,11 +150,11 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
             workplaceId: this.workplaceId,
             qualificationId: this.qualificationId
         }).subscribe((res) => {
-            console.log(res);
             this.links = this.parseLinks.parse(res.headers.get('link'));
             this.totalItems = + res.headers.get('X-Total-Count');
             this.queryCount = this.totalItems;
             this.emEmployees = res.json;
+            this.generateLinks(this.emEmployees);
         });
     }
 
@@ -205,12 +201,11 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
             this.currentAccount = account;
         });
         this.registerChangeInEmEmployees();
-        // this.generateImage(this.emEmployees[0]);
-        // this.generateLinks(this.emEmployees);
     }
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
+        this.busy.unsubscribe();
     }
 
     trackId(index: number, item: EmEmployees) {
@@ -234,10 +229,10 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
 
     findWorkPlace(employeeId: number) {
         if(this.emEmpOrgWorkPlaces) {
-           let employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
+           const employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
             if(employeeWorkPlaces.length > 0) {
-               let lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
-               let lastWorkPlace: OgWorkPlaces = lastOrgWorkPlace.idWorkPlace;
+               const lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
+               const lastWorkPlace: OgWorkPlaces = lastOrgWorkPlace.idWorkPlace;
                return lastWorkPlace.name;
             }
         }
@@ -246,10 +241,10 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
 
     findOrganization(employeeId: number) {
         if(this.emEmpOrgWorkPlaces) {
-            let employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
+            const employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
             if(employeeWorkPlaces.length > 0) {
-                let lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
-                let organization: OgOrganizations = lastOrgWorkPlace.idOrganization;
+                const lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
+                const organization: OgOrganizations = lastOrgWorkPlace.idOrganization;
                 return organization.name;
             }
         }
@@ -258,12 +253,12 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
 
     findOrganizationLocation(employeeId: number) {
         if(this.emEmpOrgWorkPlaces) {
-            let employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
+            const employeeWorkPlaces : EmEmpOrgWorkPlaces[] = this.emEmpOrgWorkPlaces.filter((item) => item.idEmployee.id == employeeId);
             if(employeeWorkPlaces.length > 0) {
-                let lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
-                let organization: OgOrganizations = lastOrgWorkPlace.idOrganization;
-                let entity : LeLegalEntities = organization.idLegalEntity;
-                let region: RgRegions = entity.region;
+                const lastOrgWorkPlace: OgOrgWorkPlaces = employeeWorkPlaces[0].idOrgWorkPlace;
+                const organization: OgOrganizations = lastOrgWorkPlace.idOrganization;
+                const entity : LeLegalEntities = organization.idLegalEntity;
+                const region: RgRegions = entity.region;
                 return region.name;
             }
         }
@@ -272,23 +267,22 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
 
 
     dataURItoBlob(dataURI) {
-        var mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
-        var binary = atob(dataURI.split(',')[1]);
-        var array = [];
-        for (var i = 0; i < binary.length; i++) {
+        const mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        const binary = atob(dataURI.split(',')[1]);
+        const array = [];
+        for (let i = 0; i < binary.length; i++) {
             array.push(binary.charCodeAt(i));
         }
         return new Blob([new Uint8Array(array)], {type: mime});
     }
 
     generateImage(employee:any): any{
-            var binaryData = [];
-            binaryData.push(employee.imageBlob);
-            this.objectUrl =  URL.createObjectURL(new Blob(binaryData, {type: employee.imageBlobContentType}));
-            var dataUrl = 'data:' + employee.imageBlobContentType + ';base64,' + employee.imageBlob;
-            this.objectUrl = URL.createObjectURL(this.dataURItoBlob(dataUrl));
-            let url = this.sanitizer.bypassSecurityTrustResourceUrl(this.objectUrl);
-
+        const binaryData = [];
+        binaryData.push(employee.imageBlob);
+        this.objectUrl =  URL.createObjectURL(new Blob(binaryData, {type: employee.imageBlobContentType}));
+        const dataUrl = 'data:' + employee.imageBlobContentType + ';base64,' + employee.imageBlob;
+        this.objectUrl = URL.createObjectURL(this.dataURItoBlob(dataUrl));
+        const url = this.sanitizer.bypassSecurityTrustResourceUrl(this.objectUrl);
         return url;
     }
 
@@ -297,7 +291,6 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
         this.queryCount = this.totalItems;
-        // this.page = pagingParams.page;
         this.emEmployees = data;
         this.generateLinks(this.emEmployees);
     }
@@ -308,18 +301,13 @@ export class EmployeesListComponent implements OnInit, OnDestroy, OnChanges {
     generateLinks(employees: EmEmployees[]) {
         if(employees != null){
             for (let i = 0; i< employees.length; i++){
-                let item = {
+                const item = {
                     empId: employees[i].id,
                     url: this.generateImage(employees[i])
                 };
-                console.log(item);
-
                 this.urlTuple.push(item);
             }
         }
-
-        console.log(this.urlTuple);
-
     }
 
     findUrl(id: any){

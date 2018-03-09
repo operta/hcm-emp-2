@@ -62,7 +62,7 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/em-employees'], {queryParams:
+        this.router.navigate(['/dashboard/em-employees'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -74,7 +74,7 @@ currentAccount: any;
 
     clear() {
         this.page = 0;
-        this.router.navigate(['/em-employees', {
+        this.router.navigate(['/dashboard/em-employees', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);

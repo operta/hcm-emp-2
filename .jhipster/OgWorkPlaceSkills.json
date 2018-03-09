@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idSkill",
+            "otherEntityName": "rgSkills",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "ogWorkPlaceSkills"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idGrade",
+            "otherEntityName": "rgSkillGrades",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "ogWorkPlaceSkills"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idWorkPlace",
+            "otherEntityName": "ogWorkPlaces",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "ogWorkPlaceSkills"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateSkill",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180307120715",
+    "entityTableName": "og_work_place_skills",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

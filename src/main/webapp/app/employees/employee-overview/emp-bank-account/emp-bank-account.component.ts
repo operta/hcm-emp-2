@@ -13,7 +13,7 @@ import {ResponseWrapper} from "../../../shared/model/response-wrapper.model";
 export class EmpBankAccountComponent implements OnInit, OnDestroy {
     @Input() employee;
     @Input() isEditable;
-    bankAccounts: EmEmpBankAccounts;
+    bankAccounts: EmEmpBankAccounts[];
     eventSubscriber: Subscription;
 
   constructor(private bankAccountService: EmEmpBankAccountsService,
@@ -21,7 +21,6 @@ export class EmpBankAccountComponent implements OnInit, OnDestroy {
               private jhiAlertService: JhiAlertService) { }
 
   ngOnInit() {
-      console.log(this.employee);
       this.loadAll();
       this.registerChangeInAddress()
   }
@@ -31,13 +30,11 @@ export class EmpBankAccountComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-      console.log(this.employee.id);
       this.bankAccountService.findByIdEmployee(this.employee.id).subscribe(
           (res: ResponseWrapper) => this.onSuccess(res.json),
           (res: ResponseWrapper) => this.onError(res.json)
       )
     }
-
 
     private onSuccess(data) {
       this.bankAccounts = data;

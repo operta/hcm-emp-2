@@ -1,0 +1,27 @@
+{
+    "hcmEmpApp": {
+        "rgContactTypes" : {
+            "home": {
+                "title": "Rg Contact Types",
+                "createLabel": "Create a new Rg Contact Types",
+                "createOrEditLabel": "Create or edit a Rg Contact Types"
+            },
+            "created": "A new Rg Contact Types is created with identifier {{ param }}",
+            "updated": "A Rg Contact Types is updated with identifier {{ param }}",
+            "deleted": "A Rg Contact Types is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Rg Contact Types {{ id }}?"
+            },
+            "detail": {
+                "title": "Rg Contact Types"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At"
+        }
+    }
+}

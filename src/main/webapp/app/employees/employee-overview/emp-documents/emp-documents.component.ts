@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ResponseWrapper} from "../../../shared/model/response-wrapper.model";
 import {DmDocumentTypesService} from "../../../entities/dm-document-types/dm-document-types.service";
 import {JhiAlertService, JhiDataUtils, JhiEventManager} from "ng-jhipster";
@@ -6,14 +6,13 @@ import {DmDocumentTypes} from "../../../entities/dm-document-types/dm-document-t
 import {EmEmpDocumentsService} from "../../../entities/em-emp-documents/em-emp-documents.service";
 import {EmEmpDocuments} from "../../../entities/em-emp-documents/em-emp-documents.model";
 import {Subscription} from "rxjs/Subscription";
-import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'jhi-emp-documents',
   templateUrl: './emp-documents.component.html',
   styleUrls: ['./emp-documents.component.css']
 })
-export class EmpDocumentsComponent implements OnInit {
+export class EmpDocumentsComponent implements OnInit, OnDestroy {
     @Input() employee;
     @Input() isEditable;
     documentTypes: DmDocumentTypes[];

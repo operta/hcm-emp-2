@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "leLegalEntityTypes" : {
             "home": {
-                "title": "Le Legal Entity Types",
-                "createLabel": "Create a new Le Legal Entity Types",
-                "createOrEditLabel": "Create or edit a Le Legal Entity Types"
+                "title": "Legal Entity Types",
+                "createLabel": "Create a new Legal Entity Type",
+                "createOrEditLabel": "Create or edit a Legal Entity Type"
             },
-            "created": "A new Le Legal Entity Types is created with identifier {{ param }}",
-            "updated": "A Le Legal Entity Types is updated with identifier {{ param }}",
-            "deleted": "A Le Legal Entity Types is deleted with identifier {{ param }}",
+            "created": "A new Legal Entity Type is created with identifier {{ param }}",
+            "updated": "A Legal Entity Type is updated with identifier {{ param }}",
+            "deleted": "A Legal Entity Type is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Le Legal Entity Types {{ id }}?"
+                "question": "Are you sure you want to delete Legal Entity Type {{ id }}?"
             },
             "detail": {
-                "title": "Le Legal Entity Types"
+                "title": "Legal Entity Type"
             },
             "code": "Code",
             "name": "Name",

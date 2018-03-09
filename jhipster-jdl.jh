@@ -1,0 +1,25 @@
+
+entity OgWorkPlaceSkills {
+	id Integer required,
+    description String,
+    dateSkill LocalDate,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+entity RgSkills{
+
+}
+entity RgSkillGrades{
+
+}
+
+entity OgWorkPlaces{
+
+}
+relationship OneToOne {
+    OgWorkPlaceSkills{idSkill(name)} to RgSkills
+    OgWorkPlaceSkills{idGrade(name)} to RgSkillGrades
+    OgWorkPlaceSkills{idWorkPlace(name)} to OgWorkPlaces
+}

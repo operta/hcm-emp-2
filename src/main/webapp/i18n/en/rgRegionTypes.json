@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "rgRegionTypes" : {
             "home": {
-                "title": "Rg Region Types",
-                "createLabel": "Create a new Rg Region Types",
-                "createOrEditLabel": "Create or edit a Rg Region Types"
+                "title": "Region Types",
+                "createLabel": "Create a new Region Type",
+                "createOrEditLabel": "Create or edit a Region Type"
             },
-            "created": "A new Rg Region Types is created with identifier {{ param }}",
-            "updated": "A Rg Region Types is updated with identifier {{ param }}",
-            "deleted": "A Rg Region Types is deleted with identifier {{ param }}",
+            "created": "A new Region Type is created with identifier {{ param }}",
+            "updated": "A Region Type is updated with identifier {{ param }}",
+            "deleted": "A Region Type is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Rg Region Types {{ id }}?"
+                "question": "Are you sure you want to delete Region Type {{ id }}?"
             },
             "detail": {
-                "title": "Rg Region Types"
+                "title": "Region Type"
             },
             "code": "Code",
             "name": "Name",

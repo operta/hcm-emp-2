@@ -62,7 +62,7 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/rg-regions'], {queryParams:
+        this.router.navigate(['/dashboard/rg-regions'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -74,7 +74,7 @@ currentAccount: any;
 
     clear() {
         this.page = 0;
-        this.router.navigate(['/rg-regions', {
+        this.router.navigate(['/dashboard/rg-regions', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);

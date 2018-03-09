@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {EmEmpSalaries} from "../../../entities/em-emp-salaries/em-emp-salaries.model";
 import {Subscription} from "rxjs/Subscription";
 import {EmEmpSalariesService} from "../../../entities/em-emp-salaries/em-emp-salaries.service";
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
   templateUrl: './emp-payroll-changes.component.html',
   styles: []
 })
-export class EmpPayrollChangesComponent implements OnInit {
+export class EmpPayrollChangesComponent implements OnInit, OnDestroy {
     emEmpSalaries: EmEmpSalaries[];
     currentAccount: any;
     eventSubscriber: Subscription;

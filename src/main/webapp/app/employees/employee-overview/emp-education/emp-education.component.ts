@@ -32,8 +32,8 @@ export class EmpEducationComponent implements OnInit {
     loadAll() {
         this.emEmpSchoolsService.query().subscribe(
             (res: ResponseWrapper) => {
-                let emEmpSchools: EmEmpSchools[] = res.json;
-                this.emEmpSchools = emEmpSchools.filter(x => x.idEmployee.id === this.employeeId);
+                const emEmpSchools: EmEmpSchools[] = res.json;
+                this.emEmpSchools = emEmpSchools.filter((x) => x.idEmployee.id === this.employeeId);
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );

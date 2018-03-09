@@ -99,6 +99,19 @@ public class RgRegionsResource {
     }
 
     /**
+     * GET  /rg-regions : get all the rgRegions.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of rgRegions in body
+     */
+    @GetMapping("/rg-regions/all")
+    @Timed
+    public ResponseEntity<List<RgRegions>> getAllRegions() {
+        log.debug("REST request to get a page of RgRegions");
+        List<RgRegions> rgRegions = rgRegionsRepository.findAll();
+        return  ResponseUtil.wrapOrNotFound(Optional.ofNullable(rgRegions));
+    }
+
+    /**
      * GET  /rg-regions/:id : get the "id" rgRegions.
      *
      * @param id the id of the rgRegions to retrieve

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {EmEmpPreviousJobs} from "../../../entities/em-emp-previous-jobs/em-emp-previous-jobs.model";
 import {Subscription} from "rxjs/Subscription";
 import {EmEmpPreviousJobsService} from "../../../entities/em-emp-previous-jobs/em-emp-previous-jobs.service";
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
     templateUrl: './emp-job-experience.component.html',
     styles: []
 })
-export class EmpJobExperienceComponent implements OnInit {
+export class EmpJobExperienceComponent implements OnInit, OnDestroy {
     emEmpPreviousJobs: EmEmpPreviousJobs[];
     currentAccount: any;
     eventSubscriber: Subscription;

@@ -12,6 +12,9 @@ import { LeLegalEntitiesService } from './le-legal-entities.service';
 import { LeLegalEntityTypes, LeLegalEntityTypesService } from '../le-legal-entity-types';
 import { RgRegions, RgRegionsService } from '../rg-regions';
 import { ResponseWrapper } from '../../shared';
+import {RegionFilterService} from "../../shared/region-filter.service";
+import {ApConstantsService} from "../ap-constants/ap-constants.service";
+import {ApConstants} from "../ap-constants/ap-constants.model";
 
 @Component({
     selector: 'jhi-le-legal-entities-dialog',
@@ -28,14 +31,27 @@ export class LeLegalEntitiesDialogComponent implements OnInit {
     searchableList: string[];
     searchValue = '';
     isHidden = true;
+    states: RgRegions [];
+    countries: RgRegions [];
+    allRegions: RgRegions[];
+    selectedCity: RgRegions;
+    selectedCountry: RgRegions;
+    selectedState: RgRegions;
+    selectedRegion: RgRegions;
+    filteredCities: RgRegions[] = [];
+    filteredStates: RgRegions[] = [];
+    filteredCountries: RgRegions[] = [];
+    constants: ApConstants[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private leLegalEntitiesService: LeLegalEntitiesService,
         private leLegalEntityTypesService: LeLegalEntityTypesService,
-        private rgRegionsService: RgRegionsService,
-        private eventManager: JhiEventManager
+        private regionsService: RgRegionsService,
+        private eventManager: JhiEventManager,
+        private regionFilterService: RegionFilterService,
+        private apConstantsService: ApConstantsService
     ) {
     }
 
@@ -55,36 +71,123 @@ export class LeLegalEntitiesDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-        this.rgRegionsService
-            .query({filter: 'lelegalentities-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.leLegalEntities.region || !this.leLegalEntities.region.id) {
-                    this.regions = res.json;
-                } else {
-                    this.rgRegionsService
-                        .find(this.leLegalEntities.region.id)
-                        .subscribe((subRes: RgRegions) => {
-                            this.regions = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-                this.filterRegionsByCity();
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.setRegions(this.leLegalEntities.region);
+
+        this.apConstantsService.query().subscribe(
+            (res) => this.onSuccess(res.json),
+            (res) => console.log(res.json)
+        );
     }
 
-    openRegionSelect() {
-        // console.log(this.regionSelect.ope);
+    setRegions(cityRegion: any) {
+        if(cityRegion) {
+            this.selectedCity = cityRegion;
+            this.filteredCities.push(this.selectedCity);
+            if(cityRegion.idParent) {
+                this.selectedState = cityRegion.idParent;
+                this.filteredStates.push(this.selectedState);
+                if(cityRegion.idParent.idParent) {
+                    this.selectedCountry = cityRegion.idParent.idParent;
+                    this.filteredCountries.push(this.selectedCountry);
+                    if(cityRegion.idParent.idParent.idParent) {
+                        this.selectedRegion = cityRegion.idParent.idParent.idParent
+                    }
+                }
+            }
+        }
     }
+
+    onSuccess(data) {
+        this.constants = data;
+        this.loadRegions();
+    }
+
+    onRegionsSuccess(data) {
+        console.log(data);
+        this.allRegions = data;
+        this.cities = this.regionFilterService.filterRegionsByType(
+            data, this.constants.find((item) => item.key == "regionTypeCityId").value
+        );
+        this.states = this.regionFilterService.filterRegionsByType(
+            data, this.constants.find((item) => item.key == "regionTypeStateId").value
+        );
+        this.countries = this.regionFilterService.filterRegionsByType(
+            data, this.constants.find((item) => item.key == "regionTypeCountryId").value
+        );
+        this.regions = this.regionFilterService.filterRegionsByType(
+            data, this.constants.find((item) => item.key == "regionTypeRegionId").value
+        );
+    }
+    loadRegions() {
+        this.regionsService.findAll().subscribe(
+            (res) => this.onRegionsSuccess(res.json),
+            (res) => console.log(res.json)
+        );
+    }
+
+    onRegionSelected(value: string) {
+        this.selectedCity = null;
+        this.selectedCountry = null;
+        this.selectedState = null;
+        this.selectedRegion = this.regions.find((item) => item.name == value);
+        this.filteredCountries = [];
+        this.filteredCities = [];
+        this.filteredStates = [];
+        if(value) {
+            this.filteredCountries = this.regionFilterService.getChildrenRegionsByParentRegionName(
+                this.allRegions,
+                value,
+                this.constants.find((item) => item.key == "regionTypeCountryId").value
+            );
+        }
+    }
+
+    onCountrySelected(value: string) {
+        this.selectedCity = null;
+        this.selectedState = null;
+        this.selectedCountry = this.countries.find((item) => item.name == value);
+        this.filteredCities = [];
+        this.filteredStates = [];
+        if(value) {
+            console.log(value);
+            this.filteredStates = this.regionFilterService.getChildrenRegionsByParentRegionName(
+                this.allRegions,
+                value,
+                this.constants.find((item) => item.key == "regionTypeStateId").value
+            );
+            console.log(this.filteredStates);
+        }
+    }
+
+    onStateSelected(value: string) {
+        this.selectedCity = null;
+        this.selectedState = this.states.find((item) => item.name == value);
+        this.filteredCities = [];
+        if(value) {
+            this.filteredCities = this.regionFilterService.getChildrenRegionsByParentRegionName(
+                this.allRegions,
+                value,
+                this.constants.find((item) => item.key == "regionTypeCityId").value
+            );
+        }
+    }
+
+    onCitySelected(value: string) {
+        if(value){
+            this.selectedCity = this.cities.find((item) => item.name === value);
+        }
+    }
+
 
     clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    filterRegionsByCity(){
-        this.cities = this.regions.filter((item) => item.idType.id == 4);
-    }
-
     save() {
         this.isSaving = true;
+        if(this.selectedCity){
+            this.leLegalEntities.region = this.selectedCity;
+        }
         if (this.leLegalEntities.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.leLegalEntitiesService.update(this.leLegalEntities));

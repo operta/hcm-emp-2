@@ -5,6 +5,7 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { LoginService } from './login.service';
 import { StateStorageService } from '../auth/state-storage.service';
+import {Principal} from "../auth/principal.service";
 
 @Component({
     selector: 'jhi-login-modal',
@@ -26,7 +27,8 @@ export class JhiLoginModalComponent implements AfterViewInit {
         private elementRef: ElementRef,
         private renderer: Renderer,
         private router: Router,
-        public activeModal: NgbActiveModal
+        public activeModal: NgbActiveModal,
+        private principal: Principal
     ) {
         this.credentials = {};
     }
@@ -70,7 +72,13 @@ export class JhiLoginModalComponent implements AfterViewInit {
                 this.stateStorageService.storeUrl(null);
                 this.router.navigate([redirect]);
             }
-            this.router.navigate(['/dashboard/employee-dashboard']);
+            this.principal.identity().then((account) => {
+                if(account.authorities.length > 0){
+                    this.router.navigate(['/dashboard/employees']);
+                }
+                this.router.navigate(['/dashboard/employee-overview/', { userId: account.id}]);
+            });
+
         }).catch(() => {
             this.authenticationError = true;
         });

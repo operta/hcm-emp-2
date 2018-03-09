@@ -1,56 +1,48 @@
 
 <h3 class="box-title">Emergency contact</h3>
+<div class="pull-right" style="margin-top: -35px;margin-right: 15px;">
+    <a *ngIf="isEditable && !contact" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-emg-contacts-new/' + employee.id} }]">
+        <i class="fa fa-plus action-button-at"></i>
+    </a>
+    <a *ngIf="isEditable && contact" class="popup-with-form btn btn-danger btn-sm" style="font-size:20px;padding-top: 0px;"  [routerLink]="['/', { outlets: {popup: 'em-emp-emg-contacts/'+ contact?.id + '/delete'} }]">
+        <span class="fa fa-remove"></span>
+    </a>
+</div>
 <hr class="m-t-0 m-b-40">
-<div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label class="control-label col-md-3">Name:</label>
-            <div class="col-md-9">
-                <p class="form-control-static">/</p>
+<div *ngIf="contact">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-3">First Name:</label>
+                <div class="col-md-9">
+                    <p class="form-control-static">{{contact?.firstName}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-3">Last Name:</label>
+                <div class="col-md-9">
+                    <p class="form-control-static">{{contact?.lastName}}</p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label class="control-label col-md-3">Relationship:</label>
-            <div class="col-md-9">
-                <p class="form-control-static">/</p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-3">Phone number:</label>
+                <div class="col-md-9">
+                    <p class="form-control-static">{{contact?.phoneNumber}}</p>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label class="control-label col-md-3">Phone number:</label>
-            <div class="col-md-9">
-                <p class="form-control-static">/</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label class="control-label col-md-3">Email:</label>
-            <div class="col-md-9">
-                <p class="form-control-static">/</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label class="control-label col-md-3">Adress:</label>
-            <div class="col-md-9">
-                <p class="form-control-static">/</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label class="control-label col-md-3">City:</label>
-            <div class="col-md-9">
-                <p class="form-control-static">/</p>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-3">Email:</label>
+                <div class="col-md-9">
+                    <p class="form-control-static">{{contact?.email}}</p>
+                </div>
             </div>
         </div>
     </div>

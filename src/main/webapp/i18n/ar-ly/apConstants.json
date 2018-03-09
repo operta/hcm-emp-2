@@ -1,0 +1,22 @@
+{
+    "hcmEmpApp": {
+        "apConstants" : {
+            "home": {
+                "title": "Ap Constants",
+                "createLabel": "Create a new Ap Constants",
+                "createOrEditLabel": "Create or edit a Ap Constants"
+            },
+            "created": "A new Ap Constants is created with identifier {{ param }}",
+            "updated": "A Ap Constants is updated with identifier {{ param }}",
+            "deleted": "A Ap Constants is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ap Constants {{ id }}?"
+            },
+            "detail": {
+                "title": "Ap Constants"
+            },
+            "key": "Key",
+            "value": "Value"
+        }
+    }
+}

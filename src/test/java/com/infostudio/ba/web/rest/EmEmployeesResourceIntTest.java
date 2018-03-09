@@ -161,7 +161,7 @@ public class EmEmployeesResourceIntTest {
             .hireDate(DEFAULT_HIRE_DATE)
             .ssn(DEFAULT_SSN)
             .taxNumber(DEFAULT_TAX_NUMBER)
-            .imagePath(DEFAULT_IMAGE_PATH)
+//            .imagePath(DEFAULT_IMAGE_PATH)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
             .email(DEFAULT_EMAIL)
             .createdBy(DEFAULT_CREATED_BY)
@@ -206,7 +206,7 @@ public class EmEmployeesResourceIntTest {
         assertThat(testEmEmployees.getHireDate()).isEqualTo(DEFAULT_HIRE_DATE);
         assertThat(testEmEmployees.getSsn()).isEqualTo(DEFAULT_SSN);
         assertThat(testEmEmployees.getTaxNumber()).isEqualTo(DEFAULT_TAX_NUMBER);
-        assertThat(testEmEmployees.getImagePath()).isEqualTo(DEFAULT_IMAGE_PATH);
+//        assertThat(testEmEmployees.getImagePath()).isEqualTo(DEFAULT_IMAGE_PATH);
         assertThat(testEmEmployees.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
         assertThat(testEmEmployees.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testEmEmployees.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
@@ -375,7 +375,7 @@ public class EmEmployeesResourceIntTest {
             .hireDate(UPDATED_HIRE_DATE)
             .ssn(UPDATED_SSN)
             .taxNumber(UPDATED_TAX_NUMBER)
-            .imagePath(UPDATED_IMAGE_PATH)
+//            .imagePath(UPDATED_IMAGE_PATH)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .email(UPDATED_EMAIL)
             .createdBy(UPDATED_CREATED_BY)
@@ -407,7 +407,7 @@ public class EmEmployeesResourceIntTest {
         assertThat(testEmEmployees.getHireDate()).isEqualTo(UPDATED_HIRE_DATE);
         assertThat(testEmEmployees.getSsn()).isEqualTo(UPDATED_SSN);
         assertThat(testEmEmployees.getTaxNumber()).isEqualTo(UPDATED_TAX_NUMBER);
-        assertThat(testEmEmployees.getImagePath()).isEqualTo(UPDATED_IMAGE_PATH);
+//        assertThat(testEmEmployees.getImagePath()).isEqualTo(UPDATED_IMAGE_PATH);
         assertThat(testEmEmployees.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testEmEmployees.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testEmEmployees.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);

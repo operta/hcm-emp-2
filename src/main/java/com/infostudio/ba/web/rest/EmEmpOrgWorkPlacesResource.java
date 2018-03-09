@@ -3,6 +3,7 @@ package com.infostudio.ba.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.infostudio.ba.domain.EmEmpOrgWorkPlaces;
 
+import com.infostudio.ba.domain.EmEmployees;
 import com.infostudio.ba.repository.EmEmpOrgWorkPlacesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
@@ -112,6 +113,7 @@ public class EmEmpOrgWorkPlacesResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(emEmpOrgWorkPlaces));
     }
 
+
     /**
      * GET  /em-emp-org-work-places/employee/:id : get the "id" emEmpOrgWorkPlaces.
      *
@@ -120,10 +122,11 @@ public class EmEmpOrgWorkPlacesResource {
      */
     @GetMapping("/em-emp-org-work-places/employee/{id}")
     @Timed
-    public ResponseEntity<EmEmpOrgWorkPlaces> getLastEmployeeWorkPlace(@PathVariable Long id) {
+    @ResponseStatus(value = HttpStatus.OK)
+    public EmEmpOrgWorkPlaces getLastEmployeeWorkPlace(@PathVariable Long id) {
         log.debug("REST request to get last employee work place : {}", id);
         EmEmpOrgWorkPlaces emEmpOrgWorkPlaces = emEmpOrgWorkPlacesRepository.findTopByIdEmployeeIdOrderByDateFromDesc(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(emEmpOrgWorkPlaces));
+        return emEmpOrgWorkPlaces;
     }
 
     /**

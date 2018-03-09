@@ -10,7 +10,7 @@
         ],
         "curly": true,
         "eofline": true,
-        "forin": true,
+        "forin": false,
         "indent": [
             true,
             "spaces"
@@ -89,12 +89,12 @@
             "check-separator",
             "check-type"
         ],
-        "prefer-const": true,
+        "prefer-const": false,
         "arrow-parens": [true],
         "arrow-return-shorthand": [true],
         "import-spacing": true,
         "no-consecutive-blank-lines": [false],
-        "object-literal-shorthand": true,
+        "object-literal-shorthand": false,
         "space-before-function-paren": [true, "never"],
         "directive-selector": [true, "attribute", "jhi", "camelCase"],
         "component-selector": [true, "element", "jhi", "kebab-case"],

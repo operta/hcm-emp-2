@@ -1,46 +1,7 @@
 {
     "fluentMethods": true,
     "relationships": [],
-    "fields": [
-        {
-            "fieldName": "code",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "name",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "field",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdAt",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "updatedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "updatedAt",
-            "fieldType": "Instant"
-        }
-    ],
+    "fields": [],
     "changelogDate": "20180222122928",
     "entityTableName": "rg_skills",
     "dto": "no",

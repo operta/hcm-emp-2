@@ -29,6 +29,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     version: string;
     name: string;
     isAdministrationCollapsed: boolean;
+    isOthersCollapsed: boolean;
+    isModulesCollapsed: boolean;
     accountId: number;
     employee: any;
     eventSubscriber: Subscription;
@@ -49,6 +51,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isEntityCollapsed = this.navbarService.getIsEntityCollapsed();
         this.isAdministrationCollapsed = this.navbarService.getIsAdministrationCollapsed();
+        this.isOthersCollapsed = this.navbarService.getIsOthersCollapsed();
+        this.isModulesCollapsed = this.navbarService.getIsModulesCollapsed();
     }
 
     ngOnInit() {
@@ -79,11 +83,19 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
     loadEmployee() {
         this.employeeService.findByUser(this.accountId).subscribe(
-            (employee) => {
-                this.employee = employee;
+            (employee: any) => {
+                if (employee) {
+                    this.employee = employee;
+                }
             },
-            (error) => console.log(error)
+            (error) => ''
         );
+    }
+
+    isActive() {
+        return this.router.isActive('/dashboard/employee-new',true) || this.router.isActive('/dashboard/employee-overview', true) ? 'active' : '';
+        // router  is an instance of Router, injected in the constructor
+        // return this.router.isActive('/url-to-make-body-active') || this.router.isActive('/other-url-to-make-body-active') ? 'col-sm-9' : '';
     }
 
     registerChange() {
@@ -92,21 +104,21 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     generateImage(employee:any): any{
-        var binaryData = [];
+        const binaryData = [];
         binaryData.push(employee.imageBlob);
         let objectUrl =  URL.createObjectURL(new Blob(binaryData, {type: employee.imageBlobContentType}));
-        var dataUrl = 'data:' + employee.imageBlobContentType + ';base64,' + employee.imageBlob;
+        const dataUrl = 'data:' + employee.imageBlobContentType + ';base64,' + employee.imageBlob;
         objectUrl = URL.createObjectURL(this.dataURItoBlob(dataUrl));
-        let url = this.sanitizer.bypassSecurityTrustResourceUrl(objectUrl);
+        const url = this.sanitizer.bypassSecurityTrustResourceUrl(objectUrl);
 
         return url;
     }
 
     dataURItoBlob(dataURI) {
-        var mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
-        var binary = atob(dataURI.split(',')[1]);
-        var array = [];
-        for (var i = 0; i < binary.length; i++) {
+        const mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        const binary = atob(dataURI.split(',')[1]);
+        const array = [];
+        for (let i = 0; i < binary.length; i++) {
             array.push(binary.charCodeAt(i));
         }
         return new Blob([new Uint8Array(array)], {type: mime});
@@ -127,19 +139,42 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         this.navbarService.toggleAdministration();
         this.isAdministrationCollapsed = this.navbarService.getIsAdministrationCollapsed();
         this.isEntityCollapsed = this.navbarService.getIsEntityCollapsed();
-
+        this.isOthersCollapsed = this.navbarService.getIsOthersCollapsed();
+        this.isModulesCollapsed = this.navbarService.getIsModulesCollapsed();
     }
 
     toggleEntity() {
         this.navbarService.toggleEntity();
         this.isEntityCollapsed = this.navbarService.getIsEntityCollapsed();
         this.isAdministrationCollapsed = this.navbarService.getIsAdministrationCollapsed();
-
+        this.isOthersCollapsed = this.navbarService.getIsOthersCollapsed();
+        this.isModulesCollapsed = this.navbarService.getIsModulesCollapsed();
     }
+
+    toggleOthers() {
+        this.navbarService.toggleOthers();
+        this.isEntityCollapsed = this.navbarService.getIsEntityCollapsed();
+        this.isAdministrationCollapsed = this.navbarService.getIsAdministrationCollapsed();
+        this.isOthersCollapsed = this.navbarService.getIsOthersCollapsed();
+        this.isModulesCollapsed = this.navbarService.getIsModulesCollapsed();
+    }
+
+    toggleModules() {
+        this.navbarService.toggleModules();
+        this.isEntityCollapsed = this.navbarService.getIsEntityCollapsed();
+        this.isAdministrationCollapsed = this.navbarService.getIsAdministrationCollapsed();
+        this.isOthersCollapsed = this.navbarService.getIsOthersCollapsed();
+        this.isModulesCollapsed = this.navbarService.getIsModulesCollapsed();
+    }
+
 
     collapseLists() {
         this.isEntityCollapsed = true;
         this.isAdministrationCollapsed = true;
+        this.isOthersCollapsed = true;
+        this.isModulesCollapsed = true;
+        this.navbarService.setIsModulesCollapsed(true);
+        this.navbarService.setIsOthersCollapsed(true);
         this.navbarService.setIsEntityCollapsed(true);
         this.navbarService.setIsAdministrationCollapsed(true);
     }
@@ -148,8 +183,6 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     changeLanguage(languageKey: string) {
       this.languageService.changeLanguage(languageKey);
     }
-
-
 
     isAuthenticated() {
         return this.principal.isAuthenticated();
@@ -165,10 +198,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         this.router.navigate(['']);
     }
 
-
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;
     }
-
-
 }

@@ -62,7 +62,7 @@
             <label class="form-control-label"  for="field_idOrganization">Organization</label>
             <select class="form-control" id="field_idOrganization" name="idOrganization" [(ngModel)]="organization" (mouseleave)="filterOrganizationWorkplaces()"  (click)="filterOrganizationWorkplaces()">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="ogOrganizationsOption.id === emEmpOrgWorkPlaces.idOrgWorkPlace?.idOrganization.id ? emEmpOrgWorkPlaces.idOrgWorkPlace?.idOrganization : ogOrganizationsOption" *ngFor="let ogOrganizationsOption of organizations">{{ogOrganizationsOption.name}}</option>
+                <option [ngValue]="ogOrganizationsOption" *ngFor="let ogOrganizationsOption of organizations">{{ogOrganizationsOption.name}}</option>
             </select>
         </div>
         <div class="row">

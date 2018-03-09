@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.home.title">Og Work Place Skills</span>
+        <button class="btn btn-primary float-right jh-create-entity create-og-work-place-skills" [routerLink]="['/', { outlets: { popup: 'og-work-place-skills-new/' + workplace.id } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.home.createLabel">
+            Create new Og Work Place Skills
+            </span>
+        </button>
+    </h2>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ogWorkPlaceSkills">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.description">Description</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.dateSkill">Date Skill</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.idSkill">Id Skill</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.idGrade">Id Grade</span></th>
+            <th><span jhiTranslate="hcmEmpApp.ogWorkPlaceSkills.idWorkPlace">Id Work Place</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ogWorkPlaceSkills of ogWorkPlaceSkills ;trackBy: trackId">
+                <td>
+                    <!--<a [routerLink]="['../og-work-place-skills', ogWorkPlaceSkills.id ]"></a>-->
+                    {{ogWorkPlaceSkills.id}}
+                </td>
+                <td>{{ogWorkPlaceSkills.description}}</td>
+                <td>{{ogWorkPlaceSkills.dateSkill | date:'mediumDate'}}</td>
+                <td>{{ogWorkPlaceSkills.createdBy}}</td>
+                <td>{{ogWorkPlaceSkills.createdAt | date:'medium'}}</td>
+                <td>{{ogWorkPlaceSkills.updatedBy}}</td>
+                <td>{{ogWorkPlaceSkills.updatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="ogWorkPlaceSkills.idSkill">
+                        <a [routerLink]="['../../../dashboard/rg-skills', ogWorkPlaceSkills.idSkill?.id ]" >{{ogWorkPlaceSkills.idSkill?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ogWorkPlaceSkills.idGrade">
+                        <a [routerLink]="['../../../dashboard/rg-skill-grades', ogWorkPlaceSkills.idGrade?.id ]" >{{ogWorkPlaceSkills.idGrade?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ogWorkPlaceSkills.idWorkPlace">
+                        <!--<a [routerLink]="['../../../dashboard/og-work-places', ogWorkPlaceSkills.idWorkPlace?.id ]" >-->
+                        <!--</a>-->
+                        {{ogWorkPlaceSkills.idWorkPlace?.name}}
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['../../../dashboard/og-work-place-skills', ogWorkPlaceSkills.id ]"-->
+                                <!--class="btn btn-info btn-sm">-->
+                            <!--<span class="fa fa-eye"></span>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+                        <!--</button>-->
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'og-work-place-skills/'+ ogWorkPlaceSkills.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'og-work-place-skills/'+ ogWorkPlaceSkills.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

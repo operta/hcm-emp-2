@@ -1,0 +1,38 @@
+entity OgWorkPlaceSkills {
+	id Integer required,
+    description String,
+    dateSkill LocalDate,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+entity EmEmpEmgContacts {
+	id Integer required,
+    contact String,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+entity EmEmployees{
+
+}
+entity RgContactTypes{
+	id Integer required,
+    code String,
+    name String required,
+    description String,
+    createdBy String,
+    createdAt Instant,
+    updatedBy String,
+    updatedAt Instant
+}
+
+
+relationship OneToOne {
+    EmEmpEmgContacts{idEmployee(id)} to EmEmployees
+    EmEmpEmgContacts{idContactType(name)} to RgContactTypes
+}

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
         });
 
         if (this.isAuthenticated()) {
-            this.router.navigate(['/dashboard/employee-dashboard']);
+            this.router.navigate(['/dashboard/employees']);
         }
         this.registerAuthenticationSuccess();
     }

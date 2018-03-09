@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idEmployee",
+            "otherEntityName": "emEmployees",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpEmgContacts"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "idContactType",
+            "otherEntityName": "rgContactTypes",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "emEmpEmgContacts"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "contact",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180307143122",
+    "entityTableName": "em_emp_emg_contacts",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

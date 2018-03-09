@@ -25,7 +25,7 @@ export class EmpPersonalInfoComponent implements OnInit, OnDestroy {
 
     registerChangeInPersonalInformation() {
         this.eventSubscriber = this.eventManager.subscribe('EmployeeListModification', (response) =>   {
-            this.employeeService.find(this.employee.id).subscribe(item => this.employee = item)
+            this.employeeService.find(this.employee.id).subscribe((item) => this.employee = item)
         });
     }
 

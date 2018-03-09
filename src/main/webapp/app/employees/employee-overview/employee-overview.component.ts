@@ -58,8 +58,10 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
     loadEmployeeWorkPlace() {
         this.employeeWorkPlaceService.findLastWorkPlaceForEmployee(this.employee.id).subscribe(
             (workplace) => {
-                this.employeeWorkPlace = workplace
-            }
+                if(workplace){
+                    this.employeeWorkPlace = workplace;
+                }
+            }, (error) => ''
         );
     }
 
@@ -116,27 +118,25 @@ export class EmployeeOverviewComponent implements OnInit, AfterViewInit, OnDestr
     }
 
     private onSaveError() {
-       console.log('ERROR');
     }
 
     dataURItoBlob(dataURI) {
-        var mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
-        var binary = atob(dataURI.split(',')[1]);
-        var array = [];
-        for (var i = 0; i < binary.length; i++) {
+        const mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        const binary = atob(dataURI.split(',')[1]);
+        const array = [];
+        for (let i = 0; i < binary.length; i++) {
             array.push(binary.charCodeAt(i));
         }
         return new Blob([new Uint8Array(array)], {type: mime});
     }
 
     generateImage(employee:any){
-        var binaryData = [];
+        const binaryData = [];
         binaryData.push(employee.imageBlob);
         this.objectUrl =  URL.createObjectURL(new Blob(binaryData, {type: employee.imageBlobContentType}));
-        var dataUrl = 'data:' + employee.imageBlobContentType + ';base64,' + employee.imageBlob;
+        const dataUrl = 'data:' + employee.imageBlobContentType + ';base64,' + employee.imageBlob;
         this.objectUrl = URL.createObjectURL(this.dataURItoBlob(dataUrl));
         this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.objectUrl);
-        console.log(this.trustedUrl);
     }
 
 

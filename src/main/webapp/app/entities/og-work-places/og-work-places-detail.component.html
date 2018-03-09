@@ -1,8 +1,28 @@
 
 <div *ngIf="ogWorkPlaces">
-    <h2><span jhiTranslate="hcmEmpApp.ogWorkPlaces.detail.title">Og Work Places</span> - {{ogWorkPlaces.name}}</h2>
-    <hr>
+    <jhi-alert></jhi-alert>
     <jhi-alert-error></jhi-alert-error>
+    <h2><span jhiTranslate="hcmEmpApp.ogWorkPlaces.detail.title">Og Work Places</span> - {{ogWorkPlaces.name}}</h2>
+    <div class="pull-right" style="margin-top: -45px">
+        <button type="button"
+                [routerLink]="['/', { outlets: { popup: 'og-work-places/'+ ogWorkPlaces.id + '/edit'} }]"
+                replaceUrl="true"
+                queryParamsHandling="merge"
+                class="btn btn-primary"
+                >
+            <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+        </button>
+        <button type="submit"
+                (click)="previousState()"
+                class="btn btn-info"
+                >
+            <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+        </button>
+    </div>
+
+
+    <hr>
+
     <!-- /.row -->
     <div class="row">
         <div class="col-md-12">
@@ -14,7 +34,7 @@
                 <h3><b>TYPE</b>
                     <span class="pull-right">
                         <div *ngIf="ogWorkPlaces.idWorkPlaceType">
-                            <a [routerLink]="['/og-work-place-types', ogWorkPlaces.idWorkPlaceType?.id]">{{ogWorkPlaces.idWorkPlaceType?.name}}</a>
+                            <a [routerLink]="['/dashboard/og-work-place-types', ogWorkPlaces.idWorkPlaceType?.id]">{{ogWorkPlaces.idWorkPlaceType?.name}}</a>
                         </div>
                     </span>
                 </h3>
@@ -22,7 +42,7 @@
                 <h3><b>PARENT</b>
                     <span class="pull-right">
                         <div *ngIf="ogWorkPlaces.idParent">
-                            <a [routerLink]="['/og-work-places', ogWorkPlaces.idParent?.id]">{{ogWorkPlaces.idParent?.name}}</a>
+                            <a [routerLink]="['/dashboard/og-work-places', ogWorkPlaces.idParent?.id]">{{ogWorkPlaces.idParent?.name}}</a>
                         </div>
                     </span>
                 </h3>
@@ -32,49 +52,9 @@
                     {{ogWorkPlaces.description}}
                 </p>
                 <hr>
-                <h3> &nbsp;<b class="text-danger">Workplace Skills</b></h3>
-                <div class="row">
+                <div class="row" style="border: 1px solid black;">
                     <div class="col-md-12">
-                        <div class="table-responsive m-t-40">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th>Description</th>
-                                    <th class="text-right">Quantity</th>
-                                    <th class="text-right">Unit Cost</th>
-                                    <th class="text-right">Total</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>Milk Powder</td>
-                                    <td class="text-right">2 </td>
-                                    <td class="text-right"> $24 </td>
-                                    <td class="text-right"> $48 </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="col-md-12">
-                        <div class="text-right">
-                            <button type="submit"
-                                    (click)="previousState()"
-                                    class="btn btn-info">
-                                <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-                            </button>
-
-                            <button type="button"
-                                    [routerLink]="['/', { outlets: { popup: 'og-work-places/'+ ogWorkPlaces.id + '/edit'} }]"
-                                    replaceUrl="true"
-                                    queryParamsHandling="merge"
-                                    class="btn btn-primary">
-                                <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-                            </button>
-                        </div>
+                        <jhi-og-work-place-skills [workplace]="ogWorkPlaces"></jhi-og-work-place-skills>
                     </div>
                     <hr>
                 </div>

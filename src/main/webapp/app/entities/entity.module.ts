@@ -44,6 +44,11 @@ import { HcmEmpRgSkillsModule } from './rg-skills/rg-skills.module';
 import { HcmEmpRgSkillGradesModule } from './rg-skill-grades/rg-skill-grades.module';
 import { HcmEmpEmEmpSkillsModule } from './em-emp-skills/em-emp-skills.module';
 import { HcmEmpEmPenaltiesModule } from './em-penalties/em-penalties.module';
+import { HcmEmpOgWorkPlaceSkillsModule } from './og-work-place-skills/og-work-place-skills.module';
+import { HcmEmpEmEmpEmgContactsModule } from './em-emp-emg-contacts/em-emp-emg-contacts.module';
+import { HcmEmpRgContactTypesModule } from './rg-contact-types/rg-contact-types.module';
+import {BusyModule} from "angular2-busy";
+import { HcmEmpApConstantsModule } from './ap-constants/ap-constants.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -92,6 +97,9 @@ import { HcmEmpEmPenaltiesModule } from './em-penalties/em-penalties.module';
         HcmEmpRgSkillGradesModule,
         HcmEmpEmEmpSkillsModule,
         HcmEmpEmPenaltiesModule,
+        HcmEmpEmEmpEmgContactsModule,
+        HcmEmpRgContactTypesModule,
+        HcmEmpApConstantsModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

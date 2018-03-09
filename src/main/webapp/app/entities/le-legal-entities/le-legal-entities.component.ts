@@ -12,8 +12,8 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
     templateUrl: './le-legal-entities.component.html'
 })
 export class LeLegalEntitiesComponent implements OnInit, OnDestroy {
-
-currentAccount: any;
+    busy: Subscription;
+    currentAccount: any;
     leLegalEntities: LeLegalEntities[];
     error: any;
     success: any;
@@ -47,7 +47,7 @@ currentAccount: any;
     }
 
     loadAll() {
-        this.leLegalEntitiesService.query({
+        this.busy = this.leLegalEntitiesService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
             sort: this.sort()}).subscribe(
@@ -62,7 +62,7 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/le-legal-entities'], {queryParams:
+        this.router.navigate(['/dashboard/le-legal-entities'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -74,7 +74,7 @@ currentAccount: any;
 
     clear() {
         this.page = 0;
-        this.router.navigate(['/le-legal-entities', {
+        this.router.navigate(['/dashboard/le-legal-entities', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);
@@ -90,6 +90,7 @@ currentAccount: any;
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
+        this.busy.unsubscribe();
     }
 
     trackId(index: number, item: LeLegalEntities) {

@@ -1,18 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
-
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-
 import { EmEmpBankAccounts } from './em-emp-bank-accounts.model';
 import { EmEmpBankAccountsPopupService } from './em-emp-bank-accounts-popup.service';
 import { EmEmpBankAccountsService } from './em-emp-bank-accounts.service';
 import { EmEmployees, EmEmployeesService } from '../em-employees';
 import { LeLegalEntities, LeLegalEntitiesService } from '../le-legal-entities';
 import { ResponseWrapper } from '../../shared';
-import {Subscription} from "rxjs/Subscription";
+import {ApConstantsService} from "../ap-constants/ap-constants.service";
 
 @Component({
     selector: 'jhi-em-emp-bank-accounts-dialog',
@@ -33,7 +31,8 @@ export class EmEmpBankAccountsDialogComponent implements OnInit {
         private emEmployeesService: EmEmployeesService,
         private leLegalEntitiesService: LeLegalEntitiesService,
         private eventManager: JhiEventManager,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private apConstantsService: ApConstantsService
     ) {
     }
 
@@ -54,11 +53,14 @@ export class EmEmpBankAccountsDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-        this.leLegalEntitiesService.findByIdEntityType(24601).subscribe(
-            (items) => this.idbanks = items,
-            (subRes: ResponseWrapper) => this.onError(subRes.json)
+        this.apConstantsService.findByKey('legalEntityTypeBankId').subscribe((item) => {
+            this.leLegalEntitiesService.findByIdEntityType(item.value).subscribe(
+                (items) => this.idbanks = items,
+                (subRes: ResponseWrapper) => this.onError(subRes.json)
 
-        );
+            );
+        });
+
     }
 
     clear() {

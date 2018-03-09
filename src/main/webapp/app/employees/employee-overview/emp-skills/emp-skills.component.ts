@@ -39,7 +39,6 @@ export class EmpSkillsComponent implements OnInit, OnDestroy {
 
     private onSuccess(data) {
         this.skills = data;
-        console.log(this.skills);
     }
 
     private onError(error) {

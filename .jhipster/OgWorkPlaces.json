@@ -1,42 +1,7 @@
 {
     "fluentMethods": true,
     "relationships": [],
-    "fields": [
-        {
-            "fieldName": "code",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "name",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdAt",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "updatedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "updatedAt",
-            "fieldType": "Instant"
-        }
-    ],
+    "fields": [],
     "changelogDate": "20180202093519",
     "entityTableName": "og_work_places",
     "dto": "no",

@@ -50,6 +50,11 @@
                 "rgSkillGrades": "Skill Grades",
                 "emEmpSkills": "Employee Skills",
                 "emPenalties": "Emplotee Penalties",
+                "ogWorkPlaceSkills": "Og Work Place Skills",
+                "emEmployees": "Em Employees",
+                "emEmpEmgContacts": "Em Emp Emg Contacts",
+                "rgContactTypes": "Rg Contact Types",
+                "apConstants": "Ap Constants",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

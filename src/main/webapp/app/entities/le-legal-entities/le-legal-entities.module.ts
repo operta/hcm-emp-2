@@ -15,6 +15,7 @@ import {
     leLegalEntitiesPopupRoute,
     LeLegalEntitiesResolvePagingParams,
 } from './';
+import {BusyModule} from "angular2-busy";
 
 const ENTITY_STATES = [
     ...leLegalEntitiesRoute,
@@ -24,7 +25,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         HcmEmpSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        BusyModule
     ],
     declarations: [
         LeLegalEntitiesComponent,

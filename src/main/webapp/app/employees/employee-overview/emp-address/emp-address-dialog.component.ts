@@ -13,6 +13,9 @@ import {RgRegions} from "../../../entities/rg-regions/rg-regions.model";
 import {EmEmployees} from "../../../entities/em-employees/em-employees.model";
 import {Principal} from "../../../shared/auth/principal.service";
 import {EmEmployeesService} from "../../../entities/em-employees/em-employees.service";
+import {ApConstantsService} from "../../../entities/ap-constants/ap-constants.service";
+import {ApConstants} from "../../../entities/ap-constants/ap-constants.model";
+import {RegionFilterService} from "../../../shared/region-filter.service";
 
 @Component({
     selector: 'jhi-emp-personal-info-dialog',
@@ -21,10 +24,12 @@ import {EmEmployeesService} from "../../../entities/em-employees/em-employees.se
 export class EmpAddressDialogComponent implements OnInit {
     legalEntity: LeLegalEntities;
     isSaving: boolean;
+    employee: EmEmployees;
     cities: RgRegions [];
     states: RgRegions [];
     countries: RgRegions [];
     regions: RgRegions [];
+    allRegions: RgRegions[];
     selectedCity: RgRegions;
     selectedCountry: RgRegions;
     selectedState: RgRegions;
@@ -33,8 +38,7 @@ export class EmpAddressDialogComponent implements OnInit {
     filteredCities: RgRegions[];
     filteredStates: RgRegions[];
     filteredCountries: RgRegions[];
-    filteredRegions: RgRegions[];
-    employee: EmEmployees;
+    constants: ApConstants[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -42,7 +46,9 @@ export class EmpAddressDialogComponent implements OnInit {
         private regionsService: RgRegionsService,
         private eventManager: JhiEventManager,
         private principal: Principal,
-        private employeeeService: EmEmployeesService) {
+        private employeeeService: EmEmployeesService,
+        private appConstantsService: ApConstantsService,
+        private regionFilterService: RegionFilterService) {
     }
 
     setRegions(cityRegion: any) {
@@ -60,77 +66,85 @@ export class EmpAddressDialogComponent implements OnInit {
         }
     }
 
+    onSuccess(data) {
+        this.constants = data;
+        this.loadRegions();
+    }
+
+    onRegionsSuccess(data) {
+        this.allRegions = data;
+        this.cities = this.regionFilterService.filterRegionsByType(
+            data, this.constants.find((item) => item.key == "regionTypeCityId").value
+        );
+        this.states = this.regionFilterService.filterRegionsByType(
+            data, this.constants.find((item) => item.key == "regionTypeStateId").value
+        );
+        this.countries = this.regionFilterService.filterRegionsByType(
+            data, this.constants.find((item) => item.key == "regionTypeCountryId").value
+        );
+        this.regions = this.regionFilterService.filterRegionsByType(
+            data, this.constants.find((item) => item.key == "regionTypeRegionId").value
+        );
+    }
+    loadRegions() {
+        this.regionsService.query().subscribe(
+            (res) => this.onRegionsSuccess(res.json),
+            (res) => console.log(res.json)
+        );
+    }
     ngOnInit() {
         this.setRegions(this.legalEntity.region);
         this.selectedAddress = this.legalEntity.address;
         this.isSaving = false;
-        this.regionsService.findByIdType(4).subscribe(
-            (cities) => {
-                this.cities = cities;
-                this.filteredCities = cities;
-            }
-        );
-        this.regionsService.findByIdType(2).subscribe(
-            (states) => {
-                this.states = states;
-                this.filteredStates = states;
-            }
-        );
-        this.regionsService.findByIdType(1).subscribe(
-            (countries) => {
-                this.countries = countries;
-                this.filteredCountries = countries;
-            }
-        );
-        this.regionsService.findByIdType(3).subscribe(
-            (regions) => {
-                this.regions = regions;
-                this.filteredRegions = regions;
-            }
+
+        this.appConstantsService.query().subscribe(
+            (res) => this.onSuccess(res.json),
+            (res) => console.log(res.json)
         );
     }
 
     onRegionSelected(value: string) {
+        this.selectedCity = null;
+        this.filteredCountries = [];
+        this.filteredCities = [];
+        this.filteredStates = [];
         if(value) {
-            this.selectedRegion = this.regions.find(item => item.name === value);
-            console.log(this.selectedRegion);
-            this.filteredCountries = this.countries.filter((item) => item.idParent.id == this.selectedRegion.id);
-            this.selectedCity = null;
-            this.filteredCities = [];
-            this.filteredStates = [];
-        } else {
-            this.filteredCities = [];
-            this.filteredStates = [];
-            this.filteredCountries = [];
+            this.filteredCountries = this.regionFilterService.getChildrenRegionsByParentRegionName(
+                this.allRegions,
+                value,
+                this.constants.find((item) => item.key == "regionTypeCountryId").value
+            );
         }
     }
 
     onCountrySelected(value: string) {
+        this.selectedCity = null;
+        this.filteredCities = [];
+        this.filteredStates = [];
         if(value) {
-            this.selectedCountry = this.countries.find(item => item.name === value);
-            this.filteredStates = this.states.filter((state) => state.idParent.id == this.selectedCountry.id);
-            this.selectedCity = null;
-            this.filteredCities = [];
-        } else {
-            this.filteredCities = [];
-            this.filteredStates = [];
+            this.filteredStates = this.regionFilterService.getChildrenRegionsByParentRegionName(
+                this.allRegions,
+                value,
+                this.constants.find((item) => item.key == "regionTypeStateId").value
+            );
         }
     }
 
-    onStateSelected(value: string){
+    onStateSelected(value: string) {
+        this.selectedCity = null;
+        this.filteredCities = [];
         if(value) {
-            this.selectedState = this.states.find(item => item.name === value);
-            this.filteredCities = this.cities.filter((city) => city.idParent.id == this.selectedState.id);
-            this.selectedCity = null;
-        }
-        else {
-            this.filteredCities = []
+            this.filteredCities = this.regionFilterService.getChildrenRegionsByParentRegionName(
+                this.allRegions,
+                value,
+                this.constants.find((item) => item.key == "regionTypeCityId").value
+            );
         }
     }
 
     onCitySelected(value: string) {
         if(value){
-            this.selectedCity = this.cities.find(item => item.name === value);
+            this.selectedCity = this.cities.find((item) => item.name === value);
         }
     }
 

@@ -23,13 +23,13 @@
         <dt><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idOrganization">Id Organization</span></dt>
         <dd>
             <div *ngIf="ogOrgWorkPlaces.idOrganization">
-                <a [routerLink]="['/og-organizations', ogOrgWorkPlaces.idOrganization?.id]">{{ogOrgWorkPlaces.idOrganization?.name}}</a>
+                <a [routerLink]="['/dashboard/og-organizations', ogOrgWorkPlaces.idOrganization?.id]">{{ogOrgWorkPlaces.idOrganization?.name}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.ogOrgWorkPlaces.idWorkPlace">Id Work Place</span></dt>
         <dd>
             <div *ngIf="ogOrgWorkPlaces.idWorkPlace">
-                <a [routerLink]="['/og-work-places', ogOrgWorkPlaces.idWorkPlace?.id]">{{ogOrgWorkPlaces.idWorkPlace?.name}}</a>
+                <a [routerLink]="['/dashboard/og-work-places', ogOrgWorkPlaces.idWorkPlace?.id]">{{ogOrgWorkPlaces.idWorkPlace?.name}}</a>
             </div>
         </dd>
     </dl>

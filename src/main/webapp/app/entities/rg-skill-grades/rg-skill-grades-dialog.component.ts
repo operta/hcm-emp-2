@@ -18,7 +18,7 @@ export class RgSkillGradesDialogComponent implements OnInit {
 
     rgSkillGrades: RgSkillGrades;
     isSaving: boolean;
-
+    isNumerical = false;
     constructor(
         public activeModal: NgbActiveModal,
         private rgSkillGradesService: RgSkillGradesService,
@@ -28,6 +28,11 @@ export class RgSkillGradesDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        if(this.rgSkillGrades.numerical == 'Y'){
+            this.isNumerical = true;
+        } else {
+            this.isNumerical = false;
+        }
     }
 
     clear() {
@@ -35,6 +40,11 @@ export class RgSkillGradesDialogComponent implements OnInit {
     }
 
     save() {
+        if(this.isNumerical == true) {
+            this.rgSkillGrades.numerical = "Y";
+        } else {
+            this.rgSkillGrades.numerical = "N";
+        }
         this.isSaving = true;
         if (this.rgSkillGrades.id !== undefined) {
             this.subscribeToSaveResponse(

@@ -55,15 +55,11 @@ export class EmEmpBankAccountsService {
     }
 
     private convertResponse(res: Response): ResponseWrapper {
-        console.log(res.json());
         const jsonResponse = res.json();
         const result = [];
-        console.log(jsonResponse.length);
         for (let i = 0; i < jsonResponse.length; i++) {
-            console.log(jsonResponse[i]);
             result.push(this.convertItemFromServer(jsonResponse[i]));
         }
-        console.log(result);
         return new ResponseWrapper(res.headers, result, res.status);
     }
 
@@ -84,9 +80,7 @@ export class EmEmpBankAccountsService {
      */
     private convert(emEmpBankAccounts: EmEmpBankAccounts): EmEmpBankAccounts {
         const copy: EmEmpBankAccounts = Object.assign({}, emEmpBankAccounts);
-
         copy.createdAt = this.dateUtils.toDate(emEmpBankAccounts.createdAt);
-
         copy.updatedAt = this.dateUtils.toDate(emEmpBankAccounts.updatedAt);
         return copy;
     }

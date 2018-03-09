@@ -13,7 +13,7 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
 })
 export class LeLegalEntityTypesComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
+    currentAccount: any;
     leLegalEntityTypes: LeLegalEntityTypes[];
     error: any;
     success: any;
@@ -27,6 +27,7 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    busy: Subscription;
 
     constructor(
         private leLegalEntityTypesService: LeLegalEntityTypesService,
@@ -47,7 +48,7 @@ currentAccount: any;
     }
 
     loadAll() {
-        this.leLegalEntityTypesService.query({
+        this.busy = this.leLegalEntityTypesService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
             sort: this.sort()}).subscribe(
@@ -62,7 +63,7 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/le-legal-entity-types'], {queryParams:
+        this.router.navigate(['/dashboard/le-legal-entity-types'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -74,7 +75,7 @@ currentAccount: any;
 
     clear() {
         this.page = 0;
-        this.router.navigate(['/le-legal-entity-types', {
+        this.router.navigate(['/dashboard/le-legal-entity-types', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);
@@ -90,6 +91,7 @@ currentAccount: any;
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
+        this.busy.unsubscribe();
     }
 
     trackId(index: number, item: LeLegalEntityTypes) {

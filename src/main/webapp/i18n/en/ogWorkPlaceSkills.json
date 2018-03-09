@@ -1,0 +1,29 @@
+{
+    "hcmEmpApp": {
+        "ogWorkPlaceSkills" : {
+            "home": {
+                "title": "Workplace Skills",
+                "createLabel": "Create a new Workplace Skill",
+                "createOrEditLabel": "Create or edit a Workplace Skill"
+            },
+            "created": "A new Workplace Skill is created with identifier {{ param }}",
+            "updated": "A Workplace Skill is updated with identifier {{ param }}",
+            "deleted": "A Workplace Skill is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Workplace Skill {{ id }}?"
+            },
+            "detail": {
+                "title": "Workplace Skills"
+            },
+            "description": "Description",
+            "dateSkill": "Date Skill",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idSkill": "Skill",
+            "idGrade": "Grade",
+            "idWorkPlace": "Workplace"
+        }
+    }
+}

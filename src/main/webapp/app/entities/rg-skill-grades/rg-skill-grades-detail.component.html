@@ -22,7 +22,7 @@
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.numerical">Numerical</span></dt>
         <dd>
-            <span>{{rgSkillGrades.numerical}}</span>
+            <span><input type="checkbox" disabled [checked]="rgSkillGrades.numerical == 'Y' ? true : false"></span>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.rgSkillGrades.createdBy">Created By</span></dt>
         <dd>

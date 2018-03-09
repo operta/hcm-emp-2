@@ -39,7 +39,6 @@ export class EmpPenaltiesComponent implements OnInit, OnDestroy {
 
     private onSuccess(data) {
         this.penalties = data;
-        console.log(this.penalties);
     }
 
     private onError(error) {

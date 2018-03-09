@@ -33,6 +33,7 @@ export class OgWorkPlacesDetailComponent implements OnInit, OnDestroy {
     load(id) {
         this.ogWorkPlacesService.find(id).subscribe((ogWorkPlaces) => {
             this.ogWorkPlaces = ogWorkPlaces;
+            console.log(this.ogWorkPlaces);
         });
     }
     previousState() {

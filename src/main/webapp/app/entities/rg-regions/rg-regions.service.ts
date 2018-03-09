@@ -34,6 +34,7 @@ export class RgRegionsService {
     find(id: number): Observable<RgRegions> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
+            console.log(res.json());
             return this.convertItemFromServer(jsonResponse);
         });
     }
@@ -43,6 +44,13 @@ export class RgRegionsService {
         return this.http.get(this.resourceUrl, options)
             .map((res: Response) => this.convertResponse(res));
     }
+
+    findAll(): Observable<ResponseWrapper> {
+        return this.http.get(this.resourceUrl + '/all')
+            .map((res: Response) => this.convertResponse(res))
+    }
+
+
 
     findByIdType(idType: any) {
         return this.http.get(`${this.resourceUrl}/type/${idType}`).map(

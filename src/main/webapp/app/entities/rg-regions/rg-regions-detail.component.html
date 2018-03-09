@@ -35,13 +35,13 @@
         <dt><span jhiTranslate="hcmEmpApp.rgRegions.idType">Id Type</span></dt>
         <dd>
             <div *ngIf="rgRegions.idType">
-                <a [routerLink]="['/rg-region-types', rgRegions.idType?.id]">{{rgRegions.idType?.name}}</a>
+                <a [routerLink]="['/dashboard/rg-region-types', rgRegions.idType?.id]">{{rgRegions.idType?.name}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.rgRegions.idParent">Id Parent</span></dt>
         <dd>
             <div *ngIf="rgRegions.idParent">
-                <a [routerLink]="['/rg-regions', rgRegions.idParent?.id]">{{rgRegions.idParent?.name}}</a>
+                <a [routerLink]="['/dashboard/rg-regions', rgRegions.idParent?.id]">{{rgRegions.idParent?.name}}</a>
             </div>
         </dd>
     </dl>

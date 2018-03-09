@@ -15,6 +15,8 @@ import {
     leLegalEntityTypesPopupRoute,
     LeLegalEntityTypesResolvePagingParams,
 } from './';
+import {BusyModule} from "angular2-busy";
+import {RegionFilterService} from "../../shared/region-filter.service";
 
 const ENTITY_STATES = [
     ...leLegalEntityTypesRoute,
@@ -24,7 +26,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         HcmEmpSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        BusyModule
     ],
     declarations: [
         LeLegalEntityTypesComponent,
@@ -45,6 +48,7 @@ const ENTITY_STATES = [
         LeLegalEntityTypesService,
         LeLegalEntityTypesPopupService,
         LeLegalEntityTypesResolvePagingParams,
+        RegionFilterService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

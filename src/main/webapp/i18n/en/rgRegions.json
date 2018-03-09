@@ -2,18 +2,18 @@
     "hcmEmpApp": {
         "rgRegions" : {
             "home": {
-                "title": "Rg Regions",
-                "createLabel": "Create a new Rg Regions",
-                "createOrEditLabel": "Create or edit a Rg Regions"
+                "title": "Regions",
+                "createLabel": "Create a new Region",
+                "createOrEditLabel": "Create or edit a Region"
             },
-            "created": "A new Rg Regions is created with identifier {{ param }}",
-            "updated": "A Rg Regions is updated with identifier {{ param }}",
-            "deleted": "A Rg Regions is deleted with identifier {{ param }}",
+            "created": "A new Region is created with identifier {{ param }}",
+            "updated": "A Region is updated with identifier {{ param }}",
+            "deleted": "A Region is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Rg Regions {{ id }}?"
+                "question": "Are you sure you want to delete Region {{ id }}?"
             },
             "detail": {
-                "title": "Rg Regions"
+                "title": "Region"
             },
             "code": "Code",
             "name": "Name",
@@ -22,8 +22,8 @@
             "createdAt": "Created At",
             "updatedBy": "Updated By",
             "updatedAt": "Updated At",
-            "idType": "Id Type",
-            "idParent": "Id Parent"
+            "idType": "Type",
+            "idParent": "Parent"
         }
     }
 }

@@ -60,12 +60,43 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpIdentifications.idRegion" for="field_idRegion">Id Region</label>
-            <select class="form-control" id="field_idRegion" name="idRegion" [(ngModel)]="emEmpIdentifications.idRegion">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="rgRegionsOption.id === emEmpIdentifications.idRegion?.id ? emEmpIdentifications.idRegion : rgRegionsOption" *ngFor="let rgRegionsOption of idregions; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
-            </select>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_region">Region:</label>
+                    <select id="field_region" class="form-control" (click)="onRegionSelected($event.target.value)" (change)="onRegionSelected($event.target.value)"  name="selectedRegion">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let region of regions" [selected]="region.id == selectedRegion?.id" [ngValue]="region.name">{{region?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_country">Country:</label>
+                    <select id="field_country" class="form-control" (click)="onCountrySelected($event.target.value)" (change)="onCountrySelected($event.target.value)"  name="selectedCountry">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let country of filteredCountries" [selected]="country.id == selectedCountry?.id" [ngValue]="country.name">{{country?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_state">State:</label>
+                    <select id="field_state" class="form-control" (click)="onStateSelected($event.target.value)" (change)="onStateSelected($event.target.value)" name="selectedState">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let state of filteredStates" [selected]="state.id == selectedState?.id" [ngValue]="state.name">{{state?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_city">City:</label>
+                    <select id="field_city" class="form-control" (click)="onCitySelected($event.target.value)" (change)="onCitySelected($event.target.value)" name="selectedCity">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let city of filteredCities" [selected]="city.id == selectedCity?.id" [ngValue]="city.name">{{city?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

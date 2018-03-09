@@ -12,8 +12,8 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
     templateUrl: './em-emp-org-work-places.component.html'
 })
 export class EmEmpOrgWorkPlacesComponent implements OnInit, OnDestroy {
-
-currentAccount: any;
+    busy: Subscription;
+    currentAccount: any;
     emEmpOrgWorkPlaces: EmEmpOrgWorkPlaces[];
     error: any;
     success: any;
@@ -47,7 +47,7 @@ currentAccount: any;
     }
 
     loadAll() {
-        this.emEmpOrgWorkPlacesService.query({
+        this.busy = this.emEmpOrgWorkPlacesService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
             sort: this.sort()}).subscribe(
@@ -62,7 +62,7 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/em-emp-org-work-places'], {queryParams:
+        this.router.navigate(['/dashboard/em-emp-org-work-places'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -74,7 +74,7 @@ currentAccount: any;
 
     clear() {
         this.page = 0;
-        this.router.navigate(['/em-emp-org-work-places', {
+        this.router.navigate(['/dashboard/em-emp-org-work-places', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);
@@ -90,6 +90,7 @@ currentAccount: any;
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
+        this.busy.unsubscribe();
     }
 
     trackId(index: number, item: EmEmpOrgWorkPlaces) {

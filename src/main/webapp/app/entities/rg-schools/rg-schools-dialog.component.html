@@ -1,4 +1,4 @@
-<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+<form name="editForm" role="form" novalidate (ngSubmit)="selectedCity && save()" #editForm="ngForm">
 
     <div class="modal-header">
         <h4 class="modal-title" id="myRgSchoolsLabel" jhiTranslate="hcmEmpApp.rgSchools.home.createOrEditLabel">Create or edit a Rg Schools</h4>
@@ -50,51 +50,43 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.rgSchools.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="rgSchools.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.rgSchools.createdAt" for="field_createdAt">Created At</label>
-            <div class="d-flex">
-                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="rgSchools.createdAt"
-                />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_region">Region:</label>
+                    <select id="field_region" class="form-control" (click)="onRegionSelected($event.target.value)" (change)="onRegionSelected($event.target.value)"  name="selectedRegion">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let region of regions" [selected]="region.id == selectedRegion?.id" [ngValue]="region.name">{{region?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.rgSchools.updatedBy" for="field_updatedBy">Updated By</label>
-            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
-                [(ngModel)]="rgSchools.updatedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.rgSchools.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="d-flex">
-                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="rgSchools.updatedAt"
-                />
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_country">Country:</label>
+                    <select id="field_country" class="form-control" (click)="onCountrySelected($event.target.value)" (change)="onCountrySelected($event.target.value)"  name="selectedCountry">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let country of filteredCountries" [selected]="country.id == selectedCountry?.id" [ngValue]="country.name">{{country?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.rgSchools.idCity" for="field_idCity">Id City</label>
-            <select class="form-control" id="field_idCity" name="idCity" [(ngModel)]="rgSchools.idCity">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="rgRegionsOption.id === rgSchools.idCity?.id ? rgSchools.idCity : rgRegionsOption" *ngFor="let rgRegionsOption of idcities; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.rgSchools.idCountry" for="field_idCountry">Id Country</label>
-            <select class="form-control" id="field_idCountry" name="idCountry" [(ngModel)]="rgSchools.idCountry">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="rgRegionsOption.id === rgSchools.idCountry?.id ? rgSchools.idCountry : rgRegionsOption" *ngFor="let rgRegionsOption of idcountries; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.rgSchools.idRegion" for="field_idRegion">Id Region</label>
-            <select class="form-control" id="field_idRegion" name="idRegion" [(ngModel)]="rgSchools.idRegion">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="rgRegionsOption.id === rgSchools.idRegion?.id ? rgSchools.idRegion : rgRegionsOption" *ngFor="let rgRegionsOption of idregions; trackBy: trackRgRegionsById">{{rgRegionsOption.name}}</option>
-            </select>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_state">State:</label>
+                    <select id="field_state" class="form-control" (click)="onStateSelected($event.target.value)" (change)="onStateSelected($event.target.value)" name="selectedState">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let state of filteredStates" [selected]="state.id == selectedState?.id" [ngValue]="state.name">{{state?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_city">City: *</label>
+                    <select id="field_city" class="form-control" (click)="onCitySelected($event.target.value)" (change)="onCitySelected($event.target.value)" name="selectedCity">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let city of filteredCities" [selected]="city.id == selectedCity?.id" [ngValue]="city.name">{{city?.name}}</option>
+                    </select><span class="highlight"></span> <span class="bar"></span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

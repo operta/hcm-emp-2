@@ -136,12 +136,12 @@ public class UserServiceIntTest {
         Instant now = Instant.now();
         user.setActivated(false);
         User dbUser = userRepository.saveAndFlush(user);
-        dbUser.setCreatedDate(now.minus(4, ChronoUnit.DAYS));
+        dbUser.setCreatedAt(now.minus(4, ChronoUnit.DAYS));
         userRepository.saveAndFlush(user);
-        List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minus(3, ChronoUnit.DAYS));
+        List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedAtBefore(now.minus(3, ChronoUnit.DAYS));
         assertThat(users).isNotEmpty();
         userService.removeNotActivatedUsers();
-        users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minus(3, ChronoUnit.DAYS));
+        users = userRepository.findAllByActivatedIsFalseAndCreatedAtBefore(now.minus(3, ChronoUnit.DAYS));
         assertThat(users).isEmpty();
     }
 
@@ -165,7 +165,7 @@ public class UserServiceIntTest {
         user.setActivated(false);
         userRepository.saveAndFlush(user);
         // Let the audit first set the creation date but then update it
-        user.setCreatedDate(Instant.now().minus(30, ChronoUnit.DAYS));
+        user.setCreatedAt(Instant.now().minus(30, ChronoUnit.DAYS));
         userRepository.saveAndFlush(user);
 
         assertThat(userRepository.findOneByLogin("johndoe")).isPresent();

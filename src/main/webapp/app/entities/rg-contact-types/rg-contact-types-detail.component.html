@@ -1,0 +1,50 @@
+
+<div *ngIf="rgContactTypes">
+    <h2><span jhiTranslate="hcmEmpApp.rgContactTypes.detail.title">Rg Contact Types</span> {{rgContactTypes.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="hcmEmpApp.rgContactTypes.code">Code</span></dt>
+        <dd>
+            <span>{{rgContactTypes.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgContactTypes.name">Name</span></dt>
+        <dd>
+            <span>{{rgContactTypes.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgContactTypes.description">Description</span></dt>
+        <dd>
+            <span>{{rgContactTypes.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgContactTypes.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{rgContactTypes.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgContactTypes.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{rgContactTypes.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgContactTypes.updatedBy">Updated By</span></dt>
+        <dd>
+            <span>{{rgContactTypes.updatedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.rgContactTypes.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{rgContactTypes.updatedAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'rg-contact-types/'+ rgContactTypes.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

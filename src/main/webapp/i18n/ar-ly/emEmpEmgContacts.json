@@ -1,0 +1,28 @@
+{
+    "hcmEmpApp": {
+        "emEmpEmgContacts" : {
+            "home": {
+                "title": "Em Emp Emg Contacts",
+                "createLabel": "Create a new Em Emp Emg Contacts",
+                "createOrEditLabel": "Create or edit a Em Emp Emg Contacts"
+            },
+            "created": "A new Em Emp Emg Contacts is created with identifier {{ param }}",
+            "updated": "A Em Emp Emg Contacts is updated with identifier {{ param }}",
+            "deleted": "A Em Emp Emg Contacts is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Em Emp Emg Contacts {{ id }}?"
+            },
+            "detail": {
+                "title": "Em Emp Emg Contacts"
+            },
+            "contact": "Contact",
+            "description": "Description",
+            "createdBy": "Created By",
+            "createdAt": "Created At",
+            "updatedBy": "Updated By",
+            "updatedAt": "Updated At",
+            "idEmployee": "Id Employee",
+            "idContactType": "Id Contact Type"
+        }
+    }
+}

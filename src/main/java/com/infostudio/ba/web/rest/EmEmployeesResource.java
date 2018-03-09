@@ -227,10 +227,28 @@ public class EmEmployeesResource {
      */
     @GetMapping("/em-employees/user/{id}")
     @Timed
-    public ResponseEntity<EmEmployees> getEmEmployeesByUserId(@PathVariable Long id) {
+    @ResponseStatus(value = HttpStatus.OK)
+    public EmEmployees getEmEmployeesByUserId(@PathVariable Long id) {
         log.debug("REST request to get EmEmployees by user id: {}", id);
         EmEmployees emEmployees = emEmployeesRepository.findByIdUserId(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(emEmployees));
+        return emEmployees;
+    }
+
+    /**
+     * GET  /em-employees/checkUser/:id : get the emEmployee by user id.
+     *
+     * @param id the id of the User to retrieve
+     * @return true / false
+     */
+    @GetMapping("/em-employees/checkUser/{id}")
+    @Timed
+    public Boolean checkEmEmployeesByUserId(@PathVariable Long id) {
+        log.debug("REST request to get EmEmployees by user id: {}", id);
+        EmEmployees emEmployees = emEmployeesRepository.findByIdUserId(id);
+        if(emEmployees != null) {
+            return true;
+        }
+        return false;
     }
 
     /**

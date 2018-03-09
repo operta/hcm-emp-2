@@ -29,7 +29,12 @@
             </thead>
             <tbody>
             <tr *ngFor="let emEmpTypes of emEmpTypes ;trackBy: trackId">
-                <td><a [routerLink]="['../em-emp-types', emEmpTypes.id ]">{{emEmpTypes.id}}</a></td>
+                <td>
+                    <!--<a [routerLink]="['../em-emp-types', emEmpTypes.id ]">-->
+                       <!---->
+                    <!--</a>-->
+                    {{emEmpTypes.id}}
+                </td>
                 <td>{{emEmpTypes.code}}</td>
                 <td>{{emEmpTypes.name}}</td>
                 <td>{{emEmpTypes.description}}</td>
@@ -39,12 +44,12 @@
                 <td>{{emEmpTypes.updatedAt | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../em-emp-types', emEmpTypes.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['../em-emp-types', emEmpTypes.id ]"-->
+                                <!--class="btn btn-info btn-sm">-->
+                            <!--<span class="fa fa-eye"></span>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+                        <!--</button>-->
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'em-emp-types/'+ emEmpTypes.id + '/edit'} }]"
                                 replaceUrl="true"

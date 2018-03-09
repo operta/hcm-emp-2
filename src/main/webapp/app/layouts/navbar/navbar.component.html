@@ -42,41 +42,41 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
-                        <i class="icon-envelope"></i>
-                        <div class="notify">
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu mailbox animated bounceInDown">
-                        <li>
-                            <div class="drop-title">You have 4 new messages</div>
-                        </li>
-                        <li>
-                            <div class="message-center">
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">-->
+                        <!--<i class="icon-envelope"></i>-->
+                        <!--<div class="notify">-->
+                        <!--</div>-->
+                    <!--</a>-->
+                    <!--<ul class="dropdown-menu mailbox animated bounceInDown">-->
+                        <!--<li>-->
+                            <!--<div class="drop-title">You have 4 new messages</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<div class="message-center">-->
 
-                            </div>
-                        </li>
-                        <li>
-                            <a class="text-center" href="javascript:void(0);">
-                                <strong>See all notifications</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
-                        <i class="icon-note"></i>
-                        <div class="notify">
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks animated slideInUp">
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a class="text-center" href="javascript:void(0);">-->
+                                <!--<strong>See all notifications</strong>-->
+                                <!--<i class="fa fa-angle-right"></i>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!--&lt;!&ndash; /.dropdown-messages &ndash;&gt;-->
+                <!--</li>-->
+                <!--&lt;!&ndash; /.dropdown &ndash;&gt;-->
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">-->
+                        <!--<i class="icon-note"></i>-->
+                        <!--<div class="notify">-->
+                        <!--</div>-->
+                    <!--</a>-->
+                    <!--<ul class="dropdown-menu dropdown-tasks animated slideInUp">-->
 
-                    </ul>
-                </li>
+                    <!--</ul>-->
+                <!--</li>-->
 
             </ul>
         </div>
@@ -124,14 +124,14 @@
                     <!--</div>-->
                     <!--&lt;!&ndash; /input-group &ndash;&gt;-->
                 <!--</li>-->
-                <li>
+                <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <a (click)="collapseLists()" routerLinkActive="active" routerLink="/dashboard/employee-dashboard" class="waves-effect">
                         <i class="ti-clipboard fa-fw" data-icon="v"></i>
                         <span class="hide-menu"> Dashboard </span>
                     </a>
                 </li>
                 <li *jhiHasAnyAuthority="'ROLE_USER'">
-                    <a (click)="collapseLists()" routerLinkActive="active"  [routerLink]="['/dashboard/employee-overview', { userId: accountId}]"  class="waves-effect">
+                    <a (click)="collapseLists()" routerLinkActive="active" [routerLink]="['/dashboard/employee-overview', { userId: accountId}]"  class="waves-effect" [class]="isActive()">
                         <i class="icon-user fa-fw" data-icon="v"></i>
                         <span class="hide-menu"> My Info </span>
                     </a>
@@ -142,185 +142,90 @@
                         <span class="hide-menu"> Employees </span>
                     </a>
                 </li>
-                <li>
-                    <a (click)="logout()" routerLink="/module" class="waves-effect">
-                        <i class="fa fa-indent fa-fw" data-icon="v"></i>
-                        <span class="hide-menu"> Modules </span>
-                    </a>
-                </li>
-                <!--<li>-->
-                <!--<a href="/" class="waves-effect">-->
-                <!--<i class="icon-people fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> HR planing </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="job-openings.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Job openings </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="trainings.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Trainings </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="time-off.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Time off </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="payroll.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Payroll </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="reports.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Reports </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="files.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Files </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="announcements.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Announcements </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="departments.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Departments </span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="work-places.html" class="waves-effect">-->
-                <!--<i class="ti-clipboard fa-fw" data-icon="v"></i>-->
-                <!--<span class="hide-menu"> Jobs </span>-->
-                <!--</a>-->
-                <!--</li>-->
 
                 <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
-                    <a (click)="toggleEntity()" class="waves-effect"aria-expanded="false">
+                    <a (click)="toggleModules()" class="waves-effect"aria-expanded="false">
                         <i class="fa fa-th-list"></i>
-                        <span class="hide-menu">Entities
-                            <span class="pull-right" [ngClass]="isEntityCollapsed ? 'fa fa-caret-down' : 'fa fa-caret-right'"></span>
+                        <span class="hide-menu">Modules
+                            <span class="pull-right" [ngClass]="isModulesCollapsed ? 'fa fa-caret-down' : 'fa fa-caret-right'"></span>
                         </span>
                     </a>
+                    <ul class="nav nav-second-level" *ngIf="!isModulesCollapsed">
+                        <li>
+                            <a class="waves-effect">
+                                <i class="icon-people fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> HR planing </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Job openings </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Trainings </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Time off </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Payroll </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Reports </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Files </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Announcements </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Departments </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                                <span class="hide-menu"> Jobs </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-                    <ul class="nav nav-second-level" *ngIf="!isEntityCollapsed">
-
-
+                <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                    <a (click)="toggleOthers()" class="waves-effect"aria-expanded="false">
+                        <i class="fa fa-th-list"></i>
+                        <span class="hide-menu">Others
+                            <span class="pull-right" [ngClass]="isOthersCollapsed ? 'fa fa-caret-down' : 'fa fa-caret-right'"></span>
+                        </span>
+                    </a>
+                    <ul class="nav nav-second-level" *ngIf="!isOthersCollapsed">
                         <li>
-                            <a class="" routerLink="le-legal-entities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="" routerLink="og-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.leLegalEntities">Le Legal Entities</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="le-legal-entity-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.leLegalEntityTypes">Le Legal Entity Types</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="rg-regions" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.rgRegions">Rg Regions</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="rg-region-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.rgRegionTypes">Rg Region Types</span>
-                            </a>
-                        </li>
-
-                        <li>
-                        <a class="" routerLink="rg-qualifications" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                            <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.rgQualifications">Rg Qualifications</span>
-                        </a>
-                    </li>
-                        <li>
-                        <a class="" routerLink="em-emp-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                            <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.emEmpTypes">Em Emp Types</span>
-                        </a>
-                    </li>
-                        <li>
-                        <a class="" routerLink="em-statuses" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                            <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.emStatuses">Em Statuses</span>
-                        </a>
-                    </li>
-                        <li>
-                            <a class="" routerLink="em-employees" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmployees">Em Employees</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="at-accomplishment-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.atAccomplishmentTypes">Accomplishment Types</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="dm-document-links" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.dmDocumentLinks">Document Links</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="dm-document-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.dmDocumentTypes">Document Types</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-contract-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Contract Types</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-accomplishments" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpAccomplishments">Employee Accomplishments</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-bank-accounts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpBankAccounts">Bank Accounts</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-documents" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpDocuments">Employee Documents</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-notes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpNotes">Employee Notes</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-org-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Employee Workplaces</span>
+                                <span>Workplaces</span>
                             </a>
                         </li>
                         <li>
@@ -330,15 +235,74 @@
                             </a>
                         </li>
                         <li>
-                            <a class="" routerLink="og-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="" routerLink="em-emp-org-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Workplaces</span>
+                                <span>Employee Workplaces</span>
                             </a>
                         </li>
                         <li>
-                            <a class="" routerLink="og-work-place-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="" routerLink="le-legal-entities" routerLinkActive="active">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Workplace Types</span>
+                                <span jhiTranslate="global.menu.entities.leLegalEntities" class="hide-menu">Le Legal Entities</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                    <a (click)="toggleEntity()" class="waves-effect"aria-expanded="false">
+                        <i class="fa fa-th-list"></i>
+                        <span class="hide-menu">Registers
+                            <span class="pull-right" [ngClass]="isEntityCollapsed ? 'fa fa-caret-down' : 'fa fa-caret-right'"></span>
+                        </span>
+                    </a>
+                    <ul class="nav nav-second-level" *ngIf="!isEntityCollapsed">
+                        <li>
+                            <a class="" routerLink="em-borrowing-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emBorrowingTypes"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-contract-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Contract Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-emp-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emEmpTypes">Em Emp Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-statuses" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emStatuses">Em Statuses</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="rg-family-roles" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.rgFamilyRoles"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="rg-identification-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.rgIdentificationTypes"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-injury-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emInjuryTypes"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="le-legal-entity-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.leLegalEntityTypes">Le Legal Entity Types</span>
                             </a>
                         </li>
                         <li>
@@ -354,15 +318,27 @@
                             </a>
                         </li>
                         <li>
-                            <a class="" routerLink="em-emp-salaries" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="" routerLink="rg-qualifications" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpSalaries">Employee Salaries</span>
+                                <span jhiTranslate="global.menu.entities.rgQualifications">Rg Qualifications</span>
                             </a>
                         </li>
                         <li>
-                            <a class="" routerLink="em-emp-schools" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="" routerLink="rg-regions" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpSchools">Employee Schools</span>
+                                <span jhiTranslate="global.menu.entities.rgRegions">Rg Regions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="rg-region-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.rgRegionTypes">Rg Region Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="em-reward-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.emRewardTypes"></span>
                             </a>
                         </li>
                         <li>
@@ -378,89 +354,23 @@
                             </a>
                         </li>
                         <li>
-                            <a class="" routerLink="em-borrowing-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emBorrowingTypes"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-borrowings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpBorrowings"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-families" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpFamilies"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-idenitifications" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpIdentifications"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-injuries" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpInjuries"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-rewards" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpRewards"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-emp-skills" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emEmpSkills"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-injury-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emInjuryTypes"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-penalties" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emPenalties"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="em-reward-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.emRewardTypes"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="rg-family-roles" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.rgFamilyRoles"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" routerLink="rg-identification-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.entities.rgIdentificationTypes"></span>
-                            </a>
-                        </li>s
-                        <li>
                             <a class="" routerLink="rg-skill-grades" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
                                 <span jhiTranslate="global.menu.entities.rgSkillGrades"></span>
                             </a>
                         </li>
-
-
-
-
-
-
+                        <li>
+                            <a class="" routerLink="og-work-place-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span>Workplace Types</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="ap-constants" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
+                                <span jhiTranslate="global.menu.entities.apConstants"></span>
+                            </a>
+                        </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>

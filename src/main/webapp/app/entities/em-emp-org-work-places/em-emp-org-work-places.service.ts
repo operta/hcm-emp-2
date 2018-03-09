@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { EmEmpOrgWorkPlaces } from './em-emp-org-work-places.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable()
 export class EmEmpOrgWorkPlacesService {
@@ -40,9 +42,12 @@ export class EmEmpOrgWorkPlacesService {
 
     findLastWorkPlaceForEmployee(id: number): Observable<EmEmpOrgWorkPlaces> {
         return this.http.get(`${this.resourceUrl}/employee/${id}`).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
+            if (res.json()) {
+                const jsonResponse = res.json();
+                return this.convertItemFromServer(jsonResponse);
+            }
+            return;
+        })
     }
 
     query(req?: any): Observable<ResponseWrapper> {
@@ -94,5 +99,18 @@ export class EmEmpOrgWorkPlacesService {
 
         copy.updatedAt = this.dateUtils.toDate(emEmpOrgWorkPlaces.updatedAt);
         return copy;
+    }
+
+    private handleError(operation: String) {
+        return (err: any) => {
+            const errMsg = `error in ${operation}() retrieving ${this.resourceUrl}`;
+            console.log(`${errMsg}:`, err)
+            if(err instanceof HttpErrorResponse) {
+                // you could extract more info about the error if you want, e.g.:
+                console.log(`status: ${err.status}, ${err.statusText}`);
+                // errMsg = ...
+            }
+            return Observable.throw(errMsg);
+        }
     }
 }

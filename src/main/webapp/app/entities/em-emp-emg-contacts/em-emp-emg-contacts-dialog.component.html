@@ -1,0 +1,83 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmEmpEmgContactsLabel" jhiTranslate="hcmEmpApp.emEmpEmgContacts.home.createOrEditLabel">Create or edit a Em Emp Emg Contacts</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!emEmpEmgContacts.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="emEmpEmgContacts.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.firstName" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                [(ngModel)]="emEmpEmgContacts.firstName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.lastName" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                [(ngModel)]="emEmpEmgContacts.lastName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.phoneNumber" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                   [(ngModel)]="emEmpEmgContacts.phoneNumber" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.email" for="field_email">Email Address</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                   [(ngModel)]="emEmpEmgContacts.email" />
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.createdBy" for="field_createdBy">Created By</label>-->
+            <!--<input type="text" class="form-control" name="createdBy" id="field_createdBy"-->
+                <!--[(ngModel)]="emEmpEmgContacts.createdBy" />-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.createdAt" for="field_createdAt">Created At</label>-->
+            <!--<div class="d-flex">-->
+                <!--<input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpEmgContacts.createdAt"-->
+                <!--/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.updatedBy" for="field_updatedBy">Updated By</label>-->
+            <!--<input type="text" class="form-control" name="updatedBy" id="field_updatedBy"-->
+                <!--[(ngModel)]="emEmpEmgContacts.updatedBy" />-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.updatedAt" for="field_updatedAt">Updated At</label>-->
+            <!--<div class="d-flex">-->
+                <!--<input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpEmgContacts.updatedAt"-->
+                <!--/>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.idEmployee" for="field_idEmployee">Id Employee</label>-->
+            <!--<select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpEmgContacts.idEmployee">-->
+                <!--<option [ngValue]="null"></option>-->
+                <!--<option [ngValue]="emEmployeesOption.id === emEmpEmgContacts.idEmployee?.id ? emEmpEmgContacts.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpEmgContacts.idContactType" for="field_idContactType">Id Contact Type</label>-->
+            <!--<select class="form-control" id="field_idContactType" name="idContactType" [(ngModel)]="emEmpEmgContacts.idContactType">-->
+                <!--<option [ngValue]="null"></option>-->
+                <!--<option [ngValue]="rgContactTypesOption.id === emEmpEmgContacts.idContactType?.id ? emEmpEmgContacts.idContactType : rgContactTypesOption" *ngFor="let rgContactTypesOption of idcontacttypes; trackBy: trackRgContactTypesById">{{rgContactTypesOption.name}}</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
