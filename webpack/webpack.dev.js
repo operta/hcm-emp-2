@@ -71,7 +71,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
             host: 'localhost',
             port: 9000,
             proxy: {
-                target: 'http://localhost:9060'
+                target: 'http://77.78.198.19:9060'
             }
         }, {
             reload: false

@@ -1,0 +1,943 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Administrator (generated)" id="1520616856668-1">
+        <addForeignKeyConstraint baseColumnNames="id_user" baseTableName="em_employees" constraintName="FK14nsgm6mac11lpeobog4h8qfm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-2">
+        <addForeignKeyConstraint baseColumnNames="id_employee" baseTableName="em_penalties" constraintName="FK2g74s5veyfkmadlenl24ycn1i" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="em_employees"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-3">
+        <addForeignKeyConstraint baseColumnNames="id_region" baseTableName="em_emp_identifications" constraintName="FK5d79sa6q95xiqrfdj56virtps" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="rg_regions"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-4">
+        <addForeignKeyConstraint baseColumnNames="id_employee" baseTableName="em_emp_accomplishments" constraintName="FK7jrn5gjonqgqaxi70f8bh125v" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="em_employees"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-5">
+        <addForeignKeyConstraint baseColumnNames="id_parent" baseTableName="rg_regions" constraintName="FKfd1vfbq7eemjmlulj5ejrps8t" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="rg_regions"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-6">
+        <addForeignKeyConstraint baseColumnNames="id_type" baseTableName="rg_regions" constraintName="FKgr2rsaycgycdsnfc3j3khb16l" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="rg_region_types"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-7">
+        <addForeignKeyConstraint baseColumnNames="id_contact_type" baseTableName="em_emp_emg_contacts" constraintName="FKo8v0719pkc1lfrwe6ewfuxj5p" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="rg_contact_types"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-8">
+        <dropForeignKeyConstraint baseTableName="AP_USERS" constraintName="AP_USERS$STATUS_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-9">
+        <dropForeignKeyConstraint baseTableName="AP_USER_ACTIVATIONS" constraintName="AP_USER_ACTIVATIONS$USER_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-10">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_SCHOOLS" constraintName="AT_APLCNT_SCHOOLS$APLCNT_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-11">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_SCHOOLS" constraintName="AT_APLCNT_SCHOOLS$QUALIF_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-12">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_SCHOOLS" constraintName="AT_APLCNT_SCHOOLS$SCHOOL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-13">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS" constraintName="AT_APPLICANTS$CITY_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-14">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS" constraintName="AT_APPLICANTS$COUNTRY_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-15">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS" constraintName="AT_APPLICANTS$EMPLOYEE_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-16">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS" constraintName="AT_APPLICANTS$QUALIFICATION_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-17">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS" constraintName="AT_APPLICANTS$REGION_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-18">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS" constraintName="AT_APPLICANTS$USER_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-19">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANT_EXPERIENCES" constraintName="AT_APPLICANT_EXPERIENCES_FK1"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-20">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANT_ACCOMPLISHMENTS" constraintName="AT_APPLIC_ACCOMPLI$ACCOMPTY_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-21">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_CONTACTS" constraintName="AT_EMP_CONTACTS$CONTACT_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-22">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_CONTACTS" constraintName="AT_EMP_CONTACTS$EMP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-23">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_DOCUMENTS" constraintName="AT_EMP_DOCUMENTS$APPLICANT_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-24">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_DOCUMENTS" constraintName="AT_EMP_DOCUMENTS$DOCLINK_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-25">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_DOCUMENTS" constraintName="AT_EMP_DOCUMENTS$DOCTYPE_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-26">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_SKILLS" constraintName="AT_EMP_SKILLS$APPLICANT_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-27">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_SKILLS" constraintName="AT_EMP_SKILLS$GRADE_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-28">
+        <dropForeignKeyConstraint baseTableName="AT_APPLICANTS_SKILLS" constraintName="AT_EMP_SKILLS$SKILL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-29">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATIONS" constraintName="AT_JOB_APPLIC$APPLICANT_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-30">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATIONS" constraintName="AT_JOB_APPLIC$STATUS_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-31">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATIONS" constraintName="AT_JOB_APPLIC$VACANCIES_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-32">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATIONS_ACTIVITIES" constraintName="AT_JOB_APPLICA_ACT$ACTIVITY_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-33">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATIONS_ACTIVITIES" constraintName="AT_JOB_APPLICA_ACT$JOBAPP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-34">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATIONS_ACTIVITIES" constraintName="AT_JOB_APPLICA_ACT$STATUS_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-35">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATION_HISTORY" constraintName="AT_JOB_APPLICA_HIST$JOBAPP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-36">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATION_HISTORY" constraintName="AT_JOB_APPLIC_HIST$STATFROM_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-37">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APPLICATION_HISTORY" constraintName="AT_JOB_APPLIC_HIST$STATUSTO_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-38">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APP_NOTIFICATIONS" constraintName="AT_JOB_APP_NOTIFI$JOBAPP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-39">
+        <dropForeignKeyConstraint baseTableName="AT_JOB_APP_NOTIFICATIONS" constraintName="AT_JOB_APP_NOTIFI$NOTIFI_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-40">
+        <dropForeignKeyConstraint baseTableName="AT_VACANCIES" constraintName="AT_VACANCIES$LOCATION_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-41">
+        <dropForeignKeyConstraint baseTableName="AT_VACANCIES" constraintName="AT_VACANCIES$WORKPL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-42">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_CITIZENSHIPS" constraintName="EM_EMP_CITIZENSHIPS$CNTRY_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-43">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_CITIZENSHIPS" constraintName="EM_EMP_CITIZENSHIPS$EMP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-44">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_CONTACTS" constraintName="EM_EMP_CONTACTS$CONTACT_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-45">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_CONTACTS" constraintName="EM_EMP_CONTACTS$EMP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-46">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_DISABILITIES" constraintName="EM_EMP_DISABILITIES$EMP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-47">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_META_DATA" constraintName="EM_EMP_META_DATA$EMP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-48">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_META_DATA" constraintName="EM_EMP_META_DATA$MD_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-49">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_RESIDENCES" constraintName="EM_EMP_RESIDENC$CNTRY_WRK_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-50">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_RESIDENCES" constraintName="EM_EMP_RESIDENC$CTY_WRK_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-51">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_RESIDENCES" constraintName="EM_EMP_RESIDENC$REGN_WRK_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-52">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_RESIDENCES" constraintName="EM_EMP_RESIDENCIES$CITY_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-53">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_RESIDENCES" constraintName="EM_EMP_RESIDENCIES$COUNTRY_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-54">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_RESIDENCES" constraintName="EM_EMP_RESIDENCIES$EMPLOYEE_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-55">
+        <dropForeignKeyConstraint baseTableName="EM_EMP_RESIDENCES" constraintName="EM_EMP_RESIDENCIES$REGION_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-56">
+        <dropForeignKeyConstraint baseTableName="MD_DETAILS" constraintName="MD_DEATAILS$DATATYPE_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-57">
+        <dropForeignKeyConstraint baseTableName="MD_DETAILS" constraintName="MD_DEATAILS$HEADER_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-58">
+        <dropForeignKeyConstraint baseTableName="MD_DETAIL_VALUE" constraintName="MD_DETAIL_VALUES$DETAIL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-59">
+        <dropForeignKeyConstraint baseTableName="MD_HEADERS" constraintName="MD_HEADERS$HEADER_TYPE_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-60">
+        <dropForeignKeyConstraint baseTableName="PM_CORRECTIVE_MEASURES" constraintName="PM_CORR_MEASURES$ID_CM_STATE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-61">
+        <dropForeignKeyConstraint baseTableName="PM_CORRECTIVE_MEASURES" constraintName="PM_CORR_MEASURES$ID_GOAL_EVAL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-62">
+        <dropForeignKeyConstraint baseTableName="PM_CORRECTIVE_MEASURES" constraintName="PM_CORR_MEASURES$ID_TYPE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-63">
+        <dropForeignKeyConstraint baseTableName="PM_EMPLOYEES_GOALS" constraintName="PM_EMP_GOALS$ID_EMP_RESP"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-64">
+        <dropForeignKeyConstraint baseTableName="PM_EMPLOYEES_GOALS" constraintName="PM_EMP_GOALS$ID_EMP_SET_BY"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-65">
+        <dropForeignKeyConstraint baseTableName="PM_EMPLOYEES_GOALS" constraintName="PM_EMP_GOALS$ID_GOAL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-66">
+        <dropForeignKeyConstraint baseTableName="PM_EMPLOYEES_GOALS" constraintName="PM_EMP_GOALS$ID_GOAL_STATE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-67">
+        <dropForeignKeyConstraint baseTableName="PM_EMPLOYEES_GOALS" constraintName="PM_EMP_GOALS$ID_UNIT"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-68">
+        <dropForeignKeyConstraint baseTableName="PM_GOALS" constraintName="PM_GOALS$ID_EMPLOYEE_OWNER"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-69">
+        <dropForeignKeyConstraint baseTableName="PM_GOALS" constraintName="PM_GOALS$ID_GOALS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-70">
+        <dropForeignKeyConstraint baseTableName="PM_GOALS" constraintName="PM_GOALS$ID_TYPE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-71">
+        <dropForeignKeyConstraint baseTableName="PM_GOALS_EVALUATIONS" constraintName="PM_GOALS_EVALUATIONS$EMP_APROV"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-72">
+        <dropForeignKeyConstraint baseTableName="PM_GOALS_EVALUATIONS" constraintName="PM_GOALS_EVALUATIONS$EVALUATOR"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-73">
+        <dropForeignKeyConstraint baseTableName="PM_GOALS_EVALUATIONS" constraintName="PM_GOALS_EVALUATIONS$GOAL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-74">
+        <dropForeignKeyConstraint baseTableName="PM_GOALS_EVALUATIONS" constraintName="PM_GOALS_EVALUATIONS$STATE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-75">
+        <dropForeignKeyConstraint baseTableName="PM_GOAL_EVAL_QST_COMPL" constraintName="PM_GOAL_EVAL_QST_COM$GOAL_EVAL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-76">
+        <dropForeignKeyConstraint baseTableName="PM_GOAL_EVAL_QST_COMPL" constraintName="PM_GOAL_EVAL_QST_COM$QST_COMPL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-77">
+        <dropForeignKeyConstraint baseTableName="PM_QUEST_COMPL_ANSWERS" constraintName="PM_QC_ANSWERS$QST_COMPLETION"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-78">
+        <dropForeignKeyConstraint baseTableName="PM_QUEST_COMPL_ANSWERS" constraintName="PM_QC_ANSWERS$QST_QUESTION"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-79">
+        <dropForeignKeyConstraint baseTableName="PM_QUESTIONNAIRES" constraintName="PM_QUESTIONNAIRES$ID_HEADER"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-80">
+        <dropForeignKeyConstraint baseTableName="PM_QUESTIONNAIRES" constraintName="PM_QUESTIONNAIRES$QUEST_TYPE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-81">
+        <dropForeignKeyConstraint baseTableName="PM_QUEST_COMPLETIONS" constraintName="PM_QUESTIONNAIRE_COMPL$EMP"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-82">
+        <dropForeignKeyConstraint baseTableName="PM_QUEST_COMPLETIONS" constraintName="PM_QUESTIONNAIRE_COMPL$QUEST"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-83">
+        <dropForeignKeyConstraint baseTableName="PM_QUEST_COMPLETIONS" constraintName="PM_QUESTIONNAIRE_COMPL$STATE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-84">
+        <dropForeignKeyConstraint baseTableName="PM_QUEST_QUESTIONS" constraintName="PM_QUEST_QUESTIONS$ID_DETAIL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-85">
+        <dropForeignKeyConstraint baseTableName="TR_FIELDS" constraintName="TR_FIELDS$FIELD_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-86">
+        <dropForeignKeyConstraint baseTableName="TR_TRAININGS" constraintName="TR_TRAININGS$DEL_METHOD_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-87">
+        <dropForeignKeyConstraint baseTableName="TR_TRAININGS" constraintName="TR_TRAININGS$FIELD_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-88">
+        <dropForeignKeyConstraint baseTableName="TR_TRAININGS" constraintName="TR_TRAININGS$LANG_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-89">
+        <dropForeignKeyConstraint baseTableName="TR_TRAININGS" constraintName="TR_TRAININGS$LEVEL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-90">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLANS" constraintName="TR_TRAINING_PLANS$APPR_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-91">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLANS" constraintName="TR_TRAINING_PLANS$CREAT_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-92">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLANS" constraintName="TR_TRAINING_PLANS$ORG_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-93">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLANS" constraintName="TR_TRAINING_PLANS$PL_OWN_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-94">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLANS" constraintName="TR_TRAINING_PLANS$STATUS_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-95">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLANS" constraintName="TR_TRAINING_PLANS$TRAIN_PL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-96">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLANS" constraintName="TR_TRAINING_PLANS$WP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-97">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLANS" constraintName="TR_TRAINING_PLANS$_PL_TYP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-98">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SKILLS" constraintName="TR_TRAINING_SKILLS$GR_EXP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-99">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SKILLS" constraintName="TR_TRAINING_SKILLS$GR_MIN_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-100">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SKILLS" constraintName="TR_TRAINING_SKILLS$SKILL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-101">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SKILLS" constraintName="TR_TRAINING_SKILLS$TRAIN_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-102">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_WP" constraintName="TR_TRAINING_WP$TRAINING_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-103">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_WP" constraintName="TR_TRAINING_WP$WP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-104">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLAN_DETAILS" constraintName="TR_TRAIN_PLAN_DET$EMP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-105">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLAN_DETAILS" constraintName="TR_TRAIN_PLAN_DET$TRAIN_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-106">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_PLAN_DETAILS" constraintName="TR_TRAIN_PLAN_DET$TRAIN_PL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-107">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE" constraintName="TR_TRAIN_SCHED$DEL_MET_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-108">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE" constraintName="TR_TRAIN_SCHED$REGION_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-109">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE" constraintName="TR_TRAIN_SCHED$TRAIN_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-110">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_COSTS" constraintName="TR_TRAIN_SCHED_COST$TOC_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-111">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_COSTS" constraintName="TR_TRAIN_SCHED_COST$TR_SC_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-112">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_EMP" constraintName="TR_TRAIN_SCHED_EMP$EMP_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-113">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_EMP" constraintName="TR_TRAIN_SCHED_EMP$STAT_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-114">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_EMP" constraintName="TR_TRAIN_SCHED_EMP$TPD_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-115">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_EMP" constraintName="TR_TRAIN_SCHED_EMP$TR_SC_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-116">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_EMP_SKILL" constraintName="TR_TRAIN_SCHED_EMP_S$SKILL_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-117">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_EMP_SKILL" constraintName="TR_TRAIN_SCHED_EMP_S$TR_SE_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-118">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_FIN" constraintName="TR_TRAIN_SCHED_FIN$LEG_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-119">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_FIN" constraintName="TR_TRAIN_SCHED_FIN$TR_SC_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-120">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_QUEST_EMP" constraintName="TR_TRAIN_SCHED_QEMP$TR_SE_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-121">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_QUEST_EMP" constraintName="TR_TRAIN_SCHED_QEMP$TR_SQ_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-122">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_QUEST" constraintName="TR_TRAIN_SCHED_QUEST$EQ_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-123">
+        <dropForeignKeyConstraint baseTableName="TR_TRAINING_SCHEDULE_QUEST" constraintName="TR_TRAIN_SCHED_QUEST$TR_SC_FK"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-124">
+        <dropUniqueConstraint constraintName="DM_DOCUMENTS_TYPES$CODE_UK" tableName="DM_DOCUMENT_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-125">
+        <dropUniqueConstraint constraintName="EM_BORROWING_TYPES$CODE_UK" tableName="EM_BORROWING_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-126">
+        <dropUniqueConstraint constraintName="EM_CONTRACT_TYPES$CODE_UK" tableName="EM_CONTRACT_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-127">
+        <dropUniqueConstraint constraintName="EM_EMPE_META_DATA$EMP_MD_UK" tableName="EM_EMP_META_DATA"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-128">
+        <dropUniqueConstraint constraintName="EM_EMPLOYEES$CODE_UK" tableName="EM_EMPLOYEES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-129">
+        <dropUniqueConstraint constraintName="EM_EMPLOYMENT_TYPES$CODE_UK" tableName="EM_EMP_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-130">
+        <dropUniqueConstraint constraintName="EM_EMP_BANK_ACCOUNT$ACCNUM_UK" tableName="EM_EMP_BANK_ACCOUNTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-131">
+        <dropUniqueConstraint constraintName="EM_EMP_CITIZENSHIP$EMP_CNTR_UK" tableName="EM_EMP_CITIZENSHIPS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-132">
+        <dropUniqueConstraint constraintName="EM_EMP_IDENTIF$EMP_IDENTIF_UK" tableName="EM_EMP_IDENTIFICATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-133">
+        <dropUniqueConstraint constraintName="EM_EMP_INJURIES$EMP_INJURY_UK" tableName="EM_EMP_INJURIES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-134">
+        <dropUniqueConstraint constraintName="EM_EMP_ORG_WORK_PLACES_UK" tableName="EM_EMP_ORG_WORK_PLACES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-135">
+        <dropUniqueConstraint constraintName="EM_EMP_REWARDS$EMP_REW_DAT_UK" tableName="EM_EMP_REWARDS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-136">
+        <dropUniqueConstraint constraintName="EM_EMP_SKILLS$EMP_SKILL_UK" tableName="EM_EMP_SKILLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-137">
+        <dropUniqueConstraint constraintName="EM_INJURY_TYPES$CODE_UK" tableName="EM_INJURY_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-138">
+        <dropUniqueConstraint constraintName="EM_REWARD_TYPES$CODE_UK" tableName="EM_REWARD_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-139">
+        <dropUniqueConstraint constraintName="EM_STATUSES$CODE_UK" tableName="EM_STATUSES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-140">
+        <dropUniqueConstraint constraintName="LE_LEGAL_ENTITIES$CODE_UK" tableName="LE_LEGAL_ENTITIES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-141">
+        <dropUniqueConstraint constraintName="LE_LEGAL_ENTITY_TYPES$CODE_PK" tableName="LE_LEGAL_ENTITY_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-142">
+        <dropUniqueConstraint constraintName="MD_DATA_TYPES$CODE_UK" tableName="MD_DATA_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-143">
+        <dropUniqueConstraint constraintName="MD_DEATAILS$CODE_UK" tableName="MD_DETAILS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-144">
+        <dropUniqueConstraint constraintName="MD_DETAIL_VALUES$DET_VAL_UK" tableName="MD_DETAIL_VALUE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-145">
+        <dropUniqueConstraint constraintName="MD_HEADERS$CODE_UK" tableName="MD_HEADERS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-146">
+        <dropUniqueConstraint constraintName="MD_HEADER_TYPES$CODE_UK" tableName="MD_HEADER_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-147">
+        <dropUniqueConstraint constraintName="OG_ORGANIZATIONS$CODE_UK" tableName="OG_ORGANIZATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-148">
+        <dropUniqueConstraint constraintName="OG_ORG_TYPES$CODE_UK" tableName="OG_ORG_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-149">
+        <dropUniqueConstraint constraintName="OG_WORK_PLACES$CODE_UK" tableName="OG_WORK_PLACES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-150">
+        <dropUniqueConstraint constraintName="OG_WORK_PLACE_TYPES$CODE_UK" tableName="OG_WORK_PLACE_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-151">
+        <dropUniqueConstraint constraintName="OG_WP_SKILLS$WP_SKILL_UK" tableName="OG_WORK_PLACE_SKILLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-152">
+        <dropUniqueConstraint constraintName="PM_GOAL_EVAL_QST_COM$FKS_UK" tableName="PM_GOAL_EVAL_QST_COMPL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-153">
+        <dropUniqueConstraint constraintName="RG_CONTACT_TYPES$CODE_UK" tableName="RG_CONTACT_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-154">
+        <dropUniqueConstraint constraintName="RG_FAMILY_ROLES$CODE_UK" tableName="RG_FAMILY_ROLES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-155">
+        <dropUniqueConstraint constraintName="RG_ID_DOCUMENT_TYPES$CODE_UK" tableName="RG_IDENTIFICATION_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-156">
+        <dropUniqueConstraint constraintName="RG_QUALIFICATIONS$CODE_UK" tableName="RG_QUALIFICATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-157">
+        <dropUniqueConstraint constraintName="RG_REGIONS$CODE_UK" tableName="RG_REGIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-158">
+        <dropUniqueConstraint constraintName="RG_REGION_TYPES$CODE_UK" tableName="RG_REGION_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-159">
+        <dropUniqueConstraint constraintName="RG_SCHOOLS$CODE_UK" tableName="RG_SCHOOLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-160">
+        <dropUniqueConstraint constraintName="RG_SKILLS$CODE_UK" tableName="RG_SKILLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-161">
+        <dropUniqueConstraint constraintName="SYS_C0025707" tableName="OG_ORG"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-162">
+        <dropUniqueConstraint constraintName="SYS_C0025708" tableName="OG_ORG"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-163">
+        <dropUniqueConstraint constraintName="SYS_C0025709" tableName="OG_ORG"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-164">
+        <dropUniqueConstraint constraintName="TR_DELIVERY_METHODS$CODE_UK" tableName="TR_DELIVERY_METHODS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-165">
+        <dropUniqueConstraint constraintName="TR_EMP_STATUS$CODE_UK" tableName="TR_EMPLOYEE_STATUS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-166">
+        <dropUniqueConstraint constraintName="TR_FIELDS$CODE_UK" tableName="TR_FIELDS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-167">
+        <dropUniqueConstraint constraintName="TR_LANGUAGES$CODE_UK" tableName="TR_LANGUAGES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-168">
+        <dropUniqueConstraint constraintName="TR_LEVELS$CODE_UK" tableName="TR_LEVELS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-169">
+        <dropUniqueConstraint constraintName="TR_PLAN_STATUS$CODE_UK" tableName="TR_PLAN_STATUS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-170">
+        <dropUniqueConstraint constraintName="TR_PLAN_TYPES$CODE_UK" tableName="TR_PLAN_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-171">
+        <dropUniqueConstraint constraintName="TR_TRAININGS$CODE_UK" tableName="TR_TRAININGS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-172">
+        <dropUniqueConstraint constraintName="TR_TRAINING_SKILLS$UK" tableName="TR_TRAINING_SKILLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-173">
+        <dropUniqueConstraint constraintName="TR_TRAINING_WP$UK" tableName="TR_TRAINING_WP"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-174">
+        <dropUniqueConstraint constraintName="TR_TRAIN_SCHED_COST$UK" tableName="TR_TRAINING_SCHEDULE_COSTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-175">
+        <dropUniqueConstraint constraintName="TR_TRAIN_SCHED_EMP$UK" tableName="TR_TRAINING_SCHEDULE_EMP"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-176">
+        <dropUniqueConstraint constraintName="TR_TRAIN_SCHED_EMP_S$UK" tableName="TR_TRAINING_SCHEDULE_EMP_SKILL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-177">
+        <dropUniqueConstraint constraintName="TR_TRAIN_SCHED_FIN$UK" tableName="TR_TRAINING_SCHEDULE_FIN"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-178">
+        <dropUniqueConstraint constraintName="TR_TRAIN_SCHED_QEMP$UK" tableName="TR_TRAINING_SCHEDULE_QUEST_EMP"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-179">
+        <dropUniqueConstraint constraintName="TR_TRAIN_SCHED_QUEST$UK" tableName="TR_TRAINING_SCHEDULE_QUEST"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-180">
+        <dropUniqueConstraint constraintName="TR_TYPE_OF_COSTS$CODE_UK" tableName="TR_TYPE_OF_COSTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-181">
+        <dropTable tableName="AB_ABSENCE_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-182">
+        <dropTable tableName="AB_ACCOMODATION_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-183">
+        <dropTable tableName="AB_COST_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-184">
+        <dropTable tableName="AB_PERMITTED_STATUS_CHANGES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-185">
+        <dropTable tableName="AB_REQUESTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-186">
+        <dropTable tableName="AB_REQUEST_COSTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-187">
+        <dropTable tableName="AB_REQUEST_REPORTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-188">
+        <dropTable tableName="AB_REQUEST_STATUSES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-189">
+        <dropTable tableName="AB_STATUSES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-190">
+        <dropTable tableName="AB_TRANSPORT_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-191">
+        <dropTable tableName="AB_TRAVEL_PURPOSES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-192">
+        <dropTable tableName="AB_VACATION_LEAVE_DAYS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-193">
+        <dropTable tableName="AP_USERS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-194">
+        <dropTable tableName="AP_USER_ACTIVATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-195">
+        <dropTable tableName="AP_USER_STATUSES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-196">
+        <dropTable tableName="AT_ACTIVITIES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-197">
+        <dropTable tableName="AT_ACTIVITY_STATUSES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-198">
+        <dropTable tableName="AT_APPLICANTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-199">
+        <dropTable tableName="AT_APPLICANTS_CONTACTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-200">
+        <dropTable tableName="AT_APPLICANTS_DOCUMENTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-201">
+        <dropTable tableName="AT_APPLICANTS_SCHOOLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-202">
+        <dropTable tableName="AT_APPLICANTS_SKILLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-203">
+        <dropTable tableName="AT_APPLICANT_ACCOMPLISHMENTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-204">
+        <dropTable tableName="AT_APPLICANT_EXPERIENCES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-205">
+        <dropTable tableName="AT_JOB_APPLICATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-206">
+        <dropTable tableName="AT_JOB_APPLICATIONS_ACTIVITIES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-207">
+        <dropTable tableName="AT_JOB_APPLICATIONS_INTERVIEWS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-208">
+        <dropTable tableName="AT_JOB_APPLICATIONS_TESTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-209">
+        <dropTable tableName="AT_JOB_APPLICATION_HISTORY"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-210">
+        <dropTable tableName="AT_JOB_APPLICATION_STATUSES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-211">
+        <dropTable tableName="AT_JOB_APP_NOTIFICATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-212">
+        <dropTable tableName="AT_NOTIFICATION_TEMPLATES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-213">
+        <dropTable tableName="AT_VACANCIES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-214">
+        <dropTable tableName="AT_VACANCIES_SKILLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-215">
+        <dropTable tableName="AT_VACANCIES_STATUSES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-216">
+        <dropTable tableName="EM_CONTRACT_TYPES_2"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-217">
+        <dropTable tableName="EM_EMP_CITIZENSHIPS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-218">
+        <dropTable tableName="EM_EMP_CONTACTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-219">
+        <dropTable tableName="EM_EMP_DISABILITIES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-220">
+        <dropTable tableName="EM_EMP_META_DATA"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-221">
+        <dropTable tableName="EM_EMP_RESIDENCES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-222">
+        <dropTable tableName="MD_DATA_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-223">
+        <dropTable tableName="MD_DETAILS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-224">
+        <dropTable tableName="MD_DETAIL_VALUE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-225">
+        <dropTable tableName="MD_HEADERS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-226">
+        <dropTable tableName="MD_HEADER_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-227">
+        <dropTable tableName="OG_ORG"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-228">
+        <dropTable tableName="PM_CORRECTIVE_MEASURES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-229">
+        <dropTable tableName="PM_COR_MEASURE_STATES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-230">
+        <dropTable tableName="PM_COR_MEASURE_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-231">
+        <dropTable tableName="PM_EMPLOYEES_GOALS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-232">
+        <dropTable tableName="PM_EVALUATION_STATES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-233">
+        <dropTable tableName="PM_GOALS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-234">
+        <dropTable tableName="PM_GOALS_EVALUATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-235">
+        <dropTable tableName="PM_GOAL_EVAL_QST_COMPL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-236">
+        <dropTable tableName="PM_GOAL_STATES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-237">
+        <dropTable tableName="PM_GOAL_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-238">
+        <dropTable tableName="PM_QUESTIONNAIRES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-239">
+        <dropTable tableName="PM_QUEST_COMPLETIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-240">
+        <dropTable tableName="PM_QUEST_COMPL_ANSWERS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-241">
+        <dropTable tableName="PM_QUEST_COMPL_STATES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-242">
+        <dropTable tableName="PM_QUEST_QUESTIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-243">
+        <dropTable tableName="PM_QUEST_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-244">
+        <dropTable tableName="PM_UNIT_OF_MEASURES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-245">
+        <dropTable tableName="TR_DELIVERY_METHODS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-246">
+        <dropTable tableName="TR_EMPLOYEE_STATUS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-247">
+        <dropTable tableName="TR_EVALUATION_QUESTIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-248">
+        <dropTable tableName="TR_FIELDS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-249">
+        <dropTable tableName="TR_LANGUAGES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-250">
+        <dropTable tableName="TR_LEVELS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-251">
+        <dropTable tableName="TR_PLAN_STATUS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-252">
+        <dropTable tableName="TR_PLAN_TYPES"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-253">
+        <dropTable tableName="TR_TRAININGS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-254">
+        <dropTable tableName="TR_TRAINING_PLANS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-255">
+        <dropTable tableName="TR_TRAINING_PLAN_DETAILS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-256">
+        <dropTable tableName="TR_TRAINING_SCHEDULE"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-257">
+        <dropTable tableName="TR_TRAINING_SCHEDULE_COSTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-258">
+        <dropTable tableName="TR_TRAINING_SCHEDULE_EMP"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-259">
+        <dropTable tableName="TR_TRAINING_SCHEDULE_EMP_SKILL"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-260">
+        <dropTable tableName="TR_TRAINING_SCHEDULE_FIN"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-261">
+        <dropTable tableName="TR_TRAINING_SCHEDULE_QUEST"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-262">
+        <dropTable tableName="TR_TRAINING_SCHEDULE_QUEST_EMP"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-263">
+        <dropTable tableName="TR_TRAINING_SKILLS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-264">
+        <dropTable tableName="TR_TRAINING_WP"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-265">
+        <dropTable tableName="TR_TYPE_OF_COSTS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-266">
+        <dropColumn columnName="ID_COUNTRY" tableName="EM_EMP_IDENTIFICATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-267">
+        <dropColumn columnName="ID_MUNICIPALITY" tableName="EM_EMP_IDENTIFICATIONS"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-268">
+        <dropSequence sequenceName="OID"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-269">
+        <alterSequence sequenceName="hibernate_sequence"/>
+        <alterSequence sequenceName="hibernate_sequence"/>
+        <alterSequence sequenceName="hibernate_sequence"/>
+        <alterSequence sequenceName="hibernate_sequence"/>
+        <alterSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-270">
+        <setTableRemarks tableName="em_emp_types"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-271">
+        <dropNotNullConstraint columnDataType="varchar(255 CHAR)" columnName="code" tableName="rg_contact_types"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-272">
+        <dropDefaultValue columnDataType="number(10,0)" columnName="disability_degree" tableName="em_employees"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-273">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_accomplishment_type" tableName="em_emp_accomplishments"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-274">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_bank" tableName="em_emp_bank_accounts"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-275">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_borrowing" tableName="em_emp_borrowings"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-276">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_contract_type" tableName="em_emp_org_work_places"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-277">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_contract_type" tableName="em_emp_salaries"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-278">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_country" tableName="rg_schools"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-279">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_document_link" tableName="em_emp_documents"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-280">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_document_type" tableName="em_emp_documents"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-281">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_accomplishments"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-282">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_bank_accounts"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-283">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_borrowings"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-284">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_emg_contacts"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-285">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_families"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-286">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_identifications"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-287">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_injuries"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-288">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_notes"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-289">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_org_work_places"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-290">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_previous_jobs"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-291">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_rewards"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-292">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_salaries"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-293">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_schools"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-294">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_emp_skills"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-295">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employee" tableName="em_penalties"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-296">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_employment_type" tableName="em_employees"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-297">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_entity_type" tableName="le_legal_entities"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-298">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_family" tableName="em_emp_families"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-299">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_identification" tableName="em_emp_identifications"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-300">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_injury" tableName="em_emp_injuries"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-301">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_org_work_place" tableName="em_emp_org_work_places"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-302">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_organization" tableName="og_org_work_places"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-303">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_organization_type" tableName="og_organizations"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-304">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_reward" tableName="em_emp_rewards"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-305">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_school" tableName="em_emp_schools"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-306">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_skill" tableName="em_emp_skills"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-307">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_skill" tableName="og_work_place_skills"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-308">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_type" tableName="rg_regions"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-309">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_work_place" tableName="em_emp_salaries"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-310">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_work_place" tableName="og_org_work_places"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-311">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_work_place" tableName="og_work_place_skills"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1520616856668-312">
+        <dropNotNullConstraint columnDataType="number(19,0)" columnName="id_work_place_type" tableName="og_work_places"/>
+    </changeSet>
+</databaseChangeLog>

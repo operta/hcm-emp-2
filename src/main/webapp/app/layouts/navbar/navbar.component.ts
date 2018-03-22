@@ -12,6 +12,7 @@ import {EmEmployeesService} from "../../entities/em-employees/em-employees.servi
 import {DomSanitizer, EventManager} from "@angular/platform-browser";
 import {Subscription} from "rxjs/Subscription";
 declare let $:any;
+
 @Component({
     selector: 'jhi-navbar',
     templateUrl: './navbar.component.html',
@@ -128,11 +129,12 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     ngAfterViewInit(){
         $(".preloader").fadeOut();
         ($(this.sideMenu.nativeElement)).metisMenu();
-        $('#slimscrollsidebar').slimScroll({
-            height: ''
-            , position: 'right'
-            , color: '#dcdcdc'
-            , });
+            $('#slimscrollsidebar').slimScroll({
+                height: ''
+                , position: 'right'
+                , color: '#dcdcdc'
+                , });
+
     }
 
     toggleAdministration() {

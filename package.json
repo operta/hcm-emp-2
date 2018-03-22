@@ -99,7 +99,7 @@
     "ngc": "ngc -p tsconfig-aot.json",
     "cleanup": "rimraf target/{aot,www}",
     "clean-www": "rimraf target//www/app/{src,target/}",
-    "start": "yarn run webpack:dev",
+    "start": "yarn run webpack:dev --host 0.0.0.0 --disable-host-check",
     "serve": "yarn run start",
     "build": "yarn run webpack:prod",
     "test": "yarn run lint && karma start src/test/javascript/karma.conf.js",
