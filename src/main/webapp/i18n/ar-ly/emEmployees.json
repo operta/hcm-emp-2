@@ -2,42 +2,47 @@
     "hcmEmpApp": {
         "emEmployees" : {
             "home": {
-                "title": "Em Employees",
-                "createLabel": "Create a new Em Employees",
-                "createOrEditLabel": "Create or edit a Em Employees"
+                "title": "Employees ??",
+                "createLabel": "Create a new Employee ??",
+                "createOrEditLabel": "Create or edit an Employee Profile ??"
             },
-            "created": "A new Em Employees is created with identifier {{ param }}",
-            "updated": "A Em Employees is updated with identifier {{ param }}",
-            "deleted": "A Em Employees is deleted with identifier {{ param }}",
+            "created": "Employee Profile created ??",
+            "updated": "Employee Profile updated ??",
+            "deleted": "Employee Profile deleted ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Employees {{ id }}?"
+                "question": "Are you sure you want to delete Employee Profile {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Employees"
+                "title": "Employee Profile ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "middleName": "Middle Name",
-            "surname": "Surname",
-            "maidenName": "Maiden Name",
-            "disabilityDegree": "Disability Degree",
-            "ethnicGroup": "Ethnic Group",
-            "gender": "Gender",
-            "residentialSituation": "Residential Situation",
-            "maritalStatus": "Marital Status",
-            "bloodGroup": "Blood Group",
-            "dateOfBirth": "Date Of Birth",
-            "hireDate": "Hire Date",
-            "ssn": "Ssn",
-            "taxNumber": "Tax Number",
-            "imagePath": "Image Path",
-            "phoneNumber": "Phone Number",
-            "personalPhoneNumber": "Personal Phone Number",
-            "email": "Email",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At"
+            "code": "الرمز",
+            "name": "الاسم",
+            "middleName": "الاسم الأوسط",
+            "surname": "الاسم الأخير",
+            "maidenName": "الاسم قبل الزواج",
+            "disabilityDegree": "Disability Degree ??",
+            "ethnicGroup": "Ethnic Group ??",
+            "gender": "الجنس",
+            "residentialSituation": "Residential Situation ??",
+            "maritalStatus": "الحالة الاجتماعية ",
+            "bloodGroup": "Blood Group ??",
+            "dateOfBirth": "تاريخ الميلاد",
+            "hireDate": "Hire Date ??",
+            "ssn": "SSN ??",
+            "taxNumber": "Tax Number ??",
+            "imagePath": "Image Path ??",
+            "phoneNumber": "Business Phone Number ??",
+            "personalPhoneNumber": "Personal Phone Number ??",
+            "email": "Business Email ??",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idEmploymentType" : "Employment Type ??",
+            "idQualification" : "المؤهل",
+            "idUser" : "User ??",
+            "idStatus" : "Employment Status ??",
+            "idLegalEntity" : "Legal Entity ??"
         }
     }
 }

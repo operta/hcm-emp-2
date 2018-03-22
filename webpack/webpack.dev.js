@@ -30,6 +30,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
         watchOptions: {
             ignored: /node_modules/
         }
+
     },
     entry: {
         polyfills: './src/main/webapp/app/polyfills',

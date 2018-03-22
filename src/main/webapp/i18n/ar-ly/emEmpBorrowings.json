@@ -2,34 +2,34 @@
     "hcmEmpApp": {
         "emEmpBorrowings" : {
             "home": {
-                "title": "Em Emp Borrowings",
-                "createLabel": "Create a new Em Emp Borrowings",
-                "createOrEditLabel": "Create or edit a Em Emp Borrowings"
+                "title": "Employee Borrowings ??",
+                "createLabel": "Create a new Employee Borrowing ??",
+                "createOrEditLabel": "Create or edit an Employee Borrowing ??"
             },
-            "created": "A new Em Emp Borrowings is created with identifier {{ param }}",
-            "updated": "A Em Emp Borrowings is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Borrowings is deleted with identifier {{ param }}",
+            "created": "A new Employee Borrowing is created with identifier {{ param }} ??",
+            "updated": "An Employee Borrowing is updated with identifier {{ param }} ??",
+            "deleted": "An Employee Borrowing is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Borrowings {{ id }}?"
+                "question": "Are you sure you want to delete Employee Borrowing {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Emp Borrowings"
+                "title": "Employee Borrowing ??"
             },
-            "title": "Title",
-            "description": "Description",
-            "serialNumber": "Serial Number",
-            "dateFrom": "Date From",
-            "chargedBy": "Charged By",
-            "dateTo": "Date To",
-            "dischargedBy": "Discharged By",
-            "damage": "Damage",
-            "damagedByEmployee": "Damaged By Employee",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idEmployee": "Id Employee",
-            "idBorrowing": "Id Borrowing"
+            "title": "Title ??",
+            "description": "الوصف",
+            "serialNumber": "Serial Number ??",
+            "dateFrom": "من تاربخ",
+            "chargedBy": "Charged By ??",
+            "dateTo": "الى تاريخ",
+            "dischargedBy": "Discharged By ??",
+            "damage": "Damage ??",
+            "damagedByEmployee": "Damaged By Employee ??",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idEmployee": "Employee ??",
+            "idBorrowing": "Borrowing Type ??"
         }
     }
 }

@@ -4,11 +4,11 @@
             "home": {
                 "title": "Employee Borrowings",
                 "createLabel": "Create a new Employee Borrowing",
-                "createOrEditLabel": "Create or edit a Employee Borrowing"
+                "createOrEditLabel": "Create or edit an Employee Borrowing"
             },
             "created": "A new Employee Borrowing is created with identifier {{ param }}",
-            "updated": "A Employee Borrowing is updated with identifier {{ param }}",
-            "deleted": "A Employee Borrowing is deleted with identifier {{ param }}",
+            "updated": "An Employee Borrowing is updated with identifier {{ param }}",
+            "deleted": "An Employee Borrowing is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Employee Borrowing {{ id }}?"
             },

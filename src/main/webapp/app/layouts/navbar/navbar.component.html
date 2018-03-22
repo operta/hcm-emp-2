@@ -127,26 +127,26 @@
                 <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <a (click)="collapseLists()" routerLinkActive="active" routerLink="/dashboard/employee-dashboard" class="waves-effect">
                         <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                        <span class="hide-menu"> Dashboard </span>
+                        <span class="hide-menu" jhiTranslate="global.employees.dashboard"> Dashboard </span>
                     </a>
                 </li>
                 <li *jhiHasAnyAuthority="'ROLE_USER'">
                     <a (click)="collapseLists()" routerLinkActive="active" [routerLink]="['/dashboard/employee-overview', { userId: accountId}]"  class="waves-effect" [class]="isActive()">
                         <i class="icon-user fa-fw" data-icon="v"></i>
-                        <span class="hide-menu"> My Info </span>
+                        <span class="hide-menu" jhiTranslate="global.employees.myInfo"> My Info </span>
                     </a>
                 </li>
                 <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <a (click)="collapseLists()" routerLinkActive="active" routerLink="/dashboard/employees" class="waves-effect">
                         <i class="icon-people fa-fw" data-icon="v"></i>
-                        <span class="hide-menu"> Employees </span>
+                        <span class="hide-menu" jhiTranslate="global.employees.employees"> Employees </span>
                     </a>
                 </li>
 
                 <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <a (click)="toggleModules()" class="waves-effect"aria-expanded="false">
                         <i class="fa fa-th-list"></i>
-                        <span class="hide-menu">Modules
+                        <span class="hide-menu" jhiTranslate="global.employees.modules">Modules
                             <span class="pull-right" [ngClass]="isModulesCollapsed ? 'fa fa-caret-down' : 'fa fa-caret-right'"></span>
                         </span>
                     </a>
@@ -154,61 +154,61 @@
                         <li>
                             <a class="waves-effect">
                                 <i class="icon-people fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> HR planing </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.hrPlanning"> HR planing </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Job openings </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.jobOpenings"> Job openings </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Trainings </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.trainings"> Trainings </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Time off </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.timeOff"> Time off </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Payroll </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.payroll"> Payroll </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Reports </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.reports"> Reports </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Files </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.files"> Files </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Announcements </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.announcements"> Announcements </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Departments </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.departments"> Departments </span>
                             </a>
                         </li>
                         <li>
                             <a class="waves-effect">
                                 <i class="ti-clipboard fa-fw" data-icon="v"></i>
-                                <span class="hide-menu"> Jobs </span>
+                                <span class="hide-menu" jhiTranslate="global.employees.jobs"> Jobs </span>
                             </a>
                         </li>
                     </ul>
@@ -217,7 +217,7 @@
                 <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <a (click)="toggleOthers()" class="waves-effect"aria-expanded="false">
                         <i class="fa fa-th-list"></i>
-                        <span class="hide-menu">Others
+                        <span class="hide-menu" jhiTranslate="global.employees.others">Others
                             <span class="pull-right" [ngClass]="isOthersCollapsed ? 'fa fa-caret-down' : 'fa fa-caret-right'"></span>
                         </span>
                     </a>
@@ -225,19 +225,19 @@
                         <li>
                             <a class="" routerLink="og-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Workplaces</span>
+                                <span jhiTranslate="global.menu.entities.ogWorkPlaces">Workplaces</span>
                             </a>
                         </li>
                         <li>
                             <a class="" routerLink="og-org-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Organization Workplaces</span>
+                                <span jhiTranslate="global.menu.entities.ogOrgWorkPlaces">Organization Workplaces</span>
                             </a>
                         </li>
                         <li>
                             <a class="" routerLink="em-emp-org-work-places" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Employee Workplaces</span>
+                                <span jhiTranslate="global.menu.entities.emEmpOrgWorkPlaces">Employee Workplaces</span>
                             </a>
                         </li>
                         <li>
@@ -252,7 +252,7 @@
                 <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <a (click)="toggleEntity()" class="waves-effect"aria-expanded="false">
                         <i class="fa fa-th-list"></i>
-                        <span class="hide-menu">Registers
+                        <span class="hide-menu" jhiTranslate="global.employees.registers">Registers
                             <span class="pull-right" [ngClass]="isEntityCollapsed ? 'fa fa-caret-down' : 'fa fa-caret-right'"></span>
                         </span>
                     </a>
@@ -266,7 +266,7 @@
                         <li>
                             <a class="" routerLink="em-contract-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Contract Types</span>
+                                <span jhiTranslate="global.menu.entities.emContractTypes">Contract Types</span>
                             </a>
                         </li>
                         <li>
@@ -308,13 +308,13 @@
                         <li>
                             <a class="" routerLink="og-organizations" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Organizations</span>
+                                <span jhiTranslate="global.menu.entities.ogOrganizations">Organizations</span>
                             </a>
                         </li>
                         <li>
                             <a class="" routerLink="og-org-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Organization Types</span>
+                                <span jhiTranslate="global.menu.entities.ogOrgTypes">Organization Types</span>
                             </a>
                         </li>
                         <li>
@@ -362,7 +362,7 @@
                         <li>
                             <a class="" routerLink="og-work-place-types" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                                 <i class="fa fa-fw fa-archive" aria-hidden="true"></i>
-                                <span>Workplace Types</span>
+                                <span jhiTranslate="global.menu.entities.ogWorkPlaceTypes">Workplace Types</span>
                             </a>
                         </li>
                         <li>

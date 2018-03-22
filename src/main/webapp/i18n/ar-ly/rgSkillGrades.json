@@ -2,28 +2,28 @@
     "hcmEmpApp": {
         "rgSkillGrades" : {
             "home": {
-                "title": "Rg Skill Grades",
-                "createLabel": "Create a new Rg Skill Grades",
-                "createOrEditLabel": "Create or edit a Rg Skill Grades"
+                "title": "Skill Grades ??",
+                "createLabel": "Create a new Skill Grade ??",
+                "createOrEditLabel": "Create or edit a Skill Grade ??"
             },
-            "created": "A new Rg Skill Grades is created with identifier {{ param }}",
-            "updated": "A Rg Skill Grades is updated with identifier {{ param }}",
-            "deleted": "A Rg Skill Grades is deleted with identifier {{ param }}",
+            "created": "A new Skill Grade is created with identifier {{ param }} ??",
+            "updated": "A Skill Grade is updated with identifier {{ param }} ??",
+            "deleted": "A Skill Grade is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Rg Skill Grades {{ id }}?"
+                "question": "Are you sure you want to delete Skill Grade {{ id }}? ??"
             },
             "detail": {
-                "title": "Rg Skill Grades"
+                "title": "Skill Grade ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "description": "Description",
-            "grade": "Grade",
-            "numerical": "Numerical",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At"
+            "grade": "الدرجة",
+            "numerical": "Numerical ??",
+            "code": "الرمز",
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??"
         }
     }
 }

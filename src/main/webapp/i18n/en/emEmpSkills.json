@@ -23,7 +23,9 @@
             "updatedAt": "Updated At",
             "idEmployee": "Employee",
             "idSkill": "Skill",
-            "idGrade": "Grade"
+            "idGrade": "Grade",
+            "skillGrade" : "Skill Grade",
+            "skillDate" : "Skill Date"
         }
     }
 }

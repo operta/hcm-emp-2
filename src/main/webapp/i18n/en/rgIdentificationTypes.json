@@ -4,11 +4,11 @@
             "home": {
                 "title": "Identification Types",
                 "createLabel": "Create a new Identification Type",
-                "createOrEditLabel": "Create or edit a Identification Type"
+                "createOrEditLabel": "Create or edit an Identification Type"
             },
             "created": "A new Identification Type is created with identifier {{ param }}",
-            "updated": "A Identification Type is updated with identifier {{ param }}",
-            "deleted": "A Identification Type is deleted with identifier {{ param }}",
+            "updated": "An Identification Type is updated with identifier {{ param }}",
+            "deleted": "An Identification Type is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Identification Type {{ id }}?"
             },

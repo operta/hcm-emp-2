@@ -2,30 +2,31 @@
     "hcmEmpApp": {
         "emEmpFamilies" : {
             "home": {
-                "title": "Em Emp Families",
-                "createLabel": "Create a new Em Emp Families",
-                "createOrEditLabel": "Create or edit a Em Emp Families"
+                "title": "Employee Families ??",
+                "createLabel": "Create a new Employee Family ??",
+                "createOrEditLabel": "Create or edit an Employee Family ??"
             },
-            "created": "A new Em Emp Families is created with identifier {{ param }}",
-            "updated": "A Em Emp Families is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Families is deleted with identifier {{ param }}",
+            "created": "A new Employee Family is created with identifier {{ param }} ??",
+            "updated": "An Employee Family is updated with identifier {{ param }} ??",
+            "deleted": "An Employee Family is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Families {{ id }}?"
+                "question": "Are you sure you want to delete Employee Family {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Emp Families"
+                "title": "Employee Family ??"
             },
-            "name": "Name",
-            "middleName": "Middle Name",
-            "surname": "Surname",
-            "maidenName": "Maiden Name",
-            "identificationNumber": "Identification Number",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idFamily": "Id Family",
-            "idEmployee": "Id Employee"
+            "name": "الاسم",
+            "middleName": "الاسم الأوسطe",
+            "surname": "الاسم الأخير",
+            "maidenName": "الاسم قبل الزواج",
+            "identificationNumber": "Identification Number ??",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idFamily": "Family ??",
+            "idEmployee": "Employee ??",
+            "familyRole" : "Family Role ??"
         }
     }
 }

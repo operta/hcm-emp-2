@@ -9,7 +9,7 @@
         <jhi-alert-error></jhi-alert-error>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="form-control-label" for="field_code">Code</label>
+                <label class="form-control-label" for="field_code" jhiTranslate="hcmEmpApp.emEmployees.code">Code</label>
                 <input type="text" class="form-control" name="code" id="field_code"
                        [(ngModel)]="emEmployees.code" required/>
                 <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="form-control-label" for="field_name">First Name</label>
+                <label class="form-control-label" for="field_name" jhiTranslate="hcmEmpApp.emEmployees.name">First Name</label>
                 <input type="text" class="form-control" name="name" id="field_name"
                        [(ngModel)]="emEmployees.name" required/>
                 <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="form-control-label" for="field_surname">Last Name</label>
+                <label class="form-control-label" for="field_surname" jhiTranslate="hcmEmpApp.emEmployees.surname">Last Name</label>
                 <input type="text" class="form-control" name="surname" id="field_surname"
                        [(ngModel)]="emEmployees.surname" required/>
                 <div [hidden]="!(editForm.controls.surname?.dirty && editForm.controls.surname?.invalid)">
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="col-md-4" style="margin-top: 35px;">
-                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-types-new'} }]">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-types-new'} }]" jhiTranslate="global.employees.addEmploymentType">
                     <i class="fa fa-plus action-button-at"></i> Add Employment Type
                 </a>
             </div>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="col-md-4" style="margin-top: 35px;">
-                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'rg-qualifications-new'} }]">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'rg-qualifications-new'} }]" jhiTranslate="global.employees.addQualification">
                     <i class="fa fa-plus action-button-at"></i> Add Qualification
                 </a>
             </div>
@@ -151,7 +151,7 @@
                 </div>
             </div>
             <div class="col-md-4" style="margin-top: 10px">
-                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'le-legal-entities-new'} }]">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'le-legal-entities-new'} }]" jhiTranslate="global.employees.addLegalEntity">
                     <i class="fa fa-plus action-button-at"></i> Add Legal Entity
                 </a>
             </div>
@@ -171,7 +171,7 @@
                 </div>
             </div>
             <div class="col-md-4" style="margin-top: 35px;">
-                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-statuses-new'} }]">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-statuses-new'} }]" jhiTranslate="global.employees.addEmployeeStatus">
                     <i class="fa fa-plus action-button-at"></i> Add Employee Status
                 </a>
             </div>
@@ -202,7 +202,7 @@
 
             </div>
             <div class="col-md-4" style="margin-top: 35px;">
-                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'user-management-new'} }]">
+                <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'user-management-new'} }]" jhiTranslate="global.employees.addUser">
                     <i class="fa fa-plus action-button-at"></i> Add User
                 </a>
             </div>

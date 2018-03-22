@@ -4,11 +4,11 @@
             "home": {
                 "title": "Organization Workplaces",
                 "createLabel": "Create a new Organization Workplace",
-                "createOrEditLabel": "Create or edit a Organization Workplace"
+                "createOrEditLabel": "Create or edit an Organization Workplace"
             },
             "created": "A new Organization Workplace is created with identifier {{ param }}",
-            "updated": "A Organization Workplace is updated with identifier {{ param }}",
-            "deleted": "A Organization Workplace is deleted with identifier {{ param }}",
+            "updated": "An Organization Workplace is updated with identifier {{ param }}",
+            "deleted": "An Organization Workplace is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Organization Workplace {{ id }}?"
             },

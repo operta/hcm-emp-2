@@ -2,28 +2,28 @@
     "hcmEmpApp": {
         "ogWorkPlaceSkills" : {
             "home": {
-                "title": "Og Work Place Skills",
-                "createLabel": "Create a new Og Work Place Skills",
-                "createOrEditLabel": "Create or edit a Og Work Place Skills"
+                "title": "Workplace Skills ??",
+                "createLabel": "Create a new Workplace Skill ??",
+                "createOrEditLabel": "Create or edit a Workplace Skill ??"
             },
-            "created": "A new Og Work Place Skills is created with identifier {{ param }}",
-            "updated": "A Og Work Place Skills is updated with identifier {{ param }}",
-            "deleted": "A Og Work Place Skills is deleted with identifier {{ param }}",
+            "created": "A new Workplace Skill is created with identifier {{ param }} ??",
+            "updated": "A Workplace Skill is updated with identifier {{ param }} ??",
+            "deleted": "A Workplace Skill is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Og Work Place Skills {{ id }}?"
+                "question": "Are you sure you want to delete Workplace Skill {{ id }}? ??"
             },
             "detail": {
-                "title": "Og Work Place Skills"
+                "title": "Workplace Skills ??"
             },
-            "description": "Description",
-            "dateSkill": "Date Skill",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idSkill": "Id Skill",
-            "idGrade": "Id Grade",
-            "idWorkPlace": "Id Work Place"
+            "description": "الوصف",
+            "dateSkill": "Date Skill ??",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idSkill": "Skill ??",
+            "idGrade": "الدرجة",
+            "idWorkPlace": "Workplace ??"
         }
     }
 }

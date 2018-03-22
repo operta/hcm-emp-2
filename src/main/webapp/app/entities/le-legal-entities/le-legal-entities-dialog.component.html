@@ -95,7 +95,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="field_region">Region:</label>
+                    <label class="form-control-label" for="field_region" jhiTranslate="hcmEmpApp.leLegalEntities.region">Region:</label>
                     <select id="field_region" class="form-control" (click)="onRegionSelected($event.target.value)" (change)="onRegionSelected($event.target.value)"  name="selectedRegion">
                         <option [ngValue]="null"></option>
                         <option *ngFor="let region of regions" [selected]="region.id == selectedRegion?.id" [ngValue]="region.name">{{region?.name}}</option>
@@ -104,7 +104,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="field_country">Country:</label>
+                    <label class="form-control-label" for="field_country" jhiTranslate="hcmEmpApp.leLegalEntities.country">Country:</label>
                     <select id="field_country" class="form-control" (click)="onCountrySelected($event.target.value)" (change)="onCountrySelected($event.target.value)"  name="selectedCountry">
                         <option [ngValue]="null"></option>
                         <option *ngFor="let country of filteredCountries" [selected]="country.id == selectedCountry?.id" [ngValue]="country.name">{{country?.name}}</option>
@@ -113,7 +113,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="field_state">State:</label>
+                    <label class="form-control-label" for="field_state" jhiTranslate="hcmEmpApp.leLegalEntities.state">State:</label>
                     <select id="field_state" class="form-control" (click)="onStateSelected($event.target.value)" (change)="onStateSelected($event.target.value)" name="selectedState">
                         <option [ngValue]="null"></option>
                         <option *ngFor="let state of filteredStates" [selected]="state.id == selectedState?.id" [ngValue]="state.name">{{state?.name}}</option>
@@ -122,7 +122,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="field_city">City:</label>
+                    <label class="form-control-label" for="field_city" jhiTranslate="hcmEmpApp.leLegalEntities.city">City:</label>
                     <select id="field_city" class="form-control" (click)="onCitySelected($event.target.value)" (change)="onCitySelected($event.target.value)" name="selectedCity">
                         <option [ngValue]="null"></option>
                         <option *ngFor="let city of filteredCities" [selected]="city.id == selectedCity?.id" [ngValue]="city.name">{{city?.name}}</option>

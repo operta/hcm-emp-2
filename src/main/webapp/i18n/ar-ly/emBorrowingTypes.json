@@ -2,26 +2,26 @@
     "hcmEmpApp": {
         "emBorrowingTypes" : {
             "home": {
-                "title": "Em Borrowing Types",
-                "createLabel": "Create a new Em Borrowing Types",
-                "createOrEditLabel": "Create or edit a Em Borrowing Types"
+                "title": "Borrowing Types ??",
+                "createLabel": "Create a new Borrowing Type ??",
+                "createOrEditLabel": "Create or edit a Borrowing Type ??"
             },
-            "created": "A new Em Borrowing Types is created with identifier {{ param }}",
-            "updated": "A Em Borrowing Types is updated with identifier {{ param }}",
-            "deleted": "A Em Borrowing Types is deleted with identifier {{ param }}",
+            "created": "A new Borrowing Type is created with identifier {{ param }} ??",
+            "updated": "A Borrowing Type is updated with identifier {{ param }} ??",
+            "deleted": "A Borrowing Type is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Borrowing Types {{ id }}?"
+                "question": "Are you sure you want to delete Borrowing Type {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Borrowing Types"
+                "title": "Borrowing Type ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "description": "Description",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At"
+            "code": "الرمز",
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??"
         }
     }
 }

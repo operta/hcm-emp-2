@@ -2,32 +2,35 @@
     "hcmEmpApp": {
         "emEmpSchools" : {
             "home": {
-                "title": "Em Emp Schools",
-                "createLabel": "Create a new Em Emp Schools",
-                "createOrEditLabel": "Create or edit a Em Emp Schools"
+                "title": "Schools ??",
+                "createLabel": "Create a new School ??",
+                "createOrEditLabel": "Create or edit a School ??"
             },
-            "created": "A new Em Emp Schools is created with identifier {{ param }}",
-            "updated": "A Em Emp Schools is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Schools is deleted with identifier {{ param }}",
+            "created": "A new School is created with identifier {{ param }} ??",
+            "updated": "A School is updated with identifier {{ param }} ??",
+            "deleted": "A School is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Schools {{ id }}?"
+                "question": "Are you sure you want to delete School {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Emp Schools"
+                "title": "School ??"
             },
-            "dateFrom": "Date From",
-            "dateTo": "Date To",
-            "major": "Major",
-            "degree": "Degree",
-            "grade": "Grade",
-            "description": "Description",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idSchool": "Id School",
-            "idEmployee": "Id Employee",
-            "idQualification": "Id Qualification"
+            "dateFrom": "من تاربخ",
+            "dateTo": "الى تاريخ",
+            "major": "Major ??",
+            "degree": "الشهادة العلمية",
+            "grade": "الدرجة",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idSchool": "School ??",
+            "idEmployee": "Employee ??",
+            "idQualification": "المؤهل",
+            "fieldOfStudy" : "مجال الدراسة",
+            "fromYear" : "من عام",
+            "toYear" : "الى عام(أو المتوقع)"
         }
     }
 }

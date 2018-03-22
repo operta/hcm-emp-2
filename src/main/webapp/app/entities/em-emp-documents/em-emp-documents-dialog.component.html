@@ -1,7 +1,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="documentLink && save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myEmEmpDocumentsLabel" >Add Document</h4>
+        <h4 class="modal-title" id="myEmEmpDocumentsLabel" jhiTranslate="hcmEmpApp.emEmpDocuments.addDocument">Add Document</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
@@ -104,7 +104,7 @@
             </select>
         </div>
         <a *ngIf="!documentLink" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'dm-document-links-new'} }]">
-            <i class="fa fa-plus action-button-at"></i> Add document
+            <i class="fa fa-plus action-button-at"></i> <span jhiTranslate="hcmEmpApp.emEmpDocuments.addDocument">Add document</span>
         </a>
         <label class="form-control-label" *ngIf="documentLink">Document {{documentLink.documentName}} added.</label>
 

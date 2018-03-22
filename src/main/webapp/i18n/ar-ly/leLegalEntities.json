@@ -2,31 +2,34 @@
     "hcmEmpApp": {
         "leLegalEntities" : {
             "home": {
-                "title": "Le Legal Entities",
-                "createLabel": "Create a new Le Legal Entities",
-                "createOrEditLabel": "Create or edit a Le Legal Entities"
+                "title": "Legal Entities ??",
+                "createLabel": "Create a new Legal Entity ??",
+                "createOrEditLabel": "Create or edit a Legal Entity ??"
             },
-            "created": "A new Le Legal Entities is created with identifier {{ param }}",
-            "updated": "A Le Legal Entities is updated with identifier {{ param }}",
-            "deleted": "A Le Legal Entities is deleted with identifier {{ param }}",
+            "created": "A new Legal Entity is created with identifier {{ param }} ??",
+            "updated": "A Legal Entity is updated with identifier {{ param }} ??",
+            "deleted": "A Legal Entity is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Le Legal Entities {{ id }}?"
+                "question": "Are you sure you want to delete Legal Entity {{ id }}? ??"
             },
             "detail": {
-                "title": "Le Legal Entities"
+                "title": "Legal Entity ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idNumber": "Id Number",
-            "dutyNumber": "Duty Number",
-            "address": "Address",
-            "postalNumber": "Postal Number",
-            "idEntityType": "Id Entity Type",
-            "region": "Region"
+            "code": "الرمز",
+            "name": "الاسم",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idNumber": "Id Number ??",
+            "dutyNumber": "Duty Number ??",
+            "address": "العنوان",
+            "postalNumber": "Postal Number ??",
+            "idEntityType": "Entity Type ??",
+            "region": "المنطقة",
+            "country" : "الدولة",
+            "city" : "المدينة",
+            "state" : "State ??"
         }
     }
 }

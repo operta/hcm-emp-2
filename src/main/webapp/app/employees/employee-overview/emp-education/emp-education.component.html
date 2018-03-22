@@ -1,7 +1,7 @@
 <form class="form-horizontal" role="form">
     <div class="panel-footer p-b-20 p-t-20 m-b-10">
         <i class="icon-graduation m-r-5 heading-icon-at"></i>
-        <span class="heading-at">EDUCATION</span>
+        <span class="heading-at" jhiTranslate="global.employees.education">EDUCATION</span>
         <div *ngIf="isEditable" class="pull-right">
             <a class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-schools-new/'+ employeeId} }]">
                 <i class="fa fa-plus action-button-at"></i>
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Degree:</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpSchools.degree">Degree:</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{emEmpSchool.degree}} </p>
                     </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Field of study:</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpSchools.fieldOfStudy">Field of study:</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{emEmpSchool.major}} </p>
                     </div>
@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">From year:</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpSchools.fromYear">From year:</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{emEmpSchool.dateFrom}} </p>
                     </div>
@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">To year <br>(or expected):</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpSchools.toYear">To year <br>(or expected):</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{emEmpSchool.dateTo}} </p>
                     </div>
@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Grade:</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpSchools.grade">Grade:</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{emEmpSchool.grade}} </p>
                     </div>
@@ -68,7 +68,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Description:</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpSchools.description">Description:</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{emEmpSchool.description}} </p>
                     </div>

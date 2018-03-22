@@ -1,7 +1,7 @@
 <form class="form-horizontal" role="form">
     <div class="panel-footer p-b-20 p-t-20 m-b-10">
         <i class="icon-notebook m-r-5 heading-icon-at"></i>
-        <span class="heading-at">DOCUMENTS</span>
+        <span class="heading-at" jhiTranslate="global.employees.documents">DOCUMENTS</span>
         <div class="dropdown user-pro-body pull-right">
             <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-documents-new/' + employee.id} }]">
                 <i class="fa fa-plus action-button-at"></i>
@@ -17,24 +17,24 @@
     </div>
     <div class="form-body">
         <div class="box-title p-b-10 p-t-10 p-r-10">
-            <span class="section-title">Hiring paperwork</span>
+            <span class="section-title" jhiTranslate="hcmEmpApp.emEmpDocuments.hiringPaperwork">Hiring paperwork</span>
         </div>
         <hr class="m-t-0 m-b-40">
         <div class="row" *ngFor="let document of hiringDocuments">
             <div class="col-md-4">
-                <div class="form-group p-l-20">
+                <div class="form-group p-l-20 document">
                     <i class="icon-notebook" data-icon="v"></i>
                     <span class="hide-menu"> {{document.name}} </span>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group p-l-20">
-                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)">Open</a>
+                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)" jhiTranslate="hcmEmpApp.emEmpDocuments.open">Open</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label col-md-3" style="padding-top: 0px;">Date:</label>
+                    <label class="control-label col-md-3" style="padding-top: 0px;" jhiTranslate="hcmEmpApp.emEmpDocuments.dateCreated">Date:</label>
                     <div class="col-md-9">
                         <p class="form-control-static" style="padding-top: 0px;"> {{document.dateCreated | date:'dd/MM/yyyy'}}</p>
                     </div>
@@ -48,24 +48,24 @@
         </div>
 
         <div class="box-title p-b-10 p-t-10 p-r-10">
-            <span class="section-title">Tasklist</span>
+            <span class="section-title" jhiTranslate="hcmEmpApp.emEmpDocuments.tasklist">Tasklist</span>
         </div>
         <hr class="m-t-0 m-b-40">
         <div class="row" *ngFor="let document of taskListDocuments">
             <div class="col-md-4">
-                <div class="form-group p-l-20">
+                <div class="form-group p-l-20 document">
                     <i class="icon-notebook" data-icon="v"></i>
                     <span class="hide-menu"> {{document.name}} </span>
                    </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group p-l-20">
-                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)">Open</a>
+                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)" jhiTranslate="hcmEmpApp.emEmpDocuments.open">Open</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label col-md-3" style="padding-top: 0px;">Date:</label>
+                    <label class="control-label col-md-3" style="padding-top: 0px;" jhiTranslate="hcmEmpApp.emEmpDocuments.dateCreated">Date:</label>
                     <div class="col-md-9">
                         <p class="form-control-static" style="padding-top: 0px;"> {{document.dateCreated | date:'dd/MM/yyyy'}}</p>
                     </div>
@@ -78,24 +78,24 @@
             </div>
         </div>
         <div class="box-title p-b-10 p-t-10 p-r-10">
-            <span class="section-title">Other documents</span>
+            <span class="section-title" jhiTranslate="hcmEmpApp.emEmpDocuments.otherDocuments">Other documents</span>
         </div>
         <hr class="m-t-0 m-b-40">
         <div class="row" *ngFor="let document of otherDocuments">
             <div class="col-md-4">
-                <div class="form-group p-l-20">
+                <div class="form-group p-l-20 document">
                     <i class="icon-notebook" data-icon="v"></i>
                     <span class="hide-menu"> {{document.name}} </span>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group p-l-20">
-                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)">Open</a>
+                    <a *ngIf="document.idDocumentLink.documentBlob" style="text-decoration: underline;" (click)="openFile(document?.idDocumentLink?.documentBlobContentType, document?.idDocumentLink?.documentBlob)" jhiTranslate="hcmEmpApp.emEmpDocuments.open">Open</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label col-md-3" style="padding-top: 0px;">Date:</label>
+                    <label class="control-label col-md-3" style="padding-top: 0px;" jhiTranslate="hcmEmpApp.emEmpDocuments.dateCreated">Date:</label>
                     <div class="col-md-9">
                         <p class="form-control-static" style="padding-top: 0px;"> {{document.dateCreated | date:'dd/MM/yyyy'}}</p>
                     </div>

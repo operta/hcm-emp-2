@@ -7,26 +7,26 @@
     <div class="col-sm-12">
         <div class="white-box">
 
-            <h4 >Search by</h4>
+            <h4 jhiTranslate="global.employees.searchBy">Search by</h4>
             <div class="row">
                 <div class="col-md-3">
                     <p class="d-flex">
-                        <span class="input-group-addon">Name</span>
+                        <span class="input-group-addon" jhiTranslate="global.employees.name">Name</span>
                         <input type="text" class="form-control" name="name" [(ngModel)]="name"/>
                     </p>
                 </div>
                 <div class="col-md-3">
                     <p class="d-flex">
-                        <span class="input-group-addon">Surname</span>
+                        <span class="input-group-addon" jhiTranslate="global.employees.surname">Surname</span>
                         <input type="text" class="form-control" name="surname" [(ngModel)]="surname"/>
                     </p>
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-6">
-                        <button class="btn btn-primary" (click)="onSearchChange($event)">Search</button>
+                        <button class="btn btn-primary" (click)="onSearchChange($event)" jhiTranslate="global.employees.search">Search</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-default" (click)="toggleAdvSearch = !toggleAdvSearch"><i class="ti-plus"></i> Advanced Search</button>
+                        <button class="btn btn-default" (click)="toggleAdvSearch = !toggleAdvSearch" jhiTranslate="global.employees.advancedSearch"><i class="ti-plus"></i> Advanced Search</button>
                     </div>
                     <!--<div class="col-md-4">-->
                     <!--<button class="btn btn-default" (click)="onClear()">Clear Search Parameters</button>-->
@@ -36,17 +36,17 @@
             <hr>
 
             <div *ngIf="toggleAdvSearch">
-                <h4 >Filter by</h4>
+                <h4 jhiTranslate="global.employees.filterBy">Filter by</h4>
                 <div class="row">
                     <div class="col-md-6">
                         <p class="d-flex">
-                            <span class="input-group-addon">Hire Date From</span>
+                            <span class="input-group-addon" jhiTranslate="global.employees.hireDateFrom">Hire Date From</span>
                             <input type="date" class="form-control" name="start" [(ngModel)]="fromDate" (ngModelChange)="onSearchChange($event)"/>
                         </p>
                     </div>
                     <div class="col-md-6">
                         <p class="d-flex">
-                            <span class="input-group-addon">Hire Date To</span>
+                            <span class="input-group-addon" jhiTranslate="global.employees.hireDateTo">Hire Date To</span>
                             <input type="date" class="form-control" name="end" [(ngModel)]="toDate" (ngModelChange)="onSearchChange($event)"/>
                         </p>
                     </div>
@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <p class="d-flex">
-                            <span class="input-group-addon">Organization</span>
+                            <span class="input-group-addon" jhiTranslate="global.employees.organization">Organization</span>
                             <select class="form-control" id="field_organization" name="organizaton" [(ngModel)]="organizationId" (ngModelChange)="onSearchChange($event)">
                                 <option [ngValue]="null"></option>
                                 <option [ngValue]="organization.id" *ngFor="let organization of organizations;">{{organization.name}}</option>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-3">
                         <p class="d-flex">
-                            <span class="input-group-addon">Workplace</span>
+                            <span class="input-group-addon" jhiTranslate="global.employees.workplace">Workplace</span>
                             <select class="form-control" id="field_workplace" name="workplace" [(ngModel)]="workplaceId" (ngModelChange)="onSearchChange($event)">
                                 <option [ngValue]="null"></option>
                                 <option [ngValue]="item.id" *ngFor="let item of workplaces;">{{item.name}}</option>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="col-md-3">
                         <p class="d-flex">
-                            <span class="input-group-addon">Qualification</span>
+                            <span class="input-group-addon" jhiTranslate="global.employees.qualification">Qualification</span>
                             <select class="form-control" id="field_qualification" name="qualification" [(ngModel)]="qualificationId" (ngModelChange)="onSearchChange($event)">
                                 <option [ngValue]="null"></option>
                                 <option [ngValue]="item.id" *ngFor="let item of qualifications;">{{item.name}}</option>
@@ -88,7 +88,7 @@
             <button class="btn btn-primary float-right jh-create-entity create-em-employees" [routerLink]="['/', { outlets: { popup: ['employees-list-new'] } }]">
                 <span class="fa fa-plus"></span>
                 <span  jhiTranslate="hcmEmpApp.emEmployees.home.createLabel">
-            Create new Em Employees
+            Create a new Employee
             </span>
             </button>
             <div [ngBusy]="busy"></div>
@@ -107,35 +107,35 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <b>Hire date:</b> {{employee?.hireDate | date}}
+                                    <b jhiTranslate="global.employees.hireDate">Hire date:</b> {{employee?.hireDate | date}}
                                 </div>
                                 <div class="col-md-3">
-                                    <b>Contract type:</b> {{employee?.idEmploymentType.name}}
+                                    <b jhiTranslate="global.employees.contractType">Contract type:</b> {{employee?.idEmploymentType.name}}
                                 </div>
                                 <div class="col-md-3" *ngIf="emEmpOrgWorkPlaces">
-                                    <b>Department:</b> {{findOrganization(employee?.id)}}
+                                    <b jhiTranslate="global.employees.department">Department:</b> {{findOrganization(employee?.id)}}
                                 </div>
                                 <div class="col-md-3" *ngIf="emEmpOrgWorkPlaces">
-                                    <b>Location:</b> {{findOrganizationLocation(employee?.id)}}
+                                    <b jhiTranslate="global.employees.location">Location:</b> {{findOrganizationLocation(employee?.id)}}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <b>Bussines phone:</b> {{employee?.phoneNumber}}
+                                    <b jhiTranslate="global.employees.businessPhone">Bussines phone:</b> {{employee?.phoneNumber}}
                                 </div>
                                 <div class="col-md-3">
-                                    <b>Bussines mail:</b> {{employee?.email}}
+                                    <b jhiTranslate="global.employees.businessEmail">Bussines mail:</b> {{employee?.email}}
                                 </div>
                                 <div class="col-md-3">
-                                    <b>Qualification:</b> {{employee?.idQualification.name}}
+                                    <b jhiTranslate="global.employees.qualification">Qualification:</b> {{employee?.idQualification.name}}
                                 </div>
                                 <div class="col-md-3">
-                                    <b>Date of Birth:</b> {{employee?.dateOfBirth | date}}
+                                    <b jhiTranslate="global.employees.dateOfBirth">Date of Birth:</b> {{employee?.dateOfBirth | date}}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <br><a [routerLink]="['/dashboard/employee-overview', { id: employee.id}]"  class="label label-rouded label-default" style="color: black;">Details . . .</a>
+                                    <br><a [routerLink]="['/dashboard/employee-overview', { id: employee.id}]"  class="label label-rouded label-default" style="color: black;" jhiTranslate="global.employees.details">Details . . .</a>
                                 </div>
                             </div>
                         </div>

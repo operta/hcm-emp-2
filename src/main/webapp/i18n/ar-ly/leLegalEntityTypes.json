@@ -2,26 +2,26 @@
     "hcmEmpApp": {
         "leLegalEntityTypes" : {
             "home": {
-                "title": "Le Legal Entity Types",
-                "createLabel": "Create a new Le Legal Entity Types",
-                "createOrEditLabel": "Create or edit a Le Legal Entity Types"
+                "title": "Le Legal Entity Types ??",
+                "createLabel": "Create a new Le Legal Entity Types ??",
+                "createOrEditLabel": "Create or edit a Le Legal Entity Types ??"
             },
-            "created": "A new Le Legal Entity Types is created with identifier {{ param }}",
-            "updated": "A Le Legal Entity Types is updated with identifier {{ param }}",
-            "deleted": "A Le Legal Entity Types is deleted with identifier {{ param }}",
+            "created": "A new Le Legal Entity Types is created with identifier {{ param }} ??",
+            "updated": "A Le Legal Entity Types is updated with identifier {{ param }} ??",
+            "deleted": "A Le Legal Entity Types is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Le Legal Entity Types {{ id }}?"
+                "question": "Are you sure you want to delete Le Legal Entity Types {{ id }}? ??"
             },
             "detail": {
-                "title": "Le Legal Entity Types"
+                "title": "Le Legal Entity Types ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "description": "Description",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At"
+            "code": "الرمز",
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??"
         }
     }
 }

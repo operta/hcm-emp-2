@@ -2,29 +2,29 @@
     "hcmEmpApp": {
         "emEmpIdentifications" : {
             "home": {
-                "title": "Em Emp Identifications",
-                "createLabel": "Create a new Em Emp Identifications",
-                "createOrEditLabel": "Create or edit a Em Emp Identifications"
+                "title": "Employee Identifications ??",
+                "createLabel": "Create a new Employee Identification ??",
+                "createOrEditLabel": "Create or edit an Employee Identification ??"
             },
-            "created": "A new Em Emp Identifications is created with identifier {{ param }}",
-            "updated": "A Em Emp Identifications is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Identifications is deleted with identifier {{ param }}",
+            "created": "A new Employee Identification is created with identifier {{ param }} ??",
+            "updated": "An Employee Identification is updated with identifier {{ param }} ??",
+            "deleted": "An Employee Identification is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Identifications {{ id }}?"
+                "question": "Are you sure you want to delete Employee Identification {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Emp Identifications"
+                "title": "Employee Identification ??"
             },
-            "identificationNumber": "Identification Number",
-            "jurisdiction": "Jurisdiction",
-            "validThrough": "Valid Through",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idEmployee": "Id Employee",
-            "idIdentification": "Id Identification",
-            "idRegion": "Id Region"
+            "identificationNumber": "Identification Number ??",
+            "jurisdiction": "Jurisdiction ??",
+            "validThrough": "Valid Through ??",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idEmployee": "Employee ??",
+            "idIdentification": "Identification Type ??",
+            "idRegion": "المنطقة"
         }
     }
 }

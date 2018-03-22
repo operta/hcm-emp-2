@@ -2,30 +2,30 @@
     "hcmEmpApp": {
         "rgSchools" : {
             "home": {
-                "title": "Rg Schools",
-                "createLabel": "Create a new Rg Schools",
-                "createOrEditLabel": "Create or edit a Rg Schools"
+                "title": "Schools ??",
+                "createLabel": "Create a new School ??",
+                "createOrEditLabel": "Create or edit a School ??"
             },
-            "created": "A new Rg Schools is created with identifier {{ param }}",
-            "updated": "A Rg Schools is updated with identifier {{ param }}",
-            "deleted": "A Rg Schools is deleted with identifier {{ param }}",
+            "created": "A new School is created with identifier {{ param }} ??",
+            "updated": "A School is updated with identifier {{ param }} ??",
+            "deleted": "A School is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Rg Schools {{ id }}?"
+                "question": "Are you sure you want to delete School {{ id }}? ??"
             },
             "detail": {
-                "title": "Rg Schools"
+                "title": "School ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "description": "Description",
-            "address": "Address",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idCity": "Id City",
-            "idCountry": "Id Country",
-            "idRegion": "Id Region"
+            "code": "الرمز",
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "address": "العنوان",
+            "idCity": "المدينة",
+            "idCountry": "الدولة",
+            "idRegion": "المنطقة"
         }
     }
 }

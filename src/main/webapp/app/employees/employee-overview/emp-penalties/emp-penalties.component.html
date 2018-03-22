@@ -1,7 +1,7 @@
 <form class="form-horizontal" role="form">
     <div class="panel-footer p-b-20 p-t-20 m-b-10">
         <i class="fa fa-times-circle m-r-5 heading-icon-at"></i>
-        <span class="heading-at">Penalties</span>
+        <span class="heading-at" jhiTranslate="global.employees.penalties">Penalties</span>
         <div class="pull-right">
             <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-penalties-new/' + employee.id} }]">
                 <i class="fa fa-plus action-button-at"></i>
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Description:</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emPenalties.description">Description:</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{item.description}} </p>
                     </div>
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Date From:</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emPenalties.dateFrom">Date From:</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{item.dateFrom | date:'dd/MM/yyyy'}} </p>
                     </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-3">Date To:</label>
+                    <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emPenalties.dateTo">Date To:</label>
                     <div class="col-md-9">
                         <p class="form-control-static"> {{item.dateTo | date:'dd/MM/yyyy'}} </p>
                     </div>
