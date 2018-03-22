@@ -1,7 +1,7 @@
 <form class="form-horizontal" role="form">
     <div class="panel-footer p-b-20 p-t-20 m-b-10">
         <i class="ti-check-box m-r-5 heading-icon-at"></i>
-        <span class="heading-at">ACCOMPLISHMENTS</span>
+        <span class="heading-at" jhiTranslate="global.employees.accomplishments">ACCOMPLISHMENTS</span>
         <div *ngIf="isEditable" class="dropdown user-pro-body pull-right">
             <a [routerLink]="['/', { outlets: {popup: 'em-emp-accomplishments-new/'+ employeeId} }]" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-plus action-button-at"></i>
@@ -12,7 +12,7 @@
         <div *ngIf="certifications?.length > 0">
             <div class="box-title p-b-10 p-t-10 p-r-10">
                 <i class="fa icon-badge m-r-5 m-l-15 section-icon-at"></i>
-                <span class="section-title section-title-at">CERTIFICATIONS</span>
+                <span class="section-title section-title-at" jhiTranslate="hcmEmpApp.emEmpAccomplishments.certifications">CERTIFICATIONS</span>
             </div>
             <hr class="m-t-0 m-b-40">
             <div *ngFor="let accomplishment of certifications">
@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} <span jhiTranslate="hcmEmpApp.emEmpAccomplishments.name">name</span>:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.title}} </p>
                             </div>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Link:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.link}}</p>
                             </div>
@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">From:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom">From:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
                             </div>
@@ -55,10 +55,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">To:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo">To:</label>
                             <div class="col-md-9">
                                 <p *ngIf="!checkIsPresent(accomplishment?.ongoing)" class="form-control-static"> {{accomplishment?.dateTo | date:'dd/MM/yyyy'}} </p>
-                                <button *ngIf="checkIsPresent(accomplishment?.ongoing)" class="btn btn-success btn-rounded btn-sm" type="button" disabled name="ongoing">Present <i class="fa fa-check" aria-hidden="true"></i></button>
+                                <button *ngIf="checkIsPresent(accomplishment?.ongoing)" class="btn btn-success btn-rounded btn-sm" type="button" disabled name="ongoing" jhiTranslate="hcmEmpApp.emEmpAccomplishments.present">Present <i class="fa fa-check" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Licence Number:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.licenceNumber">Licence Number:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.licenceNumber}} </p>
                             </div>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Certification Authority:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.certAuthority">Certification Authority:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.association}} </p>
                             </div>
@@ -86,7 +86,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Rating:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating:</label>
                             <div class="col-md-9">
                                 <div [attr.data-label]="accomplishment?.rating"
                                      [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
@@ -103,7 +103,7 @@
         <div *ngIf="courses?.length > 0">
             <div class="box-title p-b-10 p-t-10 p-r-10">
                 <i class="fa icon-notebook m-r-5 m-l-15 section-icon-at"></i>
-                <span class="section-title section-title-at">COURSES</span>
+                <span class="section-title section-title-at" jjhiTranslate="hcmEmpApp.emEmpAccomplishments.courses">COURSES</span>
             </div>
             <hr class="m-t-0 m-b-40">
             <div *ngFor="let accomplishment of courses">
@@ -120,7 +120,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} <span jhiTranslate="hcmEmpApp.emEmpAccomplishments.name">name</span>:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.title}} </p>
                             </div>
@@ -128,7 +128,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Link:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.link}}</p>
                             </div>
@@ -138,7 +138,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">From:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom">From:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
                             </div>
@@ -146,7 +146,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">To:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo">To:</label>
                             <div class="col-md-9">
                                 <p *ngIf="!checkIsPresent(accomplishment?.ongoing)" class="form-control-static"> {{accomplishment?.dateTo | date:'dd/MM/yyyy'}} </p>
                                 <button *ngIf="checkIsPresent(accomplishment?.ongoing)" class="btn btn-success btn-rounded btn-sm" type="button" disabled name="ongoing">Present <i class="fa fa-check" aria-hidden="true"></i></button>
@@ -157,7 +157,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Description:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.description">Description:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.description}} </p>
                             </div>
@@ -165,7 +165,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Rating:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating:</label>
                             <div class="col-md-9">
                                 <div [attr.data-label]="accomplishment?.rating"
                                      [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
@@ -181,7 +181,7 @@
         <div *ngIf="honors?.length > 0">
             <div class="box-title p-b-10 p-t-10 p-r-10">
                 <i class="fa icon-trophy m-r-5 m-l-15 section-icon-at"></i>
-                <span class="section-title section-title-at">HONORS AND AWARDS</span>
+                <span class="section-title section-title-at" jhiTranslate="hcmEmpApp.emEmpAccomplishments.honorsAndAwards">HONORS AND AWARDS</span>
             </div>
             <hr class="m-t-0 m-b-40">
             <div *ngFor="let accomplishment of honors">
@@ -198,7 +198,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} <span jhiTranslate="hcmEmpApp.emEmpAccomplishments.name">name</span>:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.title}} </p>
                             </div>
@@ -206,7 +206,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Link:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.link}}</p>
                             </div>
@@ -216,7 +216,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Date:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.date">Date:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
                             </div>
@@ -224,7 +224,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Description:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.description">Description:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.description}} </p>
                             </div>
@@ -234,7 +234,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Rating:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating:</label>
                             <div class="col-md-9">
                                 <div [attr.data-label]="accomplishment?.rating"
                                      [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
@@ -251,7 +251,7 @@
         <div *ngIf="languages?.length > 0">
             <div class="box-title p-b-10 p-t-10 p-r-10">
                 <i class="fa ti-announcement m-r-5 m-l-15 section-icon-at"></i>
-                <span class="section-title section-title-at">LANGUAGES</span>
+                <span class="section-title section-title-at" jhiTranslate="hcmEmpApp.emEmpAccomplishments.languages">LANGUAGES</span>
             </div>
             <hr class="m-t-0 m-b-40">
             <div *ngFor="let accomplishment of languages">
@@ -268,7 +268,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} <span jhiTranslate="hcmEmpApp.emEmpAccomplishments.name">name</span>:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.title}} </p>
                             </div>
@@ -276,7 +276,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Proficiency:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.proficiency">Proficiency:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.proficiency}}</p>
                             </div>
@@ -301,7 +301,7 @@
         <div *ngIf="projects?.length > 0">
             <div class="box-title p-b-10 p-t-10 p-r-10">
                 <i class="fa ti-blackboard m-r-5 m-l-15 section-icon-at"></i>
-                <span class="section-title section-title-at">PROJECTS</span>
+                <span class="section-title section-title-at" jhiTranslate="hcmEmpApp.emEmpAccomplishments.projects">PROJECTS</span>
             </div>
             <hr class="m-t-0 m-b-40">
             <div *ngFor="let accomplishment of projects">
@@ -318,7 +318,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} <span jhiTranslate="hcmEmpApp.emEmpAccomplishments.name">name</span>:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.title}} </p>
                             </div>
@@ -326,7 +326,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Link:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.link}}</p>
                             </div>
@@ -336,7 +336,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">From:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom">From:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
                             </div>
@@ -344,7 +344,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">To:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo">To:</label>
                             <div class="col-md-9">
                                 <p *ngIf="!checkIsPresent(accomplishment?.ongoing)" class="form-control-static"> {{accomplishment?.dateTo | date:'dd/MM/yyyy'}} </p>
                                 <button *ngIf="checkIsPresent(accomplishment?.ongoing)" class="btn btn-success btn-rounded btn-sm" type="button" disabled name="ongoing">Present <i class="fa fa-check" aria-hidden="true"></i></button>
@@ -355,7 +355,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Description:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.description">Description:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.description}} </p>
                             </div>
@@ -363,7 +363,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Occupation:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.occupation">Occupation:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.occupation}} </p>
                             </div>
@@ -373,7 +373,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Rating:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating:</label>
                             <div class="col-md-9">
                                 <div [attr.data-label]="accomplishment?.rating"
                                      [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">
@@ -389,7 +389,7 @@
         <div *ngIf="publications?.length > 0">
             <div class="box-title p-b-10 p-t-10 p-r-10">
                 <i class="fa ti-write m-r-5 m-l-15 section-icon-at"></i>
-                <span class="section-title section-title-at">PUBLICATIONS</span>
+                <span class="section-title section-title-at" jhiTranslate="hcmEmpApp.emEmpAccomplishments.publications">PUBLICATIONS</span>
             </div>
             <hr class="m-t-0 m-b-40">
             <div *ngFor="let accomplishment of publications">
@@ -406,7 +406,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} name:</label>
+                            <label class="control-label col-md-3">{{accomplishment?.idAccomplishmentType.name}} <span jhiTranslate="hcmEmpApp.emEmpAccomplishments.name">name</span>:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.title}} </p>
                             </div>
@@ -414,7 +414,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Link:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.link}}</p>
                             </div>
@@ -424,7 +424,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Date:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.date">Date:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.dateFrom | date:'dd/MM/yyyy'}} </p>
                             </div>
@@ -432,7 +432,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Description:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.description">Description:</label>
                             <div class="col-md-9">
                                 <p class="form-control-static"> {{accomplishment?.description}} </p>
                             </div>
@@ -442,7 +442,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Rating:</label>
+                            <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating:</label>
                             <div class="col-md-9">
                                 <div [attr.data-label]="accomplishment?.rating"
                                      [ngClass]="getBar(accomplishment?.rating)" class="css-bar css-bar-lg m-b-0 m-r-10 css-bar-info ">

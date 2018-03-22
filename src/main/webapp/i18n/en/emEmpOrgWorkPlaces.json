@@ -4,11 +4,11 @@
             "home": {
                 "title": "Employee Workplaces",
                 "createLabel": "Create a new Employee Workplace",
-                "createOrEditLabel": "Create or edit a Employee Workplace"
+                "createOrEditLabel": "Create or edit an Employee Workplace"
             },
             "created": "A new Employee Workplace is created with identifier {{ param }}",
-            "updated": "A Employee Workplace is updated with identifier {{ param }}",
-            "deleted": "A Employee Workplace is deleted with identifier {{ param }}",
+            "updated": "An Employee Workplace is updated with identifier {{ param }}",
+            "deleted": "An Employee Workplace is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Employee Workplace {{ id }}?"
             },
@@ -24,7 +24,8 @@
             "updatedAt": "Updated At",
             "idEmployee": "Employee",
             "idContractType": "Contract Type",
-            "idOrgWorkPlace": "Organization Workplace"
+            "idOrgWorkPlace": "Organization Workplace",
+            "organization" : "Organization"
         }
     }
 }

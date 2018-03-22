@@ -2,28 +2,30 @@
     "hcmEmpApp": {
         "emEmpSkills" : {
             "home": {
-                "title": "Em Emp Skills",
-                "createLabel": "Create a new Em Emp Skills",
-                "createOrEditLabel": "Create or edit a Em Emp Skills"
+                "title": "Employee Skills ??",
+                "createLabel": "Create a new Employee Skill ??",
+                "createOrEditLabel": "Create or edit a Employee Skill ??"
             },
-            "created": "A new Em Emp Skills is created with identifier {{ param }}",
-            "updated": "A Em Emp Skills is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Skills is deleted with identifier {{ param }}",
+            "created": "A new Employee Skill is created with identifier {{ param }} ??",
+            "updated": "A Employee Skill is updated with identifier {{ param }} ??",
+            "deleted": "A Employee Skill is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Skills {{ id }}?"
+                "question": "Are you sure you want to delete Employee Skill {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Emp Skills"
+                "title": "Employee Skill ??"
             },
-            "description": "Description",
-            "dateSkill": "Date Skill",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idEmployee": "Id Employee",
-            "idSkill": "Id Skill",
-            "idGrade": "Id Grade"
+            "description": "الوصف",
+            "dateSkill": "Date Skill ??",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idEmployee": "Employee ??",
+            "idSkill": "Skill ??",
+            "idGrade": "الدرجة",
+            "skillGrade" : "Skill Grade ??",
+            "skillDate" : "Skill Date ??"
         }
     }
 }

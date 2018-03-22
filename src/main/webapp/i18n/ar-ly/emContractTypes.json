@@ -2,26 +2,26 @@
     "hcmEmpApp": {
         "emContractTypes" : {
             "home": {
-                "title": "Em Contract Types",
-                "createLabel": "Create a new Em Contract Types",
-                "createOrEditLabel": "Create or edit a Em Contract Types"
+                "title": "Contract Types ??",
+                "createLabel": "Create a new Contract Type ??",
+                "createOrEditLabel": "Create or edit a Contract Type ??"
             },
-            "created": "A new Em Contract Types is created with identifier {{ param }}",
-            "updated": "A Em Contract Types is updated with identifier {{ param }}",
-            "deleted": "A Em Contract Types is deleted with identifier {{ param }}",
+            "created": "A new Contract Type is created with identifier {{ param }} ??",
+            "updated": "A Contract Type is updated with identifier {{ param }} ??",
+            "deleted": "A Contract Type is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Contract Types {{ id }}?"
+                "question": "Are you sure you want to delete Contract Type {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Contract Types"
+                "title": "Contract Type ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "description": "Description",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At"
+            "code": "الرمز",
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??"
         }
     }
 }

@@ -4,11 +4,11 @@
             "home": {
                 "title": "Employee Families",
                 "createLabel": "Create a new Employee Family",
-                "createOrEditLabel": "Create or edit a Employee Family"
+                "createOrEditLabel": "Create or edit an Employee Family"
             },
             "created": "A new Employee Family is created with identifier {{ param }}",
-            "updated": "A Employee Family is updated with identifier {{ param }}",
-            "deleted": "A Employee Family is deleted with identifier {{ param }}",
+            "updated": "An Employee Family is updated with identifier {{ param }}",
+            "deleted": "An Employee Family is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Employee Family {{ id }}?"
             },
@@ -25,7 +25,8 @@
             "updatedBy": "Updated By",
             "updatedAt": "Updated At",
             "idFamily": "Family",
-            "idEmployee": "Employee"
+            "idEmployee": "Employee",
+            "familyRole" : "Family Role"
         }
     }
 }

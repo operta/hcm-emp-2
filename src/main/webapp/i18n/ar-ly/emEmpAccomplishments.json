@@ -2,38 +2,47 @@
     "hcmEmpApp": {
         "emEmpAccomplishments" : {
             "home": {
-                "title": "Em Emp Accomplishments",
-                "createLabel": "Create a new Em Emp Accomplishments",
-                "createOrEditLabel": "Create or edit a Em Emp Accomplishments"
+                "title": "الانجازات",
+                "createLabel": "Create a new Accomplishment ??",
+                "createOrEditLabel": "Create or edit an Accomplishment ??"
             },
-            "created": "A new Em Emp Accomplishments is created with identifier {{ param }}",
-            "updated": "A Em Emp Accomplishments is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Accomplishments is deleted with identifier {{ param }}",
+            "created": "A new Accomplishment is created with identifier {{ param }} ??",
+            "updated": "An Accomplishment is updated with identifier {{ param }} ??",
+            "deleted": "An Accomplishment is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Accomplishments {{ id }}?"
+                "question": "Are you sure you want to delete Accomplishment {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Emp Accomplishments"
+                "title": "Accomplishment ??"
             },
-            "title": "Title",
-            "description": "Description",
-            "organization": "Organization",
-            "location": "Location",
-            "association": "Association",
-            "ongoing": "Ongoing",
-            "link": "Link",
-            "dateFrom": "Date From",
-            "dateTo": "Date To",
-            "occupation": "Occupation",
-            "proficiency": "Proficiency",
-            "licenceNumber": "Licence Number",
-            "rating": "Rating",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idEmployee": "Id Employee",
-            "idAccomplishmentType": "Id Accomplishment Type"
+            "name": "الاسم",
+            "description": "الوصف",
+            "organization": "Organization ??",
+            "location": "الموقع",
+            "certAuthority": "هيئة التوثيق (الجهة المصدرة للشهادة)",
+            "ongoing": "Ongoing ??",
+            "link": "الرابط",
+            "dateFrom": "من تاربخ",
+            "date": "تاربخ",
+            "dateTo": "الى تاريخ",
+            "occupation": "المهنة",
+            "proficiency": "الكفاءة",
+            "licenceNumber": "رقم الرخصة",
+            "rating": "Rating ??",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idEmployee": "Employee ??",
+            "idAccomplishmentType": "Accomplishment Type ??",
+            "certification" : "الشهادة",
+            "present" : "الحالي",
+            "courses" : "الدورات",
+            "honorsAndAwards" : "الجوائز والمكافئات",
+            "languages" : "اللغات",
+            "projects" : "المشاريع",
+            "publications" : "المنشورات",
+            "certifications" : "الشهادات"
         }
     }
 }

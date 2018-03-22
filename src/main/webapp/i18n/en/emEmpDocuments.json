@@ -26,7 +26,12 @@
             "updatedAt": "Updated At",
             "idEmployee": "Employee",
             "idDocumentType": "Document Type",
-            "idDocumentLink": "Document Link"
+            "idDocumentLink": "Document Link",
+            "open" : "Open",
+            "hiringPaperwork" : "Hiring Paperwork",
+            "tasklist" : "Task List",
+            "otherDocuments" : "Other Documents",
+            "addDocument" : "Add Document"
         }
     }
 }

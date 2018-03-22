@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.dateFrom" for="field_dateFrom">Date From</label>
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpPreviousJobs.dateFrom" for="field_dateFrom">Date From</label>
             <div class="input-group">
                 <input id="field_dateFrom" type="text" class="form-control" name="dateFrom" ngbDatepicker  #dateFromDp="ngbDatepicker" [(ngModel)]="emEmpPreviousJobs.dateFrom" required
                 />
@@ -49,7 +49,7 @@
 
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpSchools.dateTo" for="field_dateTo">Date To</label>
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpPreviousJobs.dateTo" for="field_dateTo">Date To</label>
             <div class="input-group">
                 <input id="field_dateTo" type="text" class="form-control" name="dateTo" ngbDatepicker  #dateToDp="ngbDatepicker" [(ngModel)]="emEmpPreviousJobs.dateTo"
                 required />
@@ -70,7 +70,7 @@
                    [(ngModel)]="emEmpPreviousJobs.reasonOfLeaving" />
         </div>
         <div class="form-group">
-            <button class="btn btn-success btn-rounded btn-sm" type="button" (click)="managerPosition = !managerPosition" name="ongoing">Manager Position <i *ngIf="managerPosition" class="fa fa-check" aria-hidden="true"></i></button>
+            <button class="btn btn-success btn-rounded btn-sm" type="button" (click)="managerPosition = !managerPosition" name="ongoing" jhiTranslate="hcmEmpApp.emEmpPreviousJobs.managerPosition">Manager Position <i *ngIf="managerPosition" class="fa fa-check" aria-hidden="true"></i></button>
 
         </div>
 

@@ -2,29 +2,29 @@
     "hcmEmpApp": {
         "ogOrganizations" : {
             "home": {
-                "title": "Og Organizations",
-                "createLabel": "Create a new Og Organizations",
-                "createOrEditLabel": "Create or edit a Og Organizations"
+                "title": "Organizations ??",
+                "createLabel": "Create a new Organization ??",
+                "createOrEditLabel": "Create or edit an Organization ??"
             },
-            "created": "A new Og Organizations is created with identifier {{ param }}",
-            "updated": "A Og Organizations is updated with identifier {{ param }}",
-            "deleted": "A Og Organizations is deleted with identifier {{ param }}",
+            "created": "A new Organization is created with identifier {{ param }} ??",
+            "updated": "An Organization is updated with identifier {{ param }} ??",
+            "deleted": "An Organization is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Og Organizations {{ id }}?"
+                "question": "Are you sure you want to delete Organization {{ id }}? ??"
             },
             "detail": {
-                "title": "Og Organizations"
+                "title": "Organization"
             },
-            "code": "Code",
-            "name": "Name",
-            "description": "Description",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idOrganizationType": "Id Organization Type",
-            "idParent": "Id Parent",
-            "idLegalEntity": "Id Legal Entity"
+            "code": "الرمز",
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idOrganizationType": "Organization Type ??",
+            "idParent": "Parent ??",
+            "idLegalEntity": "Legal Entity ??"
         }
     }
 }

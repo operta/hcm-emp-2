@@ -1,6 +1,6 @@
 <div class="panel-footer p-b-20 p-t-20 m-b-10">
     <i class="icon-user m-r-5 heading-icon-at"></i>
-    <span class="heading-at">PERSONAL INFO</span>
+    <span class="heading-at" jhiTranslate="global.employees.personalInfo">PERSONAL INFO</span>
     <div class="pull-right">
         <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'emp-personal-info/'+ employee.id + '/edit'} }]">
             <i class="fa fa-pencil action-button-at"></i>
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label col-md-3">First Name:</label>
+                <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmployees.name">First Name:</label>
                 <div class="col-md-9">
                     <p class="form-control-static"> {{employee?.name}}</p>
                 </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label col-md-3">Middle Name:</label>
+                <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmployees.middleName">Middle Name:</label>
                 <div class="col-md-9">
                     <p class="form-control-static"> {{employee?.middleName}} </p>
                 </div>
@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label col-md-3">Last Name:</label>
+                <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmployees.surname">Last Name:</label>
                 <div class="col-md-9">
                     <p class="form-control-static"> {{employee?.surname}} </p>
                 </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label col-md-3">Maiden Name:</label>
+                <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmployees.maidenName">Maiden Name:</label>
                 <div class="col-md-9">
                     <p class="form-control-static"> {{employee?.maidenName}} </p>
                 </div>
@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label col-md-3">Gender:</label>
+                <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmployees.gender">Gender:</label>
                 <div class="col-md-9">
                     <p class="form-control-static"> {{employee?.gender}} </p>
                 </div>
@@ -56,7 +56,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label col-md-3">Marital status:</label>
+                <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmployees.maritalStatus">Marital status:</label>
                 <div class="col-md-9">
                     <p class="form-control-static"> {{employee?.maritalStatus}} </p>
                 </div>
@@ -67,7 +67,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label col-md-3">Date of Birth:</label>
+                <label class="control-label col-md-3" jhiTranslate="hcmEmpApp.emEmployees.dateOfBirth">Date of Birth:</label>
                 <div class="col-md-9">
                     <p class="form-control-static"> {{employee?.dateOfBirth | date:'dd/MM/yyyy'}}</p>
                 </div>

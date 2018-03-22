@@ -27,7 +27,10 @@
             "updatedAt": "Updated At",
             "idSchool": "School",
             "idEmployee": "Employee",
-            "idQualification": "Qualification"
+            "idQualification": "Qualification",
+            "fieldOfStudy" : "Field of study",
+            "fromYear" : "From year",
+            "toYear" : "To year (or expected)"
         }
     }
 }

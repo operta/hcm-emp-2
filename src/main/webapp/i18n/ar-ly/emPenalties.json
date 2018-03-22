@@ -2,27 +2,27 @@
     "hcmEmpApp": {
         "emPenalties" : {
             "home": {
-                "title": "Em Penalties",
-                "createLabel": "Create a new Em Penalties",
-                "createOrEditLabel": "Create or edit a Em Penalties"
+                "title": "Employee Penalties ??",
+                "createLabel": "Create a new Employee Penalty ??",
+                "createOrEditLabel": "Create or edit an Employee Penalty ??"
             },
-            "created": "A new Em Penalties is created with identifier {{ param }}",
-            "updated": "A Em Penalties is updated with identifier {{ param }}",
-            "deleted": "A Em Penalties is deleted with identifier {{ param }}",
+            "created": "A new Employee Penalty is created with identifier {{ param }} ??",
+            "updated": "An Employee Penalty is updated with identifier {{ param }} ??",
+            "deleted": "An Employee Penalty is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Penalties {{ id }}?"
+                "question": "Are you sure you want to delete Employee Penalty {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Penalties"
+                "title": "Employee Penalty ??"
             },
-            "description": "Description",
-            "dateFrom": "Date From",
-            "dateTo": "Date To",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idEmployee": "Id Employee"
+            "description": "الوصف",
+            "dateFrom": "من تاربخ",
+            "dateTo": "الى تاريخ",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idEmployee": "Employee ??"
         }
     }
 }

@@ -1,7 +1,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myEmEmployeesLabel" >Edit SSN and Tax Number</h4>
+        <h4 class="modal-title" id="myEmEmployeesLabel" jhiTranslate="global.employees.editSsnAndTaxNumber" >Edit SSN and Tax Number</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
@@ -10,14 +10,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="field_ssn">Social Security Number</label>
+                    <label class="form-control-label" for="field_ssn" jhiTranslate="hcmEmpApp.emEmployees.ssn">Social Security Number</label>
                     <input type="text" class="form-control" name="ssn" id="field_ssn"
                            [(ngModel)]="employee.ssn" />
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="field_tax_number">Tax Number</label>
+                    <label class="form-control-label" for="field_tax_number" jhiTranslate="hcmEmpApp.emEmployees.taxNumber">Tax Number</label>
                     <input type="text" class="form-control" name="tax_number" id="field_tax_number"
                            [(ngModel)]="employee.taxNumber" />
                 </div>

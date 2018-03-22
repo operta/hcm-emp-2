@@ -4,7 +4,7 @@
             "home": {
                 "title": "Employees",
                 "createLabel": "Create a new Employee",
-                "createOrEditLabel": "Create or edit a Employee Profile"
+                "createOrEditLabel": "Create or edit an Employee Profile"
             },
             "created": "Employee Profile created",
             "updated": "Employee Profile updated",

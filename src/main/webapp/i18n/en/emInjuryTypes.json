@@ -4,11 +4,11 @@
             "home": {
                 "title": "Injury Types",
                 "createLabel": "Create a new Injury Type",
-                "createOrEditLabel": "Create or edit a Injury Type"
+                "createOrEditLabel": "Create or edit an Injury Type"
             },
             "created": "A new Injury Type is created with identifier {{ param }}",
-            "updated": "A Injury Type is updated with identifier {{ param }}",
-            "deleted": "A Injury Type is deleted with identifier {{ param }}",
+            "updated": "An Injury Type is updated with identifier {{ param }}",
+            "deleted": "An Injury Type is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Injury Type {{ id }}?"
             },

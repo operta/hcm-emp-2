@@ -4,11 +4,11 @@
             "home": {
                 "title": "Accomplishments",
                 "createLabel": "Create a new Accomplishment",
-                "createOrEditLabel": "Create or edit a Accomplishment"
+                "createOrEditLabel": "Create or edit an Accomplishment"
             },
             "created": "A new Accomplishment is created with identifier {{ param }}",
-            "updated": "A Accomplishment is updated with identifier {{ param }}",
-            "deleted": "A Accomplishment is deleted with identifier {{ param }}",
+            "updated": "An Accomplishment is updated with identifier {{ param }}",
+            "deleted": "An Accomplishment is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Accomplishment {{ id }}?"
             },
@@ -34,7 +34,15 @@
             "updatedBy": "Updated By",
             "updatedAt": "Updated At",
             "idEmployee": "Employee",
-            "idAccomplishmentType": "Accomplishment Type"
+            "idAccomplishmentType": "Accomplishment Type",
+            "certification" : "Certification",
+            "present" : "present",
+            "courses" : "Courses",
+            "honorsAndAwards" : "Honors and awards",
+            "languages" : "Languages",
+            "projects" : "Projects",
+            "publications" : "Publications",
+            "certifications" : "Certifications"
         }
     }
 }

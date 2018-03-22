@@ -2,29 +2,29 @@
     "hcmEmpApp": {
         "emEmpRewards" : {
             "home": {
-                "title": "Em Emp Rewards",
-                "createLabel": "Create a new Em Emp Rewards",
-                "createOrEditLabel": "Create or edit a Em Emp Rewards"
+                "title": "Employee Rewards ??",
+                "createLabel": "Create a new Employee Reward ??",
+                "createOrEditLabel": "Create or edit an Employee Reward ??"
             },
-            "created": "A new Em Emp Rewards is created with identifier {{ param }}",
-            "updated": "A Em Emp Rewards is updated with identifier {{ param }}",
-            "deleted": "A Em Emp Rewards is deleted with identifier {{ param }}",
+            "created": "A new Employee Reward is created with identifier {{ param }} ??",
+            "updated": "An Employee Reward is updated with identifier {{ param }} ??",
+            "deleted": "An Employee Reward is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Emp Rewards {{ id }}?"
+                "question": "Are you sure you want to delete Employee Reward {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Emp Rewards"
+                "title": "Employee Reward ??"
             },
-            "description": "Description",
-            "dateReward": "Date Reward",
-            "amount": "Amount",
-            "rewardedBy": "Rewarded By",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At",
-            "idEmployee": "Id Employee",
-            "idReward": "Id Reward"
+            "description": "الوصف",
+            "dateReward": "Reward date ??",
+            "amount": "Amount ??",
+            "rewardedBy": "Rewarded By ??",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??",
+            "idEmployee": "Employee ??",
+            "idReward": "Reward Type ??"
         }
     }
 }

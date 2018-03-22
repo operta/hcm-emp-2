@@ -1,7 +1,7 @@
 <form class="form-horizontal" role="form">
     <div class="panel-footer p-b-20 p-t-20 m-b-10">
         <i class="icon-notebook m-r-5 heading-icon-at"></i>
-        <span class="heading-at">Notes</span>
+        <span class="heading-at" jhiTranslate="global.employees.notes">Notes</span>
         <div class="pull-right">
             <a *ngIf="isEditable" class="popup-with-form" [routerLink]="['/', { outlets: {popup: 'em-emp-notes-new/' + employee.id} }]">
                 <i class="fa fa-plus action-button-at"></i>

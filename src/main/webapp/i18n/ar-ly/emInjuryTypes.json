@@ -2,26 +2,26 @@
     "hcmEmpApp": {
         "emInjuryTypes" : {
             "home": {
-                "title": "Em Injury Types",
-                "createLabel": "Create a new Em Injury Types",
-                "createOrEditLabel": "Create or edit a Em Injury Types"
+                "title": "Injury Types ??",
+                "createLabel": "Create a new Injury Type ??",
+                "createOrEditLabel": "Create or edit an Injury Type ??"
             },
-            "created": "A new Em Injury Types is created with identifier {{ param }}",
-            "updated": "A Em Injury Types is updated with identifier {{ param }}",
-            "deleted": "A Em Injury Types is deleted with identifier {{ param }}",
+            "created": "A new Injury Type is created with identifier {{ param }} ??",
+            "updated": "An Injury Type is updated with identifier {{ param }} ??",
+            "deleted": "An Injury Type is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Em Injury Types {{ id }}?"
+                "question": "Are you sure you want to delete Injury Type {{ id }}? ??"
             },
             "detail": {
-                "title": "Em Injury Types"
+                "title": "Injury Type ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "description": "Description",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At"
+            "code": "الرمز",
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??"
         }
     }
 }

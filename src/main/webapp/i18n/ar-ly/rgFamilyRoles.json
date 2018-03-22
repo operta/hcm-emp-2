@@ -2,27 +2,27 @@
     "hcmEmpApp": {
         "rgFamilyRoles" : {
             "home": {
-                "title": "Rg Family Roles",
-                "createLabel": "Create a new Rg Family Roles",
-                "createOrEditLabel": "Create or edit a Rg Family Roles"
+                "title": "Family Roles ??",
+                "createLabel": "Create a new Family Role ??",
+                "createOrEditLabel": "Create or edit a Family Role ??"
             },
-            "created": "A new Rg Family Roles is created with identifier {{ param }}",
-            "updated": "A Rg Family Roles is updated with identifier {{ param }}",
-            "deleted": "A Rg Family Roles is deleted with identifier {{ param }}",
+            "created": "A new Family Role is created with identifier {{ param }} ??",
+            "updated": "A Family Role is updated with identifier {{ param }} ??",
+            "deleted": "A Family Role is deleted with identifier {{ param }} ??",
             "delete": {
-                "question": "Are you sure you want to delete Rg Family Roles {{ id }}?"
+                "question": "Are you sure you want to delete Family Role {{ id }}? ??"
             },
             "detail": {
-                "title": "Rg Family Roles"
+                "title": "Family Role ??"
             },
-            "code": "Code",
-            "name": "Name",
-            "description": "Description",
-            "uniqueRelation": "Unique Relation",
-            "createdBy": "Created By",
-            "createdAt": "Created At",
-            "updatedBy": "Updated By",
-            "updatedAt": "Updated At"
+            "uniqueRelation": "Unique Relation ??",
+            "code": "الرمز",
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdBy": "Created By ??",
+            "createdAt": "Created At ??",
+            "updatedBy": "Updated By ??",
+            "updatedAt": "Updated At ??"
         }
     }
 }

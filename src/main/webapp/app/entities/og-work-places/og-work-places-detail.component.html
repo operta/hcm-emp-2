@@ -27,11 +27,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3><b>CODE</b> <span class="pull-right">{{ogWorkPlaces.code}}</span></h3>
+                <h3><b jhiTranslate="hcmEmpApp.ogWorkPlaces.code">CODE</b><span class="pull-right">{{ogWorkPlaces.code}}</span></h3>
 
                 <h3><b>ID</b> <span class="pull-right">{{ogWorkPlaces.id}}</span></h3>
 
-                <h3><b>TYPE</b>
+                <h3><b jhiTranslate="hcmEmpApp.ogWorkPlaces.idWorkPlaceType">TYPE</b>
                     <span class="pull-right">
                         <div *ngIf="ogWorkPlaces.idWorkPlaceType">
                             <a [routerLink]="['/dashboard/og-work-place-types', ogWorkPlaces.idWorkPlaceType?.id]">{{ogWorkPlaces.idWorkPlaceType?.name}}</a>
@@ -39,15 +39,16 @@
                     </span>
                 </h3>
 
-                <h3><b>PARENT</b>
+                <h3><b jhiTranslate="hcmEmpApp.ogWorkPlaces.idParent">PARENT</b>
                     <span class="pull-right">
                         <div *ngIf="ogWorkPlaces.idParent">
                             <a [routerLink]="['/dashboard/og-work-places', ogWorkPlaces.idParent?.id]">{{ogWorkPlaces.idParent?.name}}</a>
                         </div>
                     </span>
                 </h3>
-                <h3><b>DESCRIPTION</b>
-                </h3>
+
+                <h3><b jhiTranslate="hcmEmpApp.ogWorkPlaces.description">DESCRIPTION</b></h3>
+                <br>
                 <p class=" m-l-5">
                     {{ogWorkPlaces.description}}
                 </p>

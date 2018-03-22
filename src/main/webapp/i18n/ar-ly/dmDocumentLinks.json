@@ -15,15 +15,16 @@
             "detail": {
                 "title": "Dm Document Links"
             },
-            "documentName": "Document Name",
+            "documentName": "اسم الوثيقة",
             "fileName": "File Name",
             "filePath": "File Path",
             "uri": "Uri",
-            "documentBlob": "Document Blob",
+            "documentBlob": "Document Blob ??",
             "createdBy": "Created By",
             "createdAt": "Created At",
             "updatedBy": "Updated By",
-            "updatedAt": "Updated At"
+            "updatedAt": "Updated At",
+            "addDocumentFile" : "Add Document File ??"
         }
     }
 }
